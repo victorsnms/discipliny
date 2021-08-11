@@ -1,4 +1,4 @@
-import { useHistory } from "react-router-dom";
+import { Redirect, useHistory } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -13,12 +13,9 @@ import {
   useToast,
 } from "@chakra-ui/react";
 
-function Login() {
+function Login({ logged, setLogged }) {
   const history = useHistory();
   const toast = useToast();
-  const changeTo = (path) => {
-    history.push(path);
-  };
 
   const schema = yup.object().shape({
     username: yup.string().required("Campo obrigatório"),
@@ -38,14 +35,12 @@ function Login() {
 
   const toSubmit = ({ username, password }) => {
     const user = { username, password };
-    console.log(user);
-
     api
       .post("/sessions/", user)
       .then((res) => {
         const { access } = res.data;
         localStorage.setItem("@Discipliny:accessToken", JSON.stringify(access));
-
+        setLogged(true);
         return history.push("/habits");
       })
       .catch((err) =>
@@ -58,6 +53,10 @@ function Login() {
         })
       );
   };
+
+  if (logged) {
+    return <Redirect to="/habits" />;
+  }
 
   return (
     <>
