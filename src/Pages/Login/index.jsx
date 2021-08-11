@@ -7,6 +7,7 @@ function Login() {
   };
   return (
     <>
+      Login
       <h1 onClick={() => changeTo("/habits")}>Login</h1>
     </>
   );
