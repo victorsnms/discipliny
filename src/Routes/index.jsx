@@ -1,9 +1,9 @@
 import { Switch, Route } from "react-router-dom";
-import Login from "../components/Login";
-import SignUp from "../components/SignUp";
-import Habits from "../components/Habits";
-import MyGroups from "../components/MyGroups";
-import Groups from "../components/Groups";
+import Login from "../Pages/Login";
+import SignUp from "../Pages/SignUp";
+import Habits from "../Pages/Habits";
+import MyGroups from "../Pages/MyGroups";
+import Groups from "../Pages/Groups";
 
 const Routes = () => {
   return (
