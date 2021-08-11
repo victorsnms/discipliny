@@ -1,5 +1,7 @@
 //import providers and useContext
 
+import { StyledButton } from "./styles";
+
 const Button = ({ text, type, item }) => {
   const handleClick = () => {
     //Context
@@ -11,7 +13,11 @@ const Button = ({ text, type, item }) => {
     } else if (type === "leavegroup") {
     }
   };
-  return <button onClick={handleClick}>{text}</button>;
+  return (
+    <>
+      <StyledButton onClick={handleClick}>{text}</StyledButton>
+    </>
+  );
 };
 
 export default Button;
