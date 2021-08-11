@@ -2,7 +2,7 @@ import { useHistory } from "react-router-dom";
 import CardHabit from "../../Components/CardHabits";
 import { HabitWrapper } from "./habitwrapper.style";
 
-function Habits() {
+const Habits = () => {
   const history = useHistory();
   const changeTo = (path) => {
     history.push(path);
@@ -41,5 +41,5 @@ function Habits() {
       <h1 onClick={() => changeTo("/groups")}>Habits</h1>
     </>
   );
-}
+};
 export default Habits;
