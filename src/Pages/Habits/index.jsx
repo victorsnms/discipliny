@@ -18,7 +18,9 @@ const Habits = () => {
           </div>
 
           <div className="ParagContainer">
-            <p className="Hab">Habitos</p>
+            <p className="Hab" onClick={() => changeTo("/groups")}>
+              Habitos
+            </p>
             <p className="MyGroup"> Meus Grupos</p>
             <p className="Descobrir">Descobrir</p>
           </div>
@@ -38,7 +40,6 @@ const Habits = () => {
           </section>
         </div>
       </HabitWrapper>
-      <h1 onClick={() => changeTo("/groups")}>Habits</h1>
     </>
   );
 };
