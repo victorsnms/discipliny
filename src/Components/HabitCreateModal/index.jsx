@@ -8,6 +8,7 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 import { useRef, useState } from "react";
+import api from "../../Services/api";
 
 const HabitCreateModal = () => {
   const initialRef = useRef();
@@ -17,6 +18,8 @@ const HabitCreateModal = () => {
   const [category, setCategory] = useState("Saúde");
   const [difficulty, setDificulty] = useState("");
   const [frequency, setFrequency] = useState("");
+
+  const token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjI4OTY4NjI3LCJqdGkiOiJiZmUyOGFkNmQ4ZDM0MmFjOWNiM2I4YzExMzhkZmRmZCIsInVzZXJfaWQiOjE2MTR9.EaLjQZ-x2tCR6mgXfkdGdNrdplo4lu7WgJEUyhqeD88"
 
   const addHabit = () => {
     api
@@ -32,7 +35,7 @@ const HabitCreateModal = () => {
   };
 
   const handleSubmit = () => {
-    //importar api, token e iduser, token, setHAnits
+    //importar, token e iduser, setHAnits
     const newHabit = {
       title: title,
       category: category,
@@ -54,78 +57,77 @@ const HabitCreateModal = () => {
   };
 
   return (
-    <Modal initialFocusRef={initialRef} isOpen={isOpen} onClose={onClose}>
-      <ModalOverlay />
-      <ModalContent>
-        <h1>Novo Hábito</h1>
-        <ModalCloseButton />
-        <ModalBody pb={6}>
-          <form>
-            <input
-              ref={initialRef}
-              placeholder="Digite um novo hábito"
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-              required
-            />
-            <div>
-              <p>Em qual categoria se enquadra:</p>
+      <Modal initialFocusRef={initialRef} isOpen={isOpen} onClose={onClose}>
+        <ModalOverlay />
+        <ModalContent>
+          <h1>Novo Hábito</h1>
+          <ModalCloseButton />
+          <ModalBody pb={6}>
+            <form>
+              <input
+                ref={initialRef}
+                placeholder="Digite um novo hábito"
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+                required
+              />
               <div>
-                <input
-                  type="radios"
-                  name="category"
-                  value="healthy"
-                  checked
-                  id="healthy"
-                  onClick={(e) => setCategory(e.target.value)}
-                />
-                <label htmlFor="healthy">Saúde</label>
+                <p>Em qual categoria se enquadra:</p>
+                <div>
+                  <input
+                    type="radios"
+                    name="category"
+                    value="healthy"
+                    checked
+                    id="healthy"
+                    onClick={(e) => setCategory(e.target.value)}
+                  />
+                  <label htmlFor="healthy">Saúde</label>
+                </div>
+                <div>
+                  <input
+                    type="radios"
+                    name="category"
+                    value="healthy"
+                    id="healthy"
+                    onClick={(e) => setCategory(e.target.value)}
+                  />
+                  <label htmlFor="healthy">Saúde</label>
+                </div>
               </div>
               <div>
-                <input
-                  type="radios"
-                  name="category"
-                  value="healthy"
-                  id="healthy"
-                  onClick={(e) => setCategory(e.target.value)}
-                />
-                <label htmlFor="healthy">Saúde</label>
+                <div>
+                  <select
+                    value={difficulty}
+                    onChange={(e) => setDificulty(e.target.value)}
+                  >
+                    <option value="Fácil" selected>
+                      Fácil
+                    </option>
+                    <option value="Médio">Médio</option>
+                    <option value="Difícil">Difícil</option>
+                  </select>
+                </div>
+                <div>
+                  <select
+                    value={frequency}
+                    onChange={(e) => setFrequency(e.target.value)}
+                  >
+                    <option value="Diário" selected>
+                      Diário
+                    </option>
+                    <option value="Semanal">Semanal</option>
+                    <option value="Mensal">Mensal</option>
+                  </select>
+                </div>
               </div>
-            </div>
-            <div>
-              <div>
-                <select
-                  value={difficulty}
-                  onChange={(e) => setDificulty(e.target.value)}
-                >
-                  <option value="Fácil" selected>
-                    Fácil
-                  </option>
-                  <option value="Médio">Médio</option>
-                  <option value="Difícil">Difícil</option>
-                </select>
-              </div>
-              <div>
-                <select
-                  value={frequency}
-                  onChange={(e) => setFrequency(e.target.value)}
-                >
-                  <option value="Diário" selected>
-                    Diário
-                  </option>
-                  <option value="Semanal">Semanal</option>
-                  <option value="Mensal">Mensal</option>
-                </select>
-              </div>
-            </div>
-          </form>
-        </ModalBody>
-
-        <ModalFooter>
-          <button onClick={handleSubmit}>Save</button>
-        </ModalFooter>
-      </ModalContent>
-    </Modal>
+            </form>
+          </ModalBody>
+          <ModalFooter>
+            <button onClick={handleSubmit}>Save</button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
   );
 };
 
