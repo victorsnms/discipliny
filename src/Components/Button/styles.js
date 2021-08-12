@@ -10,6 +10,10 @@ export const StyledButton = styled.button`
   background-color: #33658a;
   color: white;
   box-shadow: 3px 3px 3px black;
+  position: absolute;
+  left: 5px;
+  bottom: 5px;
+
   &:hover {
     filter: contrast(150%);
   }
