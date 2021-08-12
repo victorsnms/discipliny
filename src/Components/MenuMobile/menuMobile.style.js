@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const MenuMobile = styled.div`
+export const MenuMobileC = styled.div`
   display: none;
   justify-content: space-evenly;
   color: black;

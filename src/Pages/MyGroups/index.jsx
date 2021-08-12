@@ -2,7 +2,7 @@ import { useHistory } from "react-router-dom";
 import { MyGroupsWrapper } from "./myGroups";
 import CardGroups from "../../Components/CardGroups";
 import CardAdd from "../../Components/CardAdd";
-import { MenuMobile } from "../../styles/MenuMobile/Footer.style";
+import MenuMobile from "../../Components/MenuMobile";
 
 function Groups() {
   const history = useHistory();
@@ -38,11 +38,7 @@ function Groups() {
               <CardAdd />
             </div>
           </section>
-          <MenuMobile>
-            <button className="buttonHab">Habit</button>
-            <button className="buttonMyGrup">My Grp</button>
-            <button className="buttonDesco">Desco</button>
-          </MenuMobile>
+          <MenuMobile />
         </div>
       </MyGroupsWrapper>
     </>

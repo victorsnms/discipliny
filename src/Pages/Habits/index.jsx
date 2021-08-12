@@ -1,7 +1,9 @@
 import { Redirect, useHistory } from "react-router-dom";
 import CardHabit from "../../Components/CardHabits";
-import { MenuMobile } from "../../styles/MenuMobile/Footer.style";
+
 import { HabitWrapper } from "./habitwrapper.style";
+import Button from "../../Components/Button";
+import MenuMobile from "../../Components/MenuMobile";
 
 const Habits = ({ logged }) => {
   const history = useHistory();
@@ -30,7 +32,9 @@ const Habits = ({ logged }) => {
             <p className="MyGroup"> Meus Grupos</p>
             <p className="Descobrir">Descobrir</p>
           </div>
-          <button>Sair</button>
+          <Button text="Sair" type="logout">
+            Sair
+          </Button>
         </aside>
         <div className="ContainerCards">
           <section>
@@ -44,11 +48,7 @@ const Habits = ({ logged }) => {
               <CardHabit />
             </div>
           </section>
-          <MenuMobile>
-            <button className="buttonHab">Habit</button>
-            <button className="buttonMyGrup">My Grp</button>
-            <button className="buttonDesco">Desco</button>
-          </MenuMobile>
+          <MenuMobile />
         </div>
       </HabitWrapper>
     </>
