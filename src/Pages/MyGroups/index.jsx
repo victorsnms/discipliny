@@ -3,6 +3,7 @@ import { MyGroupsWrapper } from "./myGroups";
 import CardGroups from "../../Components/CardGroups";
 import CardAdd from "../../Components/CardAdd";
 import MenuMobile from "../../Components/MenuMobile";
+import Menu from "../../Components/MenuAside/index";
 
 function Groups() {
   const history = useHistory();
@@ -12,20 +13,7 @@ function Groups() {
   return (
     <>
       <MyGroupsWrapper className="ContHabits">
-        <aside className="NavAside">
-          <h1>Discipliny</h1>
-          <div className="ImgContainer">
-            <img></img>
-            <span>UserName</span>
-          </div>
-
-          <div className="ParagContainer">
-            <p className="Hab">Habitos</p>
-            <p className="MyGroup"> Meus Grupos</p>
-            <p className="Descobrir">Descobrir</p>
-          </div>
-          <button>Sair</button>
-        </aside>
+        <Menu />
         <div className="ContainerCards">
           <section>
             <header>
