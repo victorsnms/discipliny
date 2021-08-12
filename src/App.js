@@ -1,3 +1,4 @@
+import HabitCreateModal from "./Components/HabitCreateModal";
 import Routes from "./Routes";
 import GlobalStyle from "./styles/global"
 
@@ -6,6 +7,7 @@ function App() {
     <div className="App">
       <GlobalStyle/>
       <Routes />
+      <HabitCreateModal/>
     </div>
   );
 }
