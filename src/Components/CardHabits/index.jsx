@@ -4,7 +4,7 @@ import { FaCheckCircle } from "react-icons/fa";
 import { FaMedal } from "react-icons/fa";
 import { useState } from "react";
 
-const CardHabit = () => {
+const CardHabit = ({ habit }) => {
   const [count, setCount] = useState(0);
 
   const handleClick = () => {
@@ -27,11 +27,11 @@ const CardHabit = () => {
           />
           <FaMedal style={count > 99.99 ? { color: "green" } : null} />
         </div>
-        <p>Habit Name</p>
+        <p>{habit.title}</p>
         <div className="BottomLabels">
-          <p>Categoria</p>
-          <p>Dificuldade</p>
-          <p>Frequência</p>
+          <p>{habit.category}</p>
+          <p>{habit.difficulty}</p>
+          <p>{habit.frequency}</p>
         </div>
       </div>
       <div className="Edit">
