@@ -7,6 +7,11 @@ const Habits = () => {
   const changeTo = (path) => {
     history.push(path);
   };
+
+  if (!logged) {
+    return <Redirect to="/" />;
+  }
+
   return (
     <>
       <HabitWrapper className="ContHabits">
