@@ -2,12 +2,17 @@ import { useHistory } from "react-router-dom";
 import { GroupsWrapper } from "./groupscards";
 import CardGroups from "../../Components/CardGroups";
 import MenuMobile from "../../Components/MenuMobile";
+import { useContext } from "react";
+import { GroupsCardListContext } from "../../Provider/groupsCardList";
 
-function Groups() {
+const Groups = () => {
   const history = useHistory();
   const changeTo = (path) => {
     history.push(path);
   };
+  const { groupsCardList } = useContext(GroupsCardListContext);
+  const { addToGroupsCardList } = useContext(GroupsCardListContext);
+
   return (
     <>
       <GroupsWrapper className="ContHabits">
@@ -42,5 +47,5 @@ function Groups() {
       </GroupsWrapper>
     </>
   );
-}
+};
 export default Groups;
