@@ -16,20 +16,7 @@ const Groups = () => {
   return (
     <>
       <GroupsWrapper className="ContHabits">
-        <aside className="NavAside">
-          <h1>Discipliny</h1>
-          <div className="ImgContainer">
-            <img></img>
-            <span>UserName</span>
-          </div>
-
-          <div className="ParagContainer">
-            <p className="Hab">Habitos</p>
-            <p className="MyGroup"> Meus Grupos</p>
-            <p className="Descobrir">Descobrir</p>
-          </div>
-          <button>Sair</button>
-        </aside>
+        <Menu />
         <div className="ContainerCards">
           <section>
             <header>
