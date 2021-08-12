@@ -12,8 +12,10 @@ import {
   Button,
   useToast,
 } from "@chakra-ui/react";
+import { useHabits } from "../../Provider/Habits";
 
 function Login({ logged, setLogged }) {
+  const { getHabits } = useHabits();
   const history = useHistory();
   const toast = useToast();
 
@@ -41,6 +43,7 @@ function Login({ logged, setLogged }) {
         const { access } = res.data;
         localStorage.setItem("@Discipliny:accessToken", JSON.stringify(access));
         setLogged(true);
+        getHabits();
         return history.push("/habits");
       })
       .catch((err) =>
