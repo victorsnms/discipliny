@@ -1,4 +1,4 @@
-import { useHistory } from "react-router-dom";
+import { Redirect, useHistory } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -13,12 +13,9 @@ import {
   useToast,
 } from "@chakra-ui/react";
 
-function SignUp() {
+function SignUp({ logged }) {
   const history = useHistory();
   const toast = useToast();
-  const changeTo = (path) => {
-    history.push(path);
-  };
 
   const schema = yup.object().shape({
     username: yup
@@ -78,6 +75,10 @@ function SignUp() {
         });
       });
   };
+
+  if (logged) {
+    return <Redirect to="/habits" />;
+  }
 
   return (
     <>
