@@ -1,16 +1,17 @@
-import { useHistory } from "react-router-dom";
+import { Redirect, useHistory } from "react-router-dom";
 import CardHabit from "../../Components/CardHabits";
+import { MenuMobile } from "../../styles/MenuMobile/Footer.style";
 import { HabitWrapper } from "./habitwrapper.style";
 
-const Habits = () => {
+const Habits = ({ logged }) => {
   const history = useHistory();
   const changeTo = (path) => {
     history.push(path);
   };
 
-  if (!logged) {
-    return <Redirect to="/" />;
-  }
+  // if (!logged) {
+  //   return <Redirect to="/" />;
+  // }
 
   return (
     <>
@@ -23,7 +24,9 @@ const Habits = () => {
           </div>
 
           <div className="ParagContainer">
-            <p className="Hab">Habitos</p>
+            <p className="Hab" onClick={() => changeTo("/habits")}>
+              Habitos
+            </p>
             <p className="MyGroup"> Meus Grupos</p>
             <p className="Descobrir">Descobrir</p>
           </div>
@@ -41,9 +44,13 @@ const Habits = () => {
               <CardHabit />
             </div>
           </section>
+          <MenuMobile>
+            <button className="buttonHab">Habit</button>
+            <button className="buttonMyGrup">My Grp</button>
+            <button className="buttonDesco">Desco</button>
+          </MenuMobile>
         </div>
       </HabitWrapper>
-      <h1 onClick={() => changeTo("/groups")}>Habits</h1>
     </>
   );
 };

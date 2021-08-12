@@ -1,6 +1,7 @@
 import { useHistory } from "react-router-dom";
 import { GroupsWrapper } from "./groupscards";
 import CardGroups from "../../Components/CardGroups";
+import { MenuMobile } from "../../styles/MenuMobile/Footer.style";
 
 function Groups() {
   const history = useHistory();
@@ -36,6 +37,11 @@ function Groups() {
               <CardGroups name="GroupName" />
             </div>
           </section>
+          <MenuMobile>
+            <button className="buttonHab">Habit</button>
+            <button className="buttonMyGrup">My Grp</button>
+            <button className="buttonDesco">Desco</button>
+          </MenuMobile>
         </div>
       </GroupsWrapper>
     </>
