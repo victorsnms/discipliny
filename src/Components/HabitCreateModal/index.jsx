@@ -29,7 +29,7 @@ const HabitCreateModal = () => {
         },
       })
       .then((response) => {
-        console.log(response.data);
+        //funcao para atualizar a lista de habitos
       })
       .catch((err) => console.log(err));
   };
