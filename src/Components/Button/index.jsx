@@ -8,6 +8,7 @@ const Button = ({ text, type, item }) => {
 
     if (type === "login") {
     } else if (type === "logout") {
+      localStorage.clear();
     } else if (type === "signup") {
     } else if (type === "joingroup") {
     } else if (type === "leavegroup") {

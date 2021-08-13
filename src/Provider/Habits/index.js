@@ -1,10 +1,38 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import api from "../../Services/api";
 
 const HabitsContext = createContext();
 
 export const HabitsProvider = ({ children }) => {
   const [habit, setHabit] = useState([]);
+
+  useEffect(() => {
+    const token = JSON.parse(localStorage.getItem("@Discipliny:accessToken"));
+    console.log(token);
+    if (token) {
+      api
+        .get("/habits/personal/", {
+          headers: { Authorization: `Bearer ${token}` },
+        })
+        .then((response) => {
+          setHabit(response.data);
+
+          if (response.data.length === 0) {
+            return null;
+          } else {
+            localStorage.setItem(
+              "@Discipliny:userId",
+              JSON.stringify(response.data[0].user)
+            );
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  }, []);
+
+  const userId = JSON.parse(localStorage.getItem("@Discipliny:userId"));
 
   const createHabit = (dados) => {
     const token = JSON.parse(localStorage.getItem("@Discipliny:accessToken"));
@@ -20,10 +48,10 @@ export const HabitsProvider = ({ children }) => {
       });
   };
 
-  const updateHabit = (dados, id) => {
+  const updateHabit = (dados, habitId) => {
     const token = JSON.parse(localStorage.getItem("@Discipliny:accessToken"));
     api
-      .patch(`/habits/${id}/`, dados, {
+      .patch(`/habits/${habitId}/`, dados, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
@@ -36,7 +64,6 @@ export const HabitsProvider = ({ children }) => {
 
   const getHabits = () => {
     const token = JSON.parse(localStorage.getItem("@Discipliny:accessToken"));
-    console.log(token);
 
     api
       .get("/habits/personal/", {
@@ -44,6 +71,11 @@ export const HabitsProvider = ({ children }) => {
       })
       .then((response) => {
         setHabit(response.data);
+
+        localStorage.setItem(
+          "@Discipliny:userId",
+          JSON.stringify(response.data[0].user)
+        );
       })
       .catch((error) => {
         console.log(error);
@@ -52,7 +84,6 @@ export const HabitsProvider = ({ children }) => {
 
   const deleteHabit = (idHabit) => {
     const token = JSON.parse(localStorage.getItem("@Discipliny:accessToken"));
-
     api
       .delete(`/habits/${idHabit}/`, {
         headers: { Authorization: `Bearer ${token}` },

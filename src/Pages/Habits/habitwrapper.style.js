@@ -9,7 +9,7 @@ export const HabitWrapper = styled.div`
     width: 100%;
     display: grid;
     place-items: center;
-    background-color: #fef2ec;
+    background-color: var(--cream);
 
     section {
       width: 70%;

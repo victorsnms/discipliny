@@ -1,13 +1,11 @@
-import HabitCreateModal from "./Components/HabitCreateModal";
 import Routes from "./Routes";
-import GlobalStyle from "./styles/global"
+import GlobalStyle from "./styles/global";
 
 function App() {
   return (
     <div className="App">
-      <GlobalStyle/>
+      <GlobalStyle />
       <Routes />
-      <HabitCreateModal/>
     </div>
   );
 }
