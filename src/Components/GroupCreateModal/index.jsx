@@ -13,6 +13,9 @@ import api from "../../Services/api";
 const GroupCreateModal = () => {
   const initialRef = useRef();
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const [token] = useState(
+    JSON.parse(localStorage.getItem("@Discipliny:accessToken")) || ""
+  );
 
   const [name, setName] = useState("");
   const [category, setCategory] = useState("Saúde");

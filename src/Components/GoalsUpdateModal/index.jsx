@@ -10,26 +10,25 @@ import {
   import { useRef, useState } from "react";
   import api from "../../Services/api"
   
-  const GoalsCreateModal = () => {
+  const GoalsUpdateModal = () => {
     const initialRef = useRef();
     const { isOpen, onOpen, onClose } = useDisclosure();
     const [token] = useState(
         JSON.parse(localStorage.getItem("@Discipliny:accessToken")) || ""
       );
-    const [title, setTitle] = useState("");
+    const [title, setTitle] = useState("Nome da meta");
     const [difficulty, setDifficulty] = useState("Fácil");
   
     const handleSubmit = () => {
       //importar  token e idgroup
-      const newGoal = {
+      const updateGoal = {
         title: title,
         difficulty: difficulty,
-        how_much_achieved: 0,
         group: "userId",
       };
   
       api
-        .post("/goals/", newGoal, {
+        .patch("/goals/idgoal/", updateGoal, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -42,7 +41,7 @@ import {
       <Modal initialFocusRef={initialRef} isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
-          <h1>Nova meta</h1>
+          <h1>Editar meta</h1>
           <ModalCloseButton />
           <ModalBody pb={6}>
             <form>
@@ -77,5 +76,5 @@ import {
       </Modal>
     );
   };
-  export default GoalsCreateModal;
+  export default GoalsUpdateModal;
   
