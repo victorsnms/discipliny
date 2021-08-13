@@ -1,8 +1,11 @@
-import { Redirect, useHistory } from "react-router-dom";
+import { Link, Redirect, useHistory } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import api from "../../Services/api";
+
+import { Container, FormContent, Content, MainContent } from "./styles";
+import img from "../../assets/dizzy2.png";
 
 import {
   FormControl,
@@ -81,37 +84,74 @@ function SignUp({ logged }) {
   }
 
   return (
-    <>
-      <h1>Cadastro</h1>
-      <form onSubmit={handleSubmit(toSubmit)}>
-        <FormControl isInvalid={errors.username?.message}>
-          <FormLabel>Nome</FormLabel>
-          <Input {...register("username")} />
-          <FormErrorMessage>{errors.username?.message}</FormErrorMessage>
-        </FormControl>
-        <FormControl isInvalid={errors.email?.message}>
-          <FormLabel>Email</FormLabel>
-          <Input {...register("email")} />
-          <FormErrorMessage>{errors.email?.message}</FormErrorMessage>
-        </FormControl>
-        <FormControl isInvalid={errors.confirmEmail?.message}>
-          <FormLabel>Confirmar email</FormLabel>
-          <Input {...register("confirmEmail")} />
-          <FormErrorMessage>{errors.confirmEmail?.message}</FormErrorMessage>
-        </FormControl>
-        <FormControl isInvalid={errors.password?.message}>
-          <FormLabel>Senha</FormLabel>
-          <Input type="password" {...register("password")} />
-          <FormErrorMessage>{errors.password?.message}</FormErrorMessage>
-        </FormControl>
-        <FormControl isInvalid={errors.confirmPassword?.message}>
-          <FormLabel>Confirmar senha</FormLabel>
-          <Input type="password" {...register("confirmPassword")} />
-          <FormErrorMessage>{errors.confirmPassword?.message}</FormErrorMessage>
-        </FormControl>
-        <Button type="submit">Enviar</Button>
-      </form>
-    </>
+    <Container>
+      <Content>
+        <h1>Discipliny</h1>
+        <MainContent>
+          <img src={img} alt="Ilustração" className="display" />
+          <FormContent>
+            <h2>Cadastro</h2>
+            <form onSubmit={handleSubmit(toSubmit)}>
+              <FormControl isInvalid={errors.username?.message}>
+                <FormLabel>Nome</FormLabel>
+                <Input
+                  {...register("username")}
+                  focusBorderColor="white"
+                  placeholder="Insira seu nome de usuário"
+                />
+                <FormErrorMessage>{errors.username?.message}</FormErrorMessage>
+              </FormControl>
+              <FormControl isInvalid={errors.email?.message}>
+                <FormLabel>Email</FormLabel>
+                <Input
+                  {...register("email")}
+                  focusBorderColor="white"
+                  placeholder="Seu email válido"
+                />
+                <FormErrorMessage>{errors.email?.message}</FormErrorMessage>
+              </FormControl>
+              <FormControl isInvalid={errors.confirmEmail?.message}>
+                <FormLabel>Confirmar email</FormLabel>
+                <Input
+                  {...register("confirmEmail")}
+                  focusBorderColor="white"
+                  placeholder="Confirme seu email"
+                />
+                <FormErrorMessage>
+                  {errors.confirmEmail?.message}
+                </FormErrorMessage>
+              </FormControl>
+              <FormControl isInvalid={errors.password?.message}>
+                <FormLabel>Senha</FormLabel>
+                <Input
+                  type="password"
+                  {...register("password")}
+                  focusBorderColor="white"
+                  placeholder="Uma senha bem segura"
+                />
+                <FormErrorMessage>{errors.password?.message}</FormErrorMessage>
+              </FormControl>
+              <FormControl isInvalid={errors.confirmPassword?.message}>
+                <FormLabel>Confirmar senha</FormLabel>
+                <Input
+                  type="password"
+                  {...register("confirmPassword")}
+                  focusBorderColor="white"
+                  placeholder="Confirme sua senha"
+                />
+                <FormErrorMessage>
+                  {errors.confirmPassword?.message}
+                </FormErrorMessage>
+              </FormControl>
+              <Button type="submit">Enviar</Button>
+              <p>
+                Já possui conta? <Link to="/">Login</Link>
+              </p>
+            </form>
+          </FormContent>
+        </MainContent>
+      </Content>
+    </Container>
   );
 }
 export default SignUp;
