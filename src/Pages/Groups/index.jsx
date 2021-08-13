@@ -16,7 +16,7 @@ const Groups = () => {
   return (
     <>
       <GroupsWrapper className="ContHabits">
-        <Menu />
+        <hr/>
         <div className="ContainerCards">
           <section>
             <header>

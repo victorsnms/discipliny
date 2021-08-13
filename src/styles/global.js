@@ -20,15 +20,32 @@ export default createGlobalStyle`
         --yellow:#F6AE2D;
         --orange: #F26419;
         --black: #191919;
+        --purple:#b55dc6;
+        --green:#51a957;
+        --red:#e73f36;
+        --pink: #eb7eed;
+        --brown:#b17c6a;
         --linear-orange:linear-gradient(to bottom, #F26419, #F6AE2D);
+        --border-radius: 8px;
     }
     
     body{
-        font-family: var(--font);
+        font-family: var(--font-text);
     }
 
     button{
         cursor: pointer;
         border: none;
+    }
+
+
+    // MODAL STYLES
+
+    section.chakra-modal__content{
+        border-radius: 2rem;
+    }
+
+    button.chakra-modal__close-btn{
+        color: var(--white);
     }
 `

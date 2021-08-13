@@ -5,6 +5,7 @@ import Button from "../../Components/Button";
 import MenuMobile from "../../Components/MenuMobile";
 import Menu from "../../Components/MenuAside/index";
 import { useHabits } from "../../Provider/Habits";
+import HabitCreateModal from "../../Components/HabitCreateModal";
 
 const Habits = ({ logged }) => {
   const history = useHistory();
@@ -39,6 +40,8 @@ const Habits = ({ logged }) => {
           </section>
           <MenuMobile />
         </div>
+        <HabitCreateModal/>
+        
       </HabitWrapper>
     </>
   );
