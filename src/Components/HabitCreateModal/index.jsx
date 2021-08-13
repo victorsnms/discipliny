@@ -5,6 +5,7 @@ import {
   ModalCloseButton,
   ModalContent,
   ModalFooter,
+  ModalHeader,
   ModalOverlay,
   useDisclosure,
 } from "@chakra-ui/react";
@@ -22,11 +23,12 @@ const HabitCreateModal = () => {
   const [difficulty, setDificulty] = useState("Fácil");
   const [frequency, setFrequency] = useState("Diário");
 
-  const token = JSON.parse(localStorage.getItem("@Discipliny:accessToken"));
-  const userId = JSON.parse(localStorage.getItem("@Discipliny:userId"));
-
   const handleSubmit = () => {
     //importar, token e iduser, setHAnits
+
+    const token = JSON.parse(localStorage.getItem("@Discipliny:accessToken"));
+    const userId = JSON.parse(localStorage.getItem("@Discipliny:userId"));
+
     const newHabit = {
       title: title,
       category: category,
@@ -60,7 +62,7 @@ const HabitCreateModal = () => {
       <Modal initialFocusRef={initialRef} isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
-          <h1>Novo Hábito</h1>
+          <ModalHeader>Novo Hábito</ModalHeader>
           <ModalCloseButton />
           <ModalBody pb={6}>
             <form>
@@ -77,23 +79,23 @@ const HabitCreateModal = () => {
                   <input
                     type="radios"
                     name="category"
-                    value={category}
+                    defaultValue={category}
                     checked
                     id="healthy"
                     onClick={(e) => setCategory(e.target.value)}
                   />
                   <label htmlFor="healthy">Saúde</label>
                 </div>
-                <div>
+                {/* <div>
                   <input
                     type="radios"
                     name="category"
-                    value="healthy"
+                    value
                     id="healthy"
                     onClick={(e) => setCategory(e.target.value)}
                   />
                   <label htmlFor="healthy">Lazer</label>
-                </div>
+                </div> */}
               </div>
               <div>
                 <div>

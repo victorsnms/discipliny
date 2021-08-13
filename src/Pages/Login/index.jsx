@@ -51,6 +51,10 @@ const Login = ({ logged, setLogged }) => {
           "@Discipliny:Nameuser",
           JSON.stringify(user.username)
         );
+        localStorage.setItem(
+          "@Discipliny:userId",
+          JSON.stringify(user.username)
+        );
 
         setLogged(true);
         updateUserFunc(user);

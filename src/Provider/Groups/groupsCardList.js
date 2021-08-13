@@ -25,10 +25,10 @@ export const GroupsCardsProvider = ({ children }) => {
       );
   }, []);
   return (
-    <GroupsCardListContext.Povider
+    <GroupsCardListContext.Provider
       value={{ addToGroupsCardList, groupsCardList }}
     >
       {children}
-    </GroupsCardListContext.Povider>
+    </GroupsCardListContext.Provider>
   );
 };

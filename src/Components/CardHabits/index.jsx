@@ -2,7 +2,7 @@ import { Progress } from "@chakra-ui/react";
 import { HabitCard } from "./habits.style";
 import { FaCheckCircle } from "react-icons/fa";
 import { FaMedal } from "react-icons/fa";
-
+import HabitUpdateModal from "../HabitUpdateModal/index";
 import { useHabits } from "../../Provider/Habits";
 
 const CardHabit = ({ habits }) => {
@@ -39,7 +39,8 @@ const CardHabit = ({ habits }) => {
         </div>
       </div>
       <div className="Edit">
-        <button>Editar</button>
+        {/* <button>Editar</button> */}
+        <HabitUpdateModal />
       </div>
     </HabitCard>
   );
