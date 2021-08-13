@@ -1,7 +1,7 @@
 import { Redirect } from "react-router-dom";
 import CardHabit from "../../Components/CardHabits";
 import { HabitWrapper } from "./habitwrapper.style";
-import generators from '../../lib/generators'
+import generators from "../../lib/generators";
 import MenuMobile from "../../Components/MenuMobile";
 import Menu from "../../Components/MenuAside/index";
 import { useHabits } from "../../Provider/Habits";
@@ -9,7 +9,7 @@ import HabitCreateModal from "../../Components/HabitCreateModal";
 
 const Habits = ({ logged }) => {
   const { habit } = useHabits();
-  const {idGeneretors}
+  const { idGeneretors } = generators;
 
   if (!logged) {
     return <Redirect to="/" />;
