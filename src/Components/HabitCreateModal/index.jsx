@@ -16,23 +16,12 @@ const HabitCreateModal = () => {
 
   const [title, setTitle] = useState("");
   const [category, setCategory] = useState("Saúde");
-  const [difficulty, setDificulty] = useState("");
-  const [frequency, setFrequency] = useState("");
+  const [difficulty, setDificulty] = useState("Fácil");
+  const [frequency, setFrequency] = useState("Diário");
 
-  const token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjI4OTY4NjI3LCJqdGkiOiJiZmUyOGFkNmQ4ZDM0MmFjOWNiM2I4YzExMzhkZmRmZCIsInVzZXJfaWQiOjE2MTR9.EaLjQZ-x2tCR6mgXfkdGdNrdplo4lu7WgJEUyhqeD88"
-
-  const addHabit = () => {
-    api
-      .get(`/habits/personal/`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-      .then((response) => {
-        //funcao para atualizar a lista de habitos
-      })
-      .catch((err) => console.log(err));
-  };
+  const [token] = useState(
+    JSON.parse(localStorage.getItem("@Discipliny:accessToken")) || ""
+  );
 
   const handleSubmit = () => {
     //importar, token e iduser, setHAnits
@@ -52,7 +41,7 @@ const HabitCreateModal = () => {
           Authorization: `Bearer ${token}`,
         },
       })
-      .then((_) => addHabit)
+      .then((_) => "atualizar lista de habitos")
       .catch((err) => console.log(err));
   };
 

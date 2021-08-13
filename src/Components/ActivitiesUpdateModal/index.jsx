@@ -10,31 +10,30 @@ import {
   import { useRef, useState } from "react";
   import api from "../../Services/api"
   
-  const GoalsCreateModal = () => {
+  const ActivitiesUpdateModal = () => {
     const initialRef = useRef();
     const { isOpen, onOpen, onClose } = useDisclosure();
     const [token] = useState(
         JSON.parse(localStorage.getItem("@Discipliny:accessToken")) || ""
       );
-    const [title, setTitle] = useState("");
-    const [difficulty, setDifficulty] = useState("Fácil");
+    const [title, setTitle] = useState("Nome da atividade");
+    const [date, setDate] = useState("");
   
     const handleSubmit = () => {
-      //importar  token e idgroup
-      const newGoal = {
+      //importar, token e iduser,, setHAnits
+      const updateActivity = {
         title: title,
-        difficulty: difficulty,
-        how_much_achieved: 0,
-        group: "userId",
+        realization_time: date,
+        user: "groupId",
       };
   
       api
-        .post("/goals/", newGoal, {
+        .patch("/activities/idActvity", updateActivity, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         })
-        .then((_) => "atualizar goals no provider")
+        .then((_) => "update de activities no provider")
         .catch((err) => console.log(err));
     };
   
@@ -42,34 +41,25 @@ import {
       <Modal initialFocusRef={initialRef} isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
-          <h1>Nova meta</h1>
+          <h1>Editar Atividade</h1>
           <ModalCloseButton />
           <ModalBody pb={6}>
             <form>
               <input
                 ref={initialRef}
-                placeholder="Digite uma nova meta"
+                placeholder="Digite uma nova atividade"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
                 required
               />
               <div>
+                <p>Nova data para realizar:</p>
                 <div>
-                  <select
-                    value={difficulty}
-                    onChange={(e) => setDifficulty(e.target.value)}
-                  >
-                    <option value="Fácil" selected>
-                      Fácil
-                    </option>
-                    <option value="Médio">Médio</option>
-                    <option value="Difícil">Difícil</option>
-                  </select>
+                  <input type="date" value={date} onChange={e => setDate(e.target.value)} />
                 </div>
-              </div>
+              </div>   
             </form>
           </ModalBody>
-  
           <ModalFooter>
             <button onClick={handleSubmit}>Criar</button>
           </ModalFooter>
@@ -77,5 +67,5 @@ import {
       </Modal>
     );
   };
-  export default GoalsCreateModal;
   
+  export default ActivitiesUpdateModal;
