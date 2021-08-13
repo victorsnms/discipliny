@@ -1,4 +1,5 @@
 import {
+  Button,
   Modal,
   ModalBody,
   ModalCloseButton,
@@ -10,19 +11,20 @@ import {
 import { useRef, useState } from "react";
 import api from "../../Services/api";
 import { ContainerCategory, ModalCategory, ModalInput, ModalTitle } from "./style";
+import { useHabits } from "../../Provider/Habits";
 
 const HabitCreateModal = () => {
+  const { getHabits } = useHabits();
   const initialRef = useRef();
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const [title, setTitle] = useState("");
-  const [category, setCategory] = useState("Saúde");
+  const [category, setCategory] = useState("");
   const [difficulty, setDificulty] = useState("Fácil");
   const [frequency, setFrequency] = useState("Diário");
 
-  const [token] = useState(
-    JSON.parse(localStorage.getItem("@Discipliny:accessToken")) || ""
-  );
+  const token = JSON.parse(localStorage.getItem("@Discipliny:accessToken"));
+  const userId = JSON.parse(localStorage.getItem("@Discipliny:userId"));
 
   const handleSubmit = () => {
     //importar, token e iduser, setHAnits
@@ -33,7 +35,7 @@ const HabitCreateModal = () => {
       frequency: frequency,
       achieved: false,
       how_much_achieved: 0,
-      user: "userId",
+      user: userId,
     };
     console.log(newHabit)
     api
@@ -42,13 +44,20 @@ const HabitCreateModal = () => {
           Authorization: `Bearer ${token}`,
         },
       })
-      .then((_) => "atualizar lista de habitos")
+      .then((_) => getHabits())
       .catch((err) => console.log(err));
   };
 
   return (
       <div>
-        <button onClick={() => onOpen(isOpen)}>modal</button>
+        <Button
+        _hover={{ color: "cyan.50", bg: "cyan.800" }}
+        bg="teal.700"
+        color="#c5d5da"
+        onClick={onOpen}
+      >
+        Novo Hábito...
+      </Button>
         <Modal initialFocusRef={initialRef} isOpen={isOpen} onClose={onClose} className="style-modal">
           <ModalOverlay />
           <ModalContent>

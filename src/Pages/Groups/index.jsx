@@ -3,15 +3,16 @@ import { GroupsWrapper } from "./groupscards";
 import CardGroups from "../../Components/CardGroups";
 import MenuMobile from "../../Components/MenuMobile";
 import { useContext } from "react";
-import { GroupsCardListContext } from "../../Provider/groupsCardList";
+import { GroupsCardListContext } from "../../Provider/Groups/groupsCardList";
+import Menu from "../../Components/MenuAside";
 
 const Groups = () => {
   const history = useHistory();
   const changeTo = (path) => {
     history.push(path);
   };
-  const { groupsCardList } = useContext(GroupsCardListContext);
-  const { addToGroupsCardList } = useContext(GroupsCardListContext);
+  // const { groupsCardList } = useContext(GroupsCardListContext);
+  // const { addToGroupsCardList } = useContext(GroupsCardListContext);
 
   return (
     <>

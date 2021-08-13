@@ -16,9 +16,11 @@ import {
   useToast,
 } from "@chakra-ui/react";
 import { useHabits } from "../../Provider/Habits";
+import { useUser } from "../../Provider/User";
 
-function Login({ logged, setLogged }) {
+const Login = ({ logged, setLogged }) => {
   const { getHabits } = useHabits();
+  const { getUser, updateUserFunc } = useUser();
   const history = useHistory();
   const toast = useToast();
 
@@ -45,8 +47,15 @@ function Login({ logged, setLogged }) {
       .then((res) => {
         const { access } = res.data;
         localStorage.setItem("@Discipliny:accessToken", JSON.stringify(access));
+        localStorage.setItem(
+          "@Discipliny:Nameuser",
+          JSON.stringify(user.username)
+        );
+
         setLogged(true);
+        updateUserFunc(user);
         getHabits();
+        getUser();
         return history.push("/habits");
       })
       .catch((err) =>
@@ -102,5 +111,5 @@ function Login({ logged, setLogged }) {
       </Content>
     </Container>
   );
-}
+};
 export default Login;

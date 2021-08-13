@@ -1,27 +1,17 @@
-import { Redirect, useHistory } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import CardHabit from "../../Components/CardHabits";
 import { HabitWrapper } from "./habitwrapper.style";
-import Button from "../../Components/Button";
 import MenuMobile from "../../Components/MenuMobile";
 import Menu from "../../Components/MenuAside/index";
 import { useHabits } from "../../Provider/Habits";
 import HabitCreateModal from "../../Components/HabitCreateModal";
 
 const Habits = ({ logged }) => {
-  const history = useHistory();
-  const { habit, getHabits } = useHabits();
-  const changeTo = (path) => {
-    history.push(path);
-  };
-  console.log(habit);
+  const { habit } = useHabits();
 
-  const handleClick = () => {
-    getHabits();
-  };
-
-  // if (!logged) {
-  //   return <Redirect to="/" />;
-  // }
+  if (!logged) {
+    return <Redirect to="/" />;
+  }
 
   return (
     <>

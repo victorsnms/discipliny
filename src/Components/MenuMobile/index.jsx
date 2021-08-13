@@ -1,11 +1,23 @@
 import { MenuMobileC } from "../MenuMobile/menuMobile.style";
+import { useHistory } from "react-router-dom";
 
 const MenuMobile = () => {
+  const history = useHistory();
+
+  const changeTo = (path) => {
+    history.push(path);
+  };
   return (
     <MenuMobileC>
-      <button className="buttonHab">Habit</button>
-      <button className="buttonMyGrup">My Grp</button>
-      <button className="buttonDesco">Desco</button>
+      <button onClick={() => changeTo("/")} className="buttonHab">
+        Habit
+      </button>
+      <button onClick={() => changeTo("/mygroups")} className="buttonMyGrup">
+        My Grp
+      </button>
+      <button onClick={() => changeTo("/groups")} className="buttonDesco">
+        Desco
+      </button>
     </MenuMobileC>
   );
 };

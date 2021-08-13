@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const MenuAside = styled.div`
+  background-color: var(--cream);
   aside {
     display: none;
     width: 100%;
@@ -42,6 +43,7 @@ export const MenuAside = styled.div`
         height: 62px;
         text-align: center;
         font-size: 36px;
+        cursor: pointer;
       }
 
       .Hab {
@@ -55,6 +57,12 @@ export const MenuAside = styled.div`
       .Descobrir {
         background-color: #f26419;
       }
+    }
+  }
+
+  @media (min-width: 768px) {
+    aside {
+      display: flex;
     }
   }
 `;

@@ -6,7 +6,7 @@ export const HabitCard = styled.div`
   width: 90%;
   min-width: 300px;
   height: 155px;
-  justify-content: space-between;
+  justify-content: center;
   background-color: rgba(85, 207, 224, 0.66);
   border-radius: 50px;
   font-family: Sansita;
@@ -41,13 +41,13 @@ export const HabitCard = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
-    width: 55%;
+    width: 70%;
 
     .Progress {
       display: flex;
       flex-direction: row;
       justify-content: space-between;
-      width: 100%;
+      width: 90%;
       margin: 5px 0 0 0;
 
       div {
@@ -70,13 +70,13 @@ export const HabitCard = styled.div`
       justify-content: center;
       align-items: center;
       margin-bottom: 5px;
-      width: 100%;
+      width: 95%;
 
       p {
         background-color: #f6ae2d;
         font-size: clamp(1.5vw, 2vw, 2.5vw);
-
-        border-radius: 25px 0 25px 0;
+        height: 30px;
+        border-radius: 18px 0 18px 0;
         padding: 3px 7px;
       }
     }
@@ -85,6 +85,7 @@ export const HabitCard = styled.div`
   .Edit {
     display: grid;
     place-items: center;
+    width: 15%;
 
     button {
       background-color: #f6ae2d;

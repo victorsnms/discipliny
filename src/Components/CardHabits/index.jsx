@@ -2,13 +2,15 @@ import { Progress } from "@chakra-ui/react";
 import { HabitCard } from "./habits.style";
 import { FaCheckCircle } from "react-icons/fa";
 import { FaMedal } from "react-icons/fa";
-import { useState } from "react";
 
-const CardHabit = ({ habit }) => {
-  const [count, setCount] = useState(0);
+import { useHabits } from "../../Provider/Habits";
+
+const CardHabit = ({ habits }) => {
+  const { updateHabit } = useHabits();
 
   const handleClick = () => {
-    setCount(count + 4.5);
+    const progressNumber = habits.how_much_achieved + 5;
+    updateHabit({ how_much_achieved: progressNumber }, habits.id);
   };
   return (
     <HabitCard className="ContentHabits">
@@ -20,18 +22,20 @@ const CardHabit = ({ habit }) => {
       <div className="Central">
         <div className="Progress">
           <Progress
-            value={count}
+            value={habits.how_much_achieved}
             height="30px"
             width="90%"
             colorScheme="orange"
           />
-          <FaMedal style={count > 99.99 ? { color: "green" } : null} />
+          <FaMedal
+            style={habits.how_much_achieved > 100 ? { color: "green" } : null}
+          />
         </div>
-        <p>{habit.title}</p>
+        <p>{habits.title}</p>
         <div className="BottomLabels">
-          <p>{habit.category}</p>
-          <p>{habit.difficulty}</p>
-          <p>{habit.frequency}</p>
+          <p>{habits.category}</p>
+          <p>{habits.difficulty}</p>
+          <p>{habits.frequency}</p>
         </div>
       </div>
       <div className="Edit">
