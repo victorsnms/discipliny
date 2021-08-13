@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from "react";
-import api from "../Services/api";
+import api from "../../Services/api";
 import { useToast } from "@chakra-ui/react";
 
 export const GroupsCardListContext = createContext([]);
@@ -25,8 +25,10 @@ export const GroupsCardsProvider = ({ children }) => {
       );
   }, []);
   return (
-    <GroupsCardListContext value={{ addToGroupsCardList, groupsCardList }}>
+    <GroupsCardListContext.Povider
+      value={{ addToGroupsCardList, groupsCardList }}
+    >
       {children}
-    </GroupsCardListContext>
+    </GroupsCardListContext.Povider>
   );
 };

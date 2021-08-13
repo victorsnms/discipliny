@@ -63,6 +63,11 @@ function SignUp({ logged }) {
           duration: 2000,
           isClosable: true,
         });
+
+        localStorage.setItem(
+          "@Discipliny:Nameuser",
+          JSON.stringify(res.data.username)
+        );
         return history.push("/");
       })
       .catch((err) => {
