@@ -8,8 +8,6 @@ import { ActivitiesProvider } from "./Activities";
 
 export const Providers = ({ children }) => {
   return (
-  
-
 <LoggedProvider>
     <MyGroupsCardsProvider>
       <GroupsCardsProvider>
