@@ -95,6 +95,8 @@ export const HabitsProvider = ({ children }) => {
       });
   };
 
+
+
   return (
     <HabitsContext.Provider
       value={{

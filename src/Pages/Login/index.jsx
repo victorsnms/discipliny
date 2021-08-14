@@ -22,7 +22,7 @@ import { useLogged } from "../../Provider/Login";
 const Login = () => {
   const { logged, setLogged } = useLogged();
   const { getHabits } = useHabits();
-  const { getUser, updateUserFunc } = useUser();
+  const { getUser, updateUserFunc, decodeToken } = useUser();
   const history = useHistory();
   const toast = useToast();
 
@@ -53,7 +53,7 @@ const Login = () => {
           "@Discipliny:Nameuser",
           JSON.stringify(user.username)
         );
-
+          decodeToken(access)
         setLogged(true);
         updateUserFunc(user);
         getHabits();
