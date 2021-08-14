@@ -21,6 +21,8 @@ export const FormContent = styled.div`
   max-width: 15rem;
   margin: auto;
   text-align: center;
+  animation: subida 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards,
+    appering 2s ease-in-out forwards;
 
   @media (min-width: 1024px) {
     margin: 0rem 8rem;
@@ -28,6 +30,25 @@ export const FormContent = styled.div`
 
   @media (min-width: 1440px) {
     margin: 0rem 22rem;
+  }
+
+  @keyframes subida {
+    0% {
+      transform: translateY(500px);
+    }
+
+    100% {
+      transform: translateY();
+    }
+  }
+
+  @keyframes appering {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
   }
 
   h2 {
@@ -71,7 +92,8 @@ export const FormContent = styled.div`
       font-family: var(--font-text);
 
       a {
-        color: var(--dark-blue);
+        color: var(--purple);
+        font-weight: 600;
       }
     }
 
@@ -89,6 +111,7 @@ export const Content = styled.div`
     text-align: center;
     padding: 1rem;
     margin-bottom: 1rem;
+    animation: rightToLeft 3s cubic-bezier(0.18, 0.89, 0.32, 1.28) forwards;
   }
 
   @media (min-width: 1024px) {
@@ -108,6 +131,15 @@ export const Content = styled.div`
     img {
       bottom: 25px;
       right: 200px;
+    }
+  }
+
+  @keyframes rightToLeft {
+    from {
+      transform: translateX(150px);
+    }
+    to {
+      transform: translateX(0px);
     }
   }
 `;

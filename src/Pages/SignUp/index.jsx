@@ -15,8 +15,10 @@ import {
   Button,
   useToast,
 } from "@chakra-ui/react";
+import { useLogged } from "../../Provider/Login";
 
-function SignUp({ logged }) {
+function SignUp() {
+  const { logged } = useLogged();
   const history = useHistory();
   const toast = useToast();
 
@@ -148,7 +150,12 @@ function SignUp({ logged }) {
                   {errors.confirmPassword?.message}
                 </FormErrorMessage>
               </FormControl>
-              <Button type="submit">Enviar</Button>
+              <Button
+                _hover={{ color: "orange.900", bg: "yellow.50" }}
+                type="submit"
+              >
+                Enviar
+              </Button>
               <p>
                 Já possui conta? <Link to="/">Login</Link>
               </p>

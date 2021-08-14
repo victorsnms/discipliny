@@ -12,7 +12,7 @@ export const CardActivity = styled.div`
   font-family: Sansita;
   margin-bottom: 20px;
   margin-left: 20px;
-  color: white;
+  color: var(--white);
   box-shadow: 5px 5px 10px 3px #00000054;
 
   .flex-column {
@@ -44,7 +44,7 @@ export const CardActivity = styled.div`
     padding-right: 30px;
     padding-top: 15px;
     p {
-      background-color: #f6ae2d;
+      background-color: var(--yellow);
       border-radius: 25px 0 25px 0;
       padding: 3px 7px;
     }

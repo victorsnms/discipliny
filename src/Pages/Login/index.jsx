@@ -17,10 +17,12 @@ import {
 } from "@chakra-ui/react";
 import { useHabits } from "../../Provider/Habits";
 import { useUser } from "../../Provider/User";
+import { useLogged } from "../../Provider/Login";
 
-const Login = ({ logged, setLogged }) => {
+const Login = () => {
+  const { logged, setLogged } = useLogged();
   const { getHabits } = useHabits();
-  const { getUser, updateUserFunc } = useUser();
+  const { getUser, decodeToken } = useUser();
   const history = useHistory();
   const toast = useToast();
 
@@ -51,9 +53,8 @@ const Login = ({ logged, setLogged }) => {
           "@Discipliny:Nameuser",
           JSON.stringify(user.username)
         );
-
+        decodeToken(access);
         setLogged(true);
-        updateUserFunc(user);
         getHabits();
         getUser();
         return history.push("/habits");
@@ -101,7 +102,12 @@ const Login = ({ logged, setLogged }) => {
                 />
                 <FormErrorMessage>{errors.password?.message}</FormErrorMessage>
               </FormControl>
-              <Button type="submit">Login</Button>
+              <Button
+                _hover={{ color: "orange.900", bg: "yellow.50" }}
+                type="submit"
+              >
+                Login
+              </Button>
               <p>
                 Não tem conta? <Link to="/signup">Registrar</Link>
               </p>

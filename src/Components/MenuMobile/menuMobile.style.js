@@ -8,6 +8,8 @@ export const MenuMobileC = styled.div`
   height: 80px;
   margin-top: 20px;
   background-color: #2f4858;
+  animation: queda 2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards,
+    appering 3s ease-in-out forwards;
 
   button {
     font-size: clamp(1rem, 1.5rem, 3rem);
@@ -72,5 +74,24 @@ export const MenuMobileC = styled.div`
 
   @media (max-width: 768px) {
     display: flex;
+  }
+
+  @keyframes queda {
+    0% {
+      transform: translateY(-500px);
+    }
+
+    100% {
+      transform: translateY();
+    }
+  }
+
+  @keyframes appering {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
   }
 `;

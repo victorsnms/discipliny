@@ -1,18 +1,14 @@
 import styled from "styled-components";
 
 export const StyledButton = styled.button`
-  outline: none;
   padding: 10px 20px;
   border-radius: 30px;
   font-weight: bold;
   cursor: pointer;
   font-size: 1rem;
-  background-color: #33658a;
-  color: white;
+  background-color: var(--blue);
+  color: var(--white);
   box-shadow: 3px 3px 3px black;
-  position: absolute;
-  left: 5px;
-  bottom: 5px;
 
   &:hover {
     filter: contrast(150%);

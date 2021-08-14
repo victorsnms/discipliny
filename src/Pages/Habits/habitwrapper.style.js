@@ -1,9 +1,13 @@
 import styled from "styled-components";
+import signupwave from "../../assets/signupwave.png";
 
 export const HabitWrapper = styled.div`
   display: flex;
   font-family: "Sansita";
-  color: white;
+  color: var(--white);
+  width: 100%;
+  min-height: 100vh;
+  margin: 0 auto;
 
   .ContainerCards {
     width: 100%;
@@ -15,19 +19,24 @@ export const HabitWrapper = styled.div`
       width: 70%;
       min-width: 320px;
       border-radius: 50px;
-      background-color: #2f4858;
+      background-color: var(--blue-dark);
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: space-between;
+      animation: appearing 1s ease-in-out backwards;
+      animation-delay: 0.5s;
 
       header {
-        background: linear-gradient(0deg, #f26419 0%, #f6ae2d 100%);
+        background: linear-gradient(0deg, var(--orange) 0%, var(--yellow) 100%);
         border-radius: 50px 50px 0px 0px;
         width: 100%;
         height: 114px;
         display: grid;
         place-items: center;
+        background-image: url(${signupwave});
+        background-size: contain;
+        background-size: 100% 100%;
 
         h1 {
           width: 100%;
@@ -41,6 +50,7 @@ export const HabitWrapper = styled.div`
         display: flex;
         justify-content: space-around;
         flex-wrap: wrap;
+        width: 100%;
 
         padding: 30px;
         align-items: center;
@@ -48,7 +58,7 @@ export const HabitWrapper = styled.div`
     }
   }
 
-  @media (min-width: 768px) {
+  @media (min-width: 769px) {
     aside {
       display: flex;
     }
@@ -65,6 +75,15 @@ export const HabitWrapper = styled.div`
   @media (min-width: 1299px) {
     .ContainerCards section header h1 {
       font-size: clamp(4vw, 5vw, 6vw);
+    }
+  }
+
+  @keyframes appearing {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
     }
   }
 `;

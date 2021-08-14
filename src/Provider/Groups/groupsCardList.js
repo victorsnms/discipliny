@@ -23,7 +23,9 @@ export const GroupsCardsProvider = ({ children }) => {
       );
   }, []);
   return (
-    <GroupsCardListContext.Provider value={{ groupsCardList }}>
+    <GroupsCardListContext.Provider
+      value={{ addToGroupsCardList, groupsCardList }}
+    >
       {children}
     </GroupsCardListContext.Provider>
   );

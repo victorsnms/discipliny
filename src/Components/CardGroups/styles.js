@@ -10,9 +10,8 @@ export const GroupCard = styled.div`
   background-color: rgba(85, 207, 224, 0.66);
   border-radius: 100px;
   font-family: Sansita;
-  margin-bottom: 20px;
-  margin-left: 20px;
-  color: white;
+  margin-bottom: 40px;
+  color: var(--white);
   box-shadow: 5px 5px 10px 3px #00000054;
 
   .groupName {
@@ -21,5 +20,9 @@ export const GroupCard = styled.div`
     text-align: center;
     width: 100%;
     font-size: 2rem;
+  }
+
+  @media (min-width: 768px) {
+    margin-left: 40px;
   }
 `;
