@@ -32,8 +32,6 @@ export const HabitsProvider = ({ children }) => {
     }
   }, []);
 
-  const userId = JSON.parse(localStorage.getItem("@Discipliny:userId"));
-
   const createHabit = (dados) => {
     const token = JSON.parse(localStorage.getItem("@Discipliny:accessToken"));
     api

@@ -53,10 +53,6 @@ const Login = () => {
           "@Discipliny:Nameuser",
           JSON.stringify(user.username)
         );
-        localStorage.setItem(
-          "@Discipliny:userId",
-          JSON.stringify(user.username)
-        );
 
         setLogged(true);
         updateUserFunc(user);
@@ -107,7 +103,12 @@ const Login = () => {
                 />
                 <FormErrorMessage>{errors.password?.message}</FormErrorMessage>
               </FormControl>
-              <Button type="submit">Login</Button>
+              <Button
+                _hover={{ color: "orange.900", bg: "yellow.50" }}
+                type="submit"
+              >
+                Login
+              </Button>
               <p>
                 Não tem conta? <Link to="/signup">Registrar</Link>
               </p>
