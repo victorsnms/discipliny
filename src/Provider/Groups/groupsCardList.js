@@ -1,13 +1,15 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import api from "../../Services/api";
 import { useToast } from "@chakra-ui/react";
 
-export const GroupsCardListContext = createContext([]);
+const GroupsCardListContext = createContext();
 
 export const GroupsCardsProvider = ({ children }) => {
   const toast = useToast();
   const [groupsCardList, setGroupsCardList] = useState([]);
-  // console.log(groupsCardList);
+ 
+  const token = JSON.parse(localStorage.getItem("@Discipliny:accessToken"));
+
   useEffect(() => {
     api
       .get("/groups/")
@@ -21,12 +23,33 @@ export const GroupsCardsProvider = ({ children }) => {
           isClosable: true,
         })
       );
+
   }, []);
+
+  const addGroup = (newGroup) => {
+    api
+    .post("/groups/", newGroup, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+    .then(
+      (response) => {
+        setGroupsCardList([...groupsCardList, response.data])
+        console.log(response.data)
+      }
+      
+    )
+    .catch((err) => console.log(err));
+  }
+
   return (
     <GroupsCardListContext.Provider
-      value={{ addToGroupsCardList, groupsCardList }}
+      value={{ groupsCardList, addGroup }}
     >
       {children}
     </GroupsCardListContext.Provider>
   );
 };
+
+export const useGroups = () => useContext(GroupsCardListContext)

@@ -1,21 +1,22 @@
 import {
+  Button,
     Modal,
     ModalBody,
     ModalCloseButton,
     ModalContent,
     ModalFooter,
+    ModalHeader,
     ModalOverlay,
     useDisclosure,
   } from "@chakra-ui/react";
   import { useRef, useState } from "react";
-  import api from "../../Services/api"
+import { useActivities } from "../../Provider/Activities";
+import { ModalInput, ModalTitle } from "../HabitCreateModal/style";
   
   const ActivitiesCreateModal = () => {
     const initialRef = useRef();
     const { isOpen, onOpen, onClose } = useDisclosure();
-    const [token] = useState(
-        JSON.parse(localStorage.getItem("@Discipliny:accessToken")) || ""
-      );
+    const { createActivity } = useActivities()
     const [title, setTitle] = useState("");
     const [date, setDate] = useState("");
   
@@ -27,25 +28,20 @@ import {
         user: "groupId",
       };
   
-      api
-        .post("/activities/", newActivity, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        })
-        .then((_) => "update de activities no provider")
-        .catch((err) => console.log(err));
+      createActivity(newActivity)
     };
   
     return (
       <Modal initialFocusRef={initialRef} isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
-          <h1>Nova Atividade</h1>
+          <ModalTitle>
+            <ModalHeader>Nova Atividade</ModalHeader>
+          </ModalTitle>
           <ModalCloseButton />
           <ModalBody pb={6}>
             <form>
-              <input
+              <ModalInput
                 ref={initialRef}
                 placeholder="Digite uma nova atividade"
                 value={title}
@@ -61,7 +57,7 @@ import {
             </form>
           </ModalBody>
           <ModalFooter>
-            <button onClick={handleSubmit}>Criar</button>
+            <Button onClick={handleSubmit}>Criar</Button>
           </ModalFooter>
         </ModalContent>
       </Modal>

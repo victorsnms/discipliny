@@ -1,8 +1,8 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import api from "../../Services/api";
 import { useToast } from "@chakra-ui/react";
 
-export const MyGroupsCardListContext = createContext([]);
+const MyGroupsCardListContext = createContext();
 
 export const MyGroupsCardsProvider = ({ children }) => {
   const toast = useToast();
@@ -96,3 +96,5 @@ export const MyGroupsCardsProvider = ({ children }) => {
     </MyGroupsCardListContext.Provider>
   );
 };
+
+export const useMyGroups = () => useContext(MyGroupsCardListContext)
