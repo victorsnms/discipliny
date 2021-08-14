@@ -11,8 +11,7 @@ export const CardAddWrapper = styled.div`
   border-radius: 100px;
   font-family: Sansita;
   margin-bottom: 40px;
-  margin-left: 40px;
-  color: white;
+  color: var(--white);
   box-shadow: 5px 5px 10px 3px #00000054;
 
   .add {
@@ -22,7 +21,7 @@ export const CardAddWrapper = styled.div`
     width: 50px;
     height: 50px;
     cursor: pointer;
-    background-color: white;
+    background-color: var(--white);
     border-radius: 50%;
     p {
       padding: 0;
@@ -32,5 +31,9 @@ export const CardAddWrapper = styled.div`
       font-weight: 100;
       color: var(--blue-light);
     }
+  }
+
+  @media (min-width: 768px) {
+    margin-left: 40px;
   }
 `;
