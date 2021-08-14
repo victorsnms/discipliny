@@ -9,7 +9,7 @@ export const UserProvider = ({ children }) => {
 
   const getUser = () => {
     const userId = JSON.parse(localStorage.getItem("@Discipliny:userId"));
-
+    
     api
       .get(`/users/${userId}/`)
       .then((response) => {

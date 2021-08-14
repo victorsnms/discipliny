@@ -88,7 +88,7 @@ export const HabitsProvider = ({ children }) => {
       })
       .then((_) => {
         getHabits();
-        alert("Hábito Deletado com sucesso");
+        alert("Aqui ta faltando um toast");
       })
       .catch((error) => {
         console.log(error);
