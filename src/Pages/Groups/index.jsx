@@ -13,8 +13,7 @@ const Groups = () => {
   const changeTo = (path) => {
     history.push(path);
   };
-  // const { groupsCardList } = useContext(GroupsCardListContext);
-  // const { addToGroupsCardList } = useContext(GroupsCardListContext);
+  const { groupsCardList } = useContext(GroupsCardListContext);
 
   if (!logged) {
     return <Redirect to="/" />;
@@ -30,10 +29,9 @@ const Groups = () => {
               <h1>Grupos</h1>
             </header>
             <div className="SubContainerCards">
-              <CardGroups name="GroupName" />
-              <CardGroups name="GroupName" />
-              <CardGroups name="GroupName" />
-              <CardGroups name="GroupName" />
+              {groupsCardList.map((group) => (
+                <CardGroups name={group.name} />
+              ))}
             </div>
           </section>
           <MenuMobile />

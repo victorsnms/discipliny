@@ -7,13 +7,11 @@ export const GroupsCardListContext = createContext([]);
 export const GroupsCardsProvider = ({ children }) => {
   const toast = useToast();
   const [groupsCardList, setGroupsCardList] = useState([]);
-  const addToGroupsCardList = (item) => {
-    setGroupsCardList([...groupsCardList, item]);
-  };
+  // console.log(groupsCardList);
   useEffect(() => {
     api
       .get("/groups/")
-      .then((res) => setGroupsCardList(res.data))
+      .then((res) => setGroupsCardList(res.data.results))
       .catch((_) =>
         toast({
           title: "falha ao carregar grupos",

@@ -19,8 +19,7 @@ export const GroupCard = styled.div`
     margin: 0;
     text-align: center;
     width: 100%;
-    font-size: 2.5rem;
-    line-height: 135px;
+    font-size: 2rem;
   }
 
   @media (min-width: 768px) {
