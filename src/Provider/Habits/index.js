@@ -8,7 +8,7 @@ export const HabitsProvider = ({ children }) => {
 
   useEffect(() => {
     const token = JSON.parse(localStorage.getItem("@Discipliny:accessToken"));
-    console.log(token);
+    // console.log(token);
     if (token) {
       api
         .get("/habits/personal/", {

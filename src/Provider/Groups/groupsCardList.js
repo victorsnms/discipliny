@@ -13,8 +13,7 @@ export const GroupsCardsProvider = ({ children }) => {
   useEffect(() => {
     api
       .get("/groups/")
-      .then((res) => setGroupsCardList(res.data.results)
-      )
+      .then((res) => setGroupsCardList(res.data.results))
       .catch((_) =>
         toast({
           title: "falha ao carregar grupos",
