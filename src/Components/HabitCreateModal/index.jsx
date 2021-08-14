@@ -11,6 +11,12 @@ import {
 } from "@chakra-ui/react";
 import { useRef, useState } from "react";
 import api from "../../Services/api";
+import {
+  ContainerCategory,
+  ModalCategory,
+  ModalInput,
+  ModalTitle,
+} from "./style";
 import { useHabits } from "../../Provider/Habits";
 
 const HabitCreateModal = () => {
@@ -38,7 +44,7 @@ const HabitCreateModal = () => {
       how_much_achieved: 0,
       user: userId,
     };
-
+    console.log(newHabit);
     api
       .post("/habits/", newHabit, {
         headers: {
@@ -50,7 +56,7 @@ const HabitCreateModal = () => {
   };
 
   return (
-    <>
+    <div>
       <Button
         _hover={{ color: "cyan.50", bg: "cyan.800" }}
         bg="teal.700"
@@ -111,26 +117,40 @@ const HabitCreateModal = () => {
                   </select>
                 </div>
                 <div>
-                  <select
-                    value={frequency}
-                    onChange={(e) => setFrequency(e.target.value)}
-                  >
-                    <option value="Diário" selected>
-                      Diário
-                    </option>
-                    <option value="Semanal">Semanal</option>
-                    <option value="Mensal">Mensal</option>
-                  </select>
+                  <div>
+                    <select
+                      value={difficulty}
+                      onChange={(e) => setDificulty(e.target.value)}
+                    >
+                      <option value="Fácil" selected>
+                        Fácil
+                      </option>
+                      <option value="Médio">Médio</option>
+                      <option value="Difícil">Difícil</option>
+                    </select>
+                  </div>
+                  <div>
+                    <select
+                      value={frequency}
+                      onChange={(e) => setFrequency(e.target.value)}
+                    >
+                      <option value="Diário" selected>
+                        Diário
+                      </option>
+                      <option value="Semanal">Semanal</option>
+                      <option value="Mensal">Mensal</option>
+                    </select>
+                  </div>
                 </div>
               </div>
             </form>
           </ModalBody>
           <ModalFooter>
-            <button onClick={handleSubmit}>Save</button>
+            <button onClick={handleSubmit}>Criar</button>
           </ModalFooter>
         </ModalContent>
       </Modal>
-    </>
+    </div>
   );
 };
 
