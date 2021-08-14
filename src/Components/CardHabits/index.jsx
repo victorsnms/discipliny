@@ -1,16 +1,20 @@
 import { Progress } from "@chakra-ui/react";
 import { HabitCard } from "./habits.style";
-import { FaCheckCircle } from "react-icons/fa";
+import { FaCheckCircle, FaTrash } from "react-icons/fa";
 import { FaMedal } from "react-icons/fa";
-
+import HabitUpdateModal from "../HabitUpdateModal/index";
 import { useHabits } from "../../Provider/Habits";
 
 const CardHabit = ({ habits }) => {
-  const { updateHabit } = useHabits();
+  const { updateHabit, deleteHabit } = useHabits();
 
   const handleClick = () => {
     const progressNumber = habits.how_much_achieved + 5;
     updateHabit({ how_much_achieved: progressNumber }, habits.id);
+  };
+
+  const handleClickDel = () => {
+    deleteHabit(habits.id);
   };
   return (
     <HabitCard className="ContentHabits">
@@ -39,7 +43,10 @@ const CardHabit = ({ habits }) => {
         </div>
       </div>
       <div className="Edit">
-        <button>Editar</button>
+        <HabitUpdateModal habitId={habits.id} />
+        <button onClick={handleClickDel}>
+          <FaTrash />
+        </button>
       </div>
     </HabitCard>
   );
