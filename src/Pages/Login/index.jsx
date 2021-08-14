@@ -17,8 +17,10 @@ import {
 } from "@chakra-ui/react";
 import { useHabits } from "../../Provider/Habits";
 import { useUser } from "../../Provider/User";
+import { useLogged } from "../../Provider/Login";
 
-const Login = ({ logged, setLogged }) => {
+const Login = () => {
+  const { logged, setLogged } = useLogged();
   const { getHabits } = useHabits();
   const { getUser, updateUserFunc } = useUser();
   const history = useHistory();

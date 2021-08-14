@@ -5,31 +5,22 @@ import Habits from "../Pages/Habits";
 import MyGroups from "../Pages/MyGroups";
 import Groups from "../Pages/Groups";
 import { useEffect, useState } from "react";
+import { useLogged } from "../Provider/Login";
 
 const Routes = () => {
-  const [logged, setLogged] = useState(false);
-
-  useEffect(() => {
-    const access = JSON.parse(localStorage.getItem("@Discipliny:accessToken"));
-
-    if (access) {
-      return setLogged(true);
-    }
-  }, [logged]);
-
   return (
     <Switch>
       <Route exact path="/">
-        <Login logged={logged} setLogged={setLogged} />
+        <Login />
       </Route>
       <Route path="/signup">
-        <SignUp logged={logged} />
+        <SignUp />
       </Route>
       <Route path="/groups">
         <Groups />
       </Route>
       <Route path="/habits">
-        <Habits logged={logged} />
+        <Habits />
       </Route>
       <Route path="/mygroups">
         <MyGroups />
