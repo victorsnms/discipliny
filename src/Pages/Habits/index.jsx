@@ -5,8 +5,10 @@ import MenuMobile from "../../Components/MenuMobile";
 import Menu from "../../Components/MenuAside/index";
 import { useHabits } from "../../Provider/Habits";
 import HabitCreateModal from "../../Components/HabitCreateModal";
+import { useLogged } from "../../Provider/Login";
 
-const Habits = ({ logged }) => {
+const Habits = () => {
+  const { logged } = useLogged();
   const { habit } = useHabits();
 
   if (!logged) {

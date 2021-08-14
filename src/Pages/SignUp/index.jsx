@@ -15,8 +15,10 @@ import {
   Button,
   useToast,
 } from "@chakra-ui/react";
+import { useLogged } from "../../Provider/Login";
 
-function SignUp({ logged }) {
+function SignUp() {
+  const { logged } = useLogged();
   const history = useHistory();
   const toast = useToast();
 
