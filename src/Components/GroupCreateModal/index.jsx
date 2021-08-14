@@ -1,21 +1,30 @@
 import {
+  Button,
   Modal,
   ModalBody,
   ModalCloseButton,
   ModalContent,
   ModalFooter,
+  ModalHeader,
   ModalOverlay,
-  useDisclosure,
 } from "@chakra-ui/react";
 import { useRef, useState } from "react";
 import api from "../../Services/api";
+import {
+  ContainerCategory,
+  ModalCategory,
+  ModalInput,
+  ModalTitle,
+} from "../HabitCreateModal/style";
+import { useGroups } from "../../Provider/Groups/groupsCardList";
 
-const GroupCreateModal = () => {
+
+const GroupCreateModal = ({ onClose, isOpen }) => {
   const initialRef = useRef();
-  const { isOpen, onOpen, onClose } = useDisclosure();
   const [token] = useState(
     JSON.parse(localStorage.getItem("@Discipliny:accessToken")) || ""
   );
+  const { addGroup } = useGroups();
 
   const [name, setName] = useState("");
   const [category, setCategory] = useState("Saúde");
@@ -28,71 +37,127 @@ const GroupCreateModal = () => {
       category: category,
       description: description,
     };
-    api
-      .post("/groups/", newGroup, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-      .then(
-        (response) => response
-        //atualizar lista de gupos
-      )
-      .catch((err) => console.log(err));
+      addGroup(newGroup)
   };
   return (
     <Modal initialFocusRef={initialRef} isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />
       <ModalContent>
-        <h1>Novo Grupo</h1>
+        <ModalTitle>
+          <ModalHeader>Novo Grupo</ModalHeader>
+        </ModalTitle>
         <ModalCloseButton />
         <ModalBody pb={6}>
           <form>
-            <input
+            <ModalInput
               ref={initialRef}
-              placeholder="Digite um novo hábito"
-              value={name}
+              placeholder="Digite um novo Grupo"
               onChange={(e) => setName(e.target.value)}
+              value={name}
               required
             />
-            <div>
+            <ModalCategory>
               <p>Em qual categoria se enquadra:</p>
-              <div>
-                <input
-                  type="radios"
-                  name="category"
-                  value="healthy"
-                  checked
-                  id="healthy"
-                  onClick={(e) => setCategory(e.target.value)}
-                />
-                <label htmlFor="healthy">Saúde</label>
-              </div>
-              <div>
-                <input
-                  type="radios"
-                  name="category"
-                  value="healthy"
-                  id="healthy"
-                  onClick={(e) => setCategory(e.target.value)}
-                />
-                <label htmlFor="healthy">Saúde</label>
-              </div>
-            </div>
+              <ContainerCategory>
+                <div className="healthy">
+                  <input
+                    type="radio"
+                    name="category"
+                    value="Saúde"
+                    checked
+                    id="healthy"
+                    onClick={(e) => setCategory(e.target.value)}
+                  />
+                  <label for="healthy">Saúde</label>
+                </div>
+                <div className="organization">
+                  <input
+                    type="radio"
+                    name="category"
+                    value="Organização"
+                    id="organization"
+                    onClick={(e) => setCategory(e.target.value)}
+                  />
+                  <label for="organization">Organização</label>
+                </div>
+                <div className="cleaning">
+                  <input
+                    type="radio"
+                    name="category"
+                    value="Limpeza"
+                    id="cleaning"
+                    onClick={(e) => setCategory(e.target.value)}
+                  />
+                  <label for="cleaning">Limpeza</label>
+                </div>
+                <div className="food">
+                  <input
+                    type="radio"
+                    name="category"
+                    value="Alimentação"
+                    id="food"
+                    onClick={(e) => setCategory(e.target.value)}
+                  />
+                  <label for="food">Alimentação</label>
+                </div>
+                <div className="education">
+                  <input
+                    type="radio"
+                    name="category"
+                    value="Educação"
+                    id="education"
+                    onClick={(e) => setCategory(e.target.value)}
+                  />
+                  <label for="education">Educação</label>
+                </div>
+                <div className="finances">
+                  <input
+                    type="radio"
+                    name="category"
+                    value="Finanças"
+                    id="finances"
+                    onClick={(e) => setCategory(e.target.value)}
+                  />
+                  <label for="finances">Finanças</label>
+                </div>
+                <div className="recreation">
+                  <input
+                    type="radio"
+                    name="category"
+                    value="Lazer"
+                    id="recreation"
+                    onClick={(e) => setCategory(e.target.value)}
+                  />
+                  <label for="recreation">Lazer</label>
+                </div>
+                <div className="mind">
+                  <input
+                    type="radio"
+                    name="category"
+                    value="Mente"
+                    id="mind"
+                    onClick={(e) => setCategory(e.target.value)}
+                  />
+                  <label for="mind">Mente</label>
+                </div>
+              </ContainerCategory>
+            </ModalCategory>
             <div>
-              <label>Uma breve descrição sobre seu grupo</label>
-              <input
-                type="text"
-                onChange={(e) => setDescription(e.target.value)}
-                value={description}
-                required
-              />
+              <div>
+                <label>Uma breve descrição sobre seu grupo</label>
+                <textarea
+                  type="text"
+                  onChange={(e) => setDescription(e.target.value)}
+                  value={description}
+                  required
+                />
+              </div>
             </div>
           </form>
         </ModalBody>
 
         <ModalFooter>
-          <button onClick={handleSubmit}>Criar</button>
+          <Button onClick={handleSubmit}>Criar</Button>
         </ModalFooter>
       </ModalContent>
     </Modal>

@@ -34,6 +34,7 @@ const Groups = () => {
               <CardGroups name="GroupName" />
               <CardGroups name="GroupName" />
               <CardGroups name="GroupName" />
+              
             </div>
           </section>
           <MenuMobile />
