@@ -11,8 +11,7 @@ export const GroupCard = styled.div`
   border-radius: 100px;
   font-family: Sansita;
   margin-bottom: 40px;
-  margin-left: 40px;
-  color: white;
+  color: var(--white);
   box-shadow: 5px 5px 10px 3px #00000054;
 
   .groupName {
@@ -22,5 +21,9 @@ export const GroupCard = styled.div`
     width: 100%;
     font-size: 2.5rem;
     line-height: 135px;
+  }
+
+  @media (min-width: 768px) {
+    margin-left: 40px;
   }
 `;

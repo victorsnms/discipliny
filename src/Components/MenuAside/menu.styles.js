@@ -9,7 +9,7 @@ export const MenuAside = styled.div`
     width: 100%;
     height: 100%;
 
-    background: #2f4858;
+    background: var(--blue-dark);
     border-radius: 0px 50px 50px 0px;
 
     flex-direction: column;
@@ -53,11 +53,11 @@ export const MenuAside = styled.div`
       }
 
       .MyGroup {
-        background-color: #f6ae2d;
+        background-color: var(--yellow);
       }
 
       .Descobrir {
-        background-color: #f26419;
+        background-color: var(--orange);
       }
     }
   }
