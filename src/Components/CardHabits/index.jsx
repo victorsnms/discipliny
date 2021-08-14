@@ -42,11 +42,11 @@ const CardHabit = ({ habits }) => {
         </div>
       </div>
       <div className="Edit">
-        <HabitUpdateModal habitId={habits.id} />
+        <HabitUpdateModal habit={habits} />
         <button onClick={onOpen}>
           <FaTrash />
         </button>
-        <HabitDeleteModal onClose={onClose} onOpen={onOpen} isOpen={isOpen} habits={habits}/>
+        <HabitDeleteModal onClose={onClose} isOpen={isOpen} habits={habits}/>
       </div>
     </HabitCard>
   );

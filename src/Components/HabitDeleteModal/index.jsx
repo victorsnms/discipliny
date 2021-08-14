@@ -13,12 +13,13 @@ import {
   } from "../HabitCreateModal/style";
   import { useHabits } from "../../Provider/Habits";
   
-  const HabitDeleteModal = ({onOpen, onClose, isOpen, habits}) => {
+  const HabitDeleteModal = ({ onClose, isOpen, habits}) => {
     const { deleteHabit } = useHabits();
   
   
     const handleSubmit = () => {
      deleteHabit(habits.id);
+     onClose()
     };
   
     return (
