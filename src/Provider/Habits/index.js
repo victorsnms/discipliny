@@ -54,7 +54,7 @@ export const HabitsProvider = ({ children }) => {
       .patch(`/habits/${habitId}/`, dados, {
         headers: { Authorization: `Bearer ${token}` },
       })
-      .then((response) => {
+      .then((_) => {
         getHabits();
       })
       .catch((error) => {
@@ -89,6 +89,7 @@ export const HabitsProvider = ({ children }) => {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((_) => {
+        getHabits();
         alert("Hábito Deletado com sucesso");
       })
       .catch((error) => {

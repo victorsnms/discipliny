@@ -4,9 +4,10 @@ export const HabitWrapper = styled.div`
   display: flex;
   font-family: "Sansita";
   color: white;
+  width: 100%;
 
   .ContainerCards {
-    width: 100%;
+    width: 90%;
     display: grid;
     place-items: center;
     background-color: var(--cream);

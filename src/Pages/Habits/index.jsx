@@ -22,16 +22,15 @@ const Habits = ({ logged }) => {
             <header>
               <h1>Meus Hábitos</h1>
             </header>
+            <HabitCreateModal />
             <div className="SubContainerCards">
               {habit.map((item) => (
-                <CardHabit habit={item} />
+                <CardHabit habits={item} />
               ))}
             </div>
           </section>
           <MenuMobile />
         </div>
-        <HabitCreateModal/>
-        
       </HabitWrapper>
     </>
   );
