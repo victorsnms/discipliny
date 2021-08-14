@@ -207,7 +207,7 @@ const HabitCreateModal = () => {
             </form>
           </ModalBody>
           <ModalFooter>
-            <Button onClick={handleSubmit}>Criar</Button>
+            <Button onClick={handleSubmit} color="blue">Criar</Button>
           </ModalFooter>
         </ModalContent>
       </Modal>

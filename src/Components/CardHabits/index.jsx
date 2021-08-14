@@ -4,7 +4,7 @@ import { FaCheckCircle, FaTrash } from "react-icons/fa";
 import { FaMedal } from "react-icons/fa";
 import HabitUpdateModal from "../HabitUpdateModal/index";
 import { useHabits } from "../../Provider/Habits";
-import HabitDeleteModal from "../HabitDeletteModal";
+import HabitDeleteModal from "../HabitDeleteModal/index";
 
 const CardHabit = ({ habits }) => {
   const { updateHabit } = useHabits();

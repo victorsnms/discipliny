@@ -6,13 +6,12 @@ import MenuMobile from "../../Components/MenuMobile";
 import Menu from "../../Components/MenuAside/index";
 import { useDisclosure } from "@chakra-ui/react";
 import GroupCreateModal from "../../Components/GroupCreateModal";
-import { useContext } from "react";
-import { MyGroupsCardListContext } from "../../Provider/MyGroups/index";
+import { useMyGroups } from "../../Provider/MyGroups/index";
 
 function Groups() {
   const history = useHistory();
   const { myGroupsList, setMyGroupsList, createNewGroup, updateMyGroup } =
-    useContext(MyGroupsCardListContext);
+    useMyGroups();
   console.log(myGroupsList);
 
   const changeTo = (path) => {

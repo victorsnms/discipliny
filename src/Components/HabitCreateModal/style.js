@@ -40,8 +40,8 @@ export const ContainerCategory = styled.div`
     width: 100%;
     display: flex;
     flex-wrap: wrap;
-    gap: .5rem;
-    justify-content: center;
+    gap: .3rem;
+    justify-content: space-between;
     div{
         padding: 0 8px;
     }

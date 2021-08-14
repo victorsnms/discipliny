@@ -1,51 +1,47 @@
 import {
+  Button,
     Modal,
     ModalBody,
     ModalCloseButton,
     ModalContent,
     ModalFooter,
+    ModalHeader,
     ModalOverlay,
     useDisclosure,
   } from "@chakra-ui/react";
   import { useRef, useState } from "react";
+import { useActivities } from "../../Provider/Activities";
   import api from "../../Services/api"
+import { ModalInput, ModalTitle } from "../HabitCreateModal/style";
   
-  const ActivitiesUpdateModal = () => {
+  const ActivitiesUpdateModal = ({group}) => {
     const initialRef = useRef();
     const { isOpen, onOpen, onClose } = useDisclosure();
-    const [token] = useState(
-        JSON.parse(localStorage.getItem("@Discipliny:accessToken")) || ""
-      );
+   const {updateActivity} = useActivities()
     const [title, setTitle] = useState("Nome da atividade");
     const [date, setDate] = useState("");
   
     const handleSubmit = () => {
-      //importar, token e iduser,, setHAnits
-      const updateActivity = {
+      const newActivity = {
         title: title,
         realization_time: date,
-        user: "groupId",
+        user: group.group,
       };
   
-      api
-        .patch("/activities/idActvity", updateActivity, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        })
-        .then((_) => "update de activities no provider")
-        .catch((err) => console.log(err));
+      updateActivity(newActivity, group.id)
     };
   
     return (
       <Modal initialFocusRef={initialRef} isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
-          <h1>Editar Atividade</h1>
+          <ModalTitle>
+            <ModalHeader>Editar Atividade</ModalHeader>
+          </ModalTitle>
           <ModalCloseButton />
           <ModalBody pb={6}>
             <form>
-              <input
+              <ModalInput
                 ref={initialRef}
                 placeholder="Digite uma nova atividade"
                 value={title}
@@ -61,7 +57,7 @@ import {
             </form>
           </ModalBody>
           <ModalFooter>
-            <button onClick={handleSubmit}>Criar</button>
+            <Button onClick={handleSubmit}>Criar</Button>
           </ModalFooter>
         </ModalContent>
       </Modal>

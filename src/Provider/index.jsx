@@ -3,6 +3,8 @@ import { GroupsCardsProvider } from "./Groups/groupsCardList";
 import { LoggedProvider } from "./Login";
 import { UserProvider } from "./User";
 import { MyGroupsCardsProvider } from "./MyGroups/index";
+import { GoalsProvider } from "./Goals";
+import { ActivitiesProvider } from "./Activities";
 
 export const Providers = ({ children }) => {
   return (
@@ -11,9 +13,13 @@ export const Providers = ({ children }) => {
 <LoggedProvider>
     <MyGroupsCardsProvider>
       <GroupsCardsProvider>
-        <HabitsProvider>
-          <UserProvider>{children}</UserProvider>
-        </HabitsProvider>
+        <GoalsProvider>
+          <ActivitiesProvider>
+            <HabitsProvider>
+              <UserProvider>{children}</UserProvider>
+            </HabitsProvider>
+          </ActivitiesProvider>
+        </GoalsProvider>
       </GroupsCardsProvider>
     </MyGroupsCardsProvider>
           </LoggedProvider>

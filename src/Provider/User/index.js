@@ -45,7 +45,7 @@ export const UserProvider = ({ children }) => {
       });
   };
 
- 
+
   const decodeToken = token => {
     const {user_id} = jwt_decode(token)
     localStorage.setItem("@Discipliny:userId",JSON.stringify(user_id))

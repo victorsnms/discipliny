@@ -147,7 +147,7 @@ const GroupCreateModal = ({ onClose, isOpen }) => {
               </ContainerCategory>
             </ModalCategory>
             <ModalTextArea>
-             <div>
+            div  <div>
                 <label>Uma breve descrição sobre seu grupo:</label>
                 <textarea
                   type="text"

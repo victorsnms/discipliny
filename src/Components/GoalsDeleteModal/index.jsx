@@ -11,14 +11,14 @@ import {
   import {
     ModalTitle,
   } from "../HabitCreateModal/style";
-  import { useHabits } from "../../Provider/Habits";
+  import { useGoals } from "../../Provider/Goals";
   
-  const HabitDeleteModal = ({ onClose, isOpen, habits}) => {
-    const { deleteHabit } = useHabits();
+  const GoalDeleteModal = ({ onClose, isOpen, goal}) => {
+    const { deleteGoal } = useGoals();
   
   
     const handleSubmit = () => {
-     deleteHabit(habits.id);
+     deleteGoal(goal.id);
      onClose()
     };
   
@@ -32,14 +32,14 @@ import {
           <ModalOverlay />
           <ModalContent>
             <ModalTitle>
-              <ModalHeader>Deletar Hábito</ModalHeader>
+              <ModalHeader>Deletar Meta</ModalHeader>
             </ModalTitle>
             <ModalCloseButton />
             <ModalBody pb={6}>
-              <p>Tem certeza que deseja excluir este hábito: {habits.title}</p>
+              <p>Tem certeza que deseja excluir esta meta: {goal.title}</p>
             </ModalBody>
             <ModalFooter>
-              <Button onClick={handleSubmit}>Excluir</Button>
+              <Button onClick={handleSubmit} color="red">Excluir</Button>
             </ModalFooter>
           </ModalContent>
         </Modal>
@@ -47,5 +47,5 @@ import {
     );
   };
   
-  export default HabitDeleteModal;
+  export default GoalDeleteModal;
   

@@ -4,55 +4,49 @@ import {
     ModalCloseButton,
     ModalContent,
     ModalFooter,
+    ModalHeader,
     ModalOverlay,
     useDisclosure,
   } from "@chakra-ui/react";
   import { useRef, useState } from "react";
+import { useGoals } from "../../Provider/Goals";
   import api from "../../Services/api"
+import { ModalInput, ModalSelect, ModalTitle } from "../HabitCreateModal/style";
   
-  const GoalsUpdateModal = () => {
+  const GoalsUpdateModal = ({group}) => {
     const initialRef = useRef();
     const { isOpen, onOpen, onClose } = useDisclosure();
-    const [token] = useState(
-        JSON.parse(localStorage.getItem("@Discipliny:accessToken")) || ""
-      );
+      const { updateGoal } = useGoals()
     const [title, setTitle] = useState("Nome da meta");
     const [difficulty, setDifficulty] = useState("Fácil");
   
     const handleSubmit = () => {
-      //importar  token e idgroup
-      const updateGoal = {
+      const newGoal = {
         title: title,
         difficulty: difficulty,
-        group: "userId",
+        group: group.group,
       };
-  
-      api
-        .patch("/goals/idgoal/", updateGoal, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        })
-        .then((_) => "atualizar goals no provider")
-        .catch((err) => console.log(err));
+     updateGoal(newGoal,group.id)
     };
   
     return (
       <Modal initialFocusRef={initialRef} isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
-          <h1>Editar meta</h1>
+          <ModalTitle>
+            <ModalHeader>Editar meta</ModalHeader>
+          </ModalTitle>
           <ModalCloseButton />
           <ModalBody pb={6}>
             <form>
-              <input
+              <ModalInput
                 ref={initialRef}
                 placeholder="Digite uma nova meta"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
                 required
               />
-              <div>
+              <ModalSelect>
                 <div>
                   <select
                     value={difficulty}
@@ -65,7 +59,7 @@ import {
                     <option value="Difícil">Difícil</option>
                   </select>
                 </div>
-              </div>
+              </ModalSelect>
             </form>
           </ModalBody>
   
