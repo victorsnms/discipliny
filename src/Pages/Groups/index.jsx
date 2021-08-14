@@ -2,10 +2,9 @@ import { Redirect, useHistory } from "react-router-dom";
 import { GroupsWrapper } from "./groupscards";
 import CardGroups from "../../Components/CardGroups";
 import MenuMobile from "../../Components/MenuMobile";
-import { useContext } from "react";
-import { GroupsCardListContext } from "../../Provider/Groups/groupsCardList";
 import Menu from "../../Components/MenuAside";
 import { useLogged } from "../../Provider/Login";
+import { useGroups } from "../../Provider/Groups/groupsCardList";
 
 const Groups = () => {
   const { logged } = useLogged();
@@ -13,7 +12,7 @@ const Groups = () => {
   const changeTo = (path) => {
     history.push(path);
   };
-  const { groupsCardList } = useContext(GroupsCardListContext);
+  const { groupsCardList } = useGroups();
 
   if (!logged) {
     return <Redirect to="/" />;

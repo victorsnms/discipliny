@@ -1,9 +1,5 @@
 import styled from "styled-components";
-import { HabitWrapper } from "../Habits/habitwrapper.style";
-
-<<<<<<< HEAD
-export const GroupsWrapper = styled(HabitWrapper)``;
-=======
+  
 export const GroupsWrapper = styled.div`
   display: flex;
   font-family: "Sansita";
@@ -54,4 +50,3 @@ export const GroupsWrapper = styled.div`
     }
   }
 `;
->>>>>>> features/groups/mygroups-pages

@@ -14,6 +14,7 @@ import {
   ContainerCategory,
   ModalCategory,
   ModalInput,
+  ModalTextArea,
   ModalTitle,
 } from "../HabitCreateModal/style";
 import { useGroups } from "../../Provider/Groups/groupsCardList";
@@ -21,14 +22,13 @@ import { useGroups } from "../../Provider/Groups/groupsCardList";
 
 const GroupCreateModal = ({ onClose, isOpen }) => {
   const initialRef = useRef();
-  const [token] = useState(
-    JSON.parse(localStorage.getItem("@Discipliny:accessToken")) || ""
-  );
   const { addGroup } = useGroups();
 
   const [name, setName] = useState("");
   const [category, setCategory] = useState("Saúde");
   const [description, setDescription] = useState("");
+  const [categoryChose, setCategoryChose] = useState("healthy")
+
 
   const handleSubmit = () => {
     //importar , token
@@ -39,6 +39,11 @@ const GroupCreateModal = ({ onClose, isOpen }) => {
     };
       addGroup(newGroup)
   };
+
+  const handleClick = (e,value) => {
+    setCategory(e.target.value)
+    setCategoryChose(value)
+  }
   return (
     <Modal initialFocusRef={initialRef} isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />
@@ -58,15 +63,14 @@ const GroupCreateModal = ({ onClose, isOpen }) => {
             />
             <ModalCategory>
               <p>Em qual categoria se enquadra:</p>
-              <ContainerCategory>
+              <ContainerCategory categoryChose={categoryChose}>
                 <div className="healthy">
                   <input
                     type="radio"
                     name="category"
                     value="Saúde"
-                    checked
                     id="healthy"
-                    onClick={(e) => setCategory(e.target.value)}
+                    onClick={(e) => handleClick(e,e.target.id)}
                   />
                   <label for="healthy">Saúde</label>
                 </div>
@@ -76,7 +80,7 @@ const GroupCreateModal = ({ onClose, isOpen }) => {
                     name="category"
                     value="Organização"
                     id="organization"
-                    onClick={(e) => setCategory(e.target.value)}
+                    onClick={(e) => handleClick(e,e.target.id)}
                   />
                   <label for="organization">Organização</label>
                 </div>
@@ -86,7 +90,7 @@ const GroupCreateModal = ({ onClose, isOpen }) => {
                     name="category"
                     value="Limpeza"
                     id="cleaning"
-                    onClick={(e) => setCategory(e.target.value)}
+                    onClick={(e) => handleClick(e,e.target.id)}
                   />
                   <label for="cleaning">Limpeza</label>
                 </div>
@@ -96,7 +100,7 @@ const GroupCreateModal = ({ onClose, isOpen }) => {
                     name="category"
                     value="Alimentação"
                     id="food"
-                    onClick={(e) => setCategory(e.target.value)}
+                    onClick={(e) => handleClick(e,e.target.id)}
                   />
                   <label for="food">Alimentação</label>
                 </div>
@@ -106,7 +110,7 @@ const GroupCreateModal = ({ onClose, isOpen }) => {
                     name="category"
                     value="Educação"
                     id="education"
-                    onClick={(e) => setCategory(e.target.value)}
+                    onClick={(e) => handleClick(e,e.target.id)}
                   />
                   <label for="education">Educação</label>
                 </div>
@@ -116,7 +120,7 @@ const GroupCreateModal = ({ onClose, isOpen }) => {
                     name="category"
                     value="Finanças"
                     id="finances"
-                    onClick={(e) => setCategory(e.target.value)}
+                    onClick={(e) => handleClick(e,e.target.id)}
                   />
                   <label for="finances">Finanças</label>
                 </div>
@@ -126,7 +130,7 @@ const GroupCreateModal = ({ onClose, isOpen }) => {
                     name="category"
                     value="Lazer"
                     id="recreation"
-                    onClick={(e) => setCategory(e.target.value)}
+                    onClick={(e) => handleClick(e,e.target.id)}
                   />
                   <label for="recreation">Lazer</label>
                 </div>
@@ -136,15 +140,15 @@ const GroupCreateModal = ({ onClose, isOpen }) => {
                     name="category"
                     value="Mente"
                     id="mind"
-                    onClick={(e) => setCategory(e.target.value)}
+                    onClick={(e) => handleClick(e,e.target.id)}
                   />
                   <label for="mind">Mente</label>
                 </div>
               </ContainerCategory>
             </ModalCategory>
-            <div>
-              <div>
-                <label>Uma breve descrição sobre seu grupo</label>
+            <ModalTextArea>
+             <div>
+                <label>Uma breve descrição sobre seu grupo:</label>
                 <textarea
                   type="text"
                   onChange={(e) => setDescription(e.target.value)}
@@ -152,7 +156,7 @@ const GroupCreateModal = ({ onClose, isOpen }) => {
                   required
                 />
               </div>
-            </div>
+            </ModalTextArea>
           </form>
         </ModalBody>
 

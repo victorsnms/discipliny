@@ -15,6 +15,7 @@ import {
   ContainerCategory,
   ModalCategory,
   ModalInput,
+  ModalSelect,
   ModalTitle,
 } from "../HabitCreateModal/style";
 
@@ -27,10 +28,8 @@ const HabitUpdateModal = ({ habit }) => {
   const [category, setCategory] = useState(habit.category);
   const [difficulty, setDifficulty] = useState(habit.difficulty);
   const [frequency, setFrequency] = useState(habit.frequency);
+  const [categoryChose, setCategoryChose] = useState("healthy")
 
-  const [token] = useState(
-    JSON.parse(localStorage.getItem("@Discipliny:accessToken")) || ""
-  );
 
   const handleSubmit = () => {
     //importar, token e iduser, setHAnits
@@ -46,6 +45,11 @@ const HabitUpdateModal = ({ habit }) => {
     updateHabit(updateHabiti, habit.id);
   };
 
+  const handleClick = (e,value) => {
+    setCategory(e.target.value)
+    setCategoryChose(value)
+  }
+
   return (
     <div>
       <Button
@@ -59,9 +63,11 @@ const HabitUpdateModal = ({ habit }) => {
       <Modal initialFocusRef={initialRef} isOpen={isOpen} onClose={onClose} className="style-modal" >
         <ModalOverlay />
         <ModalContent bg="orange.100">
+            <ModalTitle>
           <ModalHeader>
-            <ModalTitle>Editar Hábito</ModalTitle>
+              Editar Hábito
             </ModalHeader>
+              </ModalTitle>
           <ModalCloseButton bg="orange.400" />
           <ModalBody pb={6}>
           <form>
@@ -74,7 +80,7 @@ const HabitUpdateModal = ({ habit }) => {
               />
               <ModalCategory>
                 <p>Em qual categoria se enquadra:</p>
-                <ContainerCategory>
+                <ContainerCategory categoryChose={categoryChose}>
                   <div className="healthy">
                     <input
                       type="radio"
@@ -82,7 +88,7 @@ const HabitUpdateModal = ({ habit }) => {
                       value="Saúde"
                       checked={habit.category === "Saúde"}
                       id="healthy"
-                      onClick={(e) => setCategory(e.target.value)}
+                       onClick={(e) => handleClick(e,e.target.id)}
                     />
                     <label for="healthy">Saúde</label>
                   </div>
@@ -93,7 +99,7 @@ const HabitUpdateModal = ({ habit }) => {
                       value="Organização"
                       id="organization"
                       checked={habit.category === "Organização"}
-                      onClick={(e) => setCategory(e.target.value)}
+                       onClick={(e) => handleClick(e,e.target.id)}
                     />
                     <label for="organization">Organização</label>
                   </div>
@@ -104,7 +110,7 @@ const HabitUpdateModal = ({ habit }) => {
                       value="Limpeza"
                       id="cleaning"
                       checked={habit.category === "Limpeza"}
-                      onClick={(e) => setCategory(e.target.value)}
+                       onClick={(e) => handleClick(e,e.target.id)}
                     />
                     <label for="cleaning">Limpeza</label>
                   </div>
@@ -115,7 +121,7 @@ const HabitUpdateModal = ({ habit }) => {
                       value="Alimentação"
                       id="food"
                       checked={habit.category === "Alimentação"}
-                      onClick={(e) => setCategory(e.target.value)}
+                       onClick={(e) => handleClick(e,e.target.id)}
                     />
                     <label for="food">Alimentação</label>
                   </div>
@@ -126,7 +132,7 @@ const HabitUpdateModal = ({ habit }) => {
                       value="Educação"
                       id="education"
                       checked={habit.category === "Educação"}
-                      onClick={(e) => setCategory(e.target.value)}
+                       onClick={(e) => handleClick(e,e.target.id)}
                     />
                     <label for="education">Educação</label>
                   </div>
@@ -137,7 +143,7 @@ const HabitUpdateModal = ({ habit }) => {
                       value="Finanças"
                       id="finances"
                       checked={habit.category === "Finanças"}
-                      onClick={(e) => setCategory(e.target.value)}
+                       onClick={(e) => handleClick(e,e.target.id)}
                     />
                     <label for="finances">Finanças</label>
                   </div>
@@ -148,7 +154,7 @@ const HabitUpdateModal = ({ habit }) => {
                       value="Lazer"
                       id="recreation"
                       checked={habit.category === "Lazer"}
-                      onClick={(e) => setCategory(e.target.value)}
+                       onClick={(e) => handleClick(e,e.target.id)}
                     />
                     <label for="recreation">Lazer</label>
                   </div>
@@ -159,14 +165,15 @@ const HabitUpdateModal = ({ habit }) => {
                       value="Mente"
                       id="mind"
                       checked={habit.category === "Mente"}
-                      onClick={(e) => setCategory(e.target.value)}
+                       onClick={(e) => handleClick(e,e.target.id)}
                     />
                     <label for="mind">Mente</label>
                   </div>
                 </ContainerCategory>
               </ModalCategory>
-              <div>
+              <ModalSelect>
                 <div>
+                <p>Dificuldade:</p>
                   <select
                     value={difficulty}
                     onChange={(e) => setDifficulty(e.target.value)}
@@ -179,6 +186,7 @@ const HabitUpdateModal = ({ habit }) => {
                   </select>
                 </div>
                 <div>
+                <p>Frenquência:</p>
                   <select
                     value={frequency}
                     onChange={(e) => setFrequency(e.target.value)}
@@ -190,7 +198,7 @@ const HabitUpdateModal = ({ habit }) => {
                     <option value="Mensal">Mensal</option>
                   </select>
                 </div>
-              </div>
+              </ModalSelect>
             </form>
           </ModalBody>
           <ModalFooter>

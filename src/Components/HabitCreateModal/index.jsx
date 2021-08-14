@@ -15,6 +15,7 @@ import {
   ContainerCategory,
   ModalCategory,
   ModalInput,
+  ModalSelect,
   ModalTitle,
 } from "./style";
 import { useHabits } from "../../Provider/Habits";
@@ -25,9 +26,10 @@ const HabitCreateModal = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const [title, setTitle] = useState("");
-  const [category, setCategory] = useState("");
+  const [category, setCategory] = useState("Sáude");
   const [difficulty, setDificulty] = useState("Fácil");
   const [frequency, setFrequency] = useState("Diário");
+  const [categoryChose, setCategoryChose] = useState("healthy")
 
   const handleSubmit = () => {
     //importar, token e iduser, setHAnits
@@ -44,7 +46,6 @@ const HabitCreateModal = () => {
       how_much_achieved: 0,
       user: userId,
     };
-    console.log(newHabit);
     api
       .post("/habits/", newHabit, {
         headers: {
@@ -54,6 +55,11 @@ const HabitCreateModal = () => {
       .then((_) => getHabits())
       .catch((err) => console.log(err));
   };
+
+  const handleClick = (e,value) => {
+    setCategory(e.target.value)
+    setCategoryChose(value)
+  }
 
   return (
     <div>
@@ -87,15 +93,14 @@ const HabitCreateModal = () => {
               />
               <ModalCategory>
                 <p>Em qual categoria se enquadra:</p>
-                <ContainerCategory>
+                <ContainerCategory categoryChose={categoryChose}>
                   <div className="healthy">
                     <input
                       type="radio"
                       name="category"
                       value="Saúde"
-                      checked
                       id="healthy"
-                      onClick={(e) => setCategory(e.target.value)}
+                      onClick={(e) => handleClick(e,e.target.id)}
                     />
                     <label for="healthy">Saúde</label>
                   </div>
@@ -105,7 +110,7 @@ const HabitCreateModal = () => {
                       name="category"
                       value="Organização"
                       id="organization"
-                      onClick={(e) => setCategory(e.target.value)}
+                      onClick={(e) => handleClick(e,e.target.id)}
                     />
                     <label for="organization">Organização</label>
                   </div>
@@ -115,7 +120,7 @@ const HabitCreateModal = () => {
                       name="category"
                       value="Limpeza"
                       id="cleaning"
-                      onClick={(e) => setCategory(e.target.value)}
+                      onClick={(e) => handleClick(e,e.target.id)}
                     />
                     <label for="cleaning">Limpeza</label>
                   </div>
@@ -125,7 +130,7 @@ const HabitCreateModal = () => {
                       name="category"
                       value="Alimentação"
                       id="food"
-                      onClick={(e) => setCategory(e.target.value)}
+                      onClick={(e) => handleClick(e,e.target.id)}
                     />
                     <label for="food">Alimentação</label>
                   </div>
@@ -135,7 +140,7 @@ const HabitCreateModal = () => {
                       name="category"
                       value="Educação"
                       id="education"
-                      onClick={(e) => setCategory(e.target.value)}
+                      onClick={(e) => handleClick(e,e.target.id)}
                     />
                     <label for="education">Educação</label>
                   </div>
@@ -145,7 +150,7 @@ const HabitCreateModal = () => {
                       name="category"
                       value="Finanças"
                       id="finances"
-                      onClick={(e) => setCategory(e.target.value)}
+                      onClick={(e) => handleClick(e,e.target.id)}
                     />
                     <label for="finances">Finanças</label>
                   </div>
@@ -155,7 +160,7 @@ const HabitCreateModal = () => {
                       name="category"
                       value="Lazer"
                       id="recreation"
-                      onClick={(e) => setCategory(e.target.value)}
+                      onClick={(e) => handleClick(e,e.target.id)}
                     />
                     <label for="recreation">Lazer</label>
                   </div>
@@ -165,14 +170,15 @@ const HabitCreateModal = () => {
                       name="category"
                       value="Mente"
                       id="mind"
-                      onClick={(e) => setCategory(e.target.value)}
+                      onClick={(e) => handleClick(e,e.target.id)}
                     />
                     <label for="mind">Mente</label>
                   </div>
                 </ContainerCategory>
               </ModalCategory>
-              <div>
+              <ModalSelect>
                 <div>
+                <p>Dificuldade:</p>
                   <select
                     value={difficulty}
                     onChange={(e) => setDificulty(e.target.value)}
@@ -185,6 +191,7 @@ const HabitCreateModal = () => {
                   </select>
                 </div>
                 <div>
+                  <p>Frenquência:</p>
                   <select
                     value={frequency}
                     onChange={(e) => setFrequency(e.target.value)}
@@ -196,11 +203,11 @@ const HabitCreateModal = () => {
                     <option value="Mensal">Mensal</option>
                   </select>
                 </div>
-              </div>
+              </ModalSelect>
             </form>
           </ModalBody>
           <ModalFooter>
-            <button onClick={handleSubmit}>Criar</button>
+            <Button onClick={handleSubmit}>Criar</Button>
           </ModalFooter>
         </ModalContent>
       </Modal>

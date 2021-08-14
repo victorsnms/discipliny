@@ -2,20 +2,13 @@ import { HabitsProvider } from "../Provider/Habits/index";
 import { GroupsCardsProvider } from "./Groups/groupsCardList";
 import { LoggedProvider } from "./Login";
 import { UserProvider } from "./User";
-import { GroupsCardsProvider } from "./Groups/groupsCardList";
 import { MyGroupsCardsProvider } from "./MyGroups/index";
 
 export const Providers = ({ children }) => {
   return (
-<<<<<<< HEAD
-    <HabitsProvider>
-      <GroupsCardsProvider>
-        <LoggedProvider>
-          <UserProvider>{children}</UserProvider>
-        </LoggedProvider>
-      </GroupsCardsProvider>
-    </HabitsProvider>
-=======
+  
+
+<LoggedProvider>
     <MyGroupsCardsProvider>
       <GroupsCardsProvider>
         <HabitsProvider>
@@ -23,6 +16,6 @@ export const Providers = ({ children }) => {
         </HabitsProvider>
       </GroupsCardsProvider>
     </MyGroupsCardsProvider>
->>>>>>> features/groups/mygroups-pages
+          </LoggedProvider>
   );
 };

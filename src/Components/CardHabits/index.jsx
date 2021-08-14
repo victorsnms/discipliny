@@ -4,11 +4,12 @@ import { FaCheckCircle, FaTrash } from "react-icons/fa";
 import { FaMedal } from "react-icons/fa";
 import HabitUpdateModal from "../HabitUpdateModal/index";
 import { useHabits } from "../../Provider/Habits";
-import HabitDeleteModal from "../HabitDeleteModal";
+import HabitDeleteModal from "../HabitDeletteModal";
 
 const CardHabit = ({ habits }) => {
   const { updateHabit } = useHabits();
   const { isOpen, onOpen, onClose } = useDisclosure();
+  
 
   const handleClick = () => {
     const progressNumber = habits.how_much_achieved + 5;
@@ -42,7 +43,7 @@ const CardHabit = ({ habits }) => {
         </div>
       </div>
       <div className="Edit">
-        <HabitUpdateModal habitId={habits.id} />
+        <HabitUpdateModal habit={habits}/>
         <button className="DeleteButton" onClick={onOpen}>
           <FaTrash />
         </button>
