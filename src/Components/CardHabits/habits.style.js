@@ -60,7 +60,7 @@ export const HabitCard = styled.div`
 
     p {
       color: white;
-      font-size: clamp(3vw, 3.5vw, 4vw);
+      font-size: clamp(4vh, 4.5vh, 5vh);
       padding: 3px;
       font-weight: 700;
     }
@@ -74,10 +74,12 @@ export const HabitCard = styled.div`
 
       p {
         background-color: #f6ae2d;
-        font-size: clamp(1.5vw, 2vw, 2.5vw);
+        font-size: clamp(1.5vh, 2vh, 2.5vh);
         height: 30px;
         border-radius: 18px 0 18px 0;
         padding: 3px 7px;
+        margin: 0 3px;
+        line-height: 150%;
       }
     }
   }
@@ -89,20 +91,30 @@ export const HabitCard = styled.div`
 
     button {
       background-color: #f6ae2d;
-      padding: 5px 10px;
+      padding: 5px 5px;
       cursor: pointer;
       border-radius: 8px;
+      color: white;
+      margin: 0 1px;
+
+      svg {
+        font-size: 18px;
+      }
     }
   }
 
-  @media (min-width: 768px) {
+  @media (min-width: 767px) {
     width: 80%;
     .Central .BottomLabels p {
-      font-size: clamp(1vw, 1.3vw, 1.8vw);
+      font-size: clamp(1.5vh, 1.8vh, 2.4vh);
     }
 
     .Check button svg {
       font-size: clamp(3vw, 2.5vw, 4vw);
+    }
+
+    .Central p {
+      font-size: clamp(2vh, 2.5vh, 3vh);
     }
   }
 
@@ -116,6 +128,8 @@ export const HabitCard = styled.div`
     }
     .Central .BottomLabels p {
       margin: 0 3px;
+      line-height: 100%;
+      font-size: clamp(2vh, 2.3vh, 2.8vh);
     }
   }
 `;

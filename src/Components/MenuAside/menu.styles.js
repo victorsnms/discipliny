@@ -2,11 +2,13 @@ import styled from "styled-components";
 
 export const MenuAside = styled.div`
   background-color: var(--cream);
+  animation: leftToRight 2s cubic-bezier(0.18, 0.89, 0.32, 1.28) forwards;
+
   aside {
     display: none;
     width: 100%;
-    height: 1091px;
-    width: 422px;
+    height: 100%;
+
     background: #2f4858;
     border-radius: 0px 50px 50px 0px;
 
@@ -60,9 +62,20 @@ export const MenuAside = styled.div`
     }
   }
 
-  @media (min-width: 768px) {
+  @media (min-width: 769px) {
+    width: 20%;
+
     aside {
       display: flex;
+    }
+  }
+
+  @keyframes leftToRight {
+    from {
+      transform: translateX(-150px);
+    }
+    to {
+      transform: translateX(0px);
     }
   }
 `;

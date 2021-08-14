@@ -32,8 +32,6 @@ export const HabitsProvider = ({ children }) => {
     }
   }, []);
 
-  const userId = JSON.parse(localStorage.getItem("@Discipliny:userId"));
-
   const createHabit = (dados) => {
     const token = JSON.parse(localStorage.getItem("@Discipliny:accessToken"));
     api
@@ -54,7 +52,7 @@ export const HabitsProvider = ({ children }) => {
       .patch(`/habits/${habitId}/`, dados, {
         headers: { Authorization: `Bearer ${token}` },
       })
-      .then((response) => {
+      .then((_) => {
         getHabits();
       })
       .catch((error) => {
@@ -89,6 +87,7 @@ export const HabitsProvider = ({ children }) => {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((_) => {
+        getHabits();
         alert("Hábito Deletado com sucesso");
       })
       .catch((error) => {
