@@ -11,8 +11,7 @@ const Groups = () => {
   const changeTo = (path) => {
     history.push(path);
   };
-  // const { groupsCardList } = useContext(GroupsCardListContext);
-  // const { addToGroupsCardList } = useContext(GroupsCardListContext);
+  const { groupsCardList } = useContext(GroupsCardListContext);
 
   return (
     <>
@@ -24,10 +23,9 @@ const Groups = () => {
               <h1>Grupos</h1>
             </header>
             <div className="SubContainerCards">
-              <CardGroups name="GroupName" />
-              <CardGroups name="GroupName" />
-              <CardGroups name="GroupName" />
-              <CardGroups name="GroupName" />
+              {groupsCardList.map((group) => (
+                <CardGroups name={group.name} />
+              ))}
             </div>
           </section>
           <MenuMobile />

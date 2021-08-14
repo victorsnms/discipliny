@@ -13,7 +13,7 @@ export const GroupsWrapper = styled.div`
 
     section {
       width: 70%;
-      height: 967px;
+      min-height: 70vh;
       border-radius: 50px;
       background-color: #2f4858;
       display: flex;
