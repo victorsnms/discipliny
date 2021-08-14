@@ -11,20 +11,25 @@ import {
 } from "@chakra-ui/react";
 import { useRef, useState } from "react";
 import { useHabits } from "../../Provider/Habits";
+import {
+  ContainerCategory,
+  ModalCategory,
+  ModalInput,
+  ModalSelect,
+  ModalTitle,
+} from "../HabitCreateModal/style";
 
-const HabitUpdateModal = ({ habitId }) => {
-  const { updateHabit, habit } = useHabits();
+const HabitUpdateModal = ({ habit }) => {
+  const { updateHabit } = useHabits();
   const initialRef = useRef();
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  const [title, setTitle] = useState("Nome do hábito");
-  const [category, setCategory] = useState("Saúde");
-  const [difficulty, setDifficulty] = useState("Fácil");
-  const [frequency, setFrequency] = useState("Diário");
+  const [title, setTitle] = useState(habit.title);
+  const [category, setCategory] = useState(habit.category);
+  const [difficulty, setDifficulty] = useState(habit.difficulty);
+  const [frequency, setFrequency] = useState(habit.frequency);
+  const [categoryChose, setCategoryChose] = useState("healthy")
 
-  const [token] = useState(
-    JSON.parse(localStorage.getItem("@Discipliny:accessToken")) || ""
-  );
 
   const handleSubmit = () => {
     //importar, token e iduser, setHAnits
@@ -37,8 +42,15 @@ const HabitUpdateModal = ({ habitId }) => {
       user: userId,
     };
 
-    updateHabit(updateHabiti, habitId);
+    updateHabit(updateHabiti, habit.id);
+    onClose()
   };
+
+  const handleClick = (e,value) => {
+    setCategory(e.target.value)
+    setCategoryChose(value)
+ 
+  }
 
   return (
     <div>
@@ -50,56 +62,125 @@ const HabitUpdateModal = ({ habitId }) => {
       >
         Editar
       </Button>
-      <Modal initialFocusRef={initialRef} isOpen={isOpen} onClose={onClose}>
+      <Modal initialFocusRef={initialRef} isOpen={isOpen} onClose={onClose} className="style-modal" >
         <ModalOverlay />
-        <ModalContent bg="orange.100">
-          <ModalHeader>Editar Hábito</ModalHeader>
-          <ModalCloseButton bg="orange.400" />
+        <ModalContent>
+            <ModalTitle>
+          <ModalHeader>
+              Editar Hábito
+            </ModalHeader>
+              </ModalTitle>
+          <ModalCloseButton />
           <ModalBody pb={6}>
-            <form>
-              <input
+          <form>
+              <ModalInput
                 ref={initialRef}
-                value={title}
+                placeholder="Digite um novo hábito"
                 onChange={(e) => setTitle(e.target.value)}
+                value={habit.title}
                 required
               />
-              <div>
+              <ModalCategory>
                 <p>Em qual categoria se enquadra:</p>
+                <ContainerCategory categoryChose={categoryChose}>
+                  <div className="healthy">
+                    <input
+                      type="radio"
+                      name="category"
+                      value="Saúde"
+                      id="healthy"
+                       onClick={(e) => handleClick(e,e.target.id)}
+                    />
+                    <label for="healthy">Saúde</label>
+                  </div>
+                  <div className="organization">
+                    <input
+                      type="radio"
+                      name="category"
+                      value="Organização"
+                      id="organization"
+                       onClick={(e) => handleClick(e,e.target.id)}
+                    />
+                    <label for="organization">Organização</label>
+                  </div>
+                  <div className="cleaning">
+                    <input
+                      type="radio"
+                      name="category"
+                      value="Limpeza"
+                      id="cleaning"
+                       onClick={(e) => handleClick(e,e.target.id)}
+                    />
+                    <label for="cleaning">Limpeza</label>
+                  </div>
+                  <div className="food">
+                    <input
+                      type="radio"
+                      name="category"
+                      value="Alimentação"
+                      id="food"
+                       onClick={(e) => handleClick(e,e.target.id)}
+                    />
+                    <label for="food">Alimentação</label>
+                  </div>
+                  <div className="education">
+                    <input
+                      type="radio"
+                      name="category"
+                      value="Educação"
+                      id="education"
+                       onClick={(e) => handleClick(e,e.target.id)}
+                    />
+                    <label for="education">Educação</label>
+                  </div>
+                  <div className="finances">
+                    <input
+                      type="radio"
+                      name="category"
+                      value="Finanças"
+                      id="finances"
+                       onClick={(e) => handleClick(e,e.target.id)}
+                    />
+                    <label for="finances">Finanças</label>
+                  </div>
+                  <div className="recreation">
+                    <input
+                      type="radio"
+                      name="category"
+                      value="Lazer"
+                      id="recreation"
+                       onClick={(e) => handleClick(e,e.target.id)}
+                    />
+                    <label for="recreation">Lazer</label>
+                  </div>
+                  <div className="mind">
+                    <input
+                      type="radio"
+                      name="category"
+                      value="Mente"
+                      id="mind"
+                       onClick={(e) => handleClick(e,e.target.id)}
+                    />
+                    <label for="mind">Mente</label>
+                  </div>
+                </ContainerCategory>
+              </ModalCategory>
+              <ModalSelect>
                 <div>
-                  <input
-                    type="radios"
-                    name="category"
-                    defaultValue="Saúde"
-                    checked
-                    id="healthy"
-                    onClick={(e) => setCategory(e.target.value)}
-                  />
-                  <label>Saúde</label>
-                </div>
-                <div>
-                  <input
-                    type="radios"
-                    name="category"
-                    defaultValue="Organização"
-                    onClick={(e) => setCategory(e.target.value)}
-                  />
-                  <label>Organização</label>
-                </div>
-              </div>
-              <div>
-                <div>
+                <p>Dificuldade:</p>
                   <select
                     value={difficulty}
                     onChange={(e) => setDifficulty(e.target.value)}
                   >
-                    <option value="Fácil" selected>
+                    <option value="Fácil" selected={habit.difficulty === "Fácil"}>
                       Fácil
                     </option>
-                    <option value="Médio">Médio</option>
-                    <option value="Difícil">Difícil</option>
+                    <option value="Médio" selected={habit.difficulty === "Médio"}>Médio</option>
+                    <option value="Difícil" selected={habit.difficulty === "Difícil"}>Difícil</option>
                   </select>
                 </div>
                 <div>
+                <p>Frenquência:</p>
                   <select
                     value={frequency}
                     onChange={(e) => setFrequency(e.target.value)}
@@ -111,11 +192,12 @@ const HabitUpdateModal = ({ habitId }) => {
                     <option value="Mensal">Mensal</option>
                   </select>
                 </div>
-              </div>
+              </ModalSelect>
             </form>
           </ModalBody>
           <ModalFooter>
-            <button onClick={handleSubmit}>Save</button>
+            <Button onClick={onClose} color="red">Cancelar</Button>
+            <Button onClick={handleSubmit} color="blue" marginLeft="20px">Salvar</Button>
           </ModalFooter>
         </ModalContent>
       </Modal>

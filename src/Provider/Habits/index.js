@@ -11,7 +11,7 @@ export const HabitsProvider = ({ children }) => {
 
   useEffect(() => {
     const token = JSON.parse(localStorage.getItem("@Discipliny:accessToken"));
-    console.log(token);
+    // console.log(token);
     if (token) {
       api
         .get("/habits/personal/", {
@@ -103,7 +103,7 @@ export const HabitsProvider = ({ children }) => {
       })
       .then((_) => {
         getHabits();
-        alert("Hábito Deletado com sucesso");
+        alert("Aqui ta faltando um toast");
       })
       .catch((error) => {
         console.log(error);

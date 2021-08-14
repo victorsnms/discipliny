@@ -1,12 +1,12 @@
 import { CardAddWrapper } from "./styles";
 
-const CardAdd = () => {
+const CardAdd = ({...rest}) => {
   return (
-    <CardAddWrapper className="ContentHabits">
+    <CardAddWrapper className="ContentHabits" {...rest}>
       <div className="add">
         <p>+</p>
       </div>
-    </CardAddWrapper>
+    </CardAddWrapper> 
   );
 };
 

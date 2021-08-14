@@ -4,12 +4,22 @@ import CardGroups from "../../Components/CardGroups";
 import CardAdd from "../../Components/CardAdd";
 import MenuMobile from "../../Components/MenuMobile";
 import Menu from "../../Components/MenuAside/index";
+import { useDisclosure } from "@chakra-ui/react";
+import GroupCreateModal from "../../Components/GroupCreateModal";
+import { useMyGroups } from "../../Provider/MyGroups/index";
 
 function Groups() {
   const history = useHistory();
+  const { myGroupsList, setMyGroupsList, createNewGroup, updateMyGroup } =
+    useMyGroups();
+  console.log(myGroupsList);
+
   const changeTo = (path) => {
     history.push(path);
   };
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
+ 
   return (
     <>
       <MyGroupsWrapper className="ContHabits">
@@ -19,16 +29,18 @@ function Groups() {
             <header>
               <h1>Meus grupos</h1>
             </header>
+            <GroupCreateModal />
             <div className="SubContainerCards">
-              <CardGroups name="GroupName" />
-              <CardGroups name="GroupName" />
-              <CardGroups name="GroupName" />
-              <CardAdd />
+              {myGroupsList.map((group) => (
+                <CardGroups key={group.id} name={group.name} />
+              ))}
+              <CardAdd onClick={onOpen}/>
             </div>
           </section>
           <MenuMobile />
         </div>
       </MyGroupsWrapper>
+      <GroupCreateModal isOpen={isOpen} onClose={onClose}/>
     </>
   );
 }

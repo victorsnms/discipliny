@@ -2,10 +2,9 @@ import { Redirect, useHistory } from "react-router-dom";
 import { GroupsWrapper } from "./groupscards";
 import CardGroups from "../../Components/CardGroups";
 import MenuMobile from "../../Components/MenuMobile";
-import { useContext } from "react";
-import { GroupsCardListContext } from "../../Provider/Groups/groupsCardList";
 import Menu from "../../Components/MenuAside";
 import { useLogged } from "../../Provider/Login";
+import { useGroups } from "../../Provider/Groups/groupsCardList";
 
 const Groups = () => {
   const { logged } = useLogged();
@@ -13,8 +12,7 @@ const Groups = () => {
   const changeTo = (path) => {
     history.push(path);
   };
-  // const { groupsCardList } = useContext(GroupsCardListContext);
-  // const { addToGroupsCardList } = useContext(GroupsCardListContext);
+  const { groupsCardList } = useGroups();
 
   if (!logged) {
     return <Redirect to="/" />;
@@ -30,10 +28,9 @@ const Groups = () => {
               <h1>Grupos</h1>
             </header>
             <div className="SubContainerCards">
-              <CardGroups name="GroupName" />
-              <CardGroups name="GroupName" />
-              <CardGroups name="GroupName" />
-              <CardGroups name="GroupName" />
+              {groupsCardList.map((group) => (
+                <CardGroups name={group.name} />
+              ))}
             </div>
           </section>
           <MenuMobile />
