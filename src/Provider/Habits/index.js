@@ -1,9 +1,12 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import api from "../../Services/api";
+import { useToast } from "@chakra-ui/react";
 
 const HabitsContext = createContext();
 
 export const HabitsProvider = ({ children }) => {
+  const toast = useToast();
+
   const [habit, setHabit] = useState([]);
 
   useEffect(() => {
@@ -41,8 +44,14 @@ export const HabitsProvider = ({ children }) => {
       .then((response) => {
         setHabit([...habit, response.data]);
       })
-      .catch((error) => {
-        console.log(error);
+      .catch((_) => {
+        toast({
+          title: "Hábito não foi criado!",
+          description: "Verifique todo os campos e tente novamente",
+          status: "error",
+          duration: 2000,
+          isClosable: true,
+        });
       });
   };
 
@@ -55,8 +64,14 @@ export const HabitsProvider = ({ children }) => {
       .then((_) => {
         getHabits();
       })
-      .catch((error) => {
-        console.log(error);
+      .catch((_) => {
+        toast({
+          title: "Hábito não foi atualizado!",
+          description: "Verifique todo os campos e tente novamente",
+          status: "error",
+          duration: 2000,
+          isClosable: true,
+        });
       });
   };
 
@@ -94,8 +109,6 @@ export const HabitsProvider = ({ children }) => {
         console.log(error);
       });
   };
-
-
 
   return (
     <HabitsContext.Provider

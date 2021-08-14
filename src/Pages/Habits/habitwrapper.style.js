@@ -47,11 +47,13 @@ export const HabitWrapper = styled.div`
       }
 
       .SubContainerCards {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
         display: flex;
-        justify-content: space-around;
+        justify-content: space-evenly;
         flex-wrap: wrap;
         width: 100%;
-
+        min-height: 80vh;
         padding: 30px;
         align-items: center;
       }
