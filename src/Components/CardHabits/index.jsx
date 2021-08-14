@@ -42,8 +42,8 @@ const CardHabit = ({ habits }) => {
         </div>
       </div>
       <div className="Edit">
-        <HabitUpdateModal habit={habits} />
-        <button onClick={onOpen}>
+        <HabitUpdateModal habitId={habits.id} />
+        <button className="DeleteButton" onClick={onOpen}>
           <FaTrash />
         </button>
         <HabitDeleteModal onClose={onClose} isOpen={isOpen} habits={habits}/>
