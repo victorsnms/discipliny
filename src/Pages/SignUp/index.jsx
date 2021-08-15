@@ -63,6 +63,7 @@ function SignUp() {
       .then((res) => {
         toast({
           title: "Conta criada!",
+          position: "top",
           description: "Sua conta foi criada com sucesso.",
           status: "success",
           duration: 2000,
@@ -78,6 +79,7 @@ function SignUp() {
       .catch((err) => {
         toast({
           title: "Erro ao criar conta!",
+          position: "top",
           description: "Não foi possível criar sua conta",
           status: "error",
           duration: 2000,

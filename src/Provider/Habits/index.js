@@ -1,14 +1,17 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import api from "../../Services/api";
+import { useToast } from "@chakra-ui/react";
 
 const HabitsContext = createContext();
 
 export const HabitsProvider = ({ children }) => {
+  const toast = useToast();
+
   const [habit, setHabit] = useState([]);
 
   useEffect(() => {
     const token = JSON.parse(localStorage.getItem("@Discipliny:accessToken"));
-    // console.log(token);
+
     if (token) {
       api
         .get("/habits/personal/", {
@@ -40,9 +43,23 @@ export const HabitsProvider = ({ children }) => {
       })
       .then((response) => {
         setHabit([...habit, response.data]);
+        toast({
+          title: "Hábitos",
+          position: "top",
+          description: "Criado Novo Hábito",
+          status: "success",
+          duration: 3000,
+          isClosable: true,
+        });
       })
-      .catch((error) => {
-        console.log(error);
+      .catch((_) => {
+        toast({
+          title: "Hábito não foi criado!",
+          description: "Verifique todo os campos e tente novamente",
+          status: "error",
+          duration: 4000,
+          isClosable: true,
+        });
       });
   };
 
@@ -54,9 +71,23 @@ export const HabitsProvider = ({ children }) => {
       })
       .then((_) => {
         getHabits();
+        toast({
+          title: "Hábitos",
+          position: "top",
+          description: "Atualização Concluída",
+          status: "success",
+          duration: 2000,
+          isClosable: true,
+        });
       })
-      .catch((error) => {
-        console.log(error);
+      .catch((_) => {
+        toast({
+          title: "Hábito não foi atualizado!",
+          description: "Verifique todo os campos e tente novamente",
+          status: "error",
+          duration: 2000,
+          isClosable: true,
+        });
       });
   };
 
@@ -76,7 +107,14 @@ export const HabitsProvider = ({ children }) => {
         );
       })
       .catch((error) => {
-        console.log(error);
+        toast({
+          title: "Hábitos",
+          description: "Hábitos não foram carregados",
+          position: "top",
+          status: "error",
+          duration: 3000,
+          isClosable: true,
+        });
       });
   };
 
@@ -88,14 +126,26 @@ export const HabitsProvider = ({ children }) => {
       })
       .then((_) => {
         getHabits();
-        alert("Aqui ta faltando um toast");
+        toast({
+          title: "Hábito Excluído",
+          description: "Exclusão efetuada com sucesso",
+          position: "top",
+          status: "success",
+          duration: 3000,
+          isClosable: true,
+        });
       })
       .catch((error) => {
-        console.log(error);
+        toast({
+          title: "Exclusão Pendente",
+          position: "top",
+          description: "Não foi possível excluir",
+          status: "error",
+          duration: 2000,
+          isClosable: true,
+        });
       });
   };
-
-
 
   return (
     <HabitsContext.Provider

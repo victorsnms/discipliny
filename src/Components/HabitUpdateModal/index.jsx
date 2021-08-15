@@ -18,6 +18,7 @@ import {
   ModalSelect,
   ModalTitle,
 } from "../HabitCreateModal/style";
+import { FiEdit } from "react-icons/fi";
 
 const HabitUpdateModal = ({ habit }) => {
   const { updateHabit } = useHabits();
@@ -28,8 +29,7 @@ const HabitUpdateModal = ({ habit }) => {
   const [category, setCategory] = useState(habit.category);
   const [difficulty, setDifficulty] = useState(habit.difficulty);
   const [frequency, setFrequency] = useState(habit.frequency);
-  const [categoryChose, setCategoryChose] = useState("healthy")
-
+  const [categoryChose, setCategoryChose] = useState("healthy");
 
   const handleSubmit = () => {
     //importar, token e iduser, setHAnits
@@ -43,14 +43,13 @@ const HabitUpdateModal = ({ habit }) => {
     };
 
     updateHabit(updateHabiti, habit.id);
-    onClose()
+    onClose();
   };
 
-  const handleClick = (e,value) => {
-    setCategory(e.target.value)
-    setCategoryChose(value)
- 
-  }
+  const handleClick = (e, value) => {
+    setCategory(e.target.value);
+    setCategoryChose(value);
+  };
 
   return (
     <div>
@@ -60,19 +59,22 @@ const HabitUpdateModal = ({ habit }) => {
         color="#c5d5da"
         onClick={onOpen}
       >
-        Editar
+        <FiEdit />
       </Button>
-      <Modal initialFocusRef={initialRef} isOpen={isOpen} onClose={onClose} className="style-modal" >
+      <Modal
+        initialFocusRef={initialRef}
+        isOpen={isOpen}
+        onClose={onClose}
+        className="style-modal"
+      >
         <ModalOverlay />
         <ModalContent>
-            <ModalTitle>
-          <ModalHeader>
-              Editar Hábito
-            </ModalHeader>
-              </ModalTitle>
+          <ModalTitle>
+            <ModalHeader>Editar Hábito</ModalHeader>
+          </ModalTitle>
           <ModalCloseButton />
           <ModalBody pb={6}>
-          <form>
+            <form>
               <ModalInput
                 ref={initialRef}
                 placeholder="Digite um novo hábito"
@@ -89,7 +91,7 @@ const HabitUpdateModal = ({ habit }) => {
                       name="category"
                       value="Saúde"
                       id="healthy"
-                       onClick={(e) => handleClick(e,e.target.id)}
+                      onClick={(e) => handleClick(e, e.target.id)}
                     />
                     <label for="healthy">Saúde</label>
                   </div>
@@ -99,7 +101,7 @@ const HabitUpdateModal = ({ habit }) => {
                       name="category"
                       value="Organização"
                       id="organization"
-                       onClick={(e) => handleClick(e,e.target.id)}
+                      onClick={(e) => handleClick(e, e.target.id)}
                     />
                     <label for="organization">Organização</label>
                   </div>
@@ -109,7 +111,7 @@ const HabitUpdateModal = ({ habit }) => {
                       name="category"
                       value="Limpeza"
                       id="cleaning"
-                       onClick={(e) => handleClick(e,e.target.id)}
+                      onClick={(e) => handleClick(e, e.target.id)}
                     />
                     <label for="cleaning">Limpeza</label>
                   </div>
@@ -119,7 +121,7 @@ const HabitUpdateModal = ({ habit }) => {
                       name="category"
                       value="Alimentação"
                       id="food"
-                       onClick={(e) => handleClick(e,e.target.id)}
+                      onClick={(e) => handleClick(e, e.target.id)}
                     />
                     <label for="food">Alimentação</label>
                   </div>
@@ -129,7 +131,7 @@ const HabitUpdateModal = ({ habit }) => {
                       name="category"
                       value="Educação"
                       id="education"
-                       onClick={(e) => handleClick(e,e.target.id)}
+                      onClick={(e) => handleClick(e, e.target.id)}
                     />
                     <label for="education">Educação</label>
                   </div>
@@ -139,7 +141,7 @@ const HabitUpdateModal = ({ habit }) => {
                       name="category"
                       value="Finanças"
                       id="finances"
-                       onClick={(e) => handleClick(e,e.target.id)}
+                      onClick={(e) => handleClick(e, e.target.id)}
                     />
                     <label for="finances">Finanças</label>
                   </div>
@@ -149,7 +151,7 @@ const HabitUpdateModal = ({ habit }) => {
                       name="category"
                       value="Lazer"
                       id="recreation"
-                       onClick={(e) => handleClick(e,e.target.id)}
+                      onClick={(e) => handleClick(e, e.target.id)}
                     />
                     <label for="recreation">Lazer</label>
                   </div>
@@ -159,7 +161,7 @@ const HabitUpdateModal = ({ habit }) => {
                       name="category"
                       value="Mente"
                       id="mind"
-                       onClick={(e) => handleClick(e,e.target.id)}
+                      onClick={(e) => handleClick(e, e.target.id)}
                     />
                     <label for="mind">Mente</label>
                   </div>
@@ -167,20 +169,33 @@ const HabitUpdateModal = ({ habit }) => {
               </ModalCategory>
               <ModalSelect>
                 <div>
-                <p>Dificuldade:</p>
+                  <p>Dificuldade:</p>
                   <select
                     value={difficulty}
                     onChange={(e) => setDifficulty(e.target.value)}
                   >
-                    <option value="Fácil" selected={habit.difficulty === "Fácil"}>
+                    <option
+                      value="Fácil"
+                      selected={habit.difficulty === "Fácil"}
+                    >
                       Fácil
                     </option>
-                    <option value="Médio" selected={habit.difficulty === "Médio"}>Médio</option>
-                    <option value="Difícil" selected={habit.difficulty === "Difícil"}>Difícil</option>
+                    <option
+                      value="Médio"
+                      selected={habit.difficulty === "Médio"}
+                    >
+                      Médio
+                    </option>
+                    <option
+                      value="Difícil"
+                      selected={habit.difficulty === "Difícil"}
+                    >
+                      Difícil
+                    </option>
                   </select>
                 </div>
                 <div>
-                <p>Frenquência:</p>
+                  <p>Frenquência:</p>
                   <select
                     value={frequency}
                     onChange={(e) => setFrequency(e.target.value)}
@@ -196,8 +211,12 @@ const HabitUpdateModal = ({ habit }) => {
             </form>
           </ModalBody>
           <ModalFooter>
-            <Button onClick={onClose} color="red">Cancelar</Button>
-            <Button onClick={handleSubmit} color="blue" marginLeft="20px">Salvar</Button>
+            <Button onClick={onClose} color="red">
+              Cancelar
+            </Button>
+            <Button onClick={handleSubmit} color="blue" marginLeft="20px">
+              Salvar
+            </Button>
           </ModalFooter>
         </ModalContent>
       </Modal>

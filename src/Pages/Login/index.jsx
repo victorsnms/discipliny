@@ -62,6 +62,7 @@ const Login = () => {
       .catch((err) =>
         toast({
           title: "Falha ao logar!",
+          position: "top",
           description: "Não foi possível completar o seu login.",
           status: "error",
           duration: 3000,
