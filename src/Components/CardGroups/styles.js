@@ -5,7 +5,7 @@ export const GroupCard = styled.div`
   flex-direction: row;
   align-items: center;
   width: 456px;
-  height: 45px;
+
   justify-content: space-between;
   background-image: var(--background-cards);
   border-radius: 100px;
@@ -13,6 +13,17 @@ export const GroupCard = styled.div`
   margin-bottom: 40px;
   color: var(--white);
   box-shadow: 5px 5px 10px 3px #00000054;
+  div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 5px;
+    width: 25px;
+    padding: 5px;
+    svg {
+      font-size: 20px;
+    }
+  }
 
   .groupName {
     padding: 0;

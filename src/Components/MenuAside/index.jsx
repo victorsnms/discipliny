@@ -1,6 +1,9 @@
 import { useHistory } from "react-router-dom";
 import Button from "../Button";
 import { MenuAside } from "./menu.styles";
+import { BiTask } from "react-icons/bi";
+import { MdGroup } from "react-icons/md";
+import { FaRegCompass } from "react-icons/fa";
 
 const Menu = () => {
   const history = useHistory();
@@ -20,13 +23,14 @@ const Menu = () => {
         </div>
         <div className="ParagContainer">
           <p onClick={() => changeTo("/")} className="Hab">
-            Habitos
+            <BiTask /> Habitos
           </p>
           <p onClick={() => changeTo("/mygroups")} className="MyGroup">
-            {" "}
+            <MdGroup />
             Meus Grupos
           </p>
           <p onClick={() => changeTo("/groups")} className="Descobrir">
+            <FaRegCompass />
             Descobrir
           </p>
         </div>

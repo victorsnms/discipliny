@@ -31,8 +31,7 @@ export const GoalCard = styled.div`
     margin: 0;
     text-align: center;
     width: 80%;
-    font-size: 2rem;
-    line-height: 55px;
+    font-size: 1.3rem;
   }
 
   .RightLabel {

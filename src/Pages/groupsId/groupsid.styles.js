@@ -6,7 +6,9 @@ export const Container = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  background-image: var(--linear-orange);
+  color: var(--white);
+  background-image: var(--orange-gradient-background);
+  animation: appearing 1s ease-in-out backwards;
   .cardContainer {
     display: flex;
     height: 100%;
@@ -19,6 +21,15 @@ export const Container = styled.div`
     font-size: 2rem;
     text-align: center;
     line-height: 90px;
+  }
+
+  @keyframes appearing {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
   }
 `;
 export const Cardmembers = styled.div`

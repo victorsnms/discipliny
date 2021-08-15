@@ -57,10 +57,6 @@ export const HabitWrapper = styled.div`
   }
 
   @media (min-width: 769px) {
-    aside {
-      display: flex;
-    }
-
     .ContainerCards section header h1 {
       font-size: clamp(5vw, 6vw, 7vw);
     }

@@ -61,7 +61,7 @@ export const HabitCard = styled.div`
 
     p {
       color: var(--white);
-      font-size: clamp(4vh, 4.5vh, 5vh);
+      font-size: 26px;
       padding: 3px;
       font-weight: 700;
     }
@@ -75,7 +75,7 @@ export const HabitCard = styled.div`
 
       p {
         background-image: var(--dark-yellow-gradient);
-        font-size: clamp(1.5vh, 2vh, 2.5vh);
+        font-size: 14px;
         height: 30px;
         border-radius: 18px 0 18px 0;
         padding: 3px 7px;
@@ -89,6 +89,8 @@ export const HabitCard = styled.div`
     display: grid;
     place-items: center;
     width: 15%;
+    height: 30%;
+    margin-top: 9px;
 
     button {
       background-color: transparent;
@@ -113,7 +115,7 @@ export const HabitCard = styled.div`
   @media (min-width: 767px) {
     width: 80%;
     .Central .BottomLabels p {
-      font-size: clamp(1.5vh, 1.8vh, 2.4vh);
+      font-size: 15px;
     }
 
     .Check button svg {
@@ -121,14 +123,14 @@ export const HabitCard = styled.div`
     }
 
     .Central p {
-      font-size: clamp(2vh, 2.5vh, 3vh);
+      font-size: 28px;
     }
   }
 
   @media (min-width: 1300px) {
     width: 48%;
     .Central p {
-      font-size: clamp(2vw, 2.3vw, 3vw);
+      font-size: 30px;
     }
     .Central .BottomLabels {
       justify-content: space-around;
@@ -136,7 +138,7 @@ export const HabitCard = styled.div`
     .Central .BottomLabels p {
       margin: 0 3px;
       line-height: 100%;
-      font-size: clamp(2vh, 2.3vh, 2.8vh);
+      font-size: 16px;
     }
   }
 `;

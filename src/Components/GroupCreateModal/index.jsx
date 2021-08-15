@@ -9,7 +9,7 @@ import {
   ModalOverlay,
 } from "@chakra-ui/react";
 import { useRef, useState } from "react";
-import api from "../../Services/api";
+
 import {
   ContainerCategory,
   ModalCategory,

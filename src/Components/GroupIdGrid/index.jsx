@@ -7,7 +7,7 @@ import {
   ContainerGoal,
 } from "./groupGrid.styles";
 
-const GroupGrid = ({ cardMember, CardActivity, cardGoal }) => {
+const GroupGrid = ({ cardMember, CardActivity, cardGoal, namegroup }) => {
   return (
     <Grid
       h="90%"
@@ -18,7 +18,7 @@ const GroupGrid = ({ cardMember, CardActivity, cardGoal }) => {
       gap={2}
     >
       <GridItem w="40%" placeSelf="center" rowSpan={1} colSpan={16}>
-        <GroupTitle className="titleGroup">Grupo A</GroupTitle>
+        <GroupTitle className="titleGroup">Nome: {namegroup}</GroupTitle>
       </GridItem>
       <GridItem
         borderRadius="25px"

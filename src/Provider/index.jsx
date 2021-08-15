@@ -8,18 +8,18 @@ import { ActivitiesProvider } from "./Activities";
 
 export const Providers = ({ children }) => {
   return (
-<LoggedProvider>
-    <MyGroupsCardsProvider>
-      <GroupsCardsProvider>
-        <GoalsProvider>
-          <ActivitiesProvider>
-            <HabitsProvider>
-              <UserProvider>{children}</UserProvider>
-            </HabitsProvider>
-          </ActivitiesProvider>
-        </GoalsProvider>
-      </GroupsCardsProvider>
-    </MyGroupsCardsProvider>
-          </LoggedProvider>
+    <LoggedProvider>
+      <MyGroupsCardsProvider>
+        <GroupsCardsProvider>
+          <GoalsProvider>
+            <ActivitiesProvider>
+              <HabitsProvider>
+                <UserProvider>{children}</UserProvider>
+              </HabitsProvider>
+            </ActivitiesProvider>
+          </GoalsProvider>
+        </GroupsCardsProvider>
+      </MyGroupsCardsProvider>
+    </LoggedProvider>
   );
 };

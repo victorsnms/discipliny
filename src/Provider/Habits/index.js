@@ -71,14 +71,6 @@ export const HabitsProvider = ({ children }) => {
       })
       .then((_) => {
         getHabits();
-        toast({
-          title: "Hábitos",
-          position: "top",
-          description: "Atualização Concluída",
-          status: "success",
-          duration: 2000,
-          isClosable: true,
-        });
       })
       .catch((_) => {
         toast({

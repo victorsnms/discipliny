@@ -8,7 +8,6 @@ export const MenuAside = styled.div`
     display: none;
     width: 100%;
     min-height: 100vh;
-
     background: var(--blue-dark);
     border-radius: 0px 50px 50px 0px;
 
@@ -42,10 +41,17 @@ export const MenuAside = styled.div`
     .ParagContainer {
       width: 100%;
       p {
+        display: flex;
+        justify-content: center;
+        align-items: center;
         height: 62px;
         text-align: center;
         font-size: 36px;
         cursor: pointer;
+
+        svg {
+          margin: 0 5px 0px 0px;
+        }
       }
 
       .Hab {
