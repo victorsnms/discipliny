@@ -5,23 +5,43 @@ import MenuMobile from "../../Components/MenuMobile";
 import { Cardmembers } from "./groupsid.styles";
 import ActivityCard from "../../Components/CardActivity/index";
 import CardGoal from "../../Components/CardGoal";
+import { useGroups } from "../../Provider/Groups/groupsCardList";
 
 const Groupsid = () => {
+  const { specificGroup } = useGroups();
+
   return (
     <>
       <Container>
         <Menu />
         <div className="cardContainer">
           <GroupGrid
-            cardGoal={[1, 2, 3, 4, 4, 5, 65, 6, 7].map((card) => (
-              <CardGoal />
-            ))}
-            cardMember={[1, 2, 3, 4].map((card) => (
-              <Cardmembers />
-            ))}
-            CardActivity={[1, 2, 3, 5, 6, 3].map((card) => (
-              <ActivityCard />
-            ))}
+            cardGoal={
+              specificGroup !== undefined ? (
+                specificGroup.goals.map((card) => (
+                  <CardGoal name={card.title} dificuldade={card.difficulty} />
+                ))
+              ) : (
+                <p>Sem metas por aqui...</p>
+              )
+            }
+            cardMember={
+              specificGroup !== undefined
+                ? specificGroup.users_on_group.map((card) => (
+                    <Cardmembers member={card.users_on_group} />
+                  ))
+                : null
+            }
+            CardActivity={
+              specificGroup !== undefined ? (
+                specificGroup.activities.map((card) => (
+                  <ActivityCard name={card.title} />
+                ))
+              ) : (
+                <p>Sem atividades, tudo tranquilo...</p>
+              )
+            }
+            namegroup={specificGroup !== undefined ? specificGroup.name : null}
           ></GroupGrid>
           <MenuMobile />
         </div>

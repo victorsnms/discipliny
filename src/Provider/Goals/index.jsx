@@ -1,4 +1,3 @@
-import { useFocusEffect } from "@chakra-ui/react";
 import { createContext, useContext, useEffect, useState } from "react";
 import api from "../../Services/api";
 
@@ -9,28 +8,28 @@ export const GoalsProvider = ({ children }) => {
   const token = JSON.parse(localStorage.getItem("@Discipliny:accessToken"));
 
   useEffect(() => {
-        api
-          .get(`/goals/`)
-          .then((response) => {
-            setGoals(response.data.results);
-          })
-          .catch((error) => {
-            console.log(error);
-          });
-  },[])
+    api
+      .get(`/goals/`)
+      .then((response) => {
+        setGoals(response.data.results);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
 
   const addGoal = (newGoal) => {
     api
-    .post(`/goals/`, newGoal,{
-      headers: { Authorization: `Bearer ${token}` }
-    })
-    .then((response) => {
-      setGoals([...goals,response.data.results])
-})
-.catch(err => console.log(err))
-}
+      .post(`/goals/`, newGoal, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((response) => {
+        setGoals([...goals, response.data.results]);
+      })
+      .catch((err) => console.log(err));
+  };
 
-const updateGoal = (dados, goalId) => {
+  const updateGoal = (dados, goalId) => {
     const token = JSON.parse(localStorage.getItem("@Discipliny:accessToken"));
     api
       .patch(`/goals/${goalId}`, dados, {
@@ -53,12 +52,12 @@ const updateGoal = (dados, goalId) => {
       })
       .then((response) => {
         setGoals(response.data);
+        console.log(goals);
       })
       .catch((error) => {
         console.log(error);
       });
   };
-
 
   const deleteGoal = (idGoal) => {
     api
@@ -73,8 +72,6 @@ const updateGoal = (dados, goalId) => {
         console.log(error);
       });
   };
-
-
 
   return (
     <GoalsContext.Provider
@@ -92,4 +89,3 @@ const updateGoal = (dados, goalId) => {
 };
 
 export const useGoals = () => useContext(GoalsContext);
-

@@ -2,7 +2,7 @@ import { GoalCard } from "./styles";
 import { Progress } from "@chakra-ui/react";
 import { useState } from "react";
 
-const CardGoal = ({ name }) => {
+const CardGoal = ({ name, dificuldade }) => {
   const [count, setCount] = useState(0);
 
   const handleClick = () => {
@@ -19,9 +19,9 @@ const CardGoal = ({ name }) => {
         />
       </div>
       <div className="flex-row">
-        <h1 className="goalName">{name}Goal Name</h1>
+        <h1 className="goalName">{name}</h1>
         <div className="RightLabel">
-          <p>Dificuldade</p>
+          <p>{dificuldade}</p>
         </div>
       </div>
     </GoalCard>

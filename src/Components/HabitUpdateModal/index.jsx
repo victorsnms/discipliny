@@ -79,7 +79,7 @@ const HabitUpdateModal = ({ habit }) => {
                 ref={initialRef}
                 placeholder="Digite um novo hábito"
                 onChange={(e) => setTitle(e.target.value)}
-                value={habit.title}
+                defaultValue={habit.title}
                 required
               />
               <ModalCategory>
