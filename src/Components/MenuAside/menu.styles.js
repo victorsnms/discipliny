@@ -7,7 +7,7 @@ export const MenuAside = styled.div`
   aside {
     display: none;
     width: 100%;
-    height: 100%;
+    min-height: 100vh;
 
     background: var(--blue-dark);
     border-radius: 0px 50px 50px 0px;

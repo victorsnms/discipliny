@@ -5,7 +5,7 @@ export const GroupCard = styled.div`
   flex-direction: row;
   align-items: center;
   width: 456px;
-  height: 85px;
+  height: 45px;
   justify-content: space-between;
   background-color: rgba(85, 207, 224, 0.66);
   border-radius: 100px;

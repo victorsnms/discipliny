@@ -86,9 +86,9 @@ function SignUp() {
       });
   };
 
-  if (logged) {
-    return <Redirect to="/habits" />;
-  }
+  // if (logged) {
+  //   return <Redirect to="/habits" />;
+  // }
 
   return (
     <Container>
