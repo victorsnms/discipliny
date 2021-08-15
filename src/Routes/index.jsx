@@ -6,6 +6,7 @@ import MyGroups from "../Pages/MyGroups";
 import Groups from "../Pages/Groups";
 import { useEffect, useState } from "react";
 import { useLogged } from "../Provider/Login";
+import Groupsid from "../Pages/groupsId";
 
 const Routes = () => {
   return (
@@ -25,7 +26,9 @@ const Routes = () => {
       <Route path="/mygroups">
         <MyGroups />
       </Route>
-      <Route path="groups/id/"></Route>
+      <Route path="/groupsid">
+        <Groupsid />
+      </Route>
     </Switch>
   );
 };
