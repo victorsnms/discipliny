@@ -7,7 +7,7 @@ export const HabitCard = styled.div`
   min-width: 300px;
   min-height: 155px;
   justify-content: center;
-  background-color: rgba(85, 207, 224, 0.66);
+  background-image: var(--background-cards);
   border-radius: 50px;
   font-family: Sansita;
   color: var(--white);
@@ -21,7 +21,7 @@ export const HabitCard = styled.div`
 
     button {
       width: 100%;
-      background-color: var(--yellow);
+      background-image: var(--cream-gradient);
       color: var(--white);
       min-height: 100%;
       border-radius: 50px 0 0 50px;
@@ -31,6 +31,7 @@ export const HabitCard = styled.div`
         display: block;
         font-size: clamp(5vw, 5.5vw, 6vw);
         margin: 0 auto;
+        color: var(--blue-dark);
       }
     }
   }
@@ -46,6 +47,7 @@ export const HabitCard = styled.div`
       display: flex;
       flex-direction: row;
       justify-content: space-between;
+      align-items: center;
       width: 90%;
       margin: 5px 0 0 0;
 
@@ -72,7 +74,7 @@ export const HabitCard = styled.div`
       width: 95%;
 
       p {
-        background-color: var(--yellow);
+        background-image: var(--dark-yellow-gradient);
         font-size: clamp(1.5vh, 2vh, 2.5vh);
         height: 30px;
         border-radius: 18px 0 18px 0;
@@ -89,19 +91,21 @@ export const HabitCard = styled.div`
     width: 15%;
 
     button {
-      background-color: var(--yellow);
+      background-color: transparent;
       padding: 5px 5px;
       cursor: pointer;
       color: var(--white);
+      font-size: 28px;
     }
 
     .DeleteButton {
-      background-color: var(--yellow);
+      background-color: transparent;
       margin: 0 1px;
       border-radius: var(--border-radius);
+      color: var(--red);
 
       svg {
-        font-size: 18px;
+        font-size: 28px;
       }
     }
   }

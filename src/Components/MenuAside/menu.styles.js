@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 export const MenuAside = styled.div`
-  background-color: var(--cream);
-  animation: leftToRight 2s cubic-bezier(0.18, 0.89, 0.32, 1.28) forwards;
+  background-color: transparent;
+  animation: leftToRight 2s cubic-bezier(0.18, 0.89, 0.32, 1.28) backwards;
 
   aside {
     display: none;
@@ -49,15 +49,15 @@ export const MenuAside = styled.div`
       }
 
       .Hab {
-        background-color: rgba(85, 207, 224, 0.66);
+        background-image: var(--light-blue-gradient);
       }
 
       .MyGroup {
-        background-color: var(--yellow);
+        background-image: var(--dark-yellow-gradient);
       }
 
       .Descobrir {
-        background-color: var(--orange);
+        background-image: var(--orange-gradient);
       }
     }
   }
@@ -72,10 +72,10 @@ export const MenuAside = styled.div`
 
   @keyframes leftToRight {
     from {
-      transform: translateX(-150px);
+      transform: translateX(-50px);
     }
     to {
-      transform: translateX(0px);
+      transform: translateX(-1px);
     }
   }
 `;

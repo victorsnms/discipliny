@@ -9,7 +9,6 @@ import HabitDeleteModal from "../HabitDeleteModal/index";
 const CardHabit = ({ habits }) => {
   const { updateHabit } = useHabits();
   const { isOpen, onOpen, onClose } = useDisclosure();
-  
 
   const handleClick = () => {
     const progressNumber = habits.how_much_achieved + 5;
@@ -27,7 +26,7 @@ const CardHabit = ({ habits }) => {
         <div className="Progress">
           <Progress
             value={habits.how_much_achieved}
-            height="30px"
+            height="10px"
             width="90%"
             colorScheme="orange"
           />
@@ -43,11 +42,11 @@ const CardHabit = ({ habits }) => {
         </div>
       </div>
       <div className="Edit">
-        <HabitUpdateModal habit={habits}/>
+        <HabitUpdateModal habit={habits} />
         <button className="DeleteButton" onClick={onOpen}>
           <FaTrash />
         </button>
-        <HabitDeleteModal onClose={onClose} isOpen={isOpen} habits={habits}/>
+        <HabitDeleteModal onClose={onClose} isOpen={isOpen} habits={habits} />
       </div>
     </HabitCard>
   );

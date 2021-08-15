@@ -7,6 +7,7 @@ const MyGroupsCardListContext = createContext();
 export const MyGroupsCardsProvider = ({ children }) => {
   const toast = useToast();
   const [myGroupsList, setMyGroupsList] = useState([]);
+
   const createNewGroup = (dados) => {
     const token = JSON.parse(localStorage.getItem("@Discipliny:accessToken"));
     api
@@ -52,7 +53,7 @@ export const MyGroupsCardsProvider = ({ children }) => {
       .catch((err) => {
         console.log(err);
         toast({
-          title: "erro ao carregar grupo!",
+          title: "Erro ao carregar grupo!",
           description: "Erro ao carregar grupos",
           status: "error",
           duration: 2000,
@@ -97,4 +98,4 @@ export const MyGroupsCardsProvider = ({ children }) => {
   );
 };
 
-export const useMyGroups = () => useContext(MyGroupsCardListContext)
+export const useMyGroups = () => useContext(MyGroupsCardListContext);

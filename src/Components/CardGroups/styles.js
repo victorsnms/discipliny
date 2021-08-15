@@ -7,7 +7,7 @@ export const GroupCard = styled.div`
   width: 456px;
   height: 85px;
   justify-content: space-between;
-  background-color: rgba(85, 207, 224, 0.66);
+  background-image: var(--background-cards);
   border-radius: 100px;
   font-family: Sansita;
   margin-bottom: 40px;

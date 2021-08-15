@@ -19,7 +19,6 @@ import {
 } from "../HabitCreateModal/style";
 import { useGroups } from "../../Provider/Groups/groupsCardList";
 
-
 const GroupCreateModal = ({ onClose, isOpen }) => {
   const initialRef = useRef();
   const { addGroup } = useGroups();
@@ -27,8 +26,7 @@ const GroupCreateModal = ({ onClose, isOpen }) => {
   const [name, setName] = useState("");
   const [category, setCategory] = useState("Saúde");
   const [description, setDescription] = useState("");
-  const [categoryChose, setCategoryChose] = useState("healthy")
-
+  const [categoryChose, setCategoryChose] = useState("healthy");
 
   const handleSubmit = () => {
     //importar , token
@@ -37,13 +35,14 @@ const GroupCreateModal = ({ onClose, isOpen }) => {
       category: category,
       description: description,
     };
-      addGroup(newGroup)
+    addGroup(newGroup);
   };
 
-  const handleClick = (e,value) => {
-    setCategory(e.target.value)
-    setCategoryChose(value)
-  }
+  const handleClick = (e, value) => {
+    console.log(e, value);
+    setCategory(e.target.value);
+    setCategoryChose(value);
+  };
   return (
     <Modal initialFocusRef={initialRef} isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />
@@ -70,7 +69,7 @@ const GroupCreateModal = ({ onClose, isOpen }) => {
                     name="category"
                     value="Saúde"
                     id="healthy"
-                    onClick={(e) => handleClick(e,e.target.id)}
+                    onClick={(e) => handleClick(e, e.target.id)}
                   />
                   <label for="healthy">Saúde</label>
                 </div>
@@ -80,7 +79,7 @@ const GroupCreateModal = ({ onClose, isOpen }) => {
                     name="category"
                     value="Organização"
                     id="organization"
-                    onClick={(e) => handleClick(e,e.target.id)}
+                    onClick={(e) => handleClick(e, e.target.id)}
                   />
                   <label for="organization">Organização</label>
                 </div>
@@ -90,7 +89,7 @@ const GroupCreateModal = ({ onClose, isOpen }) => {
                     name="category"
                     value="Limpeza"
                     id="cleaning"
-                    onClick={(e) => handleClick(e,e.target.id)}
+                    onClick={(e) => handleClick(e, e.target.id)}
                   />
                   <label for="cleaning">Limpeza</label>
                 </div>
@@ -100,7 +99,7 @@ const GroupCreateModal = ({ onClose, isOpen }) => {
                     name="category"
                     value="Alimentação"
                     id="food"
-                    onClick={(e) => handleClick(e,e.target.id)}
+                    onClick={(e) => handleClick(e, e.target.id)}
                   />
                   <label for="food">Alimentação</label>
                 </div>
@@ -110,7 +109,7 @@ const GroupCreateModal = ({ onClose, isOpen }) => {
                     name="category"
                     value="Educação"
                     id="education"
-                    onClick={(e) => handleClick(e,e.target.id)}
+                    onClick={(e) => handleClick(e, e.target.id)}
                   />
                   <label for="education">Educação</label>
                 </div>
@@ -120,7 +119,7 @@ const GroupCreateModal = ({ onClose, isOpen }) => {
                     name="category"
                     value="Finanças"
                     id="finances"
-                    onClick={(e) => handleClick(e,e.target.id)}
+                    onClick={(e) => handleClick(e, e.target.id)}
                   />
                   <label for="finances">Finanças</label>
                 </div>
@@ -130,7 +129,7 @@ const GroupCreateModal = ({ onClose, isOpen }) => {
                     name="category"
                     value="Lazer"
                     id="recreation"
-                    onClick={(e) => handleClick(e,e.target.id)}
+                    onClick={(e) => handleClick(e, e.target.id)}
                   />
                   <label for="recreation">Lazer</label>
                 </div>
@@ -140,14 +139,15 @@ const GroupCreateModal = ({ onClose, isOpen }) => {
                     name="category"
                     value="Mente"
                     id="mind"
-                    onClick={(e) => handleClick(e,e.target.id)}
+                    onClick={(e) => handleClick(e, e.target.id)}
                   />
                   <label for="mind">Mente</label>
                 </div>
               </ContainerCategory>
             </ModalCategory>
             <ModalTextArea>
-            div  <div>
+              div{" "}
+              <div>
                 <label>Uma breve descrição sobre seu grupo:</label>
                 <textarea
                   type="text"

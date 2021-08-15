@@ -26,6 +26,13 @@ export default createGlobalStyle`
         --pink: #eb7eed;
         --brown:#b17c6a;
         --linear-orange:linear-gradient(to bottom, #F26419, #F6AE2D);
+        --light-blue-gradient: linear-gradient(180deg, rgba(85, 207, 224, 0.66) 0%, rgba(12, 70, 78, 0.66) 100%);
+        --dark-yellow-gradient: linear-gradient(180deg, #EFA92D 0%, #A97922 100%);
+        --orange-gradient: linear-gradient(180deg, #F26419 0%, #9C4110 100%);
+        --dark-blue-gradient: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), linear-gradient(180deg, #417FAD 0%, #2F4858 100%);
+        --orange-gradient-background: linear-gradient(0deg, #F26419 0%, #F6AE2D 100%);
+        --background-cards:linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), linear-gradient(180deg, rgba(85, 207, 224, 0.66) 0%, rgba(23, 126, 140, 0.66) 100%);
+        --cream-gradient: linear-gradient(224.61deg,#978983 0%, #FEF2EC 55.17%, #978983 100%);
         --border-radius: 8px;
     }
     
@@ -48,4 +55,4 @@ export default createGlobalStyle`
     button.chakra-modal__close-btn{
         color: var(--white);
     }
-`
+`;

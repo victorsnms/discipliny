@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import signupwave from "../../assets/signupwave.png";
 
 export const HabitWrapper = styled.div`
   display: flex;
@@ -8,18 +7,18 @@ export const HabitWrapper = styled.div`
   width: 100%;
   min-height: 100vh;
   margin: 0 auto;
+  background-image: var(--orange-gradient-background);
 
   .ContainerCards {
     width: 100%;
     display: grid;
     place-items: center;
-    background-color: var(--cream);
 
     section {
       width: 70%;
       min-width: 320px;
       border-radius: 50px;
-      background-color: var(--blue-dark);
+      background-image: var(--dark-blue-gradient);
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -28,15 +27,12 @@ export const HabitWrapper = styled.div`
       animation-delay: 0.5s;
 
       header {
-        background: linear-gradient(0deg, var(--orange) 0%, var(--yellow) 100%);
+        background-image: var(--light-blue-gradient);
         border-radius: 50px 50px 0px 0px;
         width: 100%;
         height: 114px;
         display: grid;
         place-items: center;
-        background-image: url(${signupwave});
-        background-size: contain;
-        background-size: 100% 100%;
 
         h1 {
           width: 100%;

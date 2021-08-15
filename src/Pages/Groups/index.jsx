@@ -14,9 +14,9 @@ const Groups = () => {
   };
   const { groupsCardList } = useGroups();
 
-  if (!logged) {
-    return <Redirect to="/" />;
-  }
+  // if (!logged) {
+  //   return <Redirect to="/" />;
+  // }
 
   return (
     <>
