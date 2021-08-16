@@ -51,7 +51,7 @@ export const HabitWrapper = styled.div`
         width: 100%;
         min-height: 80vh;
         padding: 30px;
-        align-items: center;
+        align-items: flex-start;
       }
     }
   }

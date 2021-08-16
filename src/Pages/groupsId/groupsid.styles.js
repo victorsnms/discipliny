@@ -3,13 +3,16 @@ import styled from "styled-components";
 export const Container = styled.div`
   height: 100vh;
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
   align-items: center;
   color: var(--white);
   background-image: var(--orange-gradient-background);
   animation: appearing 1s ease-in-out backwards;
   .cardContainer {
+    @media (max-width: 740px) {
+      width: 100vw;
+      flex-direction: column;
+    }
     display: flex;
     height: 100%;
     width: 75vw;
@@ -34,9 +37,8 @@ export const Container = styled.div`
   }
 `;
 export const Cardmembers = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
+  text-align: center;
+  font-size: 2rem;
   margin: 0 auto;
   width: 80%;
   min-height: 45px;
