@@ -35,7 +35,7 @@ export const HabitsProvider = ({ children }) => {
     }
   }, []);
 
-  const createHabit = (dados) => {
+  const createHabit = (dados,setIsToast) => {
     const token = JSON.parse(localStorage.getItem("@Discipliny:accessToken"));
     api
       .post("/habits/", dados, {
@@ -43,14 +43,7 @@ export const HabitsProvider = ({ children }) => {
       })
       .then((response) => {
         setHabit([...habit, response.data]);
-        toast({
-          title: "Hábitos",
-          position: "top",
-          description: "Criado Novo Hábito",
-          status: "success",
-          duration: 3000,
-          isClosable: true,
-        });
+        setIsToast(true)
       })
       .catch((_) => {
         toast({

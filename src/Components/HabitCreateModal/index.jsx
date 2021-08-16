@@ -8,6 +8,7 @@ import {
   ModalHeader,
   ModalOverlay,
   useDisclosure,
+  useToast,
 } from "@chakra-ui/react";
 import { useRef, useState } from "react";
 
@@ -24,6 +25,8 @@ const HabitCreateModal = () => {
   const { getHabits, createHabit } = useHabits();
   const initialRef = useRef();
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const toast = useToast()
+  const [isToast, setIsToast ] = useState(false)
 
   const [title, setTitle] = useState("");
   const [category, setCategory] = useState("Sáude");
@@ -45,9 +48,20 @@ const HabitCreateModal = () => {
       how_much_achieved: 0,
       user: userId,
     };
-    createHabit(newHabit);
+    createHabit(newHabit,setIsToast);
     getHabits();
     onClose();
+    if (isToast){
+      toast({
+        title: "Hábitos",
+        position: "top",
+        description: "Criado Novo Hábito",
+        status: "success",
+        duration: 3000,
+        isClosable: true,
+      });
+      setIsToast(false)
+    }
   };
 
   const handleClick = (e, value) => {

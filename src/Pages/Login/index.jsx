@@ -57,6 +57,14 @@ const Login = () => {
         setLogged(true);
         getHabits();
         getUser();
+        toast({
+          title: `Login efetuado com sucesso`,
+          position: "top",
+          description: `Bem vindo ${user.username}`,
+          status: "success",
+          duration: 3000,
+          isClosable: true,
+        })
         return history.push("/habits");
       })
       .catch((err) =>

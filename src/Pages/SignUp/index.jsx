@@ -80,7 +80,7 @@ function SignUp() {
         toast({
           title: "Erro ao criar conta!",
           position: "top",
-          description: "Não foi possível criar sua conta",
+          description: "E-mail ou username inválido",
           status: "error",
           duration: 2000,
           isClosable: true,
