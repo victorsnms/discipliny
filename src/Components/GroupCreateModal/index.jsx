@@ -18,10 +18,12 @@ import {
   ModalTitle,
 } from "../HabitCreateModal/style";
 import { useGroups } from "../../Provider/Groups/groupsCardList";
+import { useMyGroups } from "../../Provider/MyGroups";
 
 const GroupCreateModal = ({ onClose, isOpen }) => {
   const initialRef = useRef();
   const { addGroup } = useGroups();
+  const { getGroups } = useMyGroups();
 
   const [name, setName] = useState("");
   const [category, setCategory] = useState("Saúde");
@@ -36,6 +38,7 @@ const GroupCreateModal = ({ onClose, isOpen }) => {
       description: description,
     };
     addGroup(newGroup);
+    getGroups()
     onClose();
   };
 

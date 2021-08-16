@@ -44,8 +44,6 @@ export const MyGroupsCardsProvider = ({ children }) => {
       })
       .then((response) => {
         setMyGroupsList(response.data);
-        console.log(response.data);
-        console.log(response);
         localStorage.setItem(
           "@Discipliny:groupId",
           JSON.stringify(response.data.id)
@@ -92,6 +90,7 @@ export const MyGroupsCardsProvider = ({ children }) => {
         setMyGroupsList,
         createNewGroup,
         updateMyGroup,
+        getGroups,
       }}
     >
       {children}

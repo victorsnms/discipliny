@@ -31,7 +31,6 @@ export const GoalsProvider = ({ children }) => {
   };
 
   const updateGoal = (dados, goalId) => {
-    const token = JSON.parse(localStorage.getItem("@Discipliny:accessToken"));
     api
       .patch(`/goals/${goalId}/`, dados, {
         headers: { Authorization: `Bearer ${token}` },
@@ -45,7 +44,6 @@ export const GoalsProvider = ({ children }) => {
   };
 
   const getGoals = () => {
-    const token = JSON.parse(localStorage.getItem("@Discipliny:accessToken"));
 
     api
       .get("/goals/", {
@@ -53,7 +51,6 @@ export const GoalsProvider = ({ children }) => {
       })
       .then((response) => {
         setGoals(response.data);
-        console.log(goals);
       })
       .catch((error) => {
         console.log(error);
