@@ -15,7 +15,6 @@ import { useGoals } from "../../Provider/Goals";
 import { ModalInput, ModalSelect, ModalTitle } from "../HabitCreateModal/style";
 
 const GoalsCreateModal = ({ group }) => {
-  //receber pot props o id do grupo
   const initialRef = useRef();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [title, setTitle] = useState("");
