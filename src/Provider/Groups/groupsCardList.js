@@ -74,7 +74,25 @@ export const GroupsCardsProvider = ({ children }) => {
       });
   };
 
-    
+  const updateGroup = (dados) => {
+    const idGroup = JSON.parse(localStorage.getItem("@Discipliny:idGroup"));
+    api
+      .patch(`/groups/${idGroup}/`, dados, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((_) => {
+        getSpecificGroup();
+      })
+      .catch((_) => {
+        toast({
+          title: "Grupo não foi atualizado!",
+          description: "Verifique todo os campos e tente novamente",
+          status: "error",
+          duration: 2000,
+          isClosable: true,
+        });
+      });
+  };
 
   return (
     <GroupsCardListContext.Provider
@@ -85,6 +103,7 @@ export const GroupsCardsProvider = ({ children }) => {
         nextPage,
         getSpecificGroup,
         specificGroup,
+        updateGroup,
       }}
     >
       {children}

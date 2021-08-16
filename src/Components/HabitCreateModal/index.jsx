@@ -9,7 +9,7 @@ import {
   ModalOverlay,
   useDisclosure,
 } from "@chakra-ui/react";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import {
   ContainerCategory,
@@ -31,11 +31,12 @@ const HabitCreateModal = () => {
   const [frequency, setFrequency] = useState("Diário");
   const [categoryChose, setCategoryChose] = useState("healthy");
 
+  
   const handleSubmit = () => {
     //importar, token e iduser, setHAnits
-
+    
     const userId = JSON.parse(localStorage.getItem("@Discipliny:userId"));
-
+    
     const newHabit = {
       title: title,
       category: category,
@@ -45,9 +46,12 @@ const HabitCreateModal = () => {
       how_much_achieved: 0,
       user: userId,
     };
+    if(title !== "") {
+      onClose();
+    }
+    setTitle("")
     createHabit(newHabit);
     getHabits();
-    onClose();
   };
 
   const handleClick = (e, value) => {
