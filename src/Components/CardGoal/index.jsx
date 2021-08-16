@@ -1,8 +1,10 @@
 import { GoalCard } from "./styles";
 import { Progress } from "@chakra-ui/react";
 import { useState } from "react";
+import GoalsUpdateModal from "../GoalsUpdateModal";
+import GoalDeleteModal from "../GoalsDeleteModal";
 
-const CardGoal = ({ name, dificuldade }) => {
+const CardGoal = ({ name, dificuldade, idGoal }) => {
   const [count, setCount] = useState(0);
 
   const handleClick = () => {
@@ -14,9 +16,11 @@ const CardGoal = ({ name, dificuldade }) => {
         <Progress
           value={count}
           height="10px"
-          width="90%"
+          width="80%"
           colorScheme="orange"
         />
+        <GoalsUpdateModal idGoal={idGoal} />
+        <GoalDeleteModal idGoal={idGoal} />
       </div>
       <div className="flex-row">
         <h1 className="goalName">{name}</h1>

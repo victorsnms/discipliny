@@ -1,3 +1,4 @@
+import { toast } from "@chakra-ui/react";
 import { createContext, useContext, useEffect, useState } from "react";
 import api from "../../Services/api";
 
@@ -24,7 +25,7 @@ export const GoalsProvider = ({ children }) => {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
-        setGoals([...goals, response.data.results]);
+        setGoals(response.data.results);
       })
       .catch((err) => console.log(err));
   };
@@ -32,7 +33,7 @@ export const GoalsProvider = ({ children }) => {
   const updateGoal = (dados, goalId) => {
     const token = JSON.parse(localStorage.getItem("@Discipliny:accessToken"));
     api
-      .patch(`/goals/${goalId}`, dados, {
+      .patch(`/goals/${goalId}/`, dados, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((_) => {
@@ -66,7 +67,14 @@ export const GoalsProvider = ({ children }) => {
       })
       .then((_) => {
         getGoals();
-        alert("Aqui ta faltando um toast");
+        toast({
+          title: "Sucesso!",
+          position: "top",
+          description: "Meta Excluída",
+          status: "success",
+          duration: 3000,
+          isClosable: true,
+        });
       })
       .catch((error) => {
         console.log(error);

@@ -22,6 +22,7 @@ export const GroupCard = styled.div`
     padding: 5px;
     svg {
       font-size: 20px;
+      color: var(--yellow);
     }
   }
 
@@ -31,6 +32,13 @@ export const GroupCard = styled.div`
     text-align: center;
     width: 100%;
     font-size: 2rem;
+  }
+
+  .iconsBox {
+    display: flex;
+    flex-direction: column;
+    width: 15%;
+    font-size: 18px;
   }
 
   @media (min-width: 768px) {

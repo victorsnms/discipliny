@@ -36,6 +36,7 @@ const GroupCreateModal = ({ onClose, isOpen }) => {
       description: description,
     };
     addGroup(newGroup);
+    onClose();
   };
 
   const handleClick = (e, value) => {

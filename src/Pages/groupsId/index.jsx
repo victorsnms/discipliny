@@ -6,9 +6,16 @@ import { Cardmembers } from "./groupsid.styles";
 import ActivityCard from "../../Components/CardActivity/index";
 import CardGoal from "../../Components/CardGoal";
 import { useGroups } from "../../Provider/Groups/groupsCardList";
+import { Redirect } from "react-router-dom";
+import { useLogged } from "../../Provider/Login";
 
 const Groupsid = () => {
   const { specificGroup } = useGroups();
+  const { logged } = useLogged();
+
+  if (!logged) {
+    return <Redirect to="/" />;
+  }
 
   return (
     <>
@@ -19,7 +26,11 @@ const Groupsid = () => {
             cardGoal={
               specificGroup !== undefined ? (
                 specificGroup.goals.map((card) => (
-                  <CardGoal name={card.title} dificuldade={card.difficulty} />
+                  <CardGoal
+                    name={card.title}
+                    dificuldade={card.difficulty}
+                    idGoal={card.id}
+                  />
                 ))
               ) : (
                 <p>Sem metas por aqui...</p>

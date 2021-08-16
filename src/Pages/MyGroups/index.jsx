@@ -18,9 +18,9 @@ function Groups() {
 
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  // if (!logged) {
-  //   return <Redirect to="/" />;
-  // }
+  if (!logged) {
+    return <Redirect to="/" />;
+  }
 
   return (
     <>

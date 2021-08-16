@@ -16,6 +16,7 @@ export const Container = styled.div`
     padding-top: 50px;
     justify-content: center;
     align-items: flex-start;
+    animation: appearing 2s ease-in-out backwards;
   }
   .titleGroup {
     font-size: 2rem;
@@ -38,7 +39,7 @@ export const Cardmembers = styled.div`
   align-items: center;
   margin: 0 auto;
   width: 80%;
-  height: 45px;
+  min-height: 45px;
   justify-content: space-between;
   background-color: rgba(85, 207, 224, 0.66);
   border-radius: 100px;
