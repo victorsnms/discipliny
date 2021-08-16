@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import signUpImage from "../../assets/signupwave.png";
+import signUpImage from "../../assets/newave";
 
 export const Container = styled.div`
   height: 100%;
@@ -8,7 +8,7 @@ export const Container = styled.div`
   background-image: url(${signUpImage});
   background-repeat: no-repeat;
   background-size: cover;
-  background-color: var(--cream);
+  background-color: var(--blue-dark);
 
   @media (max-width: 1023px) {
     .display {
@@ -84,15 +84,17 @@ export const FormContent = styled.div`
       margin-top: 0.5rem;
       padding: 1.5rem 2.5rem;
       border-radius: 30px;
+      border: 1px solid var(--cream);
     }
 
     p {
       font-size: 0.75rem;
       margin-top: 0.5rem;
       font-family: var(--font-text);
+      color: var(--white);
 
       a {
-        color: var(--purple);
+        color: var(--blue-dark);
         font-weight: 600;
       }
     }
@@ -105,7 +107,7 @@ export const FormContent = styled.div`
 
 export const Content = styled.div`
   h1 {
-    color: var(--orange);
+    color: var(--white);
     font-family: var(--font-titles);
     font-size: 2.5rem;
     text-align: center;
