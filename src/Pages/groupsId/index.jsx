@@ -8,9 +8,11 @@ import CardGoal from "../../Components/CardGoal";
 import { useGroups } from "../../Provider/Groups/groupsCardList";
 import { Redirect } from "react-router-dom";
 import { useLogged } from "../../Provider/Login";
+import { useGoals } from "../../Provider/Goals";
+import { useEffect } from "react";
 
 const Groupsid = () => {
-  const { specificGroup } = useGroups();
+  const { specificGroup, getSpecificGroup } = useGroups();
   const { logged } = useLogged();
   console.log(specificGroup);
 
