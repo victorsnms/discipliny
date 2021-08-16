@@ -11,9 +11,9 @@ const Habits = () => {
   const { logged } = useLogged();
   const { habit } = useHabits();
 
-  // if (!logged) {
-  //   return <Redirect to="/" />;
-  // }
+  if (!logged) {
+    return <Redirect to="/" />;
+  }
 
   return (
     <>

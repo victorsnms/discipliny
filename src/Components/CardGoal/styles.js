@@ -30,7 +30,7 @@ export const GoalCard = styled.div`
     padding: 0;
     margin: 0;
     text-align: center;
-    width: 80%;
+    width: 70%;
     font-size: 1.3rem;
   }
 
@@ -52,14 +52,20 @@ export const GoalCard = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: center;
+    align-items: center;
     width: 90%;
     margin-top: 10px;
 
     div {
       border-radius: 5px;
     }
+
+    button {
+      margin-left: 5px;
+    }
     svg {
-      font-size: 30px;
+      font-size: 20px;
+      color: var(--yellow);
     }
   }
   @media (max-width: 500px) {

@@ -16,6 +16,7 @@ export const MyGroupsCardsProvider = ({ children }) => {
       })
       .then((response) => {
         setMyGroupsList([...myGroupsList, response.data]);
+
         toast({
           title: "Grupo criado!",
           description: "Seu grupo foi criado com sucesso.",

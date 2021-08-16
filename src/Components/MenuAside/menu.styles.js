@@ -24,6 +24,7 @@ export const MenuAside = styled.div`
     .ImgContainer {
       width: 100%;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: space-around;
       img {
@@ -78,7 +79,7 @@ export const MenuAside = styled.div`
 
   @keyframes leftToRight {
     from {
-      transform: translateX(-50px);
+      transform: translateX(-150px);
     }
     to {
       transform: translateX(-1px);

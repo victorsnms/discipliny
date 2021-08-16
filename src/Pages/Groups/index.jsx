@@ -13,9 +13,9 @@ const Groups = () => {
 
   const { groupsCardList, prevPage, nextPage } = useGroups();
 
-  // if (!logged) {
-  //   return <Redirect to="/" />;
-  // }
+  if (!logged) {
+    return <Redirect to="/" />;
+  }
 
   return (
     <>

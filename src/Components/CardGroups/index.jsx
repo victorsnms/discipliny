@@ -2,11 +2,11 @@ import { GroupCard } from "./styles";
 import { IoIosPeople } from "react-icons/io";
 import { Link } from "react-router-dom";
 import { useGroups } from "../../Provider/Groups/groupsCardList";
+import { FcOpenedFolder } from "react-icons/fc";
 
 const CardGroups = ({ name, membros, idGroup }) => {
   const { getSpecificGroup } = useGroups();
   const getGroupId = () => {
-    console.log(idGroup);
     localStorage.setItem("@Discipliny:idGroup", JSON.stringify(idGroup));
     getSpecificGroup();
   };
@@ -18,9 +18,11 @@ const CardGroups = ({ name, membros, idGroup }) => {
         <IoIosPeople />
         {membros === undefined ? 0 : membros.length}
       </div>
-      <Link onClick={getGroupId} to="/groupsid">
-        Ver Grupo
-      </Link>
+      <div className="iconsBox">
+        <Link onClick={getGroupId} to="/groupsid">
+          <FcOpenedFolder /> Ver+
+        </Link>
+      </div>
     </GroupCard>
   );
 };

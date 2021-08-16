@@ -12,7 +12,7 @@ export const HabitCard = styled.div`
   font-family: Sansita;
   color: var(--white);
   box-shadow: 5px 5px 10px 3px #00000054;
-  margin-bottom: 10px;
+  margin-bottom: 30px;
 
   .Check {
     display: grid;

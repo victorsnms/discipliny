@@ -1,35 +1,44 @@
 import {
-    Modal,
-    ModalBody,
-    ModalCloseButton,
-    ModalContent,
-    ModalFooter,
-    ModalHeader,
-    ModalOverlay,
-    useDisclosure,
-  } from "@chakra-ui/react";
-  import { useRef, useState } from "react";
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
+  ModalOverlay,
+  useDisclosure,
+} from "@chakra-ui/react";
+import { useRef, useState } from "react";
+import { FiEdit } from "react-icons/fi";
 import { useGoals } from "../../Provider/Goals";
-  import api from "../../Services/api"
+import { useGroups } from "../../Provider/Groups/groupsCardList";
 import { ModalInput, ModalSelect, ModalTitle } from "../HabitCreateModal/style";
-  
-  const GoalsUpdateModal = ({group}) => {
-    const initialRef = useRef();
-    const { isOpen, onOpen, onClose } = useDisclosure();
-      const { updateGoal } = useGoals()
-    const [title, setTitle] = useState("Nome da meta");
-    const [difficulty, setDifficulty] = useState("Fácil");
-  
-    const handleSubmit = () => {
-      const newGoal = {
-        title: title,
-        difficulty: difficulty,
-        group: group.group,
-      };
-     updateGoal(newGoal,group.id)
+
+const GoalsUpdateModal = ({ idGoal }) => {
+  const initialRef = useRef();
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const { updateGoal } = useGoals();
+  const { getSpecificGroup } = useGroups();
+  const [title, setTitle] = useState("Nome da meta");
+  const [difficulty, setDifficulty] = useState("Fácil");
+
+  const handleSubmit = () => {
+    const newGoal = {
+      title: title,
+      difficulty: difficulty,
+      achieved: "false",
     };
-  
-    return (
+    updateGoal(newGoal, idGoal);
+    getSpecificGroup();
+    onClose();
+  };
+
+  return (
+    <>
+      <button onClick={onOpen}>
+        {" "}
+        <FiEdit />{" "}
+      </button>
       <Modal initialFocusRef={initialRef} isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
@@ -62,13 +71,13 @@ import { ModalInput, ModalSelect, ModalTitle } from "../HabitCreateModal/style";
               </ModalSelect>
             </form>
           </ModalBody>
-  
+
           <ModalFooter>
             <button onClick={handleSubmit}>Criar</button>
           </ModalFooter>
         </ModalContent>
       </Modal>
-    );
-  };
-  export default GoalsUpdateModal;
-  
+    </>
+  );
+};
+export default GoalsUpdateModal;
