@@ -65,7 +65,7 @@ const Login = () => {
           position: "top",
           description: "Não foi possível completar o seu login.",
           status: "error",
-          duration: 3000,
+          duration: 4000,
           isClosable: true,
         })
       );

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import myImage from "../../assets/wave.svg";
+import myImage from "../../assets/wave2.png";
 
 export const Container = styled.div`
   height: 100vh;
@@ -8,7 +8,7 @@ export const Container = styled.div`
   background-image: url(${myImage});
   background-repeat: no-repeat;
   background-size: cover;
-  background-color: var(--cream);
+  background-color: var(--blue-dark);
 
   @media (max-width: 1023px) {
     .display {

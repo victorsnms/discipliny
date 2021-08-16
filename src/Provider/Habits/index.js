@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import api from "../../Services/api";
-import { useToast } from "@chakra-ui/react";
+import { Box, useToast } from "@chakra-ui/react";
 
 const HabitsContext = createContext();
 
@@ -123,7 +123,7 @@ export const HabitsProvider = ({ children }) => {
           description: "Exclusão efetuada com sucesso",
           position: "top",
           status: "success",
-          duration: 3000,
+          duration: 900000,
           isClosable: true,
         });
       })
