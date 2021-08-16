@@ -30,11 +30,9 @@ useEffect(() =>
           <GroupGrid
             cardGoal={
               specificGroup !== undefined ? (
-                specificGroup.goals.map((card) => (
+                specificGroup.goals.map((goal) => (
                   <CardGoal
-                    name={card.title}
-                    dificuldade={card.difficulty}
-                    idGoal={card.id}
+                    goal={goal}
                   />
                 ))
               ) : (

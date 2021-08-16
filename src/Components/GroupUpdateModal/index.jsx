@@ -8,8 +8,9 @@ import {
   ModalHeader,
   ModalOverlay,
   useDisclosure,
+  useToast,
 } from "@chakra-ui/react";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   ContainerCategory,
   ModalCategory,
@@ -20,16 +21,18 @@ import {
 import { FiEdit } from "react-icons/fi";
 import { useGroups } from "../../Provider/Groups/groupsCardList";
 
-const GroupUpdateModal = () => {
+const GroupUpdateModal =({ group }) => {
   //"receber como prop o grupa tal"
   const initialRef = useRef();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { updateGroup } = useGroups()
 
-  const [name, setName] = useState("nome do grupo pela  prop");
+  const [name, setName] = useState(group.name);
   const [category, setCategory] = useState("Saúde");
-  const [description, setDescription] = useState("descricao daora");
+  const [description, setDescription] = useState(group.description);
   const [categoryChose, setCategoryChose] = useState("healthy");
+  const [isToast, setIsToast] = useState("unset");
+  const toast = useToast();
 
   const handleSubmit = () => {
     const updateNewGroup = {
@@ -37,13 +40,37 @@ const GroupUpdateModal = () => {
       category: category,
       description: description,
     };
-   updateGroup(updateNewGroup)
+   updateGroup(updateNewGroup, setIsToast)
   };
 
   const handleClick = (e, value) => {
     setCategory(e.target.value);
     setCategoryChose(value);
   };
+
+  useEffect(() => {
+    if (isToast === "success") {
+      toast({
+        title: "Grupo",
+        description: "Grupo atualizado com sucesso",
+        position: "top",
+        status: "success",
+        duration: 3000,
+        isClosable: true,
+      });
+      onClose();
+    } else if (isToast === "error") {
+      toast({
+        title: "Grupo",
+        position: "top",
+        description: "Verifique os campos e tente novamente",
+        status: "error",
+        duration: 2000,
+        isClosable: true,
+      });
+    }
+    setIsToast("unset");
+  }, [isToast]);
   return (
     <>
     <Button
