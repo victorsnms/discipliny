@@ -13,18 +13,19 @@ const GroupGrid = ({ cardMember, CardActivity, cardGoal, namegroup }) => {
     <Grid
       h="90%"
       w="100%"
-      marginRight="30px"
+      marginRight="5px"
       templateRows="repeat(9, 1fr)"
       templateColumns="repeat(16, 1fr)"
       gap={2}
     >
-      <GridItem w="40%" placeSelf="center" rowSpan={1} colSpan={16}>
+      <GridItem w="80%" placeSelf="center" rowSpan={1} colSpan={16}>
         <GroupTitle className="titleGroup">Nome: {namegroup}</GroupTitle>
       </GridItem>
       <GridItem
+        className="Grid"
         borderRadius="25px"
         marginTop="45px"
-        w="90%"
+        w="100%"
         minH=""
         justifySelf="center"
         rowSpan={8}
@@ -42,7 +43,7 @@ const GroupGrid = ({ cardMember, CardActivity, cardGoal, namegroup }) => {
         borderRadius="25px"
         marginTop="45px"
         rowSpan={4}
-        w="90%"
+        w="100%"
         justifySelf="center"
         colSpan={8}
         backgroundImage="linear-gradient(var(--blue-dark), var(--blue-dark));"
@@ -53,7 +54,7 @@ const GroupGrid = ({ cardMember, CardActivity, cardGoal, namegroup }) => {
       <GridItem
         borderRadius="25px"
         marginTop="10px"
-        w="90%"
+        w="100%"
         justifySelf="center"
         rowSpan={4}
         colSpan={8}
