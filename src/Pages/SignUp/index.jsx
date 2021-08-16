@@ -5,7 +5,7 @@ import * as yup from "yup";
 import api from "../../Services/api";
 
 import { Container, FormContent, Content, MainContent } from "./styles";
-import img from "../../assets/dizzy2.png";
+import img from "../../assets/habit.png";
 
 import {
   FormControl,
