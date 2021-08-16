@@ -18,10 +18,12 @@ import {
   ModalTitle,
 } from "../HabitCreateModal/style";
 import { useGroups } from "../../Provider/Groups/groupsCardList";
+import { useMyGroups } from "../../Provider/MyGroups";
 
 const GroupCreateModal = ({ onClose, isOpen }) => {
   const initialRef = useRef();
   const { addGroup } = useGroups();
+  const { getGroups } = useMyGroups();
 
   const [name, setName] = useState("");
   const [category, setCategory] = useState("Saúde");
@@ -36,6 +38,7 @@ const GroupCreateModal = ({ onClose, isOpen }) => {
       description: description,
     };
     addGroup(newGroup);
+    getGroups()
     onClose();
   };
 
@@ -147,7 +150,6 @@ const GroupCreateModal = ({ onClose, isOpen }) => {
               </ContainerCategory>
             </ModalCategory>
             <ModalTextArea>
-              div{" "}
               <div>
                 <label>Uma breve descrição sobre seu grupo:</label>
                 <textarea
@@ -162,7 +164,7 @@ const GroupCreateModal = ({ onClose, isOpen }) => {
         </ModalBody>
 
         <ModalFooter>
-          <Button onClick={handleSubmit}>Criar</Button>
+          <Button onClick={handleSubmit} color="blue">Criar</Button>
         </ModalFooter>
       </ModalContent>
     </Modal>

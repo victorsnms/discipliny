@@ -10,7 +10,7 @@ import {
   useDisclosure,
   useToast,
 } from "@chakra-ui/react";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import {
   ContainerCategory,
@@ -26,7 +26,7 @@ const HabitCreateModal = () => {
   const initialRef = useRef();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const toast = useToast()
-  const [isToast, setIsToast ] = useState(false)
+  const [isToast, setIsToast ] = useState("unset")
 
   const [title, setTitle] = useState("");
   const [category, setCategory] = useState("Sáude");
@@ -34,11 +34,10 @@ const HabitCreateModal = () => {
   const [frequency, setFrequency] = useState("Diário");
   const [categoryChose, setCategoryChose] = useState("healthy");
 
-  const handleSubmit = () => {
-    //importar, token e iduser, setHAnits
-
+  
+  function handleSubmit() {
     const userId = JSON.parse(localStorage.getItem("@Discipliny:userId"));
-
+    
     const newHabit = {
       title: title,
       category: category,
@@ -48,10 +47,17 @@ const HabitCreateModal = () => {
       how_much_achieved: 0,
       user: userId,
     };
+    if(title !== "") {
+      onClose();
+    }
+    setTitle("")
     createHabit(newHabit,setIsToast);
     getHabits();
-    onClose();
-    if (isToast){
+
+  };
+
+  useEffect(() => {
+    if (isToast === "success"){
       toast({
         title: "Hábitos",
         position: "top",
@@ -60,10 +66,20 @@ const HabitCreateModal = () => {
         duration: 3000,
         isClosable: true,
       });
-      setIsToast(false)
+    } else if (isToast === "error") {
+      toast({
+        title: "Hábito não foi criado!",
+        position: "top",
+        description: "Verifique todo os campos e tente novamente",
+        status: "error",
+        duration: 4000,
+        isClosable: true,
+      });
     }
-  };
+    setIsToast("unset")
+  },[isToast])
 
+  
   const handleClick = (e, value) => {
     setCategory(e.target.value);
     setCategoryChose(value);
