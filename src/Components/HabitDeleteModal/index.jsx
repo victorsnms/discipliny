@@ -9,6 +9,7 @@ import {
     ModalOverlay,
   } from "@chakra-ui/react";
   import {
+    ModalDelete,
     ModalTitle,
   } from "../HabitCreateModal/style";
   import { useHabits } from "../../Provider/Habits";
@@ -36,10 +37,14 @@ import {
             </ModalTitle>
             <ModalCloseButton />
             <ModalBody pb={6}>
-              <p>Tem certeza que deseja excluir este hábito: {habits.title}</p>
+              <ModalDelete>
+                <p>Tem certeza que deseja excluir este hábito:</p>
+                <h1>{habits.title}</h1>
+              </ModalDelete>
             </ModalBody>
             <ModalFooter>
-              <Button onClick={handleSubmit} color="red">Excluir</Button>
+              <Button onClick={onClose} color="blue">Cancelar</Button>
+              <Button onClick={handleSubmit} color="red" marginLeft="20px">Excluir</Button>
             </ModalFooter>
           </ModalContent>
         </Modal>

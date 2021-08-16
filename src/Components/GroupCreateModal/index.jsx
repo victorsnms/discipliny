@@ -147,7 +147,6 @@ const GroupCreateModal = ({ onClose, isOpen }) => {
               </ContainerCategory>
             </ModalCategory>
             <ModalTextArea>
-              div{" "}
               <div>
                 <label>Uma breve descrição sobre seu grupo:</label>
                 <textarea
@@ -162,7 +161,7 @@ const GroupCreateModal = ({ onClose, isOpen }) => {
         </ModalBody>
 
         <ModalFooter>
-          <Button onClick={handleSubmit}>Criar</Button>
+          <Button onClick={handleSubmit} color="blue">Criar</Button>
         </ModalFooter>
       </ModalContent>
     </Modal>

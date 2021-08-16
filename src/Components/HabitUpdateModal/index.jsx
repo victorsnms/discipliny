@@ -32,7 +32,6 @@ const HabitUpdateModal = ({ habit }) => {
   const [categoryChose, setCategoryChose] = useState("healthy");
 
   const handleSubmit = () => {
-    //importar, token e iduser, setHAnits
     const userId = JSON.parse(localStorage.getItem("@Discipliny:userId"));
     const updateHabiti = {
       title: title,
@@ -41,9 +40,7 @@ const HabitUpdateModal = ({ habit }) => {
       frequency: frequency,
       user: userId,
     };
-
     updateHabit(updateHabiti, habit.id);
-    onClose();
   };
 
   const handleClick = (e, value) => {

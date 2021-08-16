@@ -49,7 +49,7 @@ export default createGlobalStyle`
     // MODAL STYLES
 
     section.chakra-modal__content{
-        border-radius: 2rem;
+        border-radius: 1rem;
     }
 
     button.chakra-modal__close-btn{
