@@ -8,8 +8,9 @@ import {
   ModalHeader,
   ModalOverlay,
   useDisclosure,
+  useToast,
 } from "@chakra-ui/react";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useHabits } from "../../Provider/Habits";
 import {
   ContainerCategory,
@@ -24,6 +25,8 @@ const HabitUpdateModal = ({ habit }) => {
   const { updateHabit } = useHabits();
   const initialRef = useRef();
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const [isToast,setIsToast] = useState("unset");
+  const toast = useToast();
 
   const [title, setTitle] = useState(habit.title);
   const [category, setCategory] = useState(habit.category);
@@ -40,13 +43,37 @@ const HabitUpdateModal = ({ habit }) => {
       frequency: frequency,
       user: userId,
     };
-    updateHabit(updateHabiti, habit.id);
+    updateHabit(updateHabiti, habit.id,setIsToast);
   };
 
   const handleClick = (e, value) => {
     setCategory(e.target.value);
     setCategoryChose(value);
   };
+
+  useEffect(() => {
+    if (isToast === "success"){
+      toast({
+        title: "Hábitos",
+        position: "top",
+        description: "Atualizado com sucesso",
+        status: "success",
+        duration: 3000,
+        isClosable: true,
+      });
+      onClose()
+    } else if (isToast === "error") {
+      toast({
+        title: "Hábito não foi atualizado!",
+        position: "top",
+        description: "Verifique todo os campos e tente novamente",
+        status: "error",
+        duration: 2000,
+        isClosable: true,
+      });
+    }
+    setIsToast("unset")
+  },[isToast])
 
   return (
     <div>

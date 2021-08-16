@@ -8,6 +8,7 @@ import {
   ModalHeader,
   ModalOverlay,
   useDisclosure,
+  useToast,
 } from "@chakra-ui/react";
 import { useEffect, useRef, useState } from "react";
 
@@ -24,6 +25,8 @@ const HabitCreateModal = () => {
   const { getHabits, createHabit } = useHabits();
   const initialRef = useRef();
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const toast = useToast()
+  const [isToast, setIsToast ] = useState("unset")
 
   const [title, setTitle] = useState("");
   const [category, setCategory] = useState("Sáude");
@@ -32,9 +35,7 @@ const HabitCreateModal = () => {
   const [categoryChose, setCategoryChose] = useState("healthy");
 
   
-  const handleSubmit = () => {
-    //importar, token e iduser, setHAnits
-    
+  function handleSubmit() {
     const userId = JSON.parse(localStorage.getItem("@Discipliny:userId"));
     
     const newHabit = {
@@ -50,10 +51,35 @@ const HabitCreateModal = () => {
       onClose();
     }
     setTitle("")
-    createHabit(newHabit);
+    createHabit(newHabit,setIsToast);
     getHabits();
+
   };
 
+  useEffect(() => {
+    if (isToast === "success"){
+      toast({
+        title: "Hábitos",
+        position: "top",
+        description: "Criado Novo Hábito",
+        status: "success",
+        duration: 3000,
+        isClosable: true,
+      });
+    } else if (isToast === "error") {
+      toast({
+        title: "Hábito não foi criado!",
+        position: "top",
+        description: "Verifique todo os campos e tente novamente",
+        status: "error",
+        duration: 4000,
+        isClosable: true,
+      });
+    }
+    setIsToast("unset")
+  },[isToast])
+
+  
   const handleClick = (e, value) => {
     setCategory(e.target.value);
     setCategoryChose(value);
@@ -205,9 +231,8 @@ const HabitCreateModal = () => {
             </form>
           </ModalBody>
           <ModalFooter>
-            <Button onClick={handleSubmit} color="blue">
-              Criar
-            </Button>
+          <Button onClick={onClose} color="blue">Cancelar</Button>
+              <Button onClick={handleSubmit} color="red" marginLeft="20px">Criar</Button>
           </ModalFooter>
         </ModalContent>
       </Modal>

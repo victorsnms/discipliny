@@ -7,21 +7,48 @@ import {
     ModalFooter,
     ModalHeader,
     ModalOverlay,
+    useToast,
   } from "@chakra-ui/react";
   import {
     ModalDelete,
     ModalTitle,
   } from "../HabitCreateModal/style";
   import { useHabits } from "../../Provider/Habits";
+import { useEffect, useState } from "react";
   
   const HabitDeleteModal = ({ onClose, isOpen, habits}) => {
     const { deleteHabit } = useHabits();
-  
-  
+  const [isToast, setIsToast] = useState("unset");
+  const toast = useToast();
+
     const handleSubmit = () => {
-     deleteHabit(habits.id);
+     deleteHabit(habits.id,setIsToast);
      onClose()
     };
+
+    useEffect(() => {
+      if (isToast === "success"){
+        toast({
+          title: "Hábito Excluído",
+          description: "Exclusão efetuada com sucesso",
+          position: "top",
+          status: "warning",
+          duration: 3000,
+          isClosable: true,
+        });
+        onClose()
+      } else if (isToast === "error") {
+        toast({
+          title: "Exclusão Pendente",
+          position: "top",
+          description: "Não foi possível excluir",
+          status: "error",
+          duration: 2000,
+          isClosable: true,
+        });
+      }
+      setIsToast("unset")
+    },[isToast])
   
     return (
       <div>

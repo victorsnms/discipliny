@@ -44,7 +44,7 @@ export const GroupsCardsProvider = ({ children }) => {
     }
   };
 
-  const addGroup = (newGroup) => {
+  const addGroup = (newGroup, setIsToast) => {
     api
       .post("/groups/", newGroup, {
         headers: {
@@ -53,8 +53,10 @@ export const GroupsCardsProvider = ({ children }) => {
       })
       .then((response) => {
         setGroupsCardList([...groupsCardList, response.data]);
+        setIsToast("success")
       })
-      .catch((err) => console.log(err));
+      .catch((_) => setIsToast("error")
+      );
   };
 
   const getSpecificGroup = () => {
@@ -74,7 +76,7 @@ export const GroupsCardsProvider = ({ children }) => {
       });
   };
 
-  const updateGroup = (dados) => {
+  const updateGroup = (dados,setIsToast) => {
     const idGroup = JSON.parse(localStorage.getItem("@Discipliny:idGroup"));
     api
       .patch(`/groups/${idGroup}/`, dados, {
@@ -82,15 +84,10 @@ export const GroupsCardsProvider = ({ children }) => {
       })
       .then((_) => {
         getSpecificGroup();
+        setIsToast("success")
       })
       .catch((_) => {
-        toast({
-          title: "Grupo não foi atualizado!",
-          description: "Verifique todo os campos e tente novamente",
-          status: "error",
-          duration: 2000,
-          isClosable: true,
-        });
+        setIsToast("error")
       });
   };
 

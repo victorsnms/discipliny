@@ -28,12 +28,10 @@ const Groupsid = () => {
           <GroupGrid
             cardGoal={
               specificGroup !== undefined ? (
-                specificGroup.goals.map((card) => (
+                specificGroup.goals.map((goal) => (
                   <CardGoal
-                    key={card.id}
-                    name={card.title}
-                    dificuldade={card.difficulty}
-                    idGoal={card.id}
+                    key={goal.id}
+                    goal={goal}
                   />
                 ))
               ) : (

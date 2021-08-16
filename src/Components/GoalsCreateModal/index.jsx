@@ -8,8 +8,9 @@ import {
   ModalHeader,
   ModalOverlay,
   useDisclosure,
+  useToast,
 } from "@chakra-ui/react";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { FiPlusSquare } from "react-icons/fi";
 import { useGoals } from "../../Provider/Goals";
 import { ModalInput, ModalSelect, ModalTitle } from "../HabitCreateModal/style";
@@ -20,6 +21,8 @@ const GoalsCreateModal = ({ group }) => {
   const [title, setTitle] = useState("");
   const [difficulty, setDifficulty] = useState("Fácil");
   const { addGoal, getGoals } = useGoals();
+  const toast = useToast()
+  const [isToast, setIsToast ] = useState("unset")
 
   const handleSubmit = () => {
     const idGroup = JSON.parse(localStorage.getItem("@Discipliny:idGroup"));
@@ -29,10 +32,33 @@ const GoalsCreateModal = ({ group }) => {
       how_much_achieved: 0,
       group: idGroup,
     };
-    addGoal(newGoal);
+    addGoal(newGoal,setIsToast);
     getGoals();
-    onClose();
   };
+
+  useEffect(() => {
+    if (isToast === "success"){
+      toast({
+        title: "Metas",
+        position: "top",
+        description: "Nova meta criada com suceso",
+        status: "success",
+        duration: 3000,
+        isClosable: true,
+      });
+      onClose();
+    } else if (isToast === "error") {
+      toast({
+        title: "Metas",
+        position: "top",
+        description: "Verifique todo os campos e tente novamente",
+        status: "error",
+        duration: 4000,
+        isClosable: true,
+      });
+    }
+    setIsToast("unset")
+  },[isToast])
 
   return (
     <>
@@ -57,6 +83,7 @@ const GoalsCreateModal = ({ group }) => {
               />
               <ModalSelect>
                 <div>
+                <p>Dificuldade:</p>
                   <select
                     value={difficulty}
                     onChange={(e) => setDifficulty(e.target.value)}
@@ -72,7 +99,10 @@ const GoalsCreateModal = ({ group }) => {
             </form>
           </ModalBody>
           <ModalFooter>
-            <Button onClick={handleSubmit}>Criar</Button>
+          <Button onClick={onClose} color="red">
+              Cancelar
+            </Button>
+            <Button onClick={handleSubmit} color="blue" marginLeft="20px">Salvar</Button>
           </ModalFooter>
         </ModalContent>
       </Modal>

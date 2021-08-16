@@ -1,4 +1,5 @@
 import {
+  Button,
   Modal,
   ModalBody,
   ModalCloseButton,
@@ -7,20 +8,23 @@ import {
   ModalHeader,
   ModalOverlay,
   useDisclosure,
+  useToast,
 } from "@chakra-ui/react";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { FiEdit } from "react-icons/fi";
 import { useGoals } from "../../Provider/Goals";
 import { useGroups } from "../../Provider/Groups/groupsCardList";
 import { ModalInput, ModalSelect, ModalTitle } from "../HabitCreateModal/style";
 
-const GoalsUpdateModal = ({ idGoal }) => {
+const GoalsUpdateModal = ({ goal }) => {
   const initialRef = useRef();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { updateGoal } = useGoals();
   const { getSpecificGroup } = useGroups();
-  const [title, setTitle] = useState("Nome da meta");
-  const [difficulty, setDifficulty] = useState("Fácil");
+  const [title, setTitle] = useState(goal.title);
+  const [difficulty, setDifficulty] = useState(goal.difficulty);
+  const toast = useToast()
+  const [isToast, setIsToast ] = useState("unset")
 
   const handleSubmit = () => {
     const newGoal = {
@@ -28,10 +32,34 @@ const GoalsUpdateModal = ({ idGoal }) => {
       difficulty: difficulty,
       achieved: "false",
     };
-    updateGoal(newGoal, idGoal);
+    updateGoal(newGoal, goal,setIsToast);
     getSpecificGroup();
     onClose();
-  };
+  }
+
+  useEffect(() => {
+    if (isToast === "success"){
+      toast({
+        title: "Metas",
+        position: "top",
+        description: "Excluida com sucesso",
+        status: "success",
+        duration: 3000,
+        isClosable: true,
+      });
+      onClose();
+    } else if (isToast === "error") {
+      toast({
+        title: "Metas",
+        position: "top",
+        description: "Não foi possível excluir a meta tente novamente",
+        status: "error",
+        duration: 4000,
+        isClosable: true,
+      });
+    }
+    setIsToast("unset")
+  },[isToast])
 
   return (
     <>
@@ -57,6 +85,7 @@ const GoalsUpdateModal = ({ idGoal }) => {
               />
               <ModalSelect>
                 <div>
+                <p>Dificuldade:</p>
                   <select
                     value={difficulty}
                     onChange={(e) => setDifficulty(e.target.value)}
@@ -73,7 +102,12 @@ const GoalsUpdateModal = ({ idGoal }) => {
           </ModalBody>
 
           <ModalFooter>
-            <button onClick={handleSubmit}>Criar</button>
+          <Button onClick={onClose} color="red">
+              Cancelar
+            </Button>
+            <Button onClick={handleSubmit} color="blue" marginLeft="20px">
+              Salvar
+            </Button>
           </ModalFooter>
         </ModalContent>
       </Modal>
