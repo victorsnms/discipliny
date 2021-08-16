@@ -2,7 +2,7 @@ import Menu from "../../Components/MenuAside";
 import { Container } from "./groupsid.styles";
 import GroupGrid from "../../Components/GroupIdGrid";
 import MenuMobile from "../../Components/MenuMobile";
-import { Cardmembers } from "./groupsid.styles";
+import CardMember from "../../Components/CardMember";
 import ActivityCard from "../../Components/CardActivity/index";
 import CardGoal from "../../Components/CardGoal";
 import { useGroups } from "../../Provider/Groups/groupsCardList";
@@ -12,6 +12,7 @@ import { useLogged } from "../../Provider/Login";
 const Groupsid = () => {
   const { specificGroup } = useGroups();
   const { logged } = useLogged();
+  console.log(specificGroup);
 
   if (!logged) {
     return <Redirect to="/" />;
@@ -27,6 +28,7 @@ const Groupsid = () => {
               specificGroup !== undefined ? (
                 specificGroup.goals.map((card) => (
                   <CardGoal
+                    key={card.id}
                     name={card.title}
                     dificuldade={card.difficulty}
                     idGoal={card.id}
@@ -39,14 +41,14 @@ const Groupsid = () => {
             cardMember={
               specificGroup !== undefined
                 ? specificGroup.users_on_group.map((card) => (
-                    <Cardmembers member={card.users_on_group} />
+                    <CardMember key={card.id} member={card.username} />
                   ))
                 : null
             }
             CardActivity={
               specificGroup !== undefined ? (
                 specificGroup.activities.map((card) => (
-                  <ActivityCard name={card.title} />
+                  <ActivityCard key={card.id} name={card.title} />
                 ))
               ) : (
                 <p>Sem atividades, tudo tranquilo...</p>

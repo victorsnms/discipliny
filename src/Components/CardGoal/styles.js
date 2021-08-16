@@ -1,6 +1,12 @@
 import styled from "styled-components";
 
 export const GoalCard = styled.div`
+  @media (max-width: 700px) {
+    width: 100%;
+    min-width: 200px;
+    margin: 0;
+    margin-bottom: 3px;
+  }
   display: flex;
   flex-direction: column;
   align-items: center;

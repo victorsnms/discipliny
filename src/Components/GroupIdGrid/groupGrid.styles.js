@@ -2,6 +2,9 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   padding-top: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   max-height: 70%;
   width: 100%;
   overflow-y: auto;
@@ -42,13 +45,15 @@ export const GroupTitle = styled.h1`
   line-height: 90px;
 `;
 export const ContainerGoal = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   padding-top: 10px;
   max-height: 80%;
   width: 100%;
   overflow-y: auto;
   ::-webkit-scrollbar {
     width: 10px;
-    height: 300px;
   }
 
   /* Track */
@@ -60,5 +65,14 @@ export const ContainerGoal = styled.div`
   ::-webkit-scrollbar-thumb {
     background: var(--blue-light);
     border-radius: 5px;
+  }
+  .Grid {
+    border-radius: 25px;
+    margin-top: 45px;
+    width: 100%;
+    justify-self: center;
+    grid-template-rows: 8;
+    grid-template-columns: 8;
+    background-image: var(--blue-dark);
   }
 `;

@@ -1,6 +1,13 @@
 import styled from "styled-components";
 
 export const CardActivity = styled.div`
+  @media (max-width: 800px) {
+    width: 100%;
+    min-width: 200px;
+    font-size: 1rem;
+    margin: 0;
+    margin-bottom: 3px;
+  }
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -27,6 +34,9 @@ export const CardActivity = styled.div`
     width: 100%;
   }
   .activityName {
+    @media (max-width: 700px) {
+      font-size: 1rem;
+    }
     padding: 0;
     margin: 0;
     text-align: center;
