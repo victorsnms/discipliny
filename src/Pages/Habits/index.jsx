@@ -36,10 +36,10 @@ const Habits = () => {
             <HabitCreateModal />
             <div className="SubContainerCards">
               {filterInput === "Todos" || filterInput === ""
-                ? habit.map((item) => <CardHabit habits={item} />)
+                ? habit.map((item) => <CardHabit habits={item} key={item.id} />)
                 : habit
                     .filter((item) => item.category === filterInput)
-                    .map((item) => <CardHabit habits={item} />)}
+                    .map((item) => <CardHabit habits={item} key={item.id} />)}
             </div>
           </section>
           <MenuMobile />

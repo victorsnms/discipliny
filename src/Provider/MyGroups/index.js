@@ -49,15 +49,7 @@ export const MyGroupsCardsProvider = ({ children }) => {
           JSON.stringify(response.data.id)
         );
       })
-      .catch((_) => {
-        toast({
-          title: "Erro ao carregar grupo!",
-          description: "Erro ao carregar grupos",
-          status: "error",
-          duration: 2000,
-          isClosable: true,
-        });
-      });
+      .catch((_) => {});
   };
   useEffect(() => {
     getGroups();

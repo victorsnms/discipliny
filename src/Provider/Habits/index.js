@@ -85,14 +85,7 @@ export const HabitsProvider = ({ children }) => {
         );
       })
       .catch((error) => {
-        toast({
-          title: "Hábitos",
-          description: "Hábitos não foram carregados",
-          position: "top",
-          status: "error",
-          duration: 3000,
-          isClosable: true,
-        });
+        console.log(error);
       });
   };
 
