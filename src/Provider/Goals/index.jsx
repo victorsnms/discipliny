@@ -19,36 +19,37 @@ export const GoalsProvider = ({ children }) => {
       });
   }, []);
 
-  const addGoal = (newGoal,setIsToast) => {
+  const addGoal = (newGoal, setIsToast) => {
     api
       .post(`/goals/`, newGoal, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
         setGoals(response.data.results);
-        setIsToast("success")
+        setIsToast("success");
       })
-      .catch((_) => setIsToast("error")
-      );
+      .catch((_) => setIsToast("error"));
   };
 
-  const updateGoal = (dados, goalId,setIsToast) => {
+  const updateGoal = (dados, goalId, setIsToast = "N") => {
     api
       .patch(`/goals/${goalId}/`, dados, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((_) => {
         getGoals();
-        setIsToast("success")
-
+        if (setIsToast === "N") {
+          return null;
+        } else {
+          setIsToast("success");
+        }
       })
       .catch((_) => {
-        setIsToast("error")
+        setIsToast("error");
       });
   };
 
   const getGoals = () => {
-
     api
       .get("/goals/", {
         headers: { Authorization: `Bearer ${token}` },
@@ -68,10 +69,10 @@ export const GoalsProvider = ({ children }) => {
       })
       .then((_) => {
         getGoals();
-        setIsToast("success")
+        setIsToast("success");
       })
       .catch((error) => {
-        setIsToast("error")
+        setIsToast("error");
       });
   };
 

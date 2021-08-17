@@ -32,7 +32,7 @@ const GoalsUpdateModal = ({ goal }) => {
       difficulty: difficulty,
       achieved: "false",
     };
-    updateGoal(newGoal, goal, setIsToast);
+    updateGoal(newGoal, goal.id, setIsToast);
     onClose();
   };
 
@@ -41,7 +41,7 @@ const GoalsUpdateModal = ({ goal }) => {
       toast({
         title: "Metas",
         position: "top",
-        description: "Excluida com sucesso",
+        description: "Edição Concluída",
         status: "success",
         duration: 3000,
         isClosable: true,

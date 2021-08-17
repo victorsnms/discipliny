@@ -2,7 +2,7 @@ import { GroupCard } from "./styles";
 import { IoIosPeople } from "react-icons/io";
 import { Link } from "react-router-dom";
 import { useGroups } from "../../Provider/Groups/groupsCardList";
-import { FcOpenedFolder } from "react-icons/fc";
+import { BsEyeFill } from "react-icons/bs";
 
 const CardGroups = ({ name, membros, idGroup }) => {
   const { getSpecificGroup } = useGroups();
@@ -20,8 +20,7 @@ const CardGroups = ({ name, membros, idGroup }) => {
           {membros === undefined ? 0 : membros.length}
         </div>
         <div>
-          <FcOpenedFolder />
-          Ver+
+          <BsEyeFill />
         </div>
       </Link>
     </GroupCard>
