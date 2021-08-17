@@ -29,10 +29,7 @@ const Groupsid = () => {
             cardGoal={
               specificGroup !== undefined ? (
                 specificGroup.goals.map((goal) => (
-                  <CardGoal
-                    key={goal.id}
-                    goal={goal}
-                  />
+                  <CardGoal key={goal.id} goal={goal} />
                 ))
               ) : (
                 <p>Sem metas por aqui...</p>
@@ -48,7 +45,7 @@ const Groupsid = () => {
             CardActivity={
               specificGroup !== undefined ? (
                 specificGroup.activities.map((card) => (
-                  <ActivityCard key={card.id} name={card.title} />
+                  <ActivityCard key={card.id} activity={card} />
                 ))
               ) : (
                 <p>Sem atividades, tudo tranquilo...</p>

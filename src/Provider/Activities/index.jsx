@@ -9,7 +9,7 @@ export const ActivitiesProvider = ({ children }) => {
 
   useEffect(() => {
     if (token) {
-        api
+      api
         .get("/activities/", {
           headers: { Authorization: `Bearer ${token}` },
         })
@@ -23,12 +23,15 @@ export const ActivitiesProvider = ({ children }) => {
   }, []);
 
   const createActivity = (dados) => {
+    console.log(dados);
     api
       .post("/activities/", dados, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
+        console.log("entrandinho");
         setActivities([...activities, response.data]);
+        console.log(response.data);
       })
       .catch((error) => {
         console.log(error);
@@ -54,7 +57,8 @@ export const ActivitiesProvider = ({ children }) => {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
-        setActivities(response.data)})
+        setActivities(response.data);
+      })
       .catch((error) => {
         console.log(error);
       });
@@ -77,7 +81,7 @@ export const ActivitiesProvider = ({ children }) => {
   return (
     <ActivitiesContext.Provider
       value={{
-    activities,
+        activities,
         setActivities,
         createActivity,
         updateActivity,
@@ -91,4 +95,3 @@ export const ActivitiesProvider = ({ children }) => {
 };
 
 export const useActivities = () => useContext(ActivitiesContext);
-

@@ -1,5 +1,6 @@
 import { Grid, GridItem } from "@chakra-ui/layout";
 import GoalsCreateModal from "../GoalsCreateModal";
+import ActivitiesCreateModal from "../ActivitiesCreateModal";
 
 import {
   Container,
@@ -60,7 +61,10 @@ const GroupGrid = ({ cardMember, CardActivity, cardGoal, namegroup }) => {
         colSpan={8}
         bg="var(--blue-dark)"
       >
-        <Title>activities</Title>
+        <Title>
+          activities
+          <ActivitiesCreateModal />
+        </Title>
         <Container>{CardActivity}</Container>
       </GridItem>
     </Grid>

@@ -53,18 +53,24 @@ export const GroupsCardsProvider = ({ children }) => {
       })
       .then((response) => {
         setGroupsCardList([...groupsCardList, response.data]);
-        setIsToast("success")
+        setIsToast("success");
       })
-      .catch((_) => setIsToast("error")
-      );
+      .catch((_) => setIsToast("error"));
   };
 
   const getSpecificGroup = () => {
     const idGroup = JSON.parse(localStorage.getItem("@Discipliny:idGroup"));
+    console.log(idGroup);
 
     api
       .get(`groups/${idGroup}/`)
-      .then((response) => setSpecificGroup(response.data))
+      .then((response) => {
+        localStorage.setItem(
+          "@Discipliny:groupId",
+          JSON.stringify(response.data.id)
+        );
+        setSpecificGroup(response.data);
+      })
       .catch((error) => {
         toast({
           title: "Erro",
@@ -76,7 +82,7 @@ export const GroupsCardsProvider = ({ children }) => {
       });
   };
 
-  const updateGroup = (dados,setIsToast) => {
+  const updateGroup = (dados, setIsToast) => {
     const idGroup = JSON.parse(localStorage.getItem("@Discipliny:idGroup"));
     api
       .patch(`/groups/${idGroup}/`, dados, {
@@ -84,10 +90,10 @@ export const GroupsCardsProvider = ({ children }) => {
       })
       .then((_) => {
         getSpecificGroup();
-        setIsToast("success")
+        setIsToast("success");
       })
       .catch((_) => {
-        setIsToast("error")
+        setIsToast("error");
       });
   };
 

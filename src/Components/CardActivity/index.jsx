@@ -1,11 +1,13 @@
 import { CardActivity } from "./styles";
-
-const ActivityCard = ({ name }) => {
+import ActivitiesDeleteModal from "../ActivitiesDeleteModal";
+import ActivitiesUpdateModal from "../ActivitiesUpdateModal";
+const ActivityCard = ({ activity }) => {
   return (
     <CardActivity>
       <div className="flex-row">
-        <h1 className="activityName">{name}Activity Name</h1>
-
+        <h1 className="activityName">{activity.title}</h1>
+        <ActivitiesDeleteModal activity={activity} />
+        <ActivitiesUpdateModal activity={activity} />
         <div className="RightLabel">
           <p>Date</p>
         </div>

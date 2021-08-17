@@ -8,10 +8,12 @@ export const Container = styled.div`
   color: var(--white);
   background-image: var(--orange-gradient-background);
   animation: appearing 1s ease-in-out backwards;
+
   .cardContainer {
     @media (max-width: 740px) {
       width: 100vw;
       flex-direction: column;
+      min-height: 100vh;
     }
     display: flex;
     height: 100%;

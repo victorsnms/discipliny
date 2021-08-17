@@ -44,10 +44,10 @@ export const MyGroupsCardsProvider = ({ children }) => {
       })
       .then((response) => {
         setMyGroupsList(response.data);
-        localStorage.setItem(
-          "@Discipliny:groupId",
-          JSON.stringify(response.data.id)
-        );
+        // localStorage.setItem(
+        //   "@Discipliny:groupId",
+        //   JSON.stringify(response.data.id)
+        // );
       })
       .catch((err) => {
         console.log(err);

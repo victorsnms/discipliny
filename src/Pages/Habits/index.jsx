@@ -27,7 +27,7 @@ const Habits = () => {
             <HabitCreateModal />
             <div className="SubContainerCards">
               {habit.map((item) => (
-                <CardHabit habits={item} />
+                <CardHabit key={item.id} habits={item} />
               ))}
             </div>
           </section>

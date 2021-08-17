@@ -1,37 +1,42 @@
 import {
   Button,
-    Modal,
-    ModalBody,
-    ModalCloseButton,
-    ModalContent,
-    ModalFooter,
-    ModalHeader,
-    ModalOverlay,
-    useDisclosure,
-  } from "@chakra-ui/react";
-  import { useRef, useState } from "react";
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
+  ModalOverlay,
+  useDisclosure,
+} from "@chakra-ui/react";
+import { useRef, useState } from "react";
 import { useActivities } from "../../Provider/Activities";
-  import api from "../../Services/api"
+import api from "../../Services/api";
 import { ModalInput, ModalTitle } from "../HabitCreateModal/style";
-  
-  const ActivitiesUpdateModal = ({group}) => {
-    const initialRef = useRef();
-    const { isOpen, onOpen, onClose } = useDisclosure();
-   const {updateActivity} = useActivities()
-    const [title, setTitle] = useState("Nome da atividade");
-    const [date, setDate] = useState("");
-  
-    const handleSubmit = () => {
-      const newActivity = {
-        title: title,
-        realization_time: date,
-        user: group.group,
-      };
-  
-      updateActivity(newActivity, group.id)
+import { FiEdit } from "react-icons/fi";
+
+const ActivitiesUpdateModal = ({ activity }) => {
+  const initialRef = useRef();
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const { updateActivity } = useActivities();
+  const [title, setTitle] = useState(activity.title);
+  const [date, setDate] = useState(activity.realization_time);
+
+  const handleSubmit = () => {
+    const newActivity = {
+      title: title,
+      realization_time: date,
+      // user: activity.id,
     };
-  
-    return (
+
+    updateActivity(newActivity, activity.id);
+  };
+
+  return (
+    <>
+      <button onClick={onOpen}>
+        <FiEdit />
+      </button>
       <Modal initialFocusRef={initialRef} isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
@@ -51,9 +56,13 @@ import { ModalInput, ModalTitle } from "../HabitCreateModal/style";
               <div>
                 <p>Nova data para realizar:</p>
                 <div>
-                  <input type="date" value={date} onChange={e => setDate(e.target.value)} />
+                  <input
+                    type="datetime-local"
+                    value={date}
+                    onChange={(e) => setDate(e.target.value)}
+                  />
                 </div>
-              </div>   
+              </div>
             </form>
           </ModalBody>
           <ModalFooter>
@@ -61,7 +70,8 @@ import { ModalInput, ModalTitle } from "../HabitCreateModal/style";
           </ModalFooter>
         </ModalContent>
       </Modal>
-    );
-  };
-  
-  export default ActivitiesUpdateModal;
+    </>
+  );
+};
+
+export default ActivitiesUpdateModal;
