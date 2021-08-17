@@ -22,15 +22,7 @@ export const GroupsCardsProvider = ({ children }) => {
         setPrev(res.data.previous);
         setNext(res.data.next);
       })
-      .catch((_) =>
-        toast({
-          title: "falha ao carregar grupos",
-          description: "Não possível encontrar nenhum grupo",
-          status: "error",
-          duration: 3000,
-          isClosable: true,
-        })
-      );
+      .catch((error) => console.log(error));
   }, [url]);
 
   const prevPage = () => {
