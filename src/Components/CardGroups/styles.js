@@ -4,13 +4,13 @@ export const GroupCard = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  width: 456px;
-
+  width: 426px;
+  height: 100px;
   justify-content: space-between;
   background-image: var(--background-cards);
   border-radius: 100px;
   font-family: Sansita;
-  margin-bottom: 40px;
+  margin-left: 15px;
   color: var(--white);
   box-shadow: 5px 5px 10px 3px #00000054;
   div {
@@ -41,6 +41,5 @@ export const GroupCard = styled.div`
   }
 
   @media (min-width: 768px) {
-    margin-left: 40px;
   }
 `;

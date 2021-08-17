@@ -3,9 +3,8 @@ import styled from "styled-components";
 export const HabitCard = styled.div`
   display: flex;
   flex-direction: row;
-  width: 90%;
-  min-width: 300px;
-  min-height: 155px;
+  width: 300px;
+  height: 155px;
   justify-content: center;
   background-image: var(--background-cards);
   border-radius: 50px;
@@ -13,6 +12,7 @@ export const HabitCard = styled.div`
   color: var(--white);
   box-shadow: 5px 5px 10px 3px #00000054;
   margin-bottom: 30px;
+  margin-right: 10px;
 
   .Check {
     display: grid;

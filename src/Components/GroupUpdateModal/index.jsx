@@ -21,11 +21,11 @@ import {
 import { FiEdit } from "react-icons/fi";
 import { useGroups } from "../../Provider/Groups/groupsCardList";
 
-const GroupUpdateModal =({ group }) => {
+const GroupUpdateModal = ({ group }) => {
   //"receber como prop o grupa tal"
   const initialRef = useRef();
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const { updateGroup } = useGroups()
+  const { updateGroup } = useGroups();
 
   const [name, setName] = useState(group.name);
   const [category, setCategory] = useState("Saúde");
@@ -40,7 +40,7 @@ const GroupUpdateModal =({ group }) => {
       category: category,
       description: description,
     };
-   updateGroup(updateNewGroup, setIsToast)
+    updateGroup(updateNewGroup, setIsToast);
   };
 
   const handleClick = (e, value) => {
@@ -73,14 +73,13 @@ const GroupUpdateModal =({ group }) => {
   }, [isToast]);
   return (
     <>
-    <Button
+      <Button
         _hover={{ color: "cyan.50", bg: "cyan.800" }}
         bg="teal.700"
         color="#c5d5da"
         onClick={onOpen}
-      >
-        <FiEdit />
-      </Button>
+        text={"Novo grupo"}
+      ></Button>
       <Modal initialFocusRef={initialRef} isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
