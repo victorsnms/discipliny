@@ -4,7 +4,7 @@ import api from "../../Services/api";
 const ActivitiesContext = createContext();
 
 export const ActivitiesProvider = ({ children }) => {
-  const [activities, setActivities] = useState();
+  const [activities, setActivities] = useState([]);
   const token = JSON.parse(localStorage.getItem("@Discipliny:accessToken"));
 
   useEffect(() => {
@@ -28,11 +28,11 @@ export const ActivitiesProvider = ({ children }) => {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
-        setActivities([...activities, response.data]);
+        // setActivities([...activities, response.data]);
         setIsToast("success");
       })
       .catch((error) => {
-        // setIsToast("error");
+        setIsToast("error");
       });
   };
 

@@ -10,7 +10,7 @@ import {
   useToast,
   useDisclosure,
 } from "@chakra-ui/react";
-import { ModalTitle } from "../HabitCreateModal/style";
+import { ModalDelete, ModalTitle } from "../HabitCreateModal/style";
 import { useActivities } from "../../Provider/Activities";
 import { useEffect, useState } from "react";
 import { FaTrash } from "react-icons/fa";
@@ -63,7 +63,10 @@ const ActivitiesDeleteModal = ({  activity }) => {
           </ModalTitle>
           <ModalCloseButton />
           <ModalBody pb={6}>
-            <p>Tem certeza que deseja excluir este hábito: {activity.title}</p>
+            <ModalDelete>
+              <p>Tem certeza que deseja excluir este hábito?</p>
+              <h1>{activity.title}</h1>
+            </ModalDelete>
           </ModalBody>
           <ModalFooter>
             <Button onClick={onClose} color="blue">

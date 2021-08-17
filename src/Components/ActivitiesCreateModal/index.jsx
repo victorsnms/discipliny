@@ -12,7 +12,7 @@ import {
 } from "@chakra-ui/react";
 import { useEffect, useRef, useState } from "react";
 import { useActivities } from "../../Provider/Activities";
-import { ModalInput, ModalTitle } from "../HabitCreateModal/style";
+import { ModalDate, ModalInput, ModalTitle } from "../HabitCreateModal/style";
 import { FiPlusSquare } from "react-icons/fi";
 
 const ActivitiesCreateModal = () => {
@@ -34,12 +34,11 @@ const ActivitiesCreateModal = () => {
     };
 
     createActivity(newActivity, setIsToast);
-    setTitle('');
-    setDate('')
+ 
   };
 
   useEffect(() => {
-    setIsToast("success");
+    
     if (isToast === "success") {
       toast({
         title: "Atividades",
@@ -50,6 +49,17 @@ const ActivitiesCreateModal = () => {
         isClosable: true,
       });
       onClose()
+      setTitle('');
+      setDate('')
+    } else if (isToast === "error") {
+      toast({
+        title: "Atividades",
+        position: "top",
+        description: "Verifique todo os campos e tente novamente",
+        status: "error",
+        duration: 4000,
+        isClosable: true,
+      });
     }
     setIsToast("unset");
   }, [isToast]);
@@ -75,7 +85,7 @@ const ActivitiesCreateModal = () => {
                 onChange={(e) => setTitle(e.target.value)}
                 required
               />
-              <div>
+              <ModalDate>
                 <p>Ate quando você pretende realizá-la:</p>
                 <div>
                   <input
@@ -84,7 +94,7 @@ const ActivitiesCreateModal = () => {
                     onChange={(e) => setDate(e.target.value)}
                   />
                 </div>
-              </div>
+              </ModalDate>
             </form>
           </ModalBody>
           <ModalFooter>

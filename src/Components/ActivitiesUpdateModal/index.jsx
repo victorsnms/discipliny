@@ -12,7 +12,7 @@ import {
   } from "@chakra-ui/react";
   import { useEffect, useRef, useState } from "react";
 import { useActivities } from "../../Provider/Activities";
-import { ModalInput, ModalTitle } from "../HabitCreateModal/style";
+import { ModalDate, ModalInput, ModalTitle } from "../HabitCreateModal/style";
 import { FiEdit } from "react-icons/fi";
 
   
@@ -80,7 +80,7 @@ import { FiEdit } from "react-icons/fi";
                 onChange={(e) => setTitle(e.target.value)}
                 required
               />
-              <div>
+              <ModalDate>
                 <p>Nova data para realizar:</p>
                 <div>
                   <input
@@ -89,7 +89,7 @@ import { FiEdit } from "react-icons/fi";
                     onChange={(e) => setDate(e.target.value)}
                   />
                 </div>
-              </div>
+              </ModalDate>
             </form>
           </ModalBody>
           <ModalFooter>
