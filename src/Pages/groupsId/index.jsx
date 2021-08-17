@@ -16,10 +16,11 @@ const Groupsid = () => {
   const { specificGroup, getSpecificGroup } = useGroups();
   const { goals } = useGoals();
   const { logged } = useLogged();
-  const { activities } = useActivities();
+  const { activities, getActivity } = useActivities();
 
   useEffect(() => {
     getSpecificGroup();
+    getActivity()
   }, [goals,activities]);
 
   if (!logged) {

@@ -13,13 +13,15 @@ import {
   import { useEffect, useRef, useState } from "react";
 import { useActivities } from "../../Provider/Activities";
 import { ModalInput, ModalTitle } from "../HabitCreateModal/style";
+import { FiEdit } from "react-icons/fi";
+
   
-  const ActivitiesUpdateModal = ({group}) => {
+  const ActivitiesUpdateModal = ({activity}) => {
     const initialRef = useRef();
     const { isOpen, onOpen, onClose } = useDisclosure();
    const {updateActivity} = useActivities()
-    const [title, setTitle] = useState("Nome da atividade");
-    const [date, setDate] = useState("");
+    const [title, setTitle] = useState(activity.title);
+    const [date, setDate] = useState(activity.realization_time);
     const [isToast,setIsToast] = useState("unset");
   const toast = useToast();
   
@@ -27,9 +29,9 @@ import { ModalInput, ModalTitle } from "../HabitCreateModal/style";
       const newActivity = {
         title: title,
         realization_time: date,
-        user: group.group,
+        
       }
-      updateActivity(newActivity, group.id, setIsToast)
+      updateActivity(newActivity, activity.id, setIsToast)
     };
 
     useEffect(() => {
@@ -57,6 +59,11 @@ import { ModalInput, ModalTitle } from "../HabitCreateModal/style";
     },[isToast])
   
     return (
+
+      <>
+      <button onClick={onOpen}>
+        <FiEdit />
+      </button>
       <Modal initialFocusRef={initialRef} isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
@@ -76,9 +83,13 @@ import { ModalInput, ModalTitle } from "../HabitCreateModal/style";
               <div>
                 <p>Nova data para realizar:</p>
                 <div>
-                  <input type="date" value={date} onChange={e => setDate(e.target.value)} />
+                  <input
+                    type="datetime-local"
+                    value={date}
+                    onChange={(e) => setDate(e.target.value)}
+                  />
                 </div>
-              </div>   
+              </div>
             </form>
           </ModalBody>
           <ModalFooter>
@@ -92,7 +103,8 @@ import { ModalInput, ModalTitle } from "../HabitCreateModal/style";
           </ModalFooter>
         </ModalContent>
       </Modal>
-    );
-  };
-  
-  export default ActivitiesUpdateModal;
+    </>
+  );
+};
+
+export default ActivitiesUpdateModal;

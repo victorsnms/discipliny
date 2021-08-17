@@ -25,8 +25,8 @@ const HabitCreateModal = () => {
   const { getHabits, createHabit } = useHabits();
   const initialRef = useRef();
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const toast = useToast()
-  const [isToast, setIsToast ] = useState("unset")
+  const toast = useToast();
+  const [isToast, setIsToast] = useState("unset");
 
   const [title, setTitle] = useState("");
   const [category, setCategory] = useState("Sáude");
@@ -34,10 +34,9 @@ const HabitCreateModal = () => {
   const [frequency, setFrequency] = useState("Diário");
   const [categoryChose, setCategoryChose] = useState("healthy");
 
-  
   function handleSubmit() {
     const userId = JSON.parse(localStorage.getItem("@Discipliny:userId"));
-    
+
     const newHabit = {
       title: title,
       category: category,
@@ -47,17 +46,16 @@ const HabitCreateModal = () => {
       how_much_achieved: 0,
       user: userId,
     };
-    if(title !== "") {
+    if (title !== "") {
       onClose();
     }
-    setTitle("")
-    createHabit(newHabit,setIsToast);
-    getHabits();
-
-  };
+    setTitle("");
+    createHabit(newHabit, setIsToast);
+  }
 
   useEffect(() => {
-    if (isToast === "success"){
+    if (isToast === "success") {
+      getHabits();
       toast({
         title: "Hábitos",
         position: "top",
@@ -76,10 +74,9 @@ const HabitCreateModal = () => {
         isClosable: true,
       });
     }
-    setIsToast("unset")
-  },[isToast])
+    setIsToast("unset");
+  }, [isToast]);
 
-  
   const handleClick = (e, value) => {
     setCategory(e.target.value);
     setCategoryChose(value);
@@ -231,8 +228,12 @@ const HabitCreateModal = () => {
             </form>
           </ModalBody>
           <ModalFooter>
-          <Button onClick={onClose} color="blue">Cancelar</Button>
-              <Button onClick={handleSubmit} color="red" marginLeft="20px">Criar</Button>
+            <Button onClick={onClose} color="blue">
+              Cancelar
+            </Button>
+            <Button onClick={handleSubmit} color="red" marginLeft="20px">
+              Criar
+            </Button>
           </ModalFooter>
         </ModalContent>
       </Modal>

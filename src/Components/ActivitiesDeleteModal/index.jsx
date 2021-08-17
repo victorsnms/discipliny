@@ -8,14 +8,17 @@ import {
   ModalHeader,
   ModalOverlay,
   useToast,
+  useDisclosure,
 } from "@chakra-ui/react";
 import { ModalTitle } from "../HabitCreateModal/style";
 import { useActivities } from "../../Provider/Activities";
 import { useEffect, useState } from "react";
+import { FaTrash } from "react-icons/fa";
 
-const ActivitiesDeleteModal = ({ onClose, isOpen, activity }) => {
+const ActivitiesDeleteModal = ({  activity }) => {
   const { deleteActivity } = useActivities();
   const [isToast, setIsToast] = useState("unset");
+  const { isOpen, onOpen, onClose } = useDisclosure();
   const toast = useToast();
 
   const handleSubmit = () => {
@@ -49,6 +52,9 @@ const ActivitiesDeleteModal = ({ onClose, isOpen, activity }) => {
 
   return (
     <div>
+       <button onClick={onOpen}>
+        <FaTrash />
+      </button>
       <Modal isOpen={isOpen} onClose={onClose} className="style-modal">
         <ModalOverlay />
         <ModalContent>

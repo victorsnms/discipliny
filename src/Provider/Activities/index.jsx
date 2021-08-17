@@ -32,7 +32,7 @@ export const ActivitiesProvider = ({ children }) => {
         setIsToast("success");
       })
       .catch((error) => {
-        setIsToast("error");
+        // setIsToast("error");
       });
   };
 

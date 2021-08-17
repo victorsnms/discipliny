@@ -22,15 +22,7 @@ export const GroupsCardsProvider = ({ children }) => {
         setPrev(res.data.previous);
         setNext(res.data.next);
       })
-      .catch((_) =>
-        toast({
-          title: "falha ao carregar grupos",
-          description: "Não possível encontrar nenhum grupo",
-          status: "error",
-          duration: 3000,
-          isClosable: true,
-        })
-      );
+      .catch((error) => console.log(error));
   }, [url]);
 
   const prevPage = () => {
@@ -45,6 +37,7 @@ export const GroupsCardsProvider = ({ children }) => {
   };
 
   const addGroup = (newGroup, setIsToast) => {
+    console.log(newGroup)
     api
       .post("/groups/", newGroup, {
         headers: {
@@ -60,10 +53,17 @@ export const GroupsCardsProvider = ({ children }) => {
 
   const getSpecificGroup = () => {
     const idGroup = JSON.parse(localStorage.getItem("@Discipliny:idGroup"));
+    console.log(idGroup);
 
     api
       .get(`groups/${idGroup}/`)
-      .then((response) => setSpecificGroup(response.data))
+      .then((response) => {
+        localStorage.setItem(
+          "@Discipliny:groupId",
+          JSON.stringify(response.data.id)
+        );
+        setSpecificGroup(response.data);
+      })
       .catch((error) => {
         toast({
           title: "Erro",

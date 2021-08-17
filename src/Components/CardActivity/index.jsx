@@ -1,4 +1,6 @@
 import { CardActivity } from "./styles";
+import ActivitiesDeleteModal from "../ActivitiesDeleteModal";
+import ActivitiesUpdateModal from "../ActivitiesUpdateModal";
 
 const ActivityCard = ({ activity }) => {
 
@@ -10,11 +12,13 @@ const ActivityCard = ({ activity }) => {
   return (
     <CardActivity>
       <div className="flex-row">
-        <h1 className="activityName">{activity.title}Activity Name</h1>
+        <h1 className="activityName">{activity.title}</h1>
 
         <div>
           <p>{editDate}</p>
         </div>
+        <ActivitiesDeleteModal activity={activity} />
+        <ActivitiesUpdateModal activity={activity} />
       </div>
     </CardActivity>
   );

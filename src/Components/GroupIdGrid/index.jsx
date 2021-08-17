@@ -10,6 +10,7 @@ import {
   GroupTitle,
   ContainerGoal,
 } from "./groupGrid.styles";
+import ActivitiesCreateModal from "../ActivitiesCreateModal";
 
 const GroupGrid = ({
   cardMember,
@@ -117,7 +118,10 @@ const GroupGrid = ({
         colSpan={8}
         bg="var(--blue-dark)"
       >
-        <Title>activities</Title>
+        <Title>
+          activities
+          <ActivitiesCreateModal />
+        </Title>
         <Container>{CardActivity}</Container>
       </GridItem>
     </Grid>

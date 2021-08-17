@@ -1,21 +1,22 @@
 import { GoalCard } from "./styles";
 import { Progress } from "@chakra-ui/react";
-import { useState } from "react";
 import GoalsUpdateModal from "../GoalsUpdateModal";
 import GoalDeleteModal from "../GoalsDeleteModal";
+import { useGoals } from "../../Provider/Goals";
 
 const CardGoal = ({ goal }) => {
-  const [count, setCount] = useState(0);
+  const { updateGoal } = useGoals();
 
   const handleClick = () => {
-    setCount(count + 4.5);
+    const progressNumber = goal.how_much_achieved + 5;
+    updateGoal({ how_much_achieved: progressNumber }, goal.id);
   };
 
   return (
-    <GoalCard onClick={handleClick}>
-      <div className="Progress">
+    <GoalCard>
+      <div onClick={handleClick} className="Progress">
         <Progress
-          value={count}
+          value={goal.how_much_achieved}
           height="10px"
           width="80%"
           colorScheme="orange"
