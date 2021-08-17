@@ -7,11 +7,15 @@ import { useLogged } from "../../Provider/Login";
 import { useGroups } from "../../Provider/Groups/groupsCardList";
 import { FaArrowLeft } from "react-icons/fa";
 import { FaArrowRight } from "react-icons/fa";
+import { useState } from "react";
+import FilterGroupsName from "../../Components/FilterGroupsName";
 
 const Groups = () => {
   const { logged } = useLogged();
 
   const { groupsCardList, prevPage, nextPage } = useGroups();
+
+  const [filterInput, setFilterInput] = useState("");
 
   if (!logged) {
     return <Redirect to="/" />;
@@ -25,6 +29,12 @@ const Groups = () => {
           <section>
             <header>
               <h1>Grupos</h1>
+              <div className="Filters">
+                <FilterGroupsName
+                  filterInput={filterInput}
+                  setFilterInput={setFilterInput}
+                />
+              </div>
             </header>
             <div className="buttonPages">
               <button onClick={prevPage}>
@@ -35,13 +45,27 @@ const Groups = () => {
               </button>
             </div>
             <div className="SubContainerCards">
-              {groupsCardList.map((group) => (
-                <CardGroups
-                  name={group.name}
-                  membros={group.users_on_group}
-                  idGroup={group.id}
-                />
-              ))}
+              {filterInput === ""
+                ? groupsCardList.map((group) => (
+                    <CardGroups
+                      name={group.name}
+                      membros={group.users_on_group}
+                      idGroup={group.id}
+                    />
+                  ))
+                : groupsCardList
+                    .filter((item) =>
+                      item.name
+                        .toLowerCase()
+                        .includes(filterInput.toLowerCase())
+                    )
+                    .map((group) => (
+                      <CardGroups
+                        name={group.name}
+                        membros={group.users_on_group}
+                        idGroup={group.id}
+                      />
+                    ))}
             </div>
           </section>
           <MenuMobile />

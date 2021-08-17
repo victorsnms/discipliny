@@ -6,10 +6,13 @@ import Menu from "../../Components/MenuAside/index";
 import { useHabits } from "../../Provider/Habits";
 import HabitCreateModal from "../../Components/HabitCreateModal";
 import { useLogged } from "../../Provider/Login";
+import FilterHabitsCategory from "../../Components/FilterHabitsCategory";
+import { useState } from "react";
 
 const Habits = () => {
   const { logged } = useLogged();
   const { habit } = useHabits();
+  const [filterInput, setFilterInput] = useState("");
 
   if (!logged) {
     return <Redirect to="/" />;
@@ -23,12 +26,20 @@ const Habits = () => {
           <section>
             <header>
               <h1>Meus Hábitos</h1>
+              <div className="Filters">
+                <FilterHabitsCategory
+                  filterInput={filterInput}
+                  setFilterInput={setFilterInput}
+                />
+              </div>
             </header>
             <HabitCreateModal />
             <div className="SubContainerCards">
-              {habit.map((item) => (
-                <CardHabit habits={item} />
-              ))}
+              {filterInput === "Todos" || filterInput === ""
+                ? habit.map((item) => <CardHabit habits={item} />)
+                : habit
+                    .filter((item) => item.category === filterInput)
+                    .map((item) => <CardHabit habits={item} />)}
             </div>
           </section>
           <MenuMobile />
