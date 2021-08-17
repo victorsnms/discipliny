@@ -10,6 +10,7 @@ const CardGoal = ({ goal }) => {
   const handleClick = () => {
     setCount(count + 4.5);
   };
+
   return (
     <GoalCard onClick={handleClick}>
       <div className="Progress">

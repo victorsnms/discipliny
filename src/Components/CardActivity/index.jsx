@@ -1,13 +1,19 @@
 import { CardActivity } from "./styles";
 
-const ActivityCard = ({ name }) => {
+const ActivityCard = ({ activity }) => {
+
+  const editDate = new Date(activity.realization_time).toLocaleDateString("pt-BR", {
+    day: "2-digit",
+    month: "short",
+    year: "numeric"
+  })
   return (
     <CardActivity>
       <div className="flex-row">
-        <h1 className="activityName">{name}Activity Name</h1>
+        <h1 className="activityName">{activity.title}Activity Name</h1>
 
-        <div className="RightLabel">
-          <p>Date</p>
+        <div>
+          <p>{editDate}</p>
         </div>
       </div>
     </CardActivity>

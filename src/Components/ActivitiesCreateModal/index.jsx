@@ -24,14 +24,13 @@ import { ModalInput, ModalTitle } from "../HabitCreateModal/style";
   const [isToast, setIsToast ] = useState("unset")
   
     const handleSubmit = () => {
-      //importar, token e iduser,, setHAnits
       const newActivity = {
         title: title,
         realization_time: date,
         user: "groupId",
       };
   
-      createActivity(newActivity)
+      createActivity(newActivity,setIsToast)
     };
 
     useEffect(() => {
@@ -44,6 +43,7 @@ import { ModalInput, ModalTitle } from "../HabitCreateModal/style";
           duration: 3000,
           isClosable: true,
         });
+        onClose()
       } else if (isToast === "error") {
         toast({
           title:"Atividades",

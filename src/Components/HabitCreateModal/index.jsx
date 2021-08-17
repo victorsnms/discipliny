@@ -61,16 +61,16 @@ const HabitCreateModal = () => {
       toast({
         title: "Hábitos",
         position: "top",
-        description: "Criado Novo Hábito",
+        description: "Novo hábito criado com sucesso",
         status: "success",
         duration: 3000,
         isClosable: true,
       });
     } else if (isToast === "error") {
       toast({
-        title: "Hábito não foi criado!",
+        title: "Atividade não foi criada!",
         position: "top",
-        description: "Verifique todo os campos e tente novamente",
+        description: "Verifique todos os campos e tente novamente",
         status: "error",
         duration: 4000,
         isClosable: true,

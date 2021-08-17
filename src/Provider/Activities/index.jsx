@@ -9,7 +9,7 @@ export const ActivitiesProvider = ({ children }) => {
 
   useEffect(() => {
     if (token) {
-        api
+      api
         .get("/activities/", {
           headers: { Authorization: `Bearer ${token}` },
         })
@@ -22,29 +22,31 @@ export const ActivitiesProvider = ({ children }) => {
     }
   }, []);
 
-  const createActivity = (dados) => {
+  const createActivity = (dados, setIsToast) => {
     api
       .post("/activities/", dados, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
         setActivities([...activities, response.data]);
+        setIsToast("success");
       })
       .catch((error) => {
-        console.log(error);
+        setIsToast("error");
       });
   };
 
-  const updateActivity = (dados, activitieId) => {
+  const updateActivity = (dados, activitieId, setIsToast) => {
     api
       .patch(`/activities/${activitieId}/`, dados, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((_) => {
         getActivity();
+        setIsToast("success");
       })
-      .catch((error) => {
-        console.log(error);
+      .catch((_) => {
+        setIsToast("error");
       });
   };
 
@@ -54,30 +56,31 @@ export const ActivitiesProvider = ({ children }) => {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
-        setActivities(response.data)})
+        setActivities(response.data);
+      })
       .catch((error) => {
         console.log(error);
       });
   };
 
-  const deleteActivity = (idactivitie) => {
+  const deleteActivity = (idactivitie, setIsToast) => {
     api
       .delete(`/activities/${idactivitie}/`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((_) => {
         getActivity();
-        alert("Aqui ta faltando um toast");
+        setIsToast("success");
       })
       .catch((error) => {
-        console.log(error);
+        setIsToast("error");
       });
   };
 
   return (
     <ActivitiesContext.Provider
       value={{
-    activities,
+        activities,
         setActivities,
         createActivity,
         updateActivity,
@@ -91,4 +94,3 @@ export const ActivitiesProvider = ({ children }) => {
 };
 
 export const useActivities = () => useContext(ActivitiesContext);
-
