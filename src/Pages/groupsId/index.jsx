@@ -49,7 +49,7 @@ const Groupsid = () => {
             CardActivity={
               specificGroup !== undefined ? (
                 specificGroup.activities.map((card) => (
-                  <ActivityCard key={card.id} name={card.title} />
+                  <ActivityCard key={card.id} activity={card} />
                 ))
               ) : (
                 <p>Sem atividades, tudo tranquilo...</p>

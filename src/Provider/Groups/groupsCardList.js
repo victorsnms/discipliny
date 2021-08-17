@@ -52,10 +52,17 @@ export const GroupsCardsProvider = ({ children }) => {
 
   const getSpecificGroup = () => {
     const idGroup = JSON.parse(localStorage.getItem("@Discipliny:idGroup"));
+    console.log(idGroup);
 
     api
       .get(`groups/${idGroup}/`)
-      .then((response) => setSpecificGroup(response.data))
+      .then((response) => {
+        localStorage.setItem(
+          "@Discipliny:groupId",
+          JSON.stringify(response.data.id)
+        );
+        setSpecificGroup(response.data);
+      })
       .catch((error) => {
         toast({
           title: "Erro",
