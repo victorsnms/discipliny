@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import GoalsCreateModal from "../GoalsCreateModal";
 import { useToast, useDisclosure } from "@chakra-ui/react";
 import { useGroups } from "../../Provider/Groups/groupsCardList";
+import { GiExitDoor } from "react-icons/gi";
 import {
   Container,
   Title,
@@ -70,10 +71,12 @@ const GroupGrid = ({
       gap={2}
     >
       <GridItem w="80%" placeSelf="center" rowSpan={1} colSpan={16}>
-        <button className="SubsButton" onClick={handleClick}>
-          Increver-se
-        </button>
-        <GroupTitle className="titleGroup">Nome: {namegroup}</GroupTitle>
+        <GroupTitle className="titleGroup">
+          {namegroup}
+          <button className="SubsButton" onClick={handleClick}>
+            <GiExitDoor />
+          </button>
+        </GroupTitle>
       </GridItem>
       <GridItem
         className="Grid"
