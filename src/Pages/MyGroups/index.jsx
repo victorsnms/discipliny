@@ -40,7 +40,7 @@ function Groups() {
                 />
               </div>
             </header>
-            <GroupCreateModal />
+            <GroupCreateModal isOpen={isOpen} onClose={onClose} />
             <div className="SubContainerCards">
               {filterInput === ""
                 ? myGroupsList.map((group) => (
@@ -65,14 +65,12 @@ function Groups() {
                         idGroup={group.id}
                       />
                     ))}
-              <CardAdd onClick={onOpen} />
             </div>
           </section>
 
           <MenuMobile />
         </div>
       </MyGroupsWrapper>
-      <GroupCreateModal isOpen={isOpen} onClose={onClose} />
     </>
   );
 }

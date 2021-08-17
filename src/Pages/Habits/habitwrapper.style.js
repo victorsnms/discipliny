@@ -31,6 +31,7 @@ export const HabitWrapper = styled.div`
       justify-content: space-between;
       animation: appearing 1s ease-in-out backwards;
       animation-delay: 0.5s;
+      border-bottom-right-radius: 0;
 
       header {
         background-image: var(--light-blue-gradient);
@@ -46,19 +47,32 @@ export const HabitWrapper = styled.div`
           border: none;
           font-size: clamp(9vw, 10vw, 11vw);
           text-align: center;
+          line-height: 100px;
         }
       }
 
       .SubContainerCards {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
         display: flex;
-        justify-content: space-evenly;
+        flex-direction: row;
         flex-wrap: wrap;
         width: 100%;
-        min-height: 80vh;
+        height: 80vh;
         padding: 30px;
-        align-items: flex-start;
+        overflow-y: auto;
+        ::-webkit-scrollbar {
+          width: 10px;
+        }
+        /* Track */
+        ::-webkit-scrollbar-track {
+          background: var(--blue-dark);
+        }
+
+        /* Handle */
+        ::-webkit-scrollbar-thumb {
+          background: var(--blue-light);
+          border-radius: 5px;
+          height: 500px;
+        }
       }
     }
   }
