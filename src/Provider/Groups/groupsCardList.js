@@ -57,7 +57,7 @@ export const GroupsCardsProvider = ({ children }) => {
       .get(`groups/${idGroup}/`)
       .then((response) => {
         localStorage.setItem(
-          "@Discipliny:groupId",
+          "@Discipliny:idGroup",
           JSON.stringify(response.data.id)
         );
         setSpecificGroup(response.data);

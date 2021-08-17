@@ -11,7 +11,6 @@ import {
   GroupTitle,
   ContainerGoal,
 } from "./groupGrid.styles";
-import ActivitiesCreateModal from "../ActivitiesCreateModal";
 
 const GroupGrid = ({
   cardMember,
