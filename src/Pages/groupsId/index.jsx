@@ -10,15 +10,18 @@ import { Redirect } from "react-router-dom";
 import { useLogged } from "../../Provider/Login";
 import { useGoals } from "../../Provider/Goals";
 import { useEffect } from "react";
+import { useActivities } from "../../Provider/Activities";
 
 const Groupsid = () => {
   const { specificGroup, getSpecificGroup } = useGroups();
   const { goals } = useGoals();
   const { logged } = useLogged();
+  const { activities, getActivity } = useActivities();
 
   useEffect(() => {
     getSpecificGroup();
-  }, [goals]);
+    getActivity()
+  }, [goals,activities]);
 
   if (!logged) {
     return <Redirect to="/" />;

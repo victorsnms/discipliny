@@ -1,12 +1,9 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import api from "../../Services/api";
-import { useToast } from "@chakra-ui/react";
 
 const HabitsContext = createContext();
 
 export const HabitsProvider = ({ children }) => {
-  const toast = useToast();
-
   const [habit, setHabit] = useState([]);
 
   useEffect(() => {

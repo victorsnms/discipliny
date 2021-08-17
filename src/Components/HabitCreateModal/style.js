@@ -159,3 +159,14 @@ export const ModalDelete = styled.div`
         font-size: 2rem;
     }
 `
+
+export const ModalDate = styled.div`
+margin-top: 16px;
+
+input{
+  border: 1px var(--orange) solid;
+  border-radius: 8px;
+  padding: 0 8px;
+  background-color: var(--cream);
+}
+`

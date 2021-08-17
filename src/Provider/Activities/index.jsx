@@ -4,7 +4,7 @@ import api from "../../Services/api";
 const ActivitiesContext = createContext();
 
 export const ActivitiesProvider = ({ children }) => {
-  const [activities, setActivities] = useState();
+  const [activities, setActivities] = useState([]);
   const token = JSON.parse(localStorage.getItem("@Discipliny:accessToken"));
 
   useEffect(() => {
@@ -22,32 +22,31 @@ export const ActivitiesProvider = ({ children }) => {
     }
   }, []);
 
-  const createActivity = (dados) => {
-    console.log(dados);
+  const createActivity = (dados, setIsToast) => {
     api
       .post("/activities/", dados, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
-        console.log("entrandinho");
-        setActivities([...activities, response.data]);
-        console.log(response.data);
+        // setActivities([...activities, response.data]);
+        setIsToast("success");
       })
       .catch((error) => {
-        console.log(error);
+        setIsToast("error");
       });
   };
 
-  const updateActivity = (dados, activitieId) => {
+  const updateActivity = (dados, activitieId, setIsToast) => {
     api
       .patch(`/activities/${activitieId}/`, dados, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((_) => {
         getActivity();
+        setIsToast("success");
       })
-      .catch((error) => {
-        console.log(error);
+      .catch((_) => {
+        setIsToast("error");
       });
   };
 
@@ -64,17 +63,17 @@ export const ActivitiesProvider = ({ children }) => {
       });
   };
 
-  const deleteActivity = (idactivitie) => {
+  const deleteActivity = (idactivitie, setIsToast) => {
     api
       .delete(`/activities/${idactivitie}/`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((_) => {
         getActivity();
-        alert("Aqui ta faltando um toast");
+        setIsToast("success");
       })
       .catch((error) => {
-        console.log(error);
+        setIsToast("error");
       });
   };
 

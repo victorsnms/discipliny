@@ -4,13 +4,13 @@ import GoalsCreateModal from "../GoalsCreateModal";
 import { useToast, useDisclosure } from "@chakra-ui/react";
 import { useGroups } from "../../Provider/Groups/groupsCardList";
 import { GiExitDoor } from "react-icons/gi";
+import ActivitiesCreateModal from "../ActivitiesCreateModal";
 import {
   Container,
   Title,
   GroupTitle,
   ContainerGoal,
 } from "./groupGrid.styles";
-import ActivitiesCreateModal from "../ActivitiesCreateModal";
 
 const GroupGrid = ({
   cardMember,

@@ -43,7 +43,7 @@ export const MenuAside = styled.div`
       width: 100%;
       p {
         display: flex;
-        justify-content: center;
+        justify-content: flex-start;
         align-items: center;
         height: 62px;
         text-align: center;
