@@ -53,10 +53,9 @@ export const GroupsCardsProvider = ({ children }) => {
       })
       .then((response) => {
         setGroupsCardList([...groupsCardList, response.data]);
-        setIsToast("success")
+        setIsToast("success");
       })
-      .catch((_) => setIsToast("error")
-      );
+      .catch((_) => setIsToast("error"));
   };
 
   const getSpecificGroup = () => {
@@ -76,18 +75,36 @@ export const GroupsCardsProvider = ({ children }) => {
       });
   };
 
-  const updateGroup = (dados,setIsToast) => {
+  const updateGroup = (dados, setIsToast) => {
     const idGroup = JSON.parse(localStorage.getItem("@Discipliny:idGroup"));
     api
       .patch(`/groups/${idGroup}/`, dados, {
         headers: { Authorization: `Bearer ${token}` },
       })
-      .then((_) => {
+      .then((response) => {
         getSpecificGroup();
-        setIsToast("success")
       })
       .catch((_) => {
-        setIsToast("error")
+        setIsToast("error");
+      });
+  };
+
+  const subscribeToGroup = (setIsToast, idGroupSpec) => {
+    console.log(token);
+    api
+      .post(`/groups/${idGroupSpec}/subscribe/`, null, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((response) => {
+        getSpecificGroup();
+        setIsToast("success");
+      })
+      .catch((error) => {
+        if (error.response.data.message === "User already on group") {
+          setIsToast("already");
+        } else {
+          setIsToast("error");
+        }
       });
   };
 
@@ -101,6 +118,7 @@ export const GroupsCardsProvider = ({ children }) => {
         getSpecificGroup,
         specificGroup,
         updateGroup,
+        subscribeToGroup,
       }}
     >
       {children}

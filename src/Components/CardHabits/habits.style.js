@@ -64,6 +64,7 @@ export const HabitCard = styled.div`
       font-size: 26px;
       padding: 3px;
       font-weight: 700;
+      max-width: 340px;
     }
 
     .BottomLabels {

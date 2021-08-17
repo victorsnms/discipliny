@@ -13,16 +13,17 @@ const CardGroups = ({ name, membros, idGroup }) => {
 
   return (
     <GroupCard className="ContentHabits">
-      <h1 className="groupName">{name}</h1>
-      <div>
-        <IoIosPeople />
-        {membros === undefined ? 0 : membros.length}
-      </div>
-      <div className="iconsBox">
-        <Link onClick={getGroupId} to="/groupsid">
-          <FcOpenedFolder /> Ver+
-        </Link>
-      </div>
+      <Link className="LinkBox" onClick={getGroupId} to="/groupsid">
+        <h1 className="groupName">{name}</h1>
+        <div>
+          <IoIosPeople />
+          {membros === undefined ? 0 : membros.length}
+        </div>
+        <div>
+          <FcOpenedFolder />
+          Ver+
+        </div>
+      </Link>
     </GroupCard>
   );
 };

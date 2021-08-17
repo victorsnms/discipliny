@@ -45,7 +45,6 @@ const GroupCreateModal = ({ onClose, isOpen }) => {
   };
 
   const handleClick = (e, value) => {
-    console.log(e, value);
     setCategory(e.target.value);
     setCategoryChose(value);
   };

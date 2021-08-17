@@ -23,8 +23,8 @@ const GoalsUpdateModal = ({ goal }) => {
   const { getSpecificGroup } = useGroups();
   const [title, setTitle] = useState(goal.title);
   const [difficulty, setDifficulty] = useState(goal.difficulty);
-  const toast = useToast()
-  const [isToast, setIsToast ] = useState("unset")
+  const toast = useToast();
+  const [isToast, setIsToast] = useState("unset");
 
   const handleSubmit = () => {
     const newGoal = {
@@ -32,13 +32,12 @@ const GoalsUpdateModal = ({ goal }) => {
       difficulty: difficulty,
       achieved: "false",
     };
-    updateGoal(newGoal, goal,setIsToast);
-    getSpecificGroup();
+    updateGoal(newGoal, goal, setIsToast);
     onClose();
-  }
+  };
 
   useEffect(() => {
-    if (isToast === "success"){
+    if (isToast === "success") {
       toast({
         title: "Metas",
         position: "top",
@@ -58,8 +57,8 @@ const GoalsUpdateModal = ({ goal }) => {
         isClosable: true,
       });
     }
-    setIsToast("unset")
-  },[isToast])
+    setIsToast("unset");
+  }, [isToast]);
 
   return (
     <>
@@ -85,7 +84,7 @@ const GoalsUpdateModal = ({ goal }) => {
               />
               <ModalSelect>
                 <div>
-                <p>Dificuldade:</p>
+                  <p>Dificuldade:</p>
                   <select
                     value={difficulty}
                     onChange={(e) => setDifficulty(e.target.value)}
@@ -102,7 +101,7 @@ const GoalsUpdateModal = ({ goal }) => {
           </ModalBody>
 
           <ModalFooter>
-          <Button onClick={onClose} color="red">
+            <Button onClick={onClose} color="red">
               Cancelar
             </Button>
             <Button onClick={handleSubmit} color="blue" marginLeft="20px">

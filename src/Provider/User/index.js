@@ -9,11 +9,10 @@ export const UserProvider = ({ children }) => {
 
   const getUser = () => {
     const userId = JSON.parse(localStorage.getItem("@Discipliny:userId"));
-    
+
     api
       .get(`/users/${userId}/`)
       .then((response) => {
-        console.log(response);
         localStorage.setItem(
           "@Discipliny:Nameuser",
           JSON.stringify(response.data.username)
@@ -45,11 +44,10 @@ export const UserProvider = ({ children }) => {
       });
   };
 
-
-  const decodeToken = token => {
-    const {user_id} = jwt_decode(token)
-    localStorage.setItem("@Discipliny:userId",JSON.stringify(user_id))
-  }
+  const decodeToken = (token) => {
+    const { user_id } = jwt_decode(token);
+    localStorage.setItem("@Discipliny:userId", JSON.stringify(user_id));
+  };
 
   return (
     <UserContext.Provider

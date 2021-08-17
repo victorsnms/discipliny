@@ -16,7 +16,7 @@ export const MenuAside = styled.div`
     align-items: center;
 
     h1 {
-      font-size: 60px;
+      font-size: 32px;
       font-weight: 700;
       text-align: center;
     }
@@ -35,7 +35,7 @@ export const MenuAside = styled.div`
       }
 
       span {
-        font-size: 36px;
+        font-size: 32px;
       }
     }
 
@@ -47,7 +47,7 @@ export const MenuAside = styled.div`
         align-items: center;
         height: 62px;
         text-align: center;
-        font-size: 36px;
+        font-size: 22px;
         cursor: pointer;
 
         svg {
@@ -74,6 +74,34 @@ export const MenuAside = styled.div`
 
     aside {
       display: flex;
+
+      h1 {
+        font-size: 32px;
+      }
+
+      span {
+        font-size: 32px;
+      }
+
+      .ParagContainer p {
+        font-size: 22px;
+      }
+    }
+  }
+
+  @media (min-width: 1300px) {
+    aside {
+      h1 {
+        font-size: 34px;
+      }
+
+      span {
+        font-size: 32px;
+      }
+
+      .ParagContainer p {
+        font-size: 24px;
+      }
     }
   }
 

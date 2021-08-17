@@ -45,12 +45,11 @@ export const MyGroupsCardsProvider = ({ children }) => {
       .then((response) => {
         setMyGroupsList(response.data);
         localStorage.setItem(
-          "@Discipliny:groupId",
+          "@Discipliny:idGroup",
           JSON.stringify(response.data.id)
         );
       })
-      .catch((err) => {
-        console.log(err);
+      .catch((_) => {
         toast({
           title: "Erro ao carregar grupo!",
           description: "Erro ao carregar grupos",
@@ -83,6 +82,7 @@ export const MyGroupsCardsProvider = ({ children }) => {
         });
       });
   };
+
   return (
     <MyGroupsCardListContext.Provider
       value={{
