@@ -9,17 +9,26 @@ import GroupCreateModal from "../../Components/GroupCreateModal";
 import { useMyGroups } from "../../Provider/MyGroups/index";
 import { useLogged } from "../../Provider/Login";
 import FilterGroupsName from "../../Components/FilterGroupsName";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function Groups() {
   const { logged } = useLogged();
 
-  const { myGroupsList, setMyGroupsList, createNewGroup, updateMyGroup } =
-    useMyGroups();
+  const {
+    myGroupsList,
+    setMyGroupsList,
+    createNewGroup,
+    updateMyGroup,
+    getGroups,
+  } = useMyGroups();
 
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const [filterInput, setFilterInput] = useState("");
+  useEffect(() => {
+    getGroups();
+    console.log("rodou");
+  }, []);
 
   if (!logged) {
     return <Redirect to="/" />;

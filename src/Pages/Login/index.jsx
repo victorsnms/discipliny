@@ -18,6 +18,7 @@ import {
 import { useHabits } from "../../Provider/Habits";
 import { useUser } from "../../Provider/User";
 import { useLogged } from "../../Provider/Login";
+import { useMyGroups } from "../../Provider/MyGroups";
 
 const Login = () => {
   const { logged, setLogged } = useLogged();
@@ -25,6 +26,7 @@ const Login = () => {
   const { getUser, decodeToken } = useUser();
   const history = useHistory();
   const toast = useToast();
+  const { getGroups } = useMyGroups();
 
   const schema = yup.object().shape({
     username: yup.string().required("Campo obrigatório!"),
@@ -57,6 +59,7 @@ const Login = () => {
         setLogged(true);
         getHabits();
         getUser();
+        getGroups();
         toast({
           title: `Login efetuado com sucesso`,
           position: "top",
@@ -64,7 +67,7 @@ const Login = () => {
           status: "success",
           duration: 3000,
           isClosable: true,
-        })
+        });
         return history.push("/habits");
       })
       .catch((err) =>
