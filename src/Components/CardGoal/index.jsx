@@ -4,7 +4,7 @@ import { useState } from "react";
 import GoalsUpdateModal from "../GoalsUpdateModal";
 import GoalDeleteModal from "../GoalsDeleteModal";
 
-const CardGoal = ({ name, dificuldade, idGoal }) => {
+const CardGoal = ({ goal }) => {
   const [count, setCount] = useState(0);
 
   const handleClick = () => {
@@ -19,13 +19,13 @@ const CardGoal = ({ name, dificuldade, idGoal }) => {
           width="80%"
           colorScheme="orange"
         />
-        <GoalsUpdateModal idGoal={idGoal} />
-        <GoalDeleteModal idGoal={idGoal} />
+        <GoalsUpdateModal goal={goal} />
+        <GoalDeleteModal goal={goal} />
       </div>
       <div className="flex-row">
-        <h1 className="goalName">{name}</h1>
+        <h1 className="goalName">{goal.title}</h1>
         <div className="RightLabel">
-          <p>{dificuldade}</p>
+          <p>{goal.difficulty}</p>
         </div>
       </div>
     </GoalCard>

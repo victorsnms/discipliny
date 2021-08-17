@@ -14,7 +14,6 @@ function Groups() {
 
   const { myGroupsList, setMyGroupsList, createNewGroup, updateMyGroup } =
     useMyGroups();
-  console.log(myGroupsList);
 
   const { isOpen, onOpen, onClose } = useDisclosure();
 

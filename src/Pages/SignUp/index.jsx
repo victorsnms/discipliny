@@ -5,7 +5,7 @@ import * as yup from "yup";
 import api from "../../Services/api";
 
 import { Container, FormContent, Content, MainContent } from "./styles";
-import img from "../../assets/dizzy2.png";
+import img from "../../assets/habit.png";
 
 import {
   FormControl,
@@ -80,7 +80,7 @@ function SignUp() {
         toast({
           title: "Erro ao criar conta!",
           position: "top",
-          description: "Não foi possível criar sua conta",
+          description: "E-mail ou username inválido",
           status: "error",
           duration: 2000,
           isClosable: true,

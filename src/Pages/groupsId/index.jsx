@@ -2,16 +2,23 @@ import Menu from "../../Components/MenuAside";
 import { Container } from "./groupsid.styles";
 import GroupGrid from "../../Components/GroupIdGrid";
 import MenuMobile from "../../Components/MenuMobile";
-import { Cardmembers } from "./groupsid.styles";
+import CardMember from "../../Components/CardMember";
 import ActivityCard from "../../Components/CardActivity/index";
 import CardGoal from "../../Components/CardGoal";
 import { useGroups } from "../../Provider/Groups/groupsCardList";
 import { Redirect } from "react-router-dom";
 import { useLogged } from "../../Provider/Login";
+import { useGoals } from "../../Provider/Goals";
+import { useEffect } from "react";
 
 const Groupsid = () => {
-  const { specificGroup } = useGroups();
+  const { specificGroup, getSpecificGroup } = useGroups();
+  const { goals } = useGoals();
   const { logged } = useLogged();
+
+  useEffect(() => {
+    getSpecificGroup();
+  }, [goals]);
 
   if (!logged) {
     return <Redirect to="/" />;
@@ -25,12 +32,8 @@ const Groupsid = () => {
           <GroupGrid
             cardGoal={
               specificGroup !== undefined ? (
-                specificGroup.goals.map((card) => (
-                  <CardGoal
-                    name={card.title}
-                    dificuldade={card.difficulty}
-                    idGoal={card.id}
-                  />
+                specificGroup.goals.map((goal) => (
+                  <CardGoal key={goal.id} goal={goal} />
                 ))
               ) : (
                 <p>Sem metas por aqui...</p>
@@ -39,20 +42,21 @@ const Groupsid = () => {
             cardMember={
               specificGroup !== undefined
                 ? specificGroup.users_on_group.map((card) => (
-                    <Cardmembers member={card.users_on_group} />
+                    <CardMember key={card.id} member={card.username} />
                   ))
                 : null
             }
             CardActivity={
               specificGroup !== undefined ? (
                 specificGroup.activities.map((card) => (
-                  <ActivityCard name={card.title} />
+                  <ActivityCard key={card.id} name={card.title} />
                 ))
               ) : (
                 <p>Sem atividades, tudo tranquilo...</p>
               )
             }
             namegroup={specificGroup !== undefined ? specificGroup.name : null}
+            idGroupSpec={specificGroup !== undefined ? specificGroup.id : null}
           ></GroupGrid>
           <MenuMobile />
         </div>

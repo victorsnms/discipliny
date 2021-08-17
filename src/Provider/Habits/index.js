@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import api from "../../Services/api";
-import { Box, useToast } from "@chakra-ui/react";
+import { useToast } from "@chakra-ui/react";
 
 const HabitsContext = createContext();
 
@@ -35,35 +35,22 @@ export const HabitsProvider = ({ children }) => {
     }
   }, []);
 
-  const createHabit = (dados) => {
+  const createHabit = (dados, setIsToast) => {
     const token = JSON.parse(localStorage.getItem("@Discipliny:accessToken"));
     api
       .post("/habits/", dados, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
+        setIsToast("succes");
         setHabit([...habit, response.data]);
-        toast({
-          title: "Hábitos",
-          position: "top",
-          description: "Criado Novo Hábito",
-          status: "success",
-          duration: 3000,
-          isClosable: true,
-        });
       })
       .catch((_) => {
-        toast({
-          title: "Hábito não foi criado!",
-          description: "Verifique todo os campos e tente novamente",
-          status: "error",
-          duration: 4000,
-          isClosable: true,
-        });
+        setIsToast("error");
       });
   };
 
-  const updateHabit = (dados, habitId) => {
+  const updateHabit = (dados, habitId, setIsToast = "N") => {
     const token = JSON.parse(localStorage.getItem("@Discipliny:accessToken"));
     api
       .patch(`/habits/${habitId}/`, dados, {
@@ -71,15 +58,14 @@ export const HabitsProvider = ({ children }) => {
       })
       .then((_) => {
         getHabits();
+        if (setIsToast === "N") {
+          return null;
+        } else {
+          setIsToast("success");
+        }
       })
       .catch((_) => {
-        toast({
-          title: "Hábito não foi atualizado!",
-          description: "Verifique todo os campos e tente novamente",
-          status: "error",
-          duration: 2000,
-          isClosable: true,
-        });
+        setIsToast("error");
       });
   };
 
@@ -110,7 +96,7 @@ export const HabitsProvider = ({ children }) => {
       });
   };
 
-  const deleteHabit = (idHabit) => {
+  const deleteHabit = (idHabit, setIsToast) => {
     const token = JSON.parse(localStorage.getItem("@Discipliny:accessToken"));
     api
       .delete(`/habits/${idHabit}/`, {
@@ -118,25 +104,9 @@ export const HabitsProvider = ({ children }) => {
       })
       .then((_) => {
         getHabits();
-        toast({
-          title: "Hábito Excluído",
-          description: "Exclusão efetuada com sucesso",
-          position: "top",
-          status: "success",
-          duration: 900000,
-          isClosable: true,
-        });
+        setIsToast("success");
       })
-      .catch((error) => {
-        toast({
-          title: "Exclusão Pendente",
-          position: "top",
-          description: "Não foi possível excluir",
-          status: "error",
-          duration: 2000,
-          isClosable: true,
-        });
-      });
+      .catch((error) => {});
   };
 
   return (

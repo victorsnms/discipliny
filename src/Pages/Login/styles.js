@@ -84,6 +84,7 @@ export const FormContent = styled.div`
       margin-top: 0.5rem;
       padding: 1.5rem 2.5rem;
       border-radius: 30px;
+      border: 1px solid var(--cream);
     }
 
     p {
@@ -92,7 +93,7 @@ export const FormContent = styled.div`
       font-family: var(--font-text);
 
       a {
-        color: var(--purple);
+        color: var(--white);
         font-weight: 600;
       }
     }

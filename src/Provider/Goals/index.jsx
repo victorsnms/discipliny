@@ -19,33 +19,35 @@ export const GoalsProvider = ({ children }) => {
       });
   }, []);
 
-  const addGoal = (newGoal) => {
+  const addGoal = (newGoal,setIsToast) => {
     api
       .post(`/goals/`, newGoal, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
         setGoals(response.data.results);
+        setIsToast("success")
       })
-      .catch((err) => console.log(err));
+      .catch((_) => setIsToast("error")
+      );
   };
 
-  const updateGoal = (dados, goalId) => {
-    const token = JSON.parse(localStorage.getItem("@Discipliny:accessToken"));
+  const updateGoal = (dados, goalId,setIsToast) => {
     api
       .patch(`/goals/${goalId}/`, dados, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((_) => {
         getGoals();
+        setIsToast("success")
+
       })
-      .catch((error) => {
-        console.log(error);
+      .catch((_) => {
+        setIsToast("error")
       });
   };
 
   const getGoals = () => {
-    const token = JSON.parse(localStorage.getItem("@Discipliny:accessToken"));
 
     api
       .get("/goals/", {
@@ -53,31 +55,23 @@ export const GoalsProvider = ({ children }) => {
       })
       .then((response) => {
         setGoals(response.data);
-        console.log(goals);
       })
       .catch((error) => {
         console.log(error);
       });
   };
 
-  const deleteGoal = (idGoal) => {
+  const deleteGoal = (goalId, setIsToast) => {
     api
-      .delete(`/goals/${idGoal}/`, {
+      .delete(`/goals/${goalId}/`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((_) => {
         getGoals();
-        toast({
-          title: "Sucesso!",
-          position: "top",
-          description: "Meta Excluída",
-          status: "success",
-          duration: 3000,
-          isClosable: true,
-        });
+        setIsToast("success")
       })
       .catch((error) => {
-        console.log(error);
+        setIsToast("error")
       });
   };
 

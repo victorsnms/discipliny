@@ -5,7 +5,7 @@ import * as yup from "yup";
 import api from "../../Services/api";
 
 import { Container, Content, FormContent, MainContent } from "./styles";
-import img from "../../assets/dizzy.png";
+import img from "../../assets/habit.png";
 
 import {
   FormControl,
@@ -57,6 +57,14 @@ const Login = () => {
         setLogged(true);
         getHabits();
         getUser();
+        toast({
+          title: `Login efetuado com sucesso`,
+          position: "top",
+          description: `Bem vindo ${user.username}`,
+          status: "success",
+          duration: 3000,
+          isClosable: true,
+        })
         return history.push("/habits");
       })
       .catch((err) =>

@@ -44,7 +44,7 @@ export const GroupsCardsProvider = ({ children }) => {
     }
   };
 
-  const addGroup = (newGroup) => {
+  const addGroup = (newGroup, setIsToast) => {
     api
       .post("/groups/", newGroup, {
         headers: {
@@ -53,8 +53,9 @@ export const GroupsCardsProvider = ({ children }) => {
       })
       .then((response) => {
         setGroupsCardList([...groupsCardList, response.data]);
+        setIsToast("success");
       })
-      .catch((err) => console.log(err));
+      .catch((_) => setIsToast("error"));
   };
 
   const getSpecificGroup = () => {
@@ -74,6 +75,39 @@ export const GroupsCardsProvider = ({ children }) => {
       });
   };
 
+  const updateGroup = (dados, setIsToast) => {
+    const idGroup = JSON.parse(localStorage.getItem("@Discipliny:idGroup"));
+    api
+      .patch(`/groups/${idGroup}/`, dados, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((response) => {
+        getSpecificGroup();
+      })
+      .catch((_) => {
+        setIsToast("error");
+      });
+  };
+
+  const subscribeToGroup = (setIsToast, idGroupSpec) => {
+    console.log(token);
+    api
+      .post(`/groups/${idGroupSpec}/subscribe/`, null, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((response) => {
+        getSpecificGroup();
+        setIsToast("success");
+      })
+      .catch((error) => {
+        if (error.response.data.message === "User already on group") {
+          setIsToast("already");
+        } else {
+          setIsToast("error");
+        }
+      });
+  };
+
   return (
     <GroupsCardListContext.Provider
       value={{
@@ -83,6 +117,8 @@ export const GroupsCardsProvider = ({ children }) => {
         nextPage,
         getSpecificGroup,
         specificGroup,
+        updateGroup,
+        subscribeToGroup,
       }}
     >
       {children}

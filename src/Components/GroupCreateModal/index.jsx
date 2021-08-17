@@ -7,8 +7,9 @@ import {
   ModalFooter,
   ModalHeader,
   ModalOverlay,
+  useToast,
 } from "@chakra-ui/react";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import {
   ContainerCategory,
@@ -18,10 +19,14 @@ import {
   ModalTitle,
 } from "../HabitCreateModal/style";
 import { useGroups } from "../../Provider/Groups/groupsCardList";
+import { useMyGroups } from "../../Provider/MyGroups";
 
 const GroupCreateModal = ({ onClose, isOpen }) => {
   const initialRef = useRef();
   const { addGroup } = useGroups();
+  const { getGroups } = useMyGroups();
+  const [isToast, setIsToast] = useState("unset");
+  const toast = useToast();
 
   const [name, setName] = useState("");
   const [category, setCategory] = useState("Saúde");
@@ -35,15 +40,41 @@ const GroupCreateModal = ({ onClose, isOpen }) => {
       category: category,
       description: description,
     };
-    addGroup(newGroup);
-    onClose();
+    addGroup(newGroup, setIsToast);
+    getGroups();
   };
 
   const handleClick = (e, value) => {
-    console.log(e, value);
     setCategory(e.target.value);
     setCategoryChose(value);
   };
+
+  useEffect(() => {
+    if (isToast === "success") {
+      toast({
+        title: "Grupo",
+        description: "Grupo criado com sucesso",
+        position: "top",
+        status: "success",
+        duration: 3000,
+        isClosable: true,
+      });
+      onClose();
+      setName("");
+      setDescription("");
+    } else if (isToast === "error") {
+      toast({
+        title: "Grupo",
+        position: "top",
+        description: "Verifique os campos e tente novamente",
+        status: "error",
+        duration: 2000,
+        isClosable: true,
+      });
+    }
+    setIsToast("unset");
+  }, [isToast]);
+
   return (
     <Modal initialFocusRef={initialRef} isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />
@@ -147,7 +178,6 @@ const GroupCreateModal = ({ onClose, isOpen }) => {
               </ContainerCategory>
             </ModalCategory>
             <ModalTextArea>
-              div{" "}
               <div>
                 <label>Uma breve descrição sobre seu grupo:</label>
                 <textarea
@@ -162,7 +192,9 @@ const GroupCreateModal = ({ onClose, isOpen }) => {
         </ModalBody>
 
         <ModalFooter>
-          <Button onClick={handleSubmit}>Criar</Button>
+          <Button onClick={handleSubmit} color="blue">
+            Criar
+          </Button>
         </ModalFooter>
       </ModalContent>
     </Modal>
