@@ -9,6 +9,12 @@ export const HabitWrapper = styled.div`
   margin: 0 auto;
   background-image: var(--orange-gradient-background);
 
+  .Filters {
+    z-index: 1;
+    position: absolute;
+    top: 100%;
+    right: 0;
+  }
   .ContainerCards {
     width: 100%;
     display: grid;
@@ -33,6 +39,7 @@ export const HabitWrapper = styled.div`
         height: 114px;
         display: grid;
         place-items: center;
+        position: relative;
 
         h1 {
           width: 100%;
