@@ -1,12 +1,9 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import api from "../../Services/api";
-import { useToast } from "@chakra-ui/react";
 
 const HabitsContext = createContext();
 
 export const HabitsProvider = ({ children }) => {
-  const toast = useToast();
-
   const [habit, setHabit] = useState([]);
 
   useEffect(() => {
@@ -85,14 +82,7 @@ export const HabitsProvider = ({ children }) => {
         );
       })
       .catch((error) => {
-        toast({
-          title: "Hábitos",
-          description: "Hábitos não foram carregados",
-          position: "top",
-          status: "error",
-          duration: 3000,
-          isClosable: true,
-        });
+        console.log(error)
       });
   };
 

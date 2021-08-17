@@ -1,39 +1,66 @@
 import {
   Button,
-  Modal,
-  ModalBody,
-  ModalCloseButton,
-  ModalContent,
-  ModalFooter,
-  ModalHeader,
-  ModalOverlay,
-  useDisclosure,
-} from "@chakra-ui/react";
-import { useRef, useState } from "react";
+    Modal,
+    ModalBody,
+    ModalCloseButton,
+    ModalContent,
+    ModalFooter,
+    ModalHeader,
+    ModalOverlay,
+    useDisclosure,
+    useToast,
+  } from "@chakra-ui/react";
+  import { useEffect, useRef, useState } from "react";
 import { useActivities } from "../../Provider/Activities";
-import api from "../../Services/api";
-import { ModalInput, ModalTitle } from "../HabitCreateModal/style";
+import { ModalDate, ModalInput, ModalTitle } from "../HabitCreateModal/style";
 import { FiEdit } from "react-icons/fi";
 
-const ActivitiesUpdateModal = ({ activity }) => {
-  const initialRef = useRef();
-  const { isOpen, onOpen, onClose } = useDisclosure();
-  const { updateActivity } = useActivities();
-  const [title, setTitle] = useState(activity.title);
-  const [date, setDate] = useState(activity.realization_time);
-
-  const handleSubmit = () => {
-    const newActivity = {
-      title: title,
-      realization_time: date,
-      // user: activity.id,
+  
+  const ActivitiesUpdateModal = ({activity}) => {
+    const initialRef = useRef();
+    const { isOpen, onOpen, onClose } = useDisclosure();
+   const {updateActivity} = useActivities()
+    const [title, setTitle] = useState(activity.title);
+    const [date, setDate] = useState(activity.realization_time);
+    const [isToast,setIsToast] = useState("unset");
+  const toast = useToast();
+  
+    const handleSubmit = () => {
+      const newActivity = {
+        title: title,
+        realization_time: date,
+        
+      }
+      updateActivity(newActivity, activity.id, setIsToast)
     };
 
-    updateActivity(newActivity, activity.id);
-  };
+    useEffect(() => {
+      if (isToast === "success"){
+        toast({
+          title: "Atividades",
+          position: "top",
+          description: "Atividade atualizada com sucesso",
+          status: "success",
+          duration: 3000,
+          isClosable: true,
+        });
+        onClose()
+      } else if (isToast === "error") {
+        toast({
+          title:"Atividades",
+          position: "top",
+          description: "Verifique todo os campos e tente novamente",
+          status: "error",
+          duration: 4000,
+          isClosable: true,
+        });
+      }
+      setIsToast("unset")
+    },[isToast])
+  
+    return (
 
-  return (
-    <>
+      <>
       <button onClick={onOpen}>
         <FiEdit />
       </button>
@@ -53,7 +80,7 @@ const ActivitiesUpdateModal = ({ activity }) => {
                 onChange={(e) => setTitle(e.target.value)}
                 required
               />
-              <div>
+              <ModalDate>
                 <p>Nova data para realizar:</p>
                 <div>
                   <input
@@ -62,11 +89,17 @@ const ActivitiesUpdateModal = ({ activity }) => {
                     onChange={(e) => setDate(e.target.value)}
                   />
                 </div>
-              </div>
+              </ModalDate>
             </form>
           </ModalBody>
           <ModalFooter>
-            <Button onClick={handleSubmit}>Criar</Button>
+          <Button onClick={onClose} color="red">
+              Cancelar
+            </Button>
+
+            <Button onClick={handleSubmit} color="blue" marginLeft="20px">
+              Salvar
+            </Button>
           </ModalFooter>
         </ModalContent>
       </Modal>

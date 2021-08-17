@@ -52,7 +52,6 @@ export const GroupsCardsProvider = ({ children }) => {
 
   const getSpecificGroup = () => {
     const idGroup = JSON.parse(localStorage.getItem("@Discipliny:idGroup"));
-    console.log(idGroup);
 
     api
       .get(`groups/${idGroup}/`)
@@ -89,7 +88,6 @@ export const GroupsCardsProvider = ({ children }) => {
   };
 
   const subscribeToGroup = (setIsToast, idGroupSpec) => {
-    console.log(token);
     api
       .post(`/groups/${idGroupSpec}/subscribe/`, null, {
         headers: { Authorization: `Bearer ${token}` },

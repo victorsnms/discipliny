@@ -6,25 +6,53 @@ import {
   ModalContent,
   ModalFooter,
   ModalHeader,
-  useDisclosure,
   ModalOverlay,
+  useToast,
+  useDisclosure,
 } from "@chakra-ui/react";
-import { ModalTitle } from "../HabitCreateModal/style";
+import { ModalDelete, ModalTitle } from "../HabitCreateModal/style";
 import { useActivities } from "../../Provider/Activities";
+import { useEffect, useState } from "react";
 import { FaTrash } from "react-icons/fa";
 
-const ActivitiesDeleteModal = ({ activity }) => {
+const ActivitiesDeleteModal = ({  activity }) => {
   const { deleteActivity } = useActivities();
-  console.log(activity);
+  const [isToast, setIsToast] = useState("unset");
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const toast = useToast();
+
   const handleSubmit = () => {
-    deleteActivity(activity.id);
+    deleteActivity(activity.id, setIsToast);
     onClose();
   };
 
+  useEffect(() => {
+    if (isToast === "success"){
+      toast({
+        title: "Atividades",
+        description: "Exclusão efetuada com sucesso",
+        position: "top",
+        status: "warning",
+        duration: 3000,
+        isClosable: true,
+      });
+      onClose()
+    } else if (isToast === "error") {
+      toast({
+        title: "Exclusão Pendente",
+        position: "top",
+        description: "Não foi possível excluir",
+        status: "error",
+        duration: 2000,
+        isClosable: true,
+      });
+    }
+    setIsToast("unset")
+  },[isToast])
+
   return (
     <div>
-      <button onClick={onOpen}>
+       <button onClick={onOpen}>
         <FaTrash />
       </button>
       <Modal isOpen={isOpen} onClose={onClose} className="style-modal">
@@ -35,10 +63,17 @@ const ActivitiesDeleteModal = ({ activity }) => {
           </ModalTitle>
           <ModalCloseButton />
           <ModalBody pb={6}>
-            <p>Tem certeza que deseja excluir este hábito: {activity.title}</p>
+            <ModalDelete>
+              <p>Tem certeza que deseja excluir este hábito?</p>
+              <h1>{activity.title}</h1>
+            </ModalDelete>
           </ModalBody>
           <ModalFooter>
-            <Button onClick={handleSubmit} color="red">
+            <Button onClick={onClose} color="blue">
+              Cancelar
+            </Button>
+
+            <Button onClick={handleSubmit} color="red" marginLeft="20px">
               Excluir
             </Button>
           </ModalFooter>
