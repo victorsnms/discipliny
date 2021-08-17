@@ -73,6 +73,7 @@ const GroupCreateModal = () => {
         isClosable: true,
       });
     }
+    getGroups();
     setIsToast("unset");
   }, [isToast]);
 
