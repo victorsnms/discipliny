@@ -25,20 +25,19 @@ export const GroupCard = styled.div`
       color: var(--yellow);
     }
   }
-
-  .groupName {
-    padding: 0;
-    margin: 0;
-    text-align: center;
-    width: 100%;
-    font-size: 2rem;
-  }
-
-  .iconsBox {
+  .LinkBox {
     display: flex;
-    flex-direction: column;
-    width: 15%;
-    font-size: 18px;
+    width: 100%;
+    padding: 10px;
+    align-items: center;
+
+    .groupName {
+      padding: 0;
+      margin: 0;
+      text-align: center;
+      width: 100%;
+      font-size: 2rem;
+    }
   }
 
   @media (min-width: 768px) {

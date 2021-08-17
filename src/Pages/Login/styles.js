@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import myImage from "../../assets/wave.svg";
+import myImage from "../../assets/wave2.png";
 
 export const Container = styled.div`
   height: 100vh;

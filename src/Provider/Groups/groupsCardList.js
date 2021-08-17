@@ -22,15 +22,7 @@ export const GroupsCardsProvider = ({ children }) => {
         setPrev(res.data.previous);
         setNext(res.data.next);
       })
-      .catch((_) =>
-        toast({
-          title: "falha ao carregar grupos",
-          description: "Não possível encontrar nenhum grupo",
-          status: "error",
-          duration: 3000,
-          isClosable: true,
-        })
-      );
+      .catch((error) => console.log(error));
   }, [url]);
 
   const prevPage = () => {
@@ -88,12 +80,30 @@ export const GroupsCardsProvider = ({ children }) => {
       .patch(`/groups/${idGroup}/`, dados, {
         headers: { Authorization: `Bearer ${token}` },
       })
-      .then((_) => {
+      .then((response) => {
         getSpecificGroup();
-        setIsToast("success");
       })
       .catch((_) => {
         setIsToast("error");
+      });
+  };
+
+  const subscribeToGroup = (setIsToast, idGroupSpec) => {
+    console.log(token);
+    api
+      .post(`/groups/${idGroupSpec}/subscribe/`, null, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((response) => {
+        getSpecificGroup();
+        setIsToast("success");
+      })
+      .catch((error) => {
+        if (error.response.data.message === "User already on group") {
+          setIsToast("already");
+        } else {
+          setIsToast("error");
+        }
       });
   };
 
@@ -107,6 +117,7 @@ export const GroupsCardsProvider = ({ children }) => {
         getSpecificGroup,
         specificGroup,
         updateGroup,
+        subscribeToGroup,
       }}
     >
       {children}

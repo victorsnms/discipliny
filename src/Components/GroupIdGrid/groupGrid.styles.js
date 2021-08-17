@@ -34,6 +34,16 @@ export const Title = styled.h1`
   color: white;
   font-family: Sansita;
   background-image: linear-gradient(var(--blue-light), var(--blue-dark));
+
+  .AddGoalButton {
+    margin: 20px;
+    color: var(--yellow);
+
+    &:hover {
+      transform: scale(1.2);
+      transition: 0.5s;
+    }
+  }
 `;
 export const GroupTitle = styled.h1`
   font-size: 2rem;
@@ -43,6 +53,16 @@ export const GroupTitle = styled.h1`
   background-image: linear-gradient(var(--blue-light), var(--blue-dark));
   border-radius: 40px;
   line-height: 90px;
+
+  .SubsButton {
+    margin: 20px;
+    color: var(--yellow);
+
+    &:hover {
+      transform: scale(1.2);
+      transition: 0.5s;
+    }
+  }
 `;
 export const ContainerGoal = styled.div`
   display: flex;

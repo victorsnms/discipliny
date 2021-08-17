@@ -1,7 +1,9 @@
 import { Grid, GridItem } from "@chakra-ui/layout";
+import { useState, useEffect } from "react";
 import GoalsCreateModal from "../GoalsCreateModal";
-import ActivitiesCreateModal from "../ActivitiesCreateModal";
-
+import { useToast, useDisclosure } from "@chakra-ui/react";
+import { useGroups } from "../../Provider/Groups/groupsCardList";
+import { GiExitDoor } from "react-icons/gi";
 import {
   Container,
   Title,
@@ -9,7 +11,56 @@ import {
   ContainerGoal,
 } from "./groupGrid.styles";
 
-const GroupGrid = ({ cardMember, CardActivity, cardGoal, namegroup }) => {
+const GroupGrid = ({
+  cardMember,
+  CardActivity,
+  cardGoal,
+  namegroup,
+  idGroupSpec,
+}) => {
+  const [isToast, setIsToast] = useState("unset");
+
+  const toast = useToast();
+
+  const { getSpecificGroup, subscribeToGroup } = useGroups();
+
+  const handleClick = () => {
+    subscribeToGroup(setIsToast, idGroupSpec);
+    getSpecificGroup();
+  };
+
+  useEffect(() => {
+    if (isToast === "success") {
+      toast({
+        title: "Inscrição",
+        position: "top",
+        description: "Agora você está inscrito",
+        status: "success",
+        duration: 3000,
+        isClosable: true,
+      });
+    } else if (isToast === "error") {
+      toast({
+        title: "Inscrição",
+        position: "top",
+        description: "Não conseguimos te inscrever, tente novamente mais tarde",
+        status: "error",
+        duration: 4000,
+        isClosable: true,
+      });
+    } else if (isToast === "already") {
+      toast({
+        title: "Inscrição",
+        position: "top",
+        description: "Você já está inscrito neste Grupo",
+        status: "info",
+        duration: 4000,
+        isClosable: true,
+      });
+    }
+    setIsToast("unset");
+  }, [isToast]);
+
   return (
     <Grid
       h="90%"
@@ -20,7 +71,12 @@ const GroupGrid = ({ cardMember, CardActivity, cardGoal, namegroup }) => {
       gap={2}
     >
       <GridItem w="80%" placeSelf="center" rowSpan={1} colSpan={16}>
-        <GroupTitle className="titleGroup">Nome: {namegroup}</GroupTitle>
+        <GroupTitle className="titleGroup">
+          {namegroup}
+          <button className="SubsButton" onClick={handleClick}>
+            <GiExitDoor />
+          </button>
+        </GroupTitle>
       </GridItem>
       <GridItem
         className="Grid"

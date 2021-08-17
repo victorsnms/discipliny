@@ -61,6 +61,7 @@ export const GoalCard = styled.div`
     align-items: center;
     width: 90%;
     margin-top: 10px;
+    cursor: pointer;
 
     div {
       border-radius: 5px;

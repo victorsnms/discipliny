@@ -13,8 +13,12 @@ import { useEffect } from "react";
 
 const Groupsid = () => {
   const { specificGroup, getSpecificGroup } = useGroups();
+  const { goals } = useGoals();
   const { logged } = useLogged();
-  console.log(specificGroup);
+
+  useEffect(() => {
+    getSpecificGroup();
+  }, [goals]);
 
   if (!logged) {
     return <Redirect to="/" />;
@@ -52,6 +56,7 @@ const Groupsid = () => {
               )
             }
             namegroup={specificGroup !== undefined ? specificGroup.name : null}
+            idGroupSpec={specificGroup !== undefined ? specificGroup.id : null}
           ></GroupGrid>
           <MenuMobile />
         </div>

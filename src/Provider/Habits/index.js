@@ -35,22 +35,22 @@ export const HabitsProvider = ({ children }) => {
     }
   }, []);
 
-  const createHabit = (dados,setIsToast) => {
+  const createHabit = (dados, setIsToast) => {
     const token = JSON.parse(localStorage.getItem("@Discipliny:accessToken"));
     api
       .post("/habits/", dados, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
-        setIsToast("succes")
+        setIsToast("succes");
         setHabit([...habit, response.data]);
       })
       .catch((_) => {
-        setIsToast("error")
+        setIsToast("error");
       });
   };
 
-  const updateHabit = (dados, habitId, setIsToast) => {
+  const updateHabit = (dados, habitId, setIsToast = "N") => {
     const token = JSON.parse(localStorage.getItem("@Discipliny:accessToken"));
     api
       .patch(`/habits/${habitId}/`, dados, {
@@ -58,10 +58,14 @@ export const HabitsProvider = ({ children }) => {
       })
       .then((_) => {
         getHabits();
-        setIsToast("success")
+        if (setIsToast === "N") {
+          return null;
+        } else {
+          setIsToast("success");
+        }
       })
       .catch((_) => {
-       setIsToast("error")
+        setIsToast("error");
       });
   };
 
@@ -92,7 +96,7 @@ export const HabitsProvider = ({ children }) => {
       });
   };
 
-  const deleteHabit = (idHabit,setIsToast) => {
+  const deleteHabit = (idHabit, setIsToast) => {
     const token = JSON.parse(localStorage.getItem("@Discipliny:accessToken"));
     api
       .delete(`/habits/${idHabit}/`, {
@@ -100,12 +104,9 @@ export const HabitsProvider = ({ children }) => {
       })
       .then((_) => {
         getHabits();
-        setIsToast("success")
-       
+        setIsToast("success");
       })
-      .catch((error) => {
-        
-      });
+      .catch((error) => {});
   };
 
   return (

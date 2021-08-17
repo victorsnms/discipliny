@@ -8,7 +8,6 @@ import { FaRegCompass } from "react-icons/fa";
 const Menu = () => {
   const history = useHistory();
   const name = JSON.parse(localStorage.getItem("@Discipliny:Nameuser"));
-  console.log(name);
 
   const changeTo = (path) => {
     history.push(path);

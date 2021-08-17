@@ -8,15 +8,18 @@ import { useDisclosure } from "@chakra-ui/react";
 import GroupCreateModal from "../../Components/GroupCreateModal";
 import { useMyGroups } from "../../Provider/MyGroups/index";
 import { useLogged } from "../../Provider/Login";
+import FilterGroupsName from "../../Components/FilterGroupsName";
+import { useState } from "react";
 
 function Groups() {
   const { logged } = useLogged();
 
   const { myGroupsList, setMyGroupsList, createNewGroup, updateMyGroup } =
     useMyGroups();
-  console.log(myGroupsList);
 
   const { isOpen, onOpen, onClose } = useDisclosure();
+
+  const [filterInput, setFilterInput] = useState("");
 
   if (!logged) {
     return <Redirect to="/" />;
@@ -30,17 +33,38 @@ function Groups() {
           <section>
             <header>
               <h1>Meus grupos</h1>
+              <div className="Filters">
+                <FilterGroupsName
+                  filterInput={filterInput}
+                  setFilterInput={setFilterInput}
+                />
+              </div>
             </header>
             <GroupCreateModal />
             <div className="SubContainerCards">
-              {myGroupsList.map((group) => (
-                <CardGroups
-                  key={group.id}
-                  name={group.name}
-                  membros={group.users_on_group}
-                  idGroup={group.id}
-                />
-              ))}
+              {filterInput === ""
+                ? myGroupsList.map((group) => (
+                    <CardGroups
+                      key={group.id}
+                      name={group.name}
+                      membros={group.users_on_group}
+                      idGroup={group.id}
+                    />
+                  ))
+                : myGroupsList
+                    .filter((item) =>
+                      item.name
+                        .toLowerCase()
+                        .includes(filterInput.toLowerCase())
+                    )
+                    .map((group) => (
+                      <CardGroups
+                        key={group.id}
+                        name={group.name}
+                        membros={group.users_on_group}
+                        idGroup={group.id}
+                      />
+                    ))}
               <CardAdd onClick={onOpen} />
             </div>
           </section>

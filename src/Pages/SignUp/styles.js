@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import signUpImage from "../../assets/newave";
+import signUpImage from "../../assets/newave.png";
 
 export const Container = styled.div`
   height: 100%;

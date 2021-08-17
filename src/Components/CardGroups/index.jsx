@@ -2,7 +2,7 @@ import { GroupCard } from "./styles";
 import { IoIosPeople } from "react-icons/io";
 import { Link } from "react-router-dom";
 import { useGroups } from "../../Provider/Groups/groupsCardList";
-import { FcOpenedFolder } from "react-icons/fc";
+import { BsEyeFill } from "react-icons/bs";
 
 const CardGroups = ({ name, membros, idGroup }) => {
   const { getSpecificGroup } = useGroups();
@@ -13,16 +13,16 @@ const CardGroups = ({ name, membros, idGroup }) => {
 
   return (
     <GroupCard className="ContentHabits">
-      <h1 className="groupName">{name}</h1>
-      <div>
-        <IoIosPeople />
-        {membros === undefined ? 0 : membros.length}
-      </div>
-      <div className="iconsBox">
-        <Link onClick={getGroupId} to="/groupsid">
-          <FcOpenedFolder /> Ver+
-        </Link>
-      </div>
+      <Link className="LinkBox" onClick={getGroupId} to="/groupsid">
+        <h1 className="groupName">{name}</h1>
+        <div>
+          <IoIosPeople />
+          {membros === undefined ? 0 : membros.length}
+        </div>
+        <div>
+          <BsEyeFill />
+        </div>
+      </Link>
     </GroupCard>
   );
 };
