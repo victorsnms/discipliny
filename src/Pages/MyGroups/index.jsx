@@ -1,7 +1,6 @@
 import { Redirect } from "react-router-dom";
 import { MyGroupsWrapper } from "./myGroups";
 import CardGroups from "../../Components/CardGroups";
-import CardAdd from "../../Components/CardAdd";
 import MenuMobile from "../../Components/MenuMobile";
 import Menu from "../../Components/MenuAside/index";
 import { useDisclosure } from "@chakra-ui/react";
@@ -14,8 +13,7 @@ import { useState } from "react";
 function Groups() {
   const { logged } = useLogged();
 
-  const { myGroupsList, setMyGroupsList, createNewGroup, updateMyGroup } =
-    useMyGroups();
+  const { myGroupsList } = useMyGroups();
 
   const { isOpen, onOpen, onClose } = useDisclosure();
 
