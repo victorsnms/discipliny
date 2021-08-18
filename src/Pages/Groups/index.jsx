@@ -46,14 +46,33 @@ const Groups = () => {
             </div>
             <div className="SubContainerCards">
               {filterInput === ""
-                ? groupsCardList.map((group) => (
-                    <CardGroups
-                      name={group.name}
-                      membros={group.users_on_group}
-                      idGroup={group.id}
-                    />
-                  ))
+                ? groupsCardList
+                    .sort((groupNameA, groupNameB) => {
+                      if (groupNameA.name < groupNameB.name) {
+                        return -1;
+                      }
+                      if (groupNameA.name > groupNameB.name) {
+                        return 1;
+                      }
+                      return 0;
+                    })
+                    .map((group) => (
+                      <CardGroups
+                        name={group.name}
+                        membros={group.users_on_group}
+                        idGroup={group.id}
+                      />
+                    ))
                 : groupsCardList
+                    .sort((groupNameA, groupNameB) => {
+                      if (groupNameA.name < groupNameB.name) {
+                        return -1;
+                      }
+                      if (groupNameA.name > groupNameB.name) {
+                        return 1;
+                      }
+                      return 0;
+                    })
                     .filter((item) =>
                       item.name
                         .toLowerCase()

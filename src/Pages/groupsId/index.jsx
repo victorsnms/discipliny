@@ -20,8 +20,8 @@ const Groupsid = () => {
 
   useEffect(() => {
     getSpecificGroup();
-    getActivity()
-  }, [goals,activities]);
+    getActivity();
+  }, [goals, activities]);
 
   if (!logged) {
     return <Redirect to="/" />;
