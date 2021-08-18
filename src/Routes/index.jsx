@@ -24,7 +24,7 @@ const Routes = () => {
       <Route path="/mygroups">
         <MyGroups />
       </Route>
-      <Route path="/groupsid">
+      <Route path="/groupsid/:id">
         <Groupsid />
       </Route>
     </Switch>

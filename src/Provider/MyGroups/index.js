@@ -1,35 +1,32 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import api from "../../Services/api";
 import { useToast } from "@chakra-ui/react";
+import { useParams } from "react-router-dom";
 
 const MyGroupsCardListContext = createContext();
 
 export const MyGroupsCardsProvider = ({ children }) => {
   const toast = useToast();
-
+  
   const [myGroupsList, setMyGroupsList] = useState([]);
 
-  const token = JSON.parse(localStorage.getItem("@Discipliny:accessToken"));
+  // const token = JSON.parse(localStorage.getItem("@Discipliny:accessToken"));
 
   function getGroups() {
+  
+    const token = JSON.parse(localStorage.getItem("@Discipliny:accessToken"));
     api
       .get("/groups/subscriptions/", {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
         setMyGroupsList(response.data);
-        localStorage.setItem(
-          "@Discipliny:idGroup",
-          JSON.stringify(response.data.id)
-        );
+        
       })
       .catch((error) => {
         console.log(error);
       });
   }
-  useEffect(() => {
-    getGroups();
-  }, []);
 
   // const updateMyGroup = (dados, groupId) => {
   //   const token = JSON.parse(localStorage.getItem("@Discipliny:accessToken"));

@@ -11,6 +11,7 @@ import {
   GroupTitle,
   ContainerGoal,
 } from "./groupGrid.styles";
+import { useParams } from "react-router-dom";
 
 const GroupGrid = ({
   cardMember,
@@ -20,26 +21,21 @@ const GroupGrid = ({
   idGroupSpec,
 }) => {
   const [isToast, setIsToast] = useState("unset");
-  const [isOnGroup, setIsOnGroup] = useState(false);
+
   const toast = useToast();
   const user = JSON.parse(localStorage.getItem("@Discipliny:Nameuser"));
   const { getSpecificGroup, subscribeToGroup, specificGroup } = useGroups();
-  console.log(user);
+  const { id } = useParams();
+  const isOnGroup = !!specificGroup?.users_on_group.find(
+    (obj) => obj.username === user
+  );
 
   const handleClick = () => {
     subscribeToGroup(setIsToast, idGroupSpec);
-    getSpecificGroup();
+    getSpecificGroup(id);
   };
 
   useEffect(() => {
-    if (specificGroup.users_on_group !== undefined) {
-      specificGroup.users_on_group.map((obj) => {
-        if (obj.username === user) {
-          return setIsOnGroup(true);
-        }
-      });
-    }
-
     if (isToast === "success") {
       toast({
         title: "Inscrição",
@@ -69,8 +65,9 @@ const GroupGrid = ({
       });
     }
     setIsToast("unset");
-  }, [isToast]);
+  }, [isToast, isOnGroup, specificGroup]);
 
+  console.log(specificGroup);
   return (
     <Grid
       h="90%"
@@ -83,11 +80,11 @@ const GroupGrid = ({
       <GridItem w="80%" placeSelf="center" rowSpan={1} colSpan={16}>
         <GroupTitle className="titleGroup">
           {namegroup}
-          {isOnGroup ? (
+          {isOnGroup ? null : (
             <button className="SubsButton" onClick={handleClick}>
               <GiExitDoor />
             </button>
-          ) : null}
+          )}
         </GroupTitle>
       </GridItem>
       <GridItem
