@@ -87,14 +87,17 @@ export const MenuAside = styled.div`
       }
 
       .Hab {
+        padding-left: 10px;
         background-image: var(--light-blue-gradient);
       }
 
       .MyGroup {
+        padding-left: 10px;
         background-image: var(--dark-yellow-gradient);
       }
 
       .Descobrir {
+        padding-left: 10px;
         background-image: var(--orange-gradient);
       }
     }

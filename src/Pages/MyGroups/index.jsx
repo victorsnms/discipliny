@@ -45,15 +45,34 @@ function Groups() {
             <GroupCreateModal isOpen={isOpen} onClose={onClose} />
             <div className="SubContainerCards">
               {filterInput === ""
-                ? myGroupsList.map((group) => (
-                    <CardGroups
-                      key={group.id}
-                      name={group.name}
-                      membros={group.users_on_group}
-                      idGroup={group.id}
-                    />
-                  ))
+                ? myGroupsList
+                    .sort((groupNameA, groupNameB) => {
+                      if (groupNameA.name < groupNameB.name) {
+                        return -1;
+                      }
+                      if (groupNameA.name > groupNameB.name) {
+                        return 1;
+                      }
+                      return 0;
+                    })
+                    .map((group) => (
+                      <CardGroups
+                        key={group.id}
+                        name={group.name}
+                        membros={group.users_on_group}
+                        idGroup={group.id}
+                      />
+                    ))
                 : myGroupsList
+                    .sort((groupNameA, groupNameB) => {
+                      if (groupNameA.name < groupNameB.name) {
+                        return -1;
+                      }
+                      if (groupNameA.name > groupNameB.name) {
+                        return 1;
+                      }
+                      return 0;
+                    })
                     .filter((item) =>
                       item.name
                         .toLowerCase()

@@ -12,10 +12,13 @@ export const MenuMobileC = styled.div`
     appering 3s ease-in-out forwards;
 
   button {
-    font-size: clamp(1rem, 1.5rem, 3rem);
+    font-size: clamp(2.5rem, 1.5rem, 3rem);
     color: white;
     width: 25%;
     border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     &:hover {
       opacity: 0.5;
