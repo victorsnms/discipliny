@@ -1,6 +1,6 @@
 import { Redirect } from "react-router-dom";
 import CardHabit from "../../Components/CardHabits";
-import { HabitWrapper } from "./habitwrapper.style";
+import { HabitWrapper, ModalCenter } from "./habitwrapper.style";
 import MenuMobile from "../../Components/MenuMobile";
 import Menu from "../../Components/MenuAside/index";
 import { useHabits } from "../../Provider/Habits";
@@ -34,13 +34,15 @@ const Habits = () => {
               </div>
             </header>
             <HabitCreateModal />
-            <div className="SubContainerCards">
-              {filterInput === "Todos" || filterInput === ""
-                ? habit.map((item) => <CardHabit habits={item} key={item.id} />)
-                : habit
-                    .filter((item) => item.category === filterInput)
-                    .map((item) => <CardHabit habits={item} key={item.id} />)}
-            </div>
+            <ModalCenter>
+              <div className="SubContainerCards">
+                {filterInput === "Todos" || filterInput === ""
+                  ? habit.map((item) => <CardHabit habits={item} key={item.id} />)
+                  : habit
+                      .filter((item) => item.category === filterInput)
+                      .map((item) => <CardHabit habits={item} key={item.id} />)}
+              </div>
+            </ModalCenter>
           </section>
           <MenuMobile />
         </div>
