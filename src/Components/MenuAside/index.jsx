@@ -8,6 +8,8 @@ import { useEffect, useState } from "react";
 import { useUser } from "../../Provider/User";
 import { useToast } from "@chakra-ui/react";
 import { FiEdit } from "react-icons/fi";
+import img from "../../assets/avatars/avatar1.png";
+import img2 from "../../assets/edit-pen-icon.jpg";
 
 const Menu = () => {
   const history = useHistory();
@@ -63,7 +65,8 @@ const Menu = () => {
       <aside>
         <h1>Discipliny</h1>
         <div className="ImgContainer">
-          <img></img>
+          <img src={img} alt="avatar" />
+          <img src={img2} alt="edit" className="editImage" />
 
           <div className="EditUsername">
             {show ? (

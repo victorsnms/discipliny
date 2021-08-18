@@ -31,7 +31,6 @@ export const HabitWrapper = styled.div`
       justify-content: space-between;
       animation: appearing 1s ease-in-out backwards;
       animation-delay: 0.5s;
-      border-bottom-right-radius: 0;
       header {
         background-image: var(--light-blue-gradient);
         border-radius: 25px 25px 0px 0px;
@@ -56,9 +55,9 @@ export const HabitWrapper = styled.div`
         width: 100%;
         align-items: center;
         height: 70vh;
-        justify-content: space-evenly;
+        padding: 30px;
         overflow-y: auto;
-        padding: 10px;
+        justify-content: center;
 
         ::-webkit-scrollbar {
           width: 10px;

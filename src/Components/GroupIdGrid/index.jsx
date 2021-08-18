@@ -11,6 +11,7 @@ import {
   GroupTitle,
   ContainerGoal,
 } from "./groupGrid.styles";
+import { useParams } from "react-router-dom";
 
 const GroupGrid = ({
   cardMember,
@@ -24,26 +25,37 @@ const GroupGrid = ({
   const toast = useToast();
   const user = JSON.parse(localStorage.getItem("@Discipliny:Nameuser"));
   const { getSpecificGroup, subscribeToGroup, specificGroup } = useGroups();
-  console.log(user);
-  console.log(specificGroup);
-  console.log(isOnGroup);
+  const { id } = useParams();
+  // console.log(user);
+  // console.log(isOnGroup);
 
   const handleClick = () => {
     subscribeToGroup(setIsToast, idGroupSpec);
-    getSpecificGroup();
+    getSpecificGroup(id);
   };
 
-  useEffect(() => {
-    if (specificGroup.users_on_group.username !== undefined) {
-      specificGroup.users_on_group.find((obj) => {
-        if (obj.username === user) {
-          return setIsOnGroup(true);
-        }
-      });
-    } else {
-      return null;
-    }
+  // useEffect(() => {
+  // if (specificGroup.users_on_group.username !== undefined) {
+  //   specificGroup.users_on_group.find((obj) => {
+  //     if (obj.username === user) {
+  //       return setIsOnGroup(true);
+  //     }
+  //   });
+  // } else {
+  //   return null;
+  // }
+  // async function loadCatalogue() {
+  //   const response = await api.get("/");
 
+  //   const data = response.data;
+  //   setCatalogue(data);
+  // }
+
+  // useEffect(() => {
+  //   loadCatalogue();
+  // }, []);
+
+  useEffect(() => {
     if (isToast === "success") {
       toast({
         title: "Inscrição",
@@ -73,8 +85,19 @@ const GroupGrid = ({
       });
     }
     setIsToast("unset");
-  }, [isToast]);
+  }, [isToast, isOnGroup, specificGroup]);
 
+  // if (specificGroup !== undefined) {
+  //   console.log(specificGroup);
+
+  //   specificGroup.users_on_group.map((obj) => {
+  //     if (obj.username === user) {
+  //       setIsOnGroup(true);
+  //     }
+  //   });
+  // } else setIsOnGroup(false);
+
+  console.log(specificGroup);
   return (
     <Grid
       h="90%"
@@ -87,10 +110,11 @@ const GroupGrid = ({
       <GridItem w="80%" placeSelf="center" rowSpan={1} colSpan={16}>
         <GroupTitle className="titleGroup">
           {namegroup}
-
-          <button className="SubsButton" onClick={handleClick}>
-            <GiEntryDoor />
-          </button>
+          {isOnGroup ? null : (
+            <button className="SubsButton" onClick={handleClick}>
+              <GiEntryDoor />
+            </button>
+          )}
         </GroupTitle>
       </GridItem>
       <GridItem
@@ -103,8 +127,9 @@ const GroupGrid = ({
         rowSpan={8}
         colSpan={8}
         bg="var(--blue-dark)"
+        overflow="hidden"
       >
-        {isOnGroup ? (
+        {!isOnGroup ? (
           <Title>
             Goals
             <GoalsCreateModal />
@@ -123,6 +148,7 @@ const GroupGrid = ({
         justifySelf="center"
         colSpan={8}
         backgroundImage="linear-gradient(var(--blue-dark), var(--blue-dark));"
+        overflow="hidden"
       >
         <Title>Members</Title>
         <Container>{cardMember}</Container>
@@ -135,8 +161,9 @@ const GroupGrid = ({
         rowSpan={4}
         colSpan={8}
         bg="var(--blue-dark)"
+        overflow="hidden"
       >
-        {isOnGroup ? (
+        {!isOnGroup ? (
           <Title>
             activities
             <ActivitiesCreateModal />

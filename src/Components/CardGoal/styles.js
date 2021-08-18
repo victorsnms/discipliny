@@ -1,23 +1,17 @@
 import styled from "styled-components";
 
 export const GoalCard = styled.div`
-  @media (max-width: 1458px) {
-    width: 90%;
-    min-width: 200px;
-    margin: 0;
-    margin-bottom: 10px;
-  }
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 456px;
+  width: 90%;
   height: 85px;
   justify-content: center;
   background-image: var(--background-cards);
   border-radius: 100px;
   font-family: Sansita;
-  margin-bottom: 20px;
-  margin-left: 20px;
+  margin-bottom: 10px;
+
   color: var(--white);
   box-shadow: 5px 5px 10px 3px #00000054;
 
@@ -30,24 +24,22 @@ export const GoalCard = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    width: 100%;
+    width: 90%;
+    margin-top: 5px;
   }
   .goalName {
     padding: 0;
     margin: 0;
     text-align: center;
-    width: 70%;
-    font-size: 1.3rem;
+    font-size: 16px;
+    width: 90%;
   }
 
   .RightLabel {
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    margin-bottom: 5px;
-    width: 15%;
-    padding-right: 30px;
-    padding-top: 15px;
+    font-size: 14px;
     p {
       background-color: var(--yellow);
       border-radius: 25px 0 25px 0;
@@ -59,8 +51,8 @@ export const GoalCard = styled.div`
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    width: 90%;
-    margin-top: 10px;
+    width: 87%;
+    margin-top: 5px;
     cursor: pointer;
 
     div {
@@ -73,16 +65,6 @@ export const GoalCard = styled.div`
     svg {
       font-size: 20px;
       color: var(--yellow);
-    }
-  }
-  @media (max-width: 767px) {
-    width: 90%;
-    .goalName {
-      font-size: 1rem;
-    }
-
-    p {
-      font-size: 0.8rem;
     }
   }
 `;

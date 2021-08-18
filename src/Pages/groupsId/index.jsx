@@ -6,7 +6,7 @@ import CardMember from "../../Components/CardMember";
 import ActivityCard from "../../Components/CardActivity/index";
 import CardGoal from "../../Components/CardGoal";
 import { useGroups } from "../../Provider/Groups/groupsCardList";
-import { Redirect } from "react-router-dom";
+import { Redirect, useParams } from "react-router-dom";
 import { useLogged } from "../../Provider/Login";
 import { useGoals } from "../../Provider/Goals";
 import { useEffect } from "react";
@@ -17,9 +17,10 @@ const Groupsid = () => {
   const { goals } = useGoals();
   const { logged } = useLogged();
   const { activities, getActivity } = useActivities();
+  const { id } = useParams();
 
   useEffect(() => {
-    getSpecificGroup();
+    getSpecificGroup(id);
     getActivity();
   }, [goals, activities]);
 
