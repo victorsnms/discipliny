@@ -20,10 +20,11 @@ const GroupGrid = ({
   idGroupSpec,
 }) => {
   const [isToast, setIsToast] = useState("unset");
-
+  const [isOnGroup, setIsOnGroup] = useState(false);
   const toast = useToast();
-
-  const { getSpecificGroup, subscribeToGroup } = useGroups();
+  const user = JSON.parse(localStorage.getItem("@Discipliny:Nameuser"));
+  const { getSpecificGroup, subscribeToGroup, specificGroup } = useGroups();
+  console.log(user);
 
   const handleClick = () => {
     subscribeToGroup(setIsToast, idGroupSpec);
@@ -31,6 +32,14 @@ const GroupGrid = ({
   };
 
   useEffect(() => {
+    if (specificGroup.users_on_group !== undefined) {
+      specificGroup.users_on_group.map((obj) => {
+        if (obj.username === user) {
+          return setIsOnGroup(true);
+        }
+      });
+    }
+
     if (isToast === "success") {
       toast({
         title: "Inscrição",
@@ -74,9 +83,11 @@ const GroupGrid = ({
       <GridItem w="80%" placeSelf="center" rowSpan={1} colSpan={16}>
         <GroupTitle className="titleGroup">
           {namegroup}
-          <button className="SubsButton" onClick={handleClick}>
-            <GiExitDoor />
-          </button>
+          {isOnGroup ? (
+            <button className="SubsButton" onClick={handleClick}>
+              <GiExitDoor />
+            </button>
+          ) : null}
         </GroupTitle>
       </GridItem>
       <GridItem
@@ -91,10 +102,14 @@ const GroupGrid = ({
         bg="var(--blue-dark)"
         overflow="hidden"
       >
-        <Title>
-          Goals
-          <GoalsCreateModal />
-        </Title>
+        {isOnGroup ? (
+          <Title>
+            Goals
+            <GoalsCreateModal />
+          </Title>
+        ) : (
+          <Title>Goals</Title>
+        )}
 
         <ContainerGoal>{cardGoal}</ContainerGoal>
       </GridItem>
@@ -121,10 +136,15 @@ const GroupGrid = ({
         bg="var(--blue-dark)"
         overflow="hidden"
       >
-        <Title>
-          Activities
-          <ActivitiesCreateModal />
-        </Title>
+        {isOnGroup ? (
+          <Title>
+            activities
+            <ActivitiesCreateModal />
+          </Title>
+        ) : (
+          <Title>activities</Title>
+        )}
+
         <Container>{CardActivity}</Container>
       </GridItem>
     </Grid>
