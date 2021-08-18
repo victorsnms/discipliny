@@ -63,10 +63,10 @@ const Login = () => {
         toast({
           title: `Login efetuado com sucesso`,
           position: "top",
-          description: `Bem vindo ${user.username}`,
+          description: `Bem vindo ${user.username}, mostre que você tem disciplina e realize uma tarefa 21 vezes para consolidar seu hábito e ganhar uma medalha de ouro! Vamos lá 😁`,
           status: "success",
-          duration: 3000,
           isClosable: true,
+          duration: 120000
         });
         return history.push("/habits");
       })
