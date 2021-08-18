@@ -18,6 +18,7 @@ const GroupGrid = ({
   cardGoal,
   namegroup,
   idGroupSpec,
+  type,
 }) => {
   const [isToast, setIsToast] = useState("unset");
 
