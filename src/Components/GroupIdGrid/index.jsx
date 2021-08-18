@@ -38,7 +38,7 @@ const GroupGrid = ({
           return setIsOnGroup(true);
         }
       });
-    }
+    } else return null;
 
     if (isToast === "success") {
       toast({
