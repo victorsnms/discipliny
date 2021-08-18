@@ -66,7 +66,7 @@ const HabitCreateModal = () => {
       });
     } else if (isToast === "error") {
       toast({
-        title: "Atividade não foi criada!",
+        title: "Hábitos!",
         position: "top",
         description: "Verifique todos os campos e tente novamente",
         status: "error",

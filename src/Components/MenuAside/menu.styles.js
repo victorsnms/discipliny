@@ -32,10 +32,41 @@ export const MenuAside = styled.div`
         width: 148px;
         height: 148px;
         border-radius: 100%;
+        margin-bottom: 10px;
       }
 
-      span {
-        font-size: 32px;
+      .EditUsername {
+        display: flex;
+
+        width: 100%;
+        justify-content: center;
+        color: var(--white);
+
+        input {
+          padding: 8px;
+          width: 80%;
+          background-color: var(--blue-dark);
+          border-bottom: 3px var(--cream) solid;
+          font-size: 32px;
+          height: 32px;
+        }
+
+        span {
+          padding: 5px;
+          font-size: 32px;
+          cursor: pointer;
+        }
+
+        button {
+          width: 18px;
+
+          height: 100%;
+          height: 32px;
+
+          svg {
+            font-size: 16px;
+          }
+        }
       }
     }
 

@@ -55,7 +55,7 @@ const GroupUpdateModal = ({ group }) => {
         description: "Grupo atualizado com sucesso",
         position: "top",
         status: "success",
-        duration: 3000,
+        duration: 4000,
         isClosable: true,
       });
       onClose();
@@ -65,7 +65,7 @@ const GroupUpdateModal = ({ group }) => {
         position: "top",
         description: "Verifique os campos e tente novamente",
         status: "error",
-        duration: 2000,
+        duration: 3000,
         isClosable: true,
       });
     }

@@ -5,6 +5,8 @@ import jwt_decode from "jwt-decode";
 const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
+  const token = JSON.parse(localStorage.getItem("@Discipliny:accessToken"));
+  const userId = JSON.parse(localStorage.getItem("@Discipliny:userId"));
   const [user, setUser] = useState();
 
   const getUser = () => {
@@ -25,22 +27,18 @@ export const UserProvider = ({ children }) => {
   };
 
   //api não deixa trocar a senha
-  const updateUserFunc = (dados) => {
-    const token = JSON.parse(localStorage.getItem("@Discipliny:accessToken"));
-    const userId = JSON.parse(localStorage.getItem("@Discipliny:userId"));
+  const updateUserFunc = (dados, setIsToast) => {
     api
       .patch(`/users/${userId}/`, dados, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
         setUser(response.data);
-        localStorage.setItem(
-          "@Discipliny:userId",
-          JSON.stringify(response.data.id)
-        );
+        setIsToast("success");
       })
       .catch((error) => {
         console.log(error);
+        setIsToast("error");
       });
   };
 

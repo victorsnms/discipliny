@@ -14,8 +14,9 @@ const CardGoal = ({ goal }) => {
 
   return (
     <GoalCard>
-      <div onClick={handleClick} className="Progress">
+      <div className="Progress">
         <Progress
+          onClick={handleClick}
           value={goal.how_much_achieved}
           height="10px"
           width="80%"

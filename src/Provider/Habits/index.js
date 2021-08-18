@@ -39,7 +39,7 @@ export const HabitsProvider = ({ children }) => {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
-        setIsToast("succes");
+        setIsToast("success");
         setHabit([...habit, response.data]);
       })
       .catch((_) => {

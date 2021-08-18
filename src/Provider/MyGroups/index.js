@@ -6,21 +6,8 @@ const MyGroupsCardListContext = createContext();
 
 export const MyGroupsCardsProvider = ({ children }) => {
   const toast = useToast();
-  const [myGroupsList, setMyGroupsList] = useState([]);
-  const token = JSON.parse(localStorage.getItem("@Discipliny:accessToken"));
 
-  const createNewGroup = (dados) => {
-    api
-      .post("/groups/", dados, {
-        headers: { Authorization: `Bearer ${token}` },
-      })
-      .then((response) => {
-        setMyGroupsList([...myGroupsList, response.data]);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
+  const [myGroupsList, setMyGroupsList] = useState([]);
 
   function getGroups() {
     api
@@ -34,29 +21,41 @@ export const MyGroupsCardsProvider = ({ children }) => {
           JSON.stringify(response.data.id)
         );
       })
-      .catch((_) => {});
-  }
-
-  const updateMyGroup = (dados, groupId) => {
-    api
-      .patch(`/groups/${groupId}`, dados, {
-        headers: { Authorization: `Bearer ${token}` },
-      })
-      .then((_) => {
-        getGroups();
-      })
-      .catch((err) => {
-        console.log(err);
+      .catch((error) => {
+        console.log(error);
       });
   };
+  useEffect(() => {
+    getGroups();
+  }, []);
+
+  // const updateMyGroup = (dados, groupId) => {
+  //   const token = JSON.parse(localStorage.getItem("@Discipliny:accessToken"));
+  //   api
+  //     .patch(`/groups/${groupId}`, dados, {
+  //       headers: { Authorization: `Bearer ${token}` },
+  //     })
+  //     .then((_) => {
+  //       getGroups();
+  //     })
+  //     .catch((_) => {
+  //       toast({
+  //         title: "erro ao Criar grupo!",
+  //         description: "Erro ao atualizar grupos",
+  //         status: "error",
+  //         duration: 2000,
+  //         isClosable: true,
+  //       });
+  //     });
+  // };
 
   return (
     <MyGroupsCardListContext.Provider
       value={{
         myGroupsList,
         setMyGroupsList,
-        createNewGroup,
-        updateMyGroup,
+        // createNewGroup,
+        // updateMyGroup,
         getGroups,
       }}
     >

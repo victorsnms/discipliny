@@ -62,8 +62,8 @@ export const GroupsCardsProvider = ({ children }) => {
         );
         setSpecificGroup(response.data);
       })
-      .catch((err) => {
-        console.log(err);
+      .catch((error) => {
+        console.log(error);
       });
   };
 
