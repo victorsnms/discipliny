@@ -13,7 +13,7 @@ import { useEffect, useState } from "react";
 function Groups() {
   const { logged } = useLogged();
 
-  const { myGroupsList } = useMyGroups();
+  const { myGroupsList, getGroups } = useMyGroups();
 
   const { isOpen, onOpen, onClose } = useDisclosure();
 
