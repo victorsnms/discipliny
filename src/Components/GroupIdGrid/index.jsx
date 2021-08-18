@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import GoalsCreateModal from "../GoalsCreateModal";
 import { useToast, useDisclosure } from "@chakra-ui/react";
 import { useGroups } from "../../Provider/Groups/groupsCardList";
-import { GiExitDoor } from "react-icons/gi";
+import { GiEntryDoor } from "react-icons/gi";
 import ActivitiesCreateModal from "../ActivitiesCreateModal";
 import {
   Container,
@@ -25,6 +25,8 @@ const GroupGrid = ({
   const user = JSON.parse(localStorage.getItem("@Discipliny:Nameuser"));
   const { getSpecificGroup, subscribeToGroup, specificGroup } = useGroups();
   console.log(user);
+  console.log(specificGroup);
+  console.log(isOnGroup);
 
   const handleClick = () => {
     subscribeToGroup(setIsToast, idGroupSpec);
@@ -32,12 +34,14 @@ const GroupGrid = ({
   };
 
   useEffect(() => {
-    if (specificGroup.users_on_group !== undefined) {
-      specificGroup.users_on_group.map((obj) => {
+    if (specificGroup.users_on_group.username !== undefined) {
+      specificGroup.users_on_group.find((obj) => {
         if (obj.username === user) {
           return setIsOnGroup(true);
         }
       });
+    } else {
+      return null;
     }
 
     if (isToast === "success") {
@@ -83,11 +87,10 @@ const GroupGrid = ({
       <GridItem w="80%" placeSelf="center" rowSpan={1} colSpan={16}>
         <GroupTitle className="titleGroup">
           {namegroup}
-          {isOnGroup ? (
-            <button className="SubsButton" onClick={handleClick}>
-              <GiExitDoor />
-            </button>
-          ) : null}
+
+          <button className="SubsButton" onClick={handleClick}>
+            <GiEntryDoor />
+          </button>
         </GroupTitle>
       </GridItem>
       <GridItem

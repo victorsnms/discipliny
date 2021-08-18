@@ -13,9 +13,10 @@ export const Container = styled.div`
     @media (max-width: 768px) {
       width: 100vw;
       flex-direction: column;
+      min-height: 100vh;
     }
     display: flex;
-
+    height: 100%;
     width: 75vw;
     padding-top: 50px;
     justify-content: center;
@@ -26,6 +27,10 @@ export const Container = styled.div`
     font-size: 2rem;
     text-align: center;
     line-height: 90px;
+  }
+
+  .css-5rbgcj {
+    width: 90%;
   }
 
   @keyframes appearing {
@@ -44,6 +49,7 @@ export const Container = styled.div`
       padding: 0 10px;
       justify-content: center;
       min-height: 100vh;
+      width: 100%;
     }
   }
 `;
