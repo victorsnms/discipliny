@@ -9,6 +9,8 @@ export const MyGroupsCardsProvider = ({ children }) => {
 
   const [myGroupsList, setMyGroupsList] = useState([]);
 
+  const token = JSON.parse(localStorage.getItem("@Discipliny:accessToken"));
+
   function getGroups() {
     api
       .get("/groups/subscriptions/", {
@@ -24,7 +26,7 @@ export const MyGroupsCardsProvider = ({ children }) => {
       .catch((error) => {
         console.log(error);
       });
-  };
+  }
   useEffect(() => {
     getGroups();
   }, []);
