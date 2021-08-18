@@ -20,7 +20,6 @@ function Groups() {
   const [filterInput, setFilterInput] = useState("");
   useEffect(() => {
     getGroups();
-    console.log("rodou");
   }, []);
 
   if (!logged) {
