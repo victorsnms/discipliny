@@ -114,7 +114,7 @@ export const HabitCard = styled.div`
   }
 
   @media (min-width: 767px) {
-    width: 80%;
+    width: 45%;
     .Central .BottomLabels p {
       font-size: 15px;
     }
