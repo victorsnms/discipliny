@@ -20,6 +20,17 @@ export const MenuAside = styled.div`
       font-weight: 700;
       text-align: center;
     }
+    .editImage {
+      z-index: 1;
+      position: absolute;
+      top: 0;
+      display: block;
+      filter: opacity(0);
+      &:hover {
+        filter: opacity(100%);
+        cursor: pointer;
+      }
+    }
 
     .ImgContainer {
       width: 100%;
@@ -27,12 +38,17 @@ export const MenuAside = styled.div`
       flex-direction: column;
       align-items: center;
       justify-content: space-around;
+      position: relative;
       img {
         background-color: red;
         width: 148px;
         height: 148px;
         border-radius: 100%;
         margin-bottom: 10px;
+        &:hover {
+          filter: opacity(60%);
+          background-color: black;
+        }
       }
 
       .EditUsername {
