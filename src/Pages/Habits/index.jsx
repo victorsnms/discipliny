@@ -13,7 +13,6 @@ const Habits = () => {
   const { logged } = useLogged();
   const { habit } = useHabits();
   const [filterInput, setFilterInput] = useState("");
-
   if (!logged) {
     return <Redirect to="/" />;
   }
@@ -37,8 +36,27 @@ const Habits = () => {
             <ModalCenter>
               <div className="SubContainerCards">
                 {filterInput === "Todos" || filterInput === ""
-                  ? habit.map((item) => <CardHabit habits={item} key={item.id} />)
+                  ? habit
+                      .sort((HabbitA, HabbitB) => {
+                        if (HabbitA.title < HabbitB.title) {
+                          return -1;
+                        }
+                        if (HabbitA.title > HabbitB.title) {
+                          return 1;
+                        }
+                        return 0;
+                      })
+                      .map((item) => <CardHabit habits={item} key={item.id} />)
                   : habit
+                      .sort((HabbitA, HabbitB) => {
+                        if (HabbitA.title < HabbitB.title) {
+                          return -1;
+                        }
+                        if (HabbitA.title > HabbitB.title) {
+                          return 1;
+                        }
+                        return 0;
+                      })
                       .filter((item) => item.category === filterInput)
                       .map((item) => <CardHabit habits={item} key={item.id} />)}
               </div>
