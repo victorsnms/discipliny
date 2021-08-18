@@ -9,6 +9,9 @@ export const GroupsWrapper = styled(HabitWrapper)`
     justify-content: space-between;
     padding-top: 10px;
   }
+  .subContainerCards {
+    justify-content: center;
+  }
 
   @media (min-width: 768px) {
     .buttonPages {

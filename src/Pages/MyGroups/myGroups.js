@@ -10,6 +10,8 @@ export const MyGroupsWrapper = styled(HabitWrapper)`
     height: 80vh;
     padding: 30px;
     overflow-y: auto;
+    justify-content: center;
+
     ::-webkit-scrollbar {
       width: 10px;
     }

@@ -31,7 +31,6 @@ export const HabitWrapper = styled.div`
       justify-content: space-between;
       animation: appearing 1s ease-in-out backwards;
       animation-delay: 0.5s;
-      border-bottom-right-radius: 0;
       header {
         background-image: var(--light-blue-gradient);
         border-radius: 25px 25px 0px 0px;
@@ -54,10 +53,11 @@ export const HabitWrapper = styled.div`
         flex-direction: row;
         flex-wrap: wrap;
         width: 100%;
-        align-items:center;
-        height:70vh;
+        align-items: center;
+        height: 70vh;
         padding: 30px;
         overflow-y: auto;
+        justify-content: center;
 
         ::-webkit-scrollbar {
           width: 10px;
@@ -75,11 +75,9 @@ export const HabitWrapper = styled.div`
         }
       }
     }
-
   }
-  
+
   @media (min-width: 769px) {
-   
     .ContainerCards section header h1 {
       font-size: 2rem;
     }
@@ -110,4 +108,4 @@ export const ModalCenter = styled.div`
   justify-content: center;
   width: 100%;
   padding: 8px 0;
-`
+`;
