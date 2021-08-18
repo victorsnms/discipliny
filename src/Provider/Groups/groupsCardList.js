@@ -1,16 +1,16 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import api from "../../Services/api";
-import { useToast } from "@chakra-ui/react";
+import { useParams } from "react-router-dom";
 
 const GroupsCardListContext = createContext();
 
 export const GroupsCardsProvider = ({ children }) => {
-  const toast = useToast();
   const [groupsCardList, setGroupsCardList] = useState([]);
   const [specificGroup, setSpecificGroup] = useState();
   const [url, setUrl] = useState("https://kabit-api.herokuapp.com/groups/");
   const [prev, setPrev] = useState("");
   const [next, setNext] = useState("");
+  const { id } = useParams();
 
   const token = JSON.parse(localStorage.getItem("@Discipliny:accessToken"));
 
@@ -50,16 +50,10 @@ export const GroupsCardsProvider = ({ children }) => {
       .catch((_) => setIsToast("error"));
   };
 
-  const getSpecificGroup = () => {
-    const idGroup = JSON.parse(localStorage.getItem("@Discipliny:idGroup"));
-
+  const getSpecificGroup = (idGroup) => {
     api
       .get(`groups/${idGroup}/`)
       .then((response) => {
-        localStorage.setItem(
-          "@Discipliny:idGroup",
-          JSON.stringify(response.data.id)
-        );
         setSpecificGroup(response.data);
       })
       .catch((error) => {
@@ -68,9 +62,8 @@ export const GroupsCardsProvider = ({ children }) => {
   };
 
   const updateGroup = (dados, setIsToast) => {
-    const idGroup = JSON.parse(localStorage.getItem("@Discipliny:idGroup"));
     api
-      .patch(`/groups/${idGroup}/`, dados, {
+      .patch(`/groups/${id}/`, dados, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
