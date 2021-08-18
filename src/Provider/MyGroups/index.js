@@ -9,8 +9,7 @@ export const MyGroupsCardsProvider = ({ children }) => {
 
   const [myGroupsList, setMyGroupsList] = useState([]);
 
-  const getGroups = () => {
-    const token = JSON.parse(localStorage.getItem("@Discipliny:accessToken"));
+  function getGroups() {
     api
       .get("/groups/subscriptions/", {
         headers: { Authorization: `Bearer ${token}` },

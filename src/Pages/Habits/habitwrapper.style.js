@@ -23,7 +23,7 @@ export const HabitWrapper = styled.div`
     section {
       width: 70%;
       min-width: 320px;
-      border-radius: 50px;
+      border-radius: 25px;
       background-image: var(--dark-blue-gradient);
       display: flex;
       flex-direction: column;
@@ -32,12 +32,11 @@ export const HabitWrapper = styled.div`
       animation: appearing 1s ease-in-out backwards;
       animation-delay: 0.5s;
       border-bottom-right-radius: 0;
-
       header {
         background-image: var(--light-blue-gradient);
-        border-radius: 50px 50px 0px 0px;
+        border-radius: 25px 25px 0px 0px;
         width: 100%;
-        height: 114px;
+        height: 70px;
         display: grid;
         place-items: center;
         position: relative;
@@ -45,9 +44,8 @@ export const HabitWrapper = styled.div`
         h1 {
           width: 100%;
           border: none;
-          font-size: clamp(9vw, 10vw, 11vw);
+          font-size: 3rem;
           text-align: center;
-          line-height: 100px;
         }
       }
 
@@ -56,9 +54,11 @@ export const HabitWrapper = styled.div`
         flex-direction: row;
         flex-wrap: wrap;
         width: 100%;
-        height: 80vh;
+        align-items:center;
+        height:70vh;
         padding: 30px;
         overflow-y: auto;
+
         ::-webkit-scrollbar {
           width: 10px;
         }
@@ -75,11 +75,13 @@ export const HabitWrapper = styled.div`
         }
       }
     }
-  }
 
+  }
+  
   @media (min-width: 769px) {
+   
     .ContainerCards section header h1 {
-      font-size: clamp(5vw, 6vw, 7vw);
+      font-size: 2rem;
     }
 
     .ContainerCards section {
@@ -89,7 +91,7 @@ export const HabitWrapper = styled.div`
 
   @media (min-width: 1299px) {
     .ContainerCards section header h1 {
-      font-size: clamp(4vw, 5vw, 6vw);
+      font-size: 3rem;
     }
   }
 
@@ -102,3 +104,10 @@ export const HabitWrapper = styled.div`
     }
   }
 `;
+
+export const ModalCenter = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 8px 0;
+`
