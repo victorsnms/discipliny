@@ -1,27 +1,18 @@
 import styled from "styled-components";
 
 export const CardActivity = styled.div`
-  @media (max-width: 800px) {
-    width: 100%;
-    min-width: 200px;
-    font-size: 1rem;
-    margin: 0;
-    margin-bottom: 3px;
-  }
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 456px;
+  width: 90%;
   height: 85px;
   justify-content: center;
   background-image: var(--background-cards);
   border-radius: 100px;
   font-family: Sansita;
-  margin-bottom: 20px;
-  margin-left: 20px;
   color: var(--white);
+  margin-bottom: 10px;
   box-shadow: 5px 5px 10px 3px #00000054;
-
   .flex-column {
     display: flex;
     flex-direction: column;
@@ -31,56 +22,23 @@ export const CardActivity = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    width: 100%;
+    align-items: center;
+    width: 90%;
   }
   .activityName {
-    @media (max-width: 700px) {
-      font-size: 1rem;
-    }
     padding: 0;
     margin: 0;
     text-align: center;
     width: 80%;
-    font-size: 2rem;
-    line-height: 55px;
+    font-size: 16px;
+  }
+  .activityDate {
+    font-size: 14px;
+    margin-left: 10px;
+    margin-right: 7px;
   }
 
-  .RightLabel {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    margin-bottom: 5px;
-    width: 15%;
-    padding-right: 30px;
-    padding-top: 15px;
-    p {
-      background-color: var(--yellow);
-      border-radius: 25px 0 25px 0;
-      padding: 3px 7px;
-    }
-  }
-  .Progress {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    width: 90%;
-    margin-top: 10px;
-
-    div {
-      border-radius: 5px;
-    }
-    svg {
-      font-size: 30px;
-    }
-  }
-  @media (max-width: 500px) {
-    width: 80%;
-    .goalName {
-      font-size: 1.5rem;
-    }
-
-    p {
-      font-size: 0.5rem;
-    }
+  button {
+    margin-left: 5px;
   }
 `;

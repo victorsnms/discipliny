@@ -100,6 +100,7 @@ const GroupGrid = ({
         rowSpan={8}
         colSpan={8}
         bg="var(--blue-dark)"
+        overflow="hidden"
       >
         {isOnGroup ? (
           <Title>
@@ -120,6 +121,7 @@ const GroupGrid = ({
         justifySelf="center"
         colSpan={8}
         backgroundImage="linear-gradient(var(--blue-dark), var(--blue-dark));"
+        overflow="hidden"
       >
         <Title>Members</Title>
         <Container>{cardMember}</Container>
@@ -132,6 +134,7 @@ const GroupGrid = ({
         rowSpan={4}
         colSpan={8}
         bg="var(--blue-dark)"
+        overflow="hidden"
       >
         {isOnGroup ? (
           <Title>
