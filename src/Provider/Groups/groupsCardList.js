@@ -63,13 +63,7 @@ export const GroupsCardsProvider = ({ children }) => {
         setSpecificGroup(response.data);
       })
       .catch((error) => {
-        toast({
-          title: "Erro",
-          description: "Não possível encontrar este grupo",
-          status: "error",
-          duration: 3000,
-          isClosable: true,
-        });
+        console.log(error);
       });
   };
 

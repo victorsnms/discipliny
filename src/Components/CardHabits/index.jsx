@@ -31,7 +31,7 @@ const CardHabit = ({ habits }) => {
             colorScheme="orange"
           />
           <FaMedal
-            style={habits.how_much_achieved > 100 ? { color: "green" } : null}
+            style={habits.how_much_achieved > 100 ? { color: "gold" } : null}
           />
         </div>
         <p>{habits.title}</p>
