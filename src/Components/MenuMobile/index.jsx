@@ -1,5 +1,8 @@
 import { MenuMobileC } from "../MenuMobile/menuMobile.style";
 import { useHistory } from "react-router-dom";
+import { MdGroup } from "react-icons/md";
+import { BiTask } from "react-icons/bi";
+import { FaRegCompass } from "react-icons/fa";
 
 const MenuMobile = () => {
   const history = useHistory();
@@ -10,13 +13,13 @@ const MenuMobile = () => {
   return (
     <MenuMobileC>
       <button onClick={() => changeTo("/")} className="buttonHab">
-        Habit
+        <BiTask />
       </button>
       <button onClick={() => changeTo("/mygroups")} className="buttonMyGrup">
-        My Grp
+        <MdGroup />
       </button>
       <button onClick={() => changeTo("/groups")} className="buttonDesco">
-        Desco
+        <FaRegCompass />
       </button>
     </MenuMobileC>
   );
