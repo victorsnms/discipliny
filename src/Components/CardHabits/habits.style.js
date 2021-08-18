@@ -76,7 +76,7 @@ export const HabitCard = styled.div`
 
       p {
         background-image: var(--dark-yellow-gradient);
-        font-size: 14px;
+        font-size: 12px;
         height: 30px;
         border-radius: 18px 0 18px 0;
         padding: 3px 7px;

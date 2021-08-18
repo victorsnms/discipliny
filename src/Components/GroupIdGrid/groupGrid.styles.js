@@ -8,6 +8,7 @@ export const Container = styled.div`
   max-height: 70%;
   width: 100%;
   overflow-y: auto;
+
   ::-webkit-scrollbar {
     width: 10px;
   }
@@ -72,6 +73,7 @@ export const ContainerGoal = styled.div`
   max-height: 80%;
   width: 100%;
   overflow-y: auto;
+  font-size: 12px;
   ::-webkit-scrollbar {
     width: 10px;
   }

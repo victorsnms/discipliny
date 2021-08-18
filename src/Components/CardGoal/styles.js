@@ -1,11 +1,11 @@
 import styled from "styled-components";
 
 export const GoalCard = styled.div`
-  @media (max-width: 700px) {
-    width: 100%;
+  @media (max-width: 1458px) {
+    width: 90%;
     min-width: 200px;
     margin: 0;
-    margin-bottom: 3px;
+    margin-bottom: 10px;
   }
   display: flex;
   flex-direction: column;
@@ -75,14 +75,14 @@ export const GoalCard = styled.div`
       color: var(--yellow);
     }
   }
-  @media (max-width: 500px) {
-    width: 80%;
+  @media (max-width: 767px) {
+    width: 90%;
     .goalName {
-      font-size: 1.5rem;
+      font-size: 1rem;
     }
 
     p {
-      font-size: 0.5rem;
+      font-size: 0.8rem;
     }
   }
 `;

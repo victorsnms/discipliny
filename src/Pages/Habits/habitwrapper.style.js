@@ -54,10 +54,11 @@ export const HabitWrapper = styled.div`
         flex-direction: row;
         flex-wrap: wrap;
         width: 100%;
-        align-items:center;
-        height:70vh;
-        padding: 30px;
+        align-items: center;
+        height: 70vh;
+        justify-content: space-evenly;
         overflow-y: auto;
+        padding: 10px;
 
         ::-webkit-scrollbar {
           width: 10px;
@@ -75,17 +76,19 @@ export const HabitWrapper = styled.div`
         }
       }
     }
-
   }
-  
+
   @media (min-width: 769px) {
-   
     .ContainerCards section header h1 {
       font-size: 2rem;
     }
 
     .ContainerCards section {
       width: 90%;
+    }
+
+    .SubContainerCards {
+      padding: 30px;
     }
   }
 
@@ -110,4 +113,4 @@ export const ModalCenter = styled.div`
   justify-content: center;
   width: 100%;
   padding: 8px 0;
-`
+`;

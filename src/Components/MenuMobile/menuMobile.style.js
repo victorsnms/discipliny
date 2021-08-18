@@ -8,7 +8,7 @@ export const MenuMobileC = styled.div`
   height: 80px;
   margin-top: 20px;
   background-color: #2f4858;
-  animation: queda 2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards,
+  animation: queda 2s cubic-bezier(0.08, 0.82, 0.17, 1),
     appering 3s ease-in-out forwards;
 
   button {
@@ -78,7 +78,7 @@ export const MenuMobileC = styled.div`
 
   @keyframes queda {
     0% {
-      transform: translateY(-500px);
+      transform: translateY(500px);
     }
 
     100% {

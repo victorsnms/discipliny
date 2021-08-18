@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
 export const CardActivity = styled.div`
-  @media (max-width: 800px) {
-    width: 100%;
+  @media (max-width: 768px) {
+    width: 90%;
     min-width: 200px;
-    font-size: 1rem;
+    font-size: 1.3rem;
     margin: 0;
     margin-bottom: 3px;
   }
@@ -35,7 +35,7 @@ export const CardActivity = styled.div`
   }
   .activityName {
     @media (max-width: 700px) {
-      font-size: 1rem;
+      font-size: 1.5rem;
     }
     padding: 0;
     margin: 0;
@@ -75,12 +75,12 @@ export const CardActivity = styled.div`
   }
   @media (max-width: 500px) {
     width: 80%;
-    .goalName {
-      font-size: 1.5rem;
+    .activityName {
+      font-size: 1.3rem;
     }
 
     p {
-      font-size: 0.5rem;
+      font-size: 0.8rem;
     }
   }
 `;

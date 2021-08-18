@@ -13,14 +13,12 @@ import {
 import { useEffect, useRef, useState } from "react";
 import { FiEdit } from "react-icons/fi";
 import { useGoals } from "../../Provider/Goals";
-import { useGroups } from "../../Provider/Groups/groupsCardList";
 import { ModalInput, ModalSelect, ModalTitle } from "../HabitCreateModal/style";
 
 const GoalsUpdateModal = ({ goal }) => {
   const initialRef = useRef();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { updateGoal } = useGoals();
-  const { getSpecificGroup } = useGroups();
   const [title, setTitle] = useState(goal.title);
   const [difficulty, setDifficulty] = useState(goal.difficulty);
   const toast = useToast();

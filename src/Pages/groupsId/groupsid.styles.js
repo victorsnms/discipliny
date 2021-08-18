@@ -10,13 +10,12 @@ export const Container = styled.div`
   animation: appearing 1s ease-in-out backwards;
 
   .cardContainer {
-    @media (max-width: 740px) {
+    @media (max-width: 768px) {
       width: 100vw;
       flex-direction: column;
-      min-height: 100vh;
     }
     display: flex;
-    height: 100%;
+
     width: 75vw;
     padding-top: 50px;
     justify-content: center;
@@ -37,12 +36,22 @@ export const Container = styled.div`
       opacity: 1;
     }
   }
+
+  @media (max-width: 767px) {
+    .css-5rbgcj {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 0 10px;
+      justify-content: center;
+      min-height: 100vh;
+    }
+  }
 `;
 export const Cardmembers = styled.div`
   text-align: center;
-  font-size: 2rem;
+  font-size: 1.3rem;
   margin: 0 auto;
-  width: 80%;
+  width: 90%;
   min-height: 45px;
   justify-content: space-between;
   background-color: rgba(85, 207, 224, 0.66);
@@ -51,4 +60,9 @@ export const Cardmembers = styled.div`
   margin-bottom: 20px;
   color: var(--white);
   box-shadow: 5px 5px 10px 3px #00000054;
+
+  @media (min-width: 768px) {
+    font-size: 1.8rem;
+    width: 80%;
+  }
 `;
