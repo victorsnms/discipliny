@@ -12,10 +12,12 @@ import {
 } from "@chakra-ui/react";
 import { useEffect, useRef, useState } from "react";
 import { FiPlusSquare } from "react-icons/fi";
+import { useParams } from "react-router-dom";
 import { useGoals } from "../../Provider/Goals";
 import { ModalInput, ModalSelect, ModalTitle } from "../HabitCreateModal/style";
 
 const GoalsCreateModal = ({ group }) => {
+  const { id } = useParams();
   const initialRef = useRef();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [title, setTitle] = useState("");
@@ -25,12 +27,11 @@ const GoalsCreateModal = ({ group }) => {
   const [isToast, setIsToast] = useState("unset");
 
   const handleSubmit = () => {
-    const idGroup = JSON.parse(localStorage.getItem("@Discipliny:idGroup"));
     const newGoal = {
       title: title,
       difficulty: difficulty,
       how_much_achieved: 0,
-      group: idGroup,
+      group: id,
     };
     addGoal(newGoal, setIsToast);
     getGoals();

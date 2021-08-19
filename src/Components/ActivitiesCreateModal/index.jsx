@@ -14,8 +14,10 @@ import { useEffect, useRef, useState } from "react";
 import { useActivities } from "../../Provider/Activities";
 import { ModalDate, ModalInput, ModalTitle } from "../HabitCreateModal/style";
 import { FiPlusSquare } from "react-icons/fi";
+import { useParams } from "react-router-dom";
 
 const ActivitiesCreateModal = () => {
+  const { id } = useParams();
   const initialRef = useRef();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { createActivity } = useActivities();
@@ -26,19 +28,16 @@ const ActivitiesCreateModal = () => {
 
   const handleSubmit = () => {
     //importar, token e iduser,, setHAnits
-    const groupid = JSON.parse(localStorage.getItem("@Discipliny:idGroup"));
     const newActivity = {
       title: title,
       realization_time: date,
-      group: groupid,
+      group: id,
     };
 
     createActivity(newActivity, setIsToast);
- 
   };
 
   useEffect(() => {
-    
     if (isToast === "success") {
       toast({
         title: "Atividades",
@@ -48,9 +47,9 @@ const ActivitiesCreateModal = () => {
         duration: 3000,
         isClosable: true,
       });
-      onClose()
-      setTitle('');
-      setDate('')
+      onClose();
+      setTitle("");
+      setDate("");
     } else if (isToast === "error") {
       toast({
         title: "Atividades",
