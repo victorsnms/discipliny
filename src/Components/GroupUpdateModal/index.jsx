@@ -22,7 +22,6 @@ import { FiEdit } from "react-icons/fi";
 import { useGroups } from "../../Provider/Groups/groupsCardList";
 
 const GroupUpdateModal = ({ group }) => {
-  //"receber como prop o grupa tal"
   const initialRef = useRef();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { updateGroup } = useGroups();

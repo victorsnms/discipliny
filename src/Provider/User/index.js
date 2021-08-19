@@ -26,7 +26,6 @@ export const UserProvider = ({ children }) => {
       });
   };
 
-  //api não deixa trocar a senha
   const updateUserFunc = (dados, setIsToast) => {
     api
       .patch(`/users/${userId}/`, dados, {

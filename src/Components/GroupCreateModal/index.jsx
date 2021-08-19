@@ -35,7 +35,6 @@ const GroupCreateModal = () => {
   const [categoryChose, setCategoryChose] = useState("healthy");
 
   const handleSubmit = () => {
-    //importar , token
     const newGroup = {
       name: name,
       category: category,
@@ -63,8 +62,8 @@ const GroupCreateModal = () => {
       onClose();
       setName("");
       setDescription("");
-      setCategory("Saúde")
-      setCategoryChose("healthy")
+      setCategory("Saúde");
+      setCategoryChose("healthy");
     } else if (isToast === "error") {
       toast({
         title: "Grupo",

@@ -1,7 +1,7 @@
 import { Grid, GridItem } from "@chakra-ui/layout";
 import { useState, useEffect } from "react";
 import GoalsCreateModal from "../GoalsCreateModal";
-import { useToast, useDisclosure } from "@chakra-ui/react";
+import { useToast } from "@chakra-ui/react";
 import { useGroups } from "../../Provider/Groups/groupsCardList";
 import { GiEntryDoor } from "react-icons/gi";
 import ActivitiesCreateModal from "../ActivitiesCreateModal";
@@ -36,7 +36,6 @@ const GroupGrid = ({
     subscribeToGroup(setIsToast, idGroupSpec);
     getSpecificGroup(id);
   };
-  console.log(id);
 
   useEffect(() => {
     if (isToast === "success") {
@@ -70,7 +69,6 @@ const GroupGrid = ({
     setIsToast("unset");
   }, [isToast, isOnGroup, specificGroup]);
 
-  console.log(specificGroup);
   return (
     <Grid
       className="GridContainer"

@@ -27,7 +27,6 @@ const ActivitiesCreateModal = () => {
   const [isToast, setIsToast] = useState("unset");
 
   const handleSubmit = () => {
-    //importar, token e iduser,, setHAnits
     const newActivity = {
       title: title,
       realization_time: date,
