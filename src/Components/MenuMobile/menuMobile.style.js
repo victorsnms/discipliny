@@ -76,6 +76,22 @@ export const MenuMobileC = styled.div`
     }
   }
 
+  .buttonProfile {
+    background-color: #e73f36;
+
+    &:hover {
+      background: rgb(231, 63, 54);
+      background: linear-gradient(
+        86deg,
+        rgba(231, 63, 54, 1) 0%,
+        rgba(231, 90, 100, 1) 29%,
+        rgba(231, 150, 151, 1) 52%,
+        rgba(231, 90, 100, 1) 75%,
+        rgba(231, 63, 54, 1) 100%
+      );
+    }
+  }
+
   @media (max-width: 768px) {
     display: flex;
   }

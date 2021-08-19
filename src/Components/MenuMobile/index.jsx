@@ -3,6 +3,8 @@ import { useHistory } from "react-router-dom";
 import { MdGroup } from "react-icons/md";
 import { BiTask } from "react-icons/bi";
 import { FaRegCompass } from "react-icons/fa";
+import { FaUserAlt } from "react-icons/fa";
+import ProfileModal from "../ProfileModal";
 
 const MenuMobile = () => {
   const history = useHistory();
@@ -20,6 +22,9 @@ const MenuMobile = () => {
       </button>
       <button onClick={() => changeTo("/groups")} className="buttonDesco">
         <FaRegCompass />
+      </button>
+      <button onClick={() => changeTo()} className="buttonProfile">
+        <ProfileModal />
       </button>
     </MenuMobileC>
   );
