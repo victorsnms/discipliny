@@ -36,7 +36,6 @@ const GroupGrid = ({
     subscribeToGroup(setIsToast, idGroupSpec);
     getSpecificGroup(id);
   };
-  console.log(id);
 
   useEffect(() => {
     if (isToast === "success") {
@@ -70,7 +69,6 @@ const GroupGrid = ({
     setIsToast("unset");
   }, [isToast, isOnGroup, specificGroup]);
 
-  console.log(specificGroup);
   return (
     <Grid
       className="GridContainer"

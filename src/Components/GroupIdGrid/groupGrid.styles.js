@@ -13,12 +13,10 @@ export const Container = styled.div`
     width: 10px;
   }
 
-  /* Track */
   ::-webkit-scrollbar-track {
     background: var(--blue-dark);
   }
 
-  /* Handle */
   ::-webkit-scrollbar-thumb {
     background: var(--blue-light);
     border-radius: 5px;
@@ -80,12 +78,10 @@ export const ContainerGoal = styled.div`
     width: 10px;
   }
 
-  /* Track */
   ::-webkit-scrollbar-track {
     background: var(--blue-dark);
   }
 
-  /* Handle */
   ::-webkit-scrollbar-thumb {
     background: var(--blue-light);
     border-radius: 5px;
