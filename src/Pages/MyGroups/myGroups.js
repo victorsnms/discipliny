@@ -30,4 +30,11 @@ export const MyGroupsWrapper = styled(HabitWrapper)`
   @media (min-height: 1000px) {
     padding-left: 100px;
   }
+
+  @media (max-width: 593px) {
+    .ModalGrpPos {
+      align-self: flex-start;
+      margin-left: 8px;
+    }
+  }
 `;

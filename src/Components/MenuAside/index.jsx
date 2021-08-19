@@ -35,6 +35,10 @@ const Menu = () => {
     updateUserFunc(update, setIsToast);
   };
 
+  const Close = () => {
+    setShow(true);
+  };
+
   useEffect(() => {
     if (isToast === "success") {
       getUser();
@@ -79,7 +83,7 @@ const Menu = () => {
             ) : (
               <>
                 <input
-                  value={updateName}
+                  defaultValue={updateName}
                   onChange={(e) => setUpdateName(e.target.value)}
                   type="text"
                 />
@@ -87,6 +91,7 @@ const Menu = () => {
                 <button onClick={sendData}>
                   <FiEdit />
                 </button>
+                <button onClick={Close}>X</button>
               </>
             )}
           </div>

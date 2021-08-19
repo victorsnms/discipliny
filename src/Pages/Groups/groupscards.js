@@ -9,13 +9,18 @@ export const GroupsWrapper = styled(HabitWrapper)`
     justify-content: space-between;
     padding-top: 10px;
   }
-  .subContainerCards {
+  .ContainerCards section .subContainerCards {
     justify-content: center;
+    position: relative;
   }
 
-  @media (min-width: 768px) {
+  @media (max-width: 768px) {
     .buttonPages {
-      width: 30%;
+      width: 15%;
+    }
+
+    .Filters {
+      width: 36%;
     }
   }
 `;

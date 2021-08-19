@@ -12,7 +12,7 @@ export const HabitWrapper = styled.div`
   .Filters {
     z-index: 1;
     position: absolute;
-    top: 100%;
+    top: 90%;
     right: 0;
   }
   .ContainerCards {
@@ -94,6 +94,13 @@ export const HabitWrapper = styled.div`
   @media (min-width: 1299px) {
     .ContainerCards section header h1 {
       font-size: 3rem;
+    }
+  }
+
+  @media (max-width: 520px) {
+    .ModalPosition {
+      align-self: flex-start;
+      margin-left: 8px;
     }
   }
 
