@@ -1,6 +1,5 @@
 import {
   Button,
-  MenuButton,
   Modal,
   ModalBody,
   ModalCloseButton,
@@ -15,7 +14,6 @@ import { useEffect, useRef, useState } from "react";
 import { FiEdit } from "react-icons/fi";
 import { useGoals } from "../../Provider/Goals";
 import { ModalInput, ModalSelect, ModalTitle } from "../HabitCreateModal/style";
-
 
 const GoalsUpdateModal = ({ goal }) => {
   const initialRef = useRef();
@@ -62,9 +60,9 @@ const GoalsUpdateModal = ({ goal }) => {
 
   return (
     <>
-      <MenuButton onClick={onOpen}>
+      <button onClick={onOpen}>
         <FiEdit class="button_edit" />
-      </MenuButton>
+      </button>
       <Modal initialFocusRef={initialRef} isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>

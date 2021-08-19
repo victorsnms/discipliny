@@ -54,6 +54,7 @@ export const GroupTitle = styled.h1`
   border-top-left-radius: 40px;
   border-top-right-radius: 40px;
   line-height: 60px;
+  position: relative;
 
   .SubsButton {
     margin: 20px;
@@ -95,7 +96,7 @@ export const ContainerGoal = styled.div`
     grid-template-columns: 8;
     background-image: var(--blue-dark);
   }
-`; 
+`;
 
 export const ContainerDescription = styled.div`
   text-align: center;
