@@ -49,7 +49,6 @@ const HabitCreateModal = () => {
     if (title !== "") {
       onClose();
     }
-    setTitle("");
     createHabit(newHabit, setIsToast);
   }
 
@@ -64,6 +63,11 @@ const HabitCreateModal = () => {
         duration: 3000,
         isClosable: true,
       });
+      setTitle("");
+      setCategory("Saúde");
+      setDificulty("Fácil");
+      setFrequency("Diaŕio");
+      setCategoryChose("healthy");
     } else if (isToast === "error") {
       toast({
         title: "Hábitos!",
@@ -83,7 +87,7 @@ const HabitCreateModal = () => {
   };
 
   return (
-    <div>
+    <div className="ModalPosition">
       <Button
         _hover={{ color: "cyan.50", bg: "cyan.800" }}
         bg="teal.700"

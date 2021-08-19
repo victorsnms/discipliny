@@ -14,6 +14,11 @@ export const Container = styled.div`
     .display {
       display: none;
     }
+    .guide-login {
+      text-align: center;
+      color: white;
+      margin: 10px 15px;
+    }
   }
 `;
 
@@ -111,7 +116,6 @@ export const Content = styled.div`
     font-size: 2.5rem;
     text-align: center;
     padding: 1rem;
-    margin-bottom: 1rem;
     animation: leftToRight 3s cubic-bezier(0.18, 0.89, 0.32, 1.28) forwards;
   }
 
@@ -123,8 +127,21 @@ export const Content = styled.div`
     img {
       width: 30rem;
       position: absolute;
-      bottom: 40px;
+      bottom: 100px;
       left: 120px;
+    }
+    .guide-login {
+      position: absolute;
+      top: 80px;
+      left: 50px;
+      z-index: 1;
+      font-size: 24px;
+      max-width: 700px;
+      text-align: left;
+      color: var(--blue);
+    }
+    .white-text {
+      color: white;
     }
   }
 

@@ -66,7 +66,7 @@ const Login = () => {
           description: `Bem vindo ${user.username}, mostre que você tem disciplina e realize uma tarefa 21 vezes para consolidar seu hábito e ganhar uma medalha de ouro! Vamos lá 😁`,
           status: "success",
           isClosable: true,
-          duration: 120000
+          duration: 120000,
         });
         return history.push("/habits");
       })
@@ -90,6 +90,13 @@ const Login = () => {
     <Container>
       <Content>
         <h1>Discipliny</h1>
+        <div className="guide-login">
+          <h2>
+            Discipliny te ajuda a acompanhar e
+            <span className="white-text"> formar hábitos</span> através da
+            disciplina!
+          </h2>
+        </div>
         <MainContent>
           <img src={img} alt="Ilustração" className="display" />
           <FormContent>

@@ -29,8 +29,8 @@ export const ActivitiesProvider = ({ children }) => {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
-        setActivities([...activities, response.data]);
-        setIsToast("success");
+        setActivities([...activities.results, response.data]);
+        setIsToast("success")
       })
       .catch((error) => {
         setIsToast("error");

@@ -15,7 +15,7 @@ export const MenuMobileC = styled.div`
   button {
     font-size: clamp(2.5rem, 1.5rem, 3rem);
     color: white;
-    width: 25%;
+    width: 20%;
     border-radius: 8px;
     display: flex;
     justify-content: center;
@@ -72,6 +72,22 @@ export const MenuMobileC = styled.div`
         rgba(242, 182, 151, 1) 52%,
         rgba(241, 131, 74, 1) 75%,
         rgba(242, 100, 25, 1) 100%
+      );
+    }
+  }
+
+  .buttonProfile {
+    background-color: #e73f36;
+
+    &:hover {
+      background: rgb(231, 63, 54);
+      background: linear-gradient(
+        86deg,
+        rgba(231, 63, 54, 1) 0%,
+        rgba(231, 90, 100, 1) 29%,
+        rgba(231, 150, 151, 1) 52%,
+        rgba(231, 90, 100, 1) 75%,
+        rgba(231, 63, 54, 1) 100%
       );
     }
   }

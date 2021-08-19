@@ -35,6 +35,10 @@ const Menu = () => {
     updateUserFunc(update, setIsToast);
   };
 
+  const Close = () => {
+    setShow(true);
+  };
+
   useEffect(() => {
     if (isToast === "success") {
       getUser();
@@ -66,7 +70,7 @@ const Menu = () => {
         <h1>Discipliny</h1>
         <div className="ImgContainer">
           <img src={img} alt="avatar" />
-          <img src={img2} alt="edit" className="editImage" />
+          {/* <img src={img2} alt="edit" className="editImage" /> */}
 
           <div className="EditUsername">
             {show ? (
@@ -79,7 +83,7 @@ const Menu = () => {
             ) : (
               <>
                 <input
-                  value={updateName}
+                  defaultValue={updateName}
                   onChange={(e) => setUpdateName(e.target.value)}
                   type="text"
                 />
@@ -87,6 +91,7 @@ const Menu = () => {
                 <button onClick={sendData}>
                   <FiEdit />
                 </button>
+                <button onClick={Close}>X</button>
               </>
             )}
           </div>

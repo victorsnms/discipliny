@@ -63,6 +63,8 @@ const GroupCreateModal = () => {
       onClose();
       setName("");
       setDescription("");
+      setCategory("Saúde")
+      setCategoryChose("healthy")
     } else if (isToast === "error") {
       toast({
         title: "Grupo",
@@ -78,7 +80,7 @@ const GroupCreateModal = () => {
   }, [isToast]);
 
   return (
-    <div>
+    <div className="ModalGrpPos">
       <Button
         _hover={{ color: "cyan.50", bg: "cyan.800" }}
         bg="teal.700"

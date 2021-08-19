@@ -13,6 +13,7 @@ export const Container = styled.div`
       width: 100vw;
       flex-direction: column;
       min-height: 100vh;
+      margin-bottom: 100px;
     }
     display: flex;
     height: 100%;

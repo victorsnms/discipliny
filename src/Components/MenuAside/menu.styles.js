@@ -46,10 +46,10 @@ export const MenuAside = styled.div`
         height: 148px;
         border-radius: 100%;
         margin-bottom: 10px;
-        &:hover {
+        /* &:hover {
           filter: opacity(60%);
           background-color: black;
-        }
+        } */
       }
 
       .EditUsername {
@@ -64,14 +64,14 @@ export const MenuAside = styled.div`
           width: 80%;
           background-color: var(--blue-dark);
           border-bottom: 3px var(--cream) solid;
-          font-size: 32px;
+          font-size: 28px;
           height: 32px;
         }
 
         span {
           padding: 5px;
-          font-size: 32px;
-          cursor: pointer;
+          font-size: 28px;
+          overflow: hidden;
         }
 
         button {
@@ -131,8 +131,8 @@ export const MenuAside = styled.div`
         font-size: 32px;
       }
 
-      span {
-        font-size: 32px;
+      .ImgContainer .EditUsername span {
+        font-size: 28px;
       }
 
       .ParagContainer p {
@@ -147,13 +147,17 @@ export const MenuAside = styled.div`
         font-size: 34px;
       }
 
-      span {
+      .ImgContainer .EditUsername span {
         font-size: 32px;
       }
 
       .ParagContainer p {
         font-size: 24px;
       }
+    }
+
+    aside .ImgContainer .EditUsername input {
+      font-size: 32px;
     }
   }
 
