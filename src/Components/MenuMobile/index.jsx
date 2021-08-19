@@ -23,7 +23,7 @@ const MenuMobile = () => {
       <button onClick={() => changeTo("/groups")} className="buttonDesco">
         <FaRegCompass />
       </button>
-      <button onClick={() => changeTo()} className="buttonProfile">
+      <button className="buttonProfile">
         <ProfileModal />
       </button>
     </MenuMobileC>

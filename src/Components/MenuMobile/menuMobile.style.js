@@ -15,7 +15,7 @@ export const MenuMobileC = styled.div`
   button {
     font-size: clamp(2.5rem, 1.5rem, 3rem);
     color: white;
-    width: 25%;
+    width: 20%;
     border-radius: 8px;
     display: flex;
     justify-content: center;

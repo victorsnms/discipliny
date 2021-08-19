@@ -16,7 +16,7 @@ import { FiEdit } from "react-icons/fi";
 import { FaUserAlt } from "react-icons/fa";
 import avatar from "../../assets/avatars/avatar1.png";
 import { useUser } from "../../Provider/User";
-import { EditUsernameContainer, ImageContainer } from "./style";
+import { EditUsernameContainer, ImageContainer, MenuButton } from "./style";
 import { useLogged } from "../../Provider/Login";
 
 const ProfileModal = () => {
@@ -75,9 +75,7 @@ const ProfileModal = () => {
 
   return (
     <>
-      <button className="ActivityButton" onClick={onOpen}>
-        <FaUserAlt />
-      </button>
+      <FaUserAlt onClick={onOpen} />
       <Modal initialFocusRef={initialRef} isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>

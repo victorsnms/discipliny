@@ -23,3 +23,8 @@ export const ImageContainer = styled.img`
   height: 270px;
   margin: 0 auto;
 `;
+
+export const MenuButton = styled.button`
+  width: 100%;
+  height: 100%;
+`;
