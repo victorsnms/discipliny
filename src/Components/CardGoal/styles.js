@@ -17,8 +17,8 @@ export const GoalCard = styled.div`
   .CheckGoalButton {
     align-self: flex-start;
     cursor: pointer;
-    font-size: 2rem;
-    transform: translate(8px, 29px);
+    font-size: 1.4rem;
+    transform: translate(8px, 8px);
     color: var(--white);
   }
 
@@ -30,15 +30,15 @@ export const GoalCard = styled.div`
   .flex-row {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    width: 90%;
+    justify-content: center;
+    width: 85%;
     margin-top: 5px;
   }
   .goalName {
     padding: 0;
     margin: 0;
     text-align: center;
-    font-size: 16px;
+    font-size: 12px;
     width: 90%;
   }
 
@@ -58,8 +58,8 @@ export const GoalCard = styled.div`
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    width: 87%;
-    margin-top: 5px;
+    width: 70%;
+    margin-top: -37px;
     cursor: pointer;
 
     div {
@@ -72,6 +72,29 @@ export const GoalCard = styled.div`
     svg {
       font-size: 20px;
       color: var(--white);
+    }
+  }
+
+  @media (min-width: 768px) {
+    .goalName {
+      font-size: 14px;
+    }
+
+    .CheckGoalButton {
+      font-size: 2rem;
+    }
+    .flex-row {
+      width: 85%;
+      justify-content: space-between;
+    }
+  }
+
+  @media (min-width: 1185px) {
+    .goalName {
+      font-size: 16px;
+    }
+    .flex-row {
+      width: 90%;
     }
   }
 `;
