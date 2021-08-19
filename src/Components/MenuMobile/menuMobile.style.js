@@ -5,7 +5,7 @@ export const MenuMobileC = styled.div`
   justify-content: space-evenly;
   color: black;
   width: 100%;
-  height: 80px;
+  height: 60px;
   bottom: 0;
   position: fixed;
   background-color: #2f4858;

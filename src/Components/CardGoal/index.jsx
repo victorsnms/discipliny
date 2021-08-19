@@ -15,8 +15,9 @@ const CardGoal = ({ goal }) => {
 
   return (
     <GoalCard>
-      <FaCheckCircle className="CheckGoalButton" onClick={handleClick} />
-
+      <div className="CheckGoalButton">
+        <FaCheckCircle onClick={handleClick} />
+      </div>
       <div className="Progress">
         <Progress
           onClick={handleClick}
