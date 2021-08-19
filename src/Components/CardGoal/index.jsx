@@ -3,6 +3,7 @@ import { Progress } from "@chakra-ui/react";
 import GoalsUpdateModal from "../GoalsUpdateModal";
 import GoalDeleteModal from "../GoalsDeleteModal";
 import { useGoals } from "../../Provider/Goals";
+import { FaCheckCircle } from "react-icons/fa";
 
 const CardGoal = ({ goal }) => {
   const { updateGoal } = useGoals();
@@ -14,12 +15,14 @@ const CardGoal = ({ goal }) => {
 
   return (
     <GoalCard>
+      <FaCheckCircle className="CheckGoalButton" onClick={handleClick} />
+
       <div className="Progress">
         <Progress
           onClick={handleClick}
           value={goal.how_much_achieved}
           height="10px"
-          width="80%"
+          width="70%"
           colorScheme="orange"
         />
         <GoalsUpdateModal goal={goal} />

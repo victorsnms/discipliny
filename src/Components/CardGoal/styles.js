@@ -11,9 +11,16 @@ export const GoalCard = styled.div`
   border-radius: 100px;
   font-family: Sansita;
   margin-bottom: 10px;
-
   color: var(--white);
   box-shadow: 5px 5px 10px 3px #00000054;
+
+  .CheckGoalButton {
+    align-self: flex-start;
+    cursor: pointer;
+    font-size: 2rem;
+    transform: translate(8px, 29px);
+    color: var(--white);
+  }
 
   .flex-column {
     display: flex;
@@ -64,7 +71,7 @@ export const GoalCard = styled.div`
     }
     svg {
       font-size: 20px;
-      color: var(--yellow);
+      color: var(--white);
     }
   }
 `;

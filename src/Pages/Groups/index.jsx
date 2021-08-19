@@ -58,6 +58,7 @@ const Groups = () => {
                     })
                     .map((group) => (
                       <CardGroups
+                        key={group.id}
                         name={group.name}
                         membros={group.users_on_group}
                         idGroup={group.id}

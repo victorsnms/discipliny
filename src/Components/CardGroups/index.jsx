@@ -1,23 +1,21 @@
 import { GroupCard } from "./styles";
 import { IoIosPeople } from "react-icons/io";
 import { Link, useParams } from "react-router-dom";
-import { useGroups } from "../../Provider/Groups/groupsCardList";
 import { BsEyeFill } from "react-icons/bs";
+import { useGoals } from "../../Provider/Goals";
 
 const CardGroups = ({ name, membros, idGroup }) => {
-  const { getSpecificGroup } = useGroups();
+  const { getGoals } = useGoals();
 
   const getGroupId = () => {
-    // localStorage.setItem("@Discipliny:idGroup", JSON.stringify(idGroup));
-
-    getSpecificGroup();
+    getGoals();
   };
 
   return (
     <GroupCard className="ContentHabits">
       <Link
         className="LinkBox"
-        // onClick={getGroupId}
+        onClick={getGroupId}
         to={`/groupsid/${idGroup}`}
       >
         <h1 className="groupName">{name}</h1>
