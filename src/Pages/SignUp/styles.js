@@ -2,7 +2,7 @@ import styled from "styled-components";
 import signUpImage from "../../assets/newave.png";
 
 export const Container = styled.div`
-  height: 100%;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   background-image: url(${signUpImage});
@@ -122,17 +122,18 @@ export const Content = styled.div`
     }
 
     img {
-      width: 30rem;
+      width: 40%;
       position: absolute;
-      bottom: 25px;
-      right: 175px;
+      bottom: 15%;
+      right: 10%;
     }
   }
 
   @media (min-width: 1440px) {
     img {
-      bottom: 25px;
-      right: 200px;
+      width: 40%;
+      bottom: 10%;
+      right: 5%;
     }
   }
 
