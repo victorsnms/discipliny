@@ -34,11 +34,9 @@ const ActivitiesCreateModal = () => {
     };
 
     createActivity(newActivity, setIsToast);
- 
   };
 
   useEffect(() => {
-    
     if (isToast === "success") {
       toast({
         title: "Atividades",
@@ -48,9 +46,9 @@ const ActivitiesCreateModal = () => {
         duration: 3000,
         isClosable: true,
       });
-      onClose()
-      setTitle('');
-      setDate('')
+      onClose();
+      setTitle("");
+      setDate("");
     } else if (isToast === "error") {
       toast({
         title: "Atividades",
@@ -66,7 +64,7 @@ const ActivitiesCreateModal = () => {
 
   return (
     <>
-      <button onClick={onOpen}>
+      <button className="ActivityButton" onClick={onOpen}>
         <FiPlusSquare />
       </button>
       <Modal initialFocusRef={initialRef} isOpen={isOpen} onClose={onClose}>

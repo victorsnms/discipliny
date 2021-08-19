@@ -19,7 +19,7 @@ const GoalDeleteModal = ({ goal }) => {
   const { deleteGoal } = useGoals();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const toast = useToast();
-  const [isToast, setIsToast ] = useState("unset");
+  const [isToast, setIsToast] = useState("unset");
 
   const handleSubmit = () => {
     deleteGoal(goal.id, setIsToast);
@@ -27,7 +27,7 @@ const GoalDeleteModal = ({ goal }) => {
   };
 
   useEffect(() => {
-    if (isToast === "success"){
+    if (isToast === "success") {
       toast({
         title: "Metas",
         position: "top",
@@ -47,13 +47,13 @@ const GoalDeleteModal = ({ goal }) => {
         isClosable: true,
       });
     }
-    setIsToast("unset")
-  },[isToast])
+    setIsToast("unset");
+  }, [isToast]);
 
   return (
     <>
       <button onClick={onOpen}>
-        <FaTrash />
+        <FaTrash style={{ color: "#e73f36" }} />
       </button>
       <Modal isOpen={isOpen} onClose={onClose} className="style-modal">
         <ModalOverlay />
@@ -69,8 +69,12 @@ const GoalDeleteModal = ({ goal }) => {
             </ModalDelete>
           </ModalBody>
           <ModalFooter>
-          <Button onClick={onClose} color="blue">Cancelar</Button>
-              <Button onClick={handleSubmit} color="red" marginLeft="20px">Excluir</Button>
+            <Button onClick={onClose} color="blue">
+              Cancelar
+            </Button>
+            <Button onClick={handleSubmit} color="red" marginLeft="20px">
+              Excluir
+            </Button>
           </ModalFooter>
         </ModalContent>
       </Modal>

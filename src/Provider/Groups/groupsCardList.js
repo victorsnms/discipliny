@@ -51,6 +51,7 @@ export const GroupsCardsProvider = ({ children }) => {
   };
 
   const getSpecificGroup = (idGroup) => {
+    console.log(idGroup);
     api
       .get(`groups/${idGroup}/`)
       .then((response) => {

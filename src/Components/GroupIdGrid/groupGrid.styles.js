@@ -36,7 +36,8 @@ export const Title = styled.h1`
   font-family: Sansita;
   background-image: linear-gradient(var(--blue-light), var(--blue-dark));
 
-  .AddGoalButton {
+  .AddGoalButton,
+  .ActivityButton {
     margin: 20px;
     color: var(--yellow);
 

@@ -36,6 +36,7 @@ const GroupGrid = ({
     subscribeToGroup(setIsToast, idGroupSpec);
     getSpecificGroup(id);
   };
+  console.log(id);
 
   useEffect(() => {
     if (isToast === "success") {
