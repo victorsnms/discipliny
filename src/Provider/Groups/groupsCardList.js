@@ -11,8 +11,6 @@ export const GroupsCardsProvider = ({ children }) => {
   const [prev, setPrev] = useState("");
   const [next, setNext] = useState("");
 
-  const token = JSON.parse(localStorage.getItem("@Discipliny:accessToken"));
-
   useEffect(() => {
     api
       .get(url)
@@ -36,6 +34,8 @@ export const GroupsCardsProvider = ({ children }) => {
   };
 
   const addGroup = (newGroup, setIsToast) => {
+    const token = JSON.parse(localStorage.getItem("@Discipliny:accessToken"));
+    console.log(token);
     api
       .post("/groups/", newGroup, {
         headers: {
@@ -61,13 +61,14 @@ export const GroupsCardsProvider = ({ children }) => {
   };
 
   const updateGroup = (dados, id, setIsToast) => {
+    const token = JSON.parse(localStorage.getItem("@Discipliny:accessToken"));
     api
       .patch(`/groups/${id}/`, dados, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
         getSpecificGroup(id);
-        setIsToast("success")
+        setIsToast("success");
       })
       .catch((_) => {
         setIsToast("error");
@@ -75,6 +76,7 @@ export const GroupsCardsProvider = ({ children }) => {
   };
 
   const subscribeToGroup = (setIsToast, idGroupSpec) => {
+    const token = JSON.parse(localStorage.getItem("@Discipliny:accessToken"));
     api
       .post(`/groups/${idGroupSpec}/subscribe/`, null, {
         headers: { Authorization: `Bearer ${token}` },
