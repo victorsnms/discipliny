@@ -98,7 +98,7 @@ const Menu = () => {
         </div>
         <div className="ParagContainer">
           <p onClick={() => changeTo("/")} className="Hab">
-            <BiTask /> Habitos
+            <BiTask /> Hábitos
           </p>
           <p onClick={() => changeTo("/mygroups")} className="MyGroup">
             <MdGroup />
