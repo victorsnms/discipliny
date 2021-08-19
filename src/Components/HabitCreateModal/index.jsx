@@ -83,7 +83,7 @@ const HabitCreateModal = () => {
   };
 
   return (
-    <div>
+    <div className="ModalPosition">
       <Button
         _hover={{ color: "cyan.50", bg: "cyan.800" }}
         bg="teal.700"

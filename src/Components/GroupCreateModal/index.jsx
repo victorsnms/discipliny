@@ -78,7 +78,7 @@ const GroupCreateModal = () => {
   }, [isToast]);
 
   return (
-    <div>
+    <div className="ModalGrpPos">
       <Button
         _hover={{ color: "cyan.50", bg: "cyan.800" }}
         bg="teal.700"
