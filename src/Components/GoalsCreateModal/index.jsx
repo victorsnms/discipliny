@@ -48,6 +48,8 @@ const GoalsCreateModal = ({ group }) => {
         isClosable: true,
       });
       onClose();
+      setTitle("")
+      setDifficulty("Fácil")
     } else if (isToast === "error") {
       toast({
         title: "Metas",

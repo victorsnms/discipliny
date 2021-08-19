@@ -63,6 +63,8 @@ const GroupCreateModal = () => {
       onClose();
       setName("");
       setDescription("");
+      setCategory("Saúde")
+      setCategoryChose("healthy")
     } else if (isToast === "error") {
       toast({
         title: "Grupo",
