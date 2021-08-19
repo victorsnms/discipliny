@@ -46,10 +46,10 @@ export const MenuAside = styled.div`
         height: 148px;
         border-radius: 100%;
         margin-bottom: 10px;
-        &:hover {
+        /* &:hover {
           filter: opacity(60%);
           background-color: black;
-        }
+        } */
       }
 
       .EditUsername {
