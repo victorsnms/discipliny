@@ -36,9 +36,17 @@ const Groupsid = () => {
           <GroupGrid
             cardGoal={
               specificGroup !== undefined ? (
-                specificGroup.goals.map((goal) => (
-                  <CardGoal key={goal.id} goal={goal} />
-                ))
+                specificGroup.goals
+                  .sort((goalsA, goalB) => {
+                    if (goalsA.title < goalB.title) {
+                      return -1;
+                    }
+                    if (goalsA.title > goalB.title) {
+                      return 1;
+                    }
+                    return 0;
+                  })
+                  .map((goal) => <CardGoal key={goal.id} goal={goal} />)
               ) : (
                 <p>Sem metas por aqui...</p>
               )
