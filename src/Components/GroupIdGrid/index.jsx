@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import GoalsCreateModal from "../GoalsCreateModal";
 import { useToast, useDisclosure } from "@chakra-ui/react";
 import { useGroups } from "../../Provider/Groups/groupsCardList";
-import { GiExitDoor } from "react-icons/gi";
+import { GiEntryDoor } from "react-icons/gi";
 import ActivitiesCreateModal from "../ActivitiesCreateModal";
 import {
   Container,
@@ -70,6 +70,7 @@ const GroupGrid = ({
   console.log(specificGroup);
   return (
     <Grid
+      className="GridContainer"
       h="90%"
       w="100%"
       marginRight="5px"
@@ -77,12 +78,18 @@ const GroupGrid = ({
       templateColumns="repeat(16, 1fr)"
       gap={2}
     >
-      <GridItem w="80%" placeSelf="center" rowSpan={1} colSpan={16}>
+      <GridItem
+        className="ContainerTitle"
+        w="80%"
+        placeSelf="center"
+        rowSpan={1}
+        colSpan={16}
+      >
         <GroupTitle className="titleGroup">
           {namegroup}
           {isOnGroup ? null : (
             <button className="SubsButton" onClick={handleClick}>
-              <GiExitDoor />
+              <GiEntryDoor />
             </button>
           )}
         </GroupTitle>
@@ -111,6 +118,7 @@ const GroupGrid = ({
         <ContainerGoal>{cardGoal}</ContainerGoal>
       </GridItem>
       <GridItem
+        className="Members"
         borderRadius="25px"
         marginTop="45px"
         rowSpan={4}
@@ -124,6 +132,7 @@ const GroupGrid = ({
         <Container>{cardMember}</Container>
       </GridItem>
       <GridItem
+        className="Activity"
         borderRadius="25px"
         marginTop="10px"
         w="100%"
@@ -135,11 +144,11 @@ const GroupGrid = ({
       >
         {isOnGroup ? (
           <Title>
-            activities
+            Activities
             <ActivitiesCreateModal />
           </Title>
         ) : (
-          <Title>activities</Title>
+          <Title>Activities</Title>
         )}
 
         <Container>{CardActivity}</Container>
