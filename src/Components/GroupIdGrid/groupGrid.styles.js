@@ -52,7 +52,8 @@ export const GroupTitle = styled.h1`
   color: white;
   font-family: Sansita;
   background-image: linear-gradient(var(--blue-light), var(--blue-dark));
-  border-radius: 40px;
+  border-top-left-radius: 40px;
+  border-top-right-radius: 40px;
   line-height: 90px;
 
   .SubsButton {
@@ -96,5 +97,19 @@ export const ContainerGoal = styled.div`
     grid-template-rows: 8;
     grid-template-columns: 8;
     background-image: var(--blue-dark);
+  }
+`;
+
+export const ContainerDescription = styled.div`
+  text-align: center;
+  background-color: var(--blue-dark);
+  width: 60%;
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  border-radius: 45px;
+  padding: 0.5rem;
+  p {
+    font-size: 1rem;
   }
 `;

@@ -10,6 +10,7 @@ import {
   Title,
   GroupTitle,
   ContainerGoal,
+  ContainerDescription,
 } from "./groupGrid.styles";
 import { useParams } from "react-router-dom";
 
@@ -19,6 +20,7 @@ const GroupGrid = ({
   cardGoal,
   namegroup,
   idGroupSpec,
+  description,
 }) => {
   const [isToast, setIsToast] = useState("unset");
 
@@ -84,6 +86,8 @@ const GroupGrid = ({
         placeSelf="center"
         rowSpan={1}
         colSpan={16}
+        bg="var(--blue-dark)"
+        borderRadius="45px"
       >
         <GroupTitle className="titleGroup">
           {namegroup}
@@ -93,6 +97,9 @@ const GroupGrid = ({
             </button>
           )}
         </GroupTitle>
+        <ContainerDescription>
+          <p>{description}</p>
+        </ContainerDescription>
       </GridItem>
       <GridItem
         className="Grid"
