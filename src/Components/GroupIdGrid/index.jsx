@@ -38,7 +38,6 @@ const GroupGrid = ({
     subscribeToGroup(setIsToast, idGroupSpec);
     getSpecificGroup(id);
   };
-  console.log(id);
 
   useEffect(() => {
     if (isToast === "success") {
@@ -72,7 +71,6 @@ const GroupGrid = ({
     setIsToast("unset");
   }, [isToast, isOnGroup, specificGroup]);
 
-  console.log(specificGroup);
   return (
     <Grid
       className="GridContainer"
@@ -118,11 +116,11 @@ const GroupGrid = ({
       >
         {isOnGroup ? (
           <Title>
-            Goals
+            Metas
             <GoalsCreateModal />
           </Title>
         ) : (
-          <Title>Goals</Title>
+          <Title>Metas</Title>
         )}
 
         <ContainerGoal>{cardGoal}</ContainerGoal>
@@ -138,7 +136,7 @@ const GroupGrid = ({
         backgroundImage="linear-gradient(var(--blue-dark), var(--blue-dark));"
         overflow="hidden"
       >
-        <Title>Members</Title>
+        <Title>Membros</Title>
         <Container>{cardMember}</Container>
       </GridItem>
       <GridItem
@@ -154,11 +152,11 @@ const GroupGrid = ({
       >
         {isOnGroup ? (
           <Title>
-            Activities
+            Atividades
             <ActivitiesCreateModal />
           </Title>
         ) : (
-          <Title>Activities</Title>
+          <Title>Atividades</Title>
         )}
 
         <Container>{CardActivity}</Container>

@@ -70,7 +70,6 @@ const Menu = () => {
         <h1>Discipliny</h1>
         <div className="ImgContainer">
           <img src={img} alt="avatar" />
-          {/* <img src={img2} alt="edit" className="editImage" /> */}
 
           <div className="EditUsername">
             {show ? (
@@ -98,7 +97,7 @@ const Menu = () => {
         </div>
         <div className="ParagContainer">
           <p onClick={() => changeTo("/")} className="Hab">
-            <BiTask /> Habitos
+            <BiTask /> Hábitos
           </p>
           <p onClick={() => changeTo("/mygroups")} className="MyGroup">
             <MdGroup />

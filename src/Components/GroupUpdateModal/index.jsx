@@ -23,7 +23,6 @@ import { useGroups } from "../../Provider/Groups/groupsCardList";
 import { useParams } from "react-router-dom";
 
 const GroupUpdateModal = ({ group }) => {
-  //"receber como prop o grupa tal"
   const initialRef = useRef();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { updateGroup } = useGroups();

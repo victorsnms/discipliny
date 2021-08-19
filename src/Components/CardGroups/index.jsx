@@ -1,6 +1,6 @@
 import { GroupCard } from "./styles";
 import { IoIosPeople } from "react-icons/io";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { BsEyeFill } from "react-icons/bs";
 import { useGoals } from "../../Provider/Goals";
 

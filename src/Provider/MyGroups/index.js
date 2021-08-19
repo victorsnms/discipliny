@@ -1,19 +1,15 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useState } from "react";
 import api from "../../Services/api";
 import { useToast } from "@chakra-ui/react";
-import { useParams } from "react-router-dom";
 
 const MyGroupsCardListContext = createContext();
 
 export const MyGroupsCardsProvider = ({ children }) => {
   const toast = useToast();
-  
+
   const [myGroupsList, setMyGroupsList] = useState([]);
 
-  // const token = JSON.parse(localStorage.getItem("@Discipliny:accessToken"));
-
   function getGroups() {
-  
     const token = JSON.parse(localStorage.getItem("@Discipliny:accessToken"));
     api
       .get("/groups/subscriptions/", {
@@ -21,7 +17,6 @@ export const MyGroupsCardsProvider = ({ children }) => {
       })
       .then((response) => {
         setMyGroupsList(response.data);
-        
       })
       .catch((error) => {
         console.log(error);
