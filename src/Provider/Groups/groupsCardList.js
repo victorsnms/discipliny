@@ -10,7 +10,6 @@ export const GroupsCardsProvider = ({ children }) => {
   const [url, setUrl] = useState("https://kabit-api.herokuapp.com/groups/");
   const [prev, setPrev] = useState("");
   const [next, setNext] = useState("");
-  const { id } = useParams();
 
   const token = JSON.parse(localStorage.getItem("@Discipliny:accessToken"));
 
@@ -62,7 +61,7 @@ export const GroupsCardsProvider = ({ children }) => {
       });
   };
 
-  const updateGroup = (dados, setIsToast) => {
+  const updateGroup = (dados, id, setIsToast) => {
     api
       .patch(`/groups/${id}/`, dados, {
         headers: { Authorization: `Bearer ${token}` },

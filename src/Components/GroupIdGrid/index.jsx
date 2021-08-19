@@ -1,7 +1,7 @@
 import { Grid, GridItem } from "@chakra-ui/layout";
 import { useState, useEffect } from "react";
 import GoalsCreateModal from "../GoalsCreateModal";
-import { useToast, useDisclosure } from "@chakra-ui/react";
+import { useToast } from "@chakra-ui/react";
 import { useGroups } from "../../Provider/Groups/groupsCardList";
 import { GiEntryDoor } from "react-icons/gi";
 import ActivitiesCreateModal from "../ActivitiesCreateModal";
@@ -13,6 +13,7 @@ import {
   ContainerDescription,
 } from "./groupGrid.styles";
 import { useParams } from "react-router-dom";
+import GroupUpdateModal from "../GroupUpdateModal";
 
 const GroupGrid = ({
   cardMember,
@@ -21,6 +22,7 @@ const GroupGrid = ({
   namegroup,
   idGroupSpec,
   description,
+  group,
 }) => {
   const [isToast, setIsToast] = useState("unset");
 
@@ -92,7 +94,7 @@ const GroupGrid = ({
       >
         <GroupTitle className="titleGroup">
           {namegroup}
-          {isOnGroup ? null : (
+          {isOnGroup ? <GroupUpdateModal group={group}/> : (
             <button className="SubsButton" onClick={handleClick}>
               <GiEntryDoor />
             </button>
