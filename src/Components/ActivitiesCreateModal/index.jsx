@@ -31,9 +31,8 @@ const ActivitiesCreateModal = () => {
     const newActivity = {
       title: title,
       realization_time: date,
-      group: id,
+      group: parseInt(id),
     };
-
     createActivity(newActivity, setIsToast);
   };
 
