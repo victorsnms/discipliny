@@ -70,7 +70,7 @@ const Menu = () => {
         <h1>Discipliny</h1>
         <div className="ImgContainer">
           <img src={img} alt="avatar" />
-          <img src={img2} alt="edit" className="editImage" />
+          {/* <img src={img2} alt="edit" className="editImage" /> */}
 
           <div className="EditUsername">
             {show ? (
