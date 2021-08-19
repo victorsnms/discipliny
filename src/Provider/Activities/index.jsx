@@ -23,12 +23,13 @@ export const ActivitiesProvider = ({ children }) => {
   }, []);
 
   const createActivity = (dados, setIsToast) => {
+    const token = JSON.parse(localStorage.getItem("@Discipliny:accessToken"));
     api
       .post("/activities/", dados, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
-        // setActivities([...activities, response.data]);
+        setActivities([...activities, response.data]);
         setIsToast("success");
       })
       .catch((error) => {
@@ -37,6 +38,7 @@ export const ActivitiesProvider = ({ children }) => {
   };
 
   const updateActivity = (dados, activitieId, setIsToast) => {
+    const token = JSON.parse(localStorage.getItem("@Discipliny:accessToken"));
     api
       .patch(`/activities/${activitieId}/`, dados, {
         headers: { Authorization: `Bearer ${token}` },
@@ -51,6 +53,7 @@ export const ActivitiesProvider = ({ children }) => {
   };
 
   const getActivity = () => {
+    const token = JSON.parse(localStorage.getItem("@Discipliny:accessToken"));
     api
       .get("/activities/", {
         headers: { Authorization: `Bearer ${token}` },
@@ -64,6 +67,7 @@ export const ActivitiesProvider = ({ children }) => {
   };
 
   const deleteActivity = (idactivitie, setIsToast) => {
+    const token = JSON.parse(localStorage.getItem("@Discipliny:accessToken"));
     api
       .delete(`/activities/${idactivitie}/`, {
         headers: { Authorization: `Bearer ${token}` },

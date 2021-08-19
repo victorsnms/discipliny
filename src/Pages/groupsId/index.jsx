@@ -18,7 +18,7 @@ const Groupsid = () => {
   const { logged } = useLogged();
   const { activities, getActivity } = useActivities();
   const { id } = useParams();
-
+  console.log(specificGroup);
   useEffect(() => {
     getSpecificGroup(id);
     getActivity();
