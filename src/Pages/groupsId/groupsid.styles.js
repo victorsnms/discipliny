@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  height: 100vh;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -10,7 +9,7 @@ export const Container = styled.div`
   animation: appearing 1s ease-in-out backwards;
 
   .cardContainer {
-    @media (max-width: 740px) {
+    @media (max-width: 768px) {
       width: 100vw;
       flex-direction: column;
       min-height: 100vh;
@@ -22,11 +21,16 @@ export const Container = styled.div`
     justify-content: center;
     align-items: flex-start;
     animation: appearing 2s ease-in-out backwards;
+
+    .titleGroup {
+      font-size: 3rem;
+      text-align: center;
+      line-height: 90px;
+    }
   }
-  .titleGroup {
-    font-size: 2rem;
-    text-align: center;
-    line-height: 90px;
+
+  .css-5rbgcj {
+    width: 90%;
   }
 
   @keyframes appearing {
@@ -37,12 +41,37 @@ export const Container = styled.div`
       opacity: 1;
     }
   }
+
+  @media (max-width: 767px) {
+    min-height: 100vh;
+
+    .css-5rbgcj {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 0 20px;
+      justify-content: center;
+      min-height: 100vh;
+      width: 100%;
+
+      .Members {
+        height: 250px;
+      }
+
+      .titleGroup {
+        font-size: 1.3rem;
+      }
+    }
+  }
+
+  @media (min-width: 768px) {
+    height: 100vh;
+  }
 `;
 export const Cardmembers = styled.div`
   text-align: center;
-  font-size: 2rem;
+  font-size: 1.3rem;
   margin: 0 auto;
-  width: 80%;
+  width: 90%;
   min-height: 45px;
   justify-content: space-between;
   background-color: rgba(85, 207, 224, 0.66);
@@ -51,4 +80,10 @@ export const Cardmembers = styled.div`
   margin-bottom: 20px;
   color: var(--white);
   box-shadow: 5px 5px 10px 3px #00000054;
+
+  @media (min-width: 768px) {
+    font-size: 1.8rem;
+    width: 80%;
+    height: 100vh;
+  }
 `;

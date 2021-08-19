@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const HabitCard = styled.div`
   display: flex;
   flex-direction: row;
-  width: 300px;
+  min-width: 300px;
   height: 155px;
   justify-content: center;
   background-image: var(--background-cards);
@@ -11,8 +11,7 @@ export const HabitCard = styled.div`
   font-family: Sansita;
   color: var(--white);
   box-shadow: 5px 5px 10px 3px #00000054;
-  margin-bottom: 30px;
-  margin-right: 10px;
+  margin: 0 10px 30px 10px;
 
   .Check {
     display: grid;
@@ -76,7 +75,7 @@ export const HabitCard = styled.div`
 
       p {
         background-image: var(--dark-yellow-gradient);
-        font-size: 14px;
+        font-size: 12px;
         height: 30px;
         border-radius: 18px 0 18px 0;
         padding: 3px 7px;
@@ -115,6 +114,7 @@ export const HabitCard = styled.div`
 
   @media (min-width: 767px) {
     width: 45%;
+
     .Central .BottomLabels p {
       font-size: 15px;
     }

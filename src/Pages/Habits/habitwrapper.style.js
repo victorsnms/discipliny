@@ -85,6 +85,10 @@ export const HabitWrapper = styled.div`
     .ContainerCards section {
       width: 90%;
     }
+
+    .SubContainerCards {
+      padding: 30px;
+    }
   }
 
   @media (min-width: 1299px) {
