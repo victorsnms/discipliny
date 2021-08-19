@@ -33,7 +33,7 @@ const GroupGrid = ({
   const isOnGroup = !!specificGroup?.users_on_group.find(
     (obj) => obj.username === user
   );
-  const createrGroup = specificGroup?.creator.username === user
+  const creatorGroup = specificGroup?.creator.username === user
 
   const handleClick = () => {
     subscribeToGroup(setIsToast, idGroupSpec);
@@ -98,7 +98,7 @@ const GroupGrid = ({
               <GiEntryDoor />
             </button>
           )}
-          {createrGroup && <GroupUpdateModal group={group}/> }
+          {creatorGroup && <GroupUpdateModal group={group}/> }
         </GroupTitle>
         <ContainerDescription>
           <p>{description}</p>
