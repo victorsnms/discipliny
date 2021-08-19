@@ -21,6 +21,7 @@ import {
 import { FiEdit } from "react-icons/fi";
 import { useGroups } from "../../Provider/Groups/groupsCardList";
 import { useParams } from "react-router-dom";
+import { EditButton } from "./style";
 
 const GroupUpdateModal = ({ group }) => {
   const initialRef = useRef();
@@ -41,7 +42,7 @@ const GroupUpdateModal = ({ group }) => {
       category: category,
       description: description,
     };
-    updateGroup(updateNewGroup,id, setIsToast);
+    updateGroup(updateNewGroup, id, setIsToast);
   };
 
   const handleClick = (e, value) => {
@@ -74,9 +75,9 @@ const GroupUpdateModal = ({ group }) => {
   }, [isToast]);
   return (
     <>
-      <button onClick={onOpen}>
-        <FiEdit/>
-      </button>
+      <EditButton onClick={onOpen}>
+        <FiEdit />
+      </EditButton>
       <Modal initialFocusRef={initialRef} isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
@@ -192,9 +193,9 @@ const GroupUpdateModal = ({ group }) => {
             </form>
           </ModalBody>
           <ModalFooter>
-          <Button onClick={onClose} color="red">
-            Cancelar
-          </Button>
+            <Button onClick={onClose} color="red">
+              Cancelar
+            </Button>
             <Button onClick={handleSubmit} color="blue" marginLeft="20px">
               Salvar
             </Button>
