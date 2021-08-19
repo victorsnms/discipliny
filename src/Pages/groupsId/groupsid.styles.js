@@ -24,9 +24,9 @@ export const Container = styled.div`
     animation: appearing 2s ease-in-out backwards;
 
     .titleGroup {
-      font-size: 3rem;
+      font-size: 2rem;
       text-align: center;
-      line-height: 90px;
+      line-height: 60px;
     }
   }
 
@@ -59,7 +59,7 @@ export const Container = styled.div`
       }
 
       .titleGroup {
-        font-size: 1.3rem;
+        font-size: 2rem;
       }
     }
   }

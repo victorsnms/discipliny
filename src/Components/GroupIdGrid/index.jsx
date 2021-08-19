@@ -13,6 +13,7 @@ import {
   ContainerDescription,
 } from "./groupGrid.styles";
 import { useParams } from "react-router-dom";
+import GroupUpdateModal from "../GroupUpdateModal";
 
 const GroupGrid = ({
   cardMember,
@@ -21,6 +22,7 @@ const GroupGrid = ({
   namegroup,
   idGroupSpec,
   description,
+  group,
 }) => {
   const [isToast, setIsToast] = useState("unset");
 
@@ -31,6 +33,7 @@ const GroupGrid = ({
   const isOnGroup = !!specificGroup?.users_on_group.find(
     (obj) => obj.username === user
   );
+  const creatorGroup = specificGroup?.creator.username === user
 
   const handleClick = () => {
     subscribeToGroup(setIsToast, idGroupSpec);
@@ -67,7 +70,7 @@ const GroupGrid = ({
       });
     }
     setIsToast("unset");
-  }, [isToast, isOnGroup, specificGroup]);
+  }, [isToast, isOnGroup]);
 
   return (
     <Grid
@@ -95,6 +98,7 @@ const GroupGrid = ({
               <GiEntryDoor />
             </button>
           )}
+          {creatorGroup && <GroupUpdateModal group={group}/> }
         </GroupTitle>
         <ContainerDescription>
           <p>{description}</p>

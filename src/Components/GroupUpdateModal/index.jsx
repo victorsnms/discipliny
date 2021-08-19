@@ -20,6 +20,7 @@ import {
 } from "../HabitCreateModal/style";
 import { FiEdit } from "react-icons/fi";
 import { useGroups } from "../../Provider/Groups/groupsCardList";
+import { useParams } from "react-router-dom";
 
 const GroupUpdateModal = ({ group }) => {
   const initialRef = useRef();
@@ -32,6 +33,7 @@ const GroupUpdateModal = ({ group }) => {
   const [categoryChose, setCategoryChose] = useState("healthy");
   const [isToast, setIsToast] = useState("unset");
   const toast = useToast();
+  const { id } = useParams();
 
   const handleSubmit = () => {
     const updateNewGroup = {
@@ -39,7 +41,7 @@ const GroupUpdateModal = ({ group }) => {
       category: category,
       description: description,
     };
-    updateGroup(updateNewGroup, setIsToast);
+    updateGroup(updateNewGroup,id, setIsToast);
   };
 
   const handleClick = (e, value) => {
@@ -72,13 +74,9 @@ const GroupUpdateModal = ({ group }) => {
   }, [isToast]);
   return (
     <>
-      <Button
-        _hover={{ color: "cyan.50", bg: "cyan.800" }}
-        bg="teal.700"
-        color="#c5d5da"
-        onClick={onOpen}
-        text={"Novo grupo"}
-      ></Button>
+      <button onClick={onOpen}>
+        <FiEdit/>
+      </button>
       <Modal initialFocusRef={initialRef} isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
@@ -193,12 +191,12 @@ const GroupUpdateModal = ({ group }) => {
               </ModalTextArea>
             </form>
           </ModalBody>
+          <ModalFooter>
           <Button onClick={onClose} color="red">
             Cancelar
           </Button>
-          <ModalFooter>
             <Button onClick={handleSubmit} color="blue" marginLeft="20px">
-              Criar
+              Salvar
             </Button>
           </ModalFooter>
         </ModalContent>

@@ -2,8 +2,8 @@ import styled from "styled-components";
 
 export const ModalTitle = styled.div`
   background: var(--blue-dark);
-  border-top-left-radius: .9rem;
-  border-top-right-radius: .9rem;
+  border-top-left-radius: 0.9rem;
+  border-top-right-radius: 0.9rem;
 
   header {
     padding: 8px 32px;
@@ -150,23 +150,25 @@ export const ModalTextArea = styled.div`
 `;
 
 export const ModalDelete = styled.div`
-    p{
-        font-size: 1rem;
-    }
+  p {
+    font-size: 1rem;
+  }
 
-    h1{
-        margin-top: 16px;
-        font-size: 2rem;
-    }
-`
+  h1 {
+    margin-top: 16px;
+    font-size: 2rem;
+  }
+`;
 
 export const ModalDate = styled.div`
-margin-top: 16px;
+  margin-top: 16px;
 
-input{
-  border: 1px var(--orange) solid;
-  border-radius: 8px;
-  padding: 0 8px;
-  background-color: var(--cream);
-}
-`
+  input {
+    border: 1px var(--orange) solid;
+    border-radius: 8px;
+    padding: 0 8px;
+    background-color: var(--cream);
+  }
+`;
+
+

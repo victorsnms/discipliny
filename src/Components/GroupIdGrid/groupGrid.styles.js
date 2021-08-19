@@ -29,7 +29,7 @@ export const Title = styled.h1`
   height: 80px;
   margin: 0 auto;
   text-align: center;
-  font-size: 2.5rem;
+  font-size: 1.8rem;
   color: white;
   font-family: Sansita;
   background-image: linear-gradient(var(--blue-light), var(--blue-dark));
@@ -53,7 +53,7 @@ export const GroupTitle = styled.h1`
   background-image: linear-gradient(var(--blue-light), var(--blue-dark));
   border-top-left-radius: 40px;
   border-top-right-radius: 40px;
-  line-height: 90px;
+  line-height: 60px;
 
   .SubsButton {
     margin: 20px;
@@ -95,7 +95,7 @@ export const ContainerGoal = styled.div`
     grid-template-columns: 8;
     background-image: var(--blue-dark);
   }
-`;
+`; 
 
 export const ContainerDescription = styled.div`
   text-align: center;

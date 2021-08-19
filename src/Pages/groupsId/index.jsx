@@ -71,6 +71,7 @@ const Groupsid = () => {
             description={
               specificGroup !== undefined ? specificGroup.description : null
             }
+            group={specificGroup}
           ></GroupGrid>
           <MenuMobile />
         </div>

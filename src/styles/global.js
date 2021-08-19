@@ -45,7 +45,6 @@ export default createGlobalStyle`
         border: none;
     }
 
-
     // MODAL STYLES
 
     section.chakra-modal__content{
