@@ -50,7 +50,6 @@ export const GroupsCardsProvider = ({ children }) => {
   };
 
   const getSpecificGroup = (idGroup) => {
-    console.log(idGroup);
     api
       .get(`groups/${idGroup}/`)
       .then((response) => {
@@ -67,7 +66,8 @@ export const GroupsCardsProvider = ({ children }) => {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
-        getSpecificGroup();
+        getSpecificGroup(id);
+        setIsToast("success")
       })
       .catch((_) => {
         setIsToast("error");
