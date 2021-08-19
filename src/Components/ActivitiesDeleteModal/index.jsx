@@ -15,7 +15,7 @@ import { useActivities } from "../../Provider/Activities";
 import { useEffect, useState } from "react";
 import { FaTrash } from "react-icons/fa";
 
-const ActivitiesDeleteModal = ({  activity }) => {
+const ActivitiesDeleteModal = ({ activity }) => {
   const { deleteActivity } = useActivities();
   const [isToast, setIsToast] = useState("unset");
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -27,7 +27,7 @@ const ActivitiesDeleteModal = ({  activity }) => {
   };
 
   useEffect(() => {
-    if (isToast === "success"){
+    if (isToast === "success") {
       toast({
         title: "Atividades",
         description: "Exclusão efetuada com sucesso",
@@ -36,7 +36,7 @@ const ActivitiesDeleteModal = ({  activity }) => {
         duration: 3000,
         isClosable: true,
       });
-      onClose()
+      onClose();
     } else if (isToast === "error") {
       toast({
         title: "Exclusão Pendente",
@@ -47,12 +47,12 @@ const ActivitiesDeleteModal = ({  activity }) => {
         isClosable: true,
       });
     }
-    setIsToast("unset")
-  },[isToast])
+    setIsToast("unset");
+  }, [isToast]);
 
   return (
     <div>
-       <button onClick={onOpen}>
+      <button style={{ color: "#e73f36" }} onClick={onOpen}>
         <FaTrash />
       </button>
       <Modal isOpen={isOpen} onClose={onClose} className="style-modal">

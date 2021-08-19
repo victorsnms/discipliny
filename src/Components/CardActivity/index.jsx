@@ -18,8 +18,8 @@ const ActivityCard = ({ activity }) => {
 
         <p className="activityDate">{editDate}</p>
 
-        <ActivitiesDeleteModal activity={activity} />
         <ActivitiesUpdateModal activity={activity} />
+        <ActivitiesDeleteModal activity={activity} />
       </div>
     </CardActivity>
   );
