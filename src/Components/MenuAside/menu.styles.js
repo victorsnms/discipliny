@@ -1,11 +1,12 @@
 import styled from "styled-components";
 
 export const MenuAside = styled.div`
+  display: none;
   background-color: transparent;
   animation: leftToRight 2s cubic-bezier(0.18, 0.89, 0.32, 1.28) backwards;
 
   aside {
-    display: none;
+    display: flex;
     width: 100%;
     min-height: 100vh;
     background: var(--blue-dark);
@@ -121,6 +122,7 @@ export const MenuAside = styled.div`
 
   @media (min-width: 769px) {
     width: 20%;
+    display: block;
 
     aside {
       display: flex;

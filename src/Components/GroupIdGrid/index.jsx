@@ -21,39 +21,19 @@ const GroupGrid = ({
   idGroupSpec,
 }) => {
   const [isToast, setIsToast] = useState("unset");
-  const [isOnGroup, setIsOnGroup] = useState(false);
+
   const toast = useToast();
   const user = JSON.parse(localStorage.getItem("@Discipliny:Nameuser"));
   const { getSpecificGroup, subscribeToGroup, specificGroup } = useGroups();
   const { id } = useParams();
-  // console.log(user);
-  // console.log(isOnGroup);
+  const isOnGroup = !!specificGroup?.users_on_group.find(
+    (obj) => obj.username === user
+  );
 
   const handleClick = () => {
     subscribeToGroup(setIsToast, idGroupSpec);
     getSpecificGroup(id);
   };
-
-  // useEffect(() => {
-  // if (specificGroup.users_on_group.username !== undefined) {
-  //   specificGroup.users_on_group.find((obj) => {
-  //     if (obj.username === user) {
-  //       return setIsOnGroup(true);
-  //     }
-  //   });
-  // } else {
-  //   return null;
-  // }
-  // async function loadCatalogue() {
-  //   const response = await api.get("/");
-
-  //   const data = response.data;
-  //   setCatalogue(data);
-  // }
-
-  // useEffect(() => {
-  //   loadCatalogue();
-  // }, []);
 
   useEffect(() => {
     if (isToast === "success") {
@@ -87,19 +67,10 @@ const GroupGrid = ({
     setIsToast("unset");
   }, [isToast, isOnGroup, specificGroup]);
 
-  // if (specificGroup !== undefined) {
-  //   console.log(specificGroup);
-
-  //   specificGroup.users_on_group.map((obj) => {
-  //     if (obj.username === user) {
-  //       setIsOnGroup(true);
-  //     }
-  //   });
-  // } else setIsOnGroup(false);
-
   console.log(specificGroup);
   return (
     <Grid
+      className="GridContainer"
       h="90%"
       w="100%"
       marginRight="5px"
@@ -107,7 +78,13 @@ const GroupGrid = ({
       templateColumns="repeat(16, 1fr)"
       gap={2}
     >
-      <GridItem w="80%" placeSelf="center" rowSpan={1} colSpan={16}>
+      <GridItem
+        className="ContainerTitle"
+        w="80%"
+        placeSelf="center"
+        rowSpan={1}
+        colSpan={16}
+      >
         <GroupTitle className="titleGroup">
           {namegroup}
           {isOnGroup ? null : (
@@ -129,7 +106,7 @@ const GroupGrid = ({
         bg="var(--blue-dark)"
         overflow="hidden"
       >
-        {!isOnGroup ? (
+        {isOnGroup ? (
           <Title>
             Goals
             <GoalsCreateModal />
@@ -141,6 +118,7 @@ const GroupGrid = ({
         <ContainerGoal>{cardGoal}</ContainerGoal>
       </GridItem>
       <GridItem
+        className="Members"
         borderRadius="25px"
         marginTop="45px"
         rowSpan={4}
@@ -154,6 +132,7 @@ const GroupGrid = ({
         <Container>{cardMember}</Container>
       </GridItem>
       <GridItem
+        className="Activity"
         borderRadius="25px"
         marginTop="10px"
         w="100%"
@@ -163,13 +142,13 @@ const GroupGrid = ({
         bg="var(--blue-dark)"
         overflow="hidden"
       >
-        {!isOnGroup ? (
+        {isOnGroup ? (
           <Title>
-            activities
+            Activities
             <ActivitiesCreateModal />
           </Title>
         ) : (
-          <Title>activities</Title>
+          <Title>Activities</Title>
         )}
 
         <Container>{CardActivity}</Container>
