@@ -6,7 +6,6 @@ const GoalsContext = createContext();
 
 export const GoalsProvider = ({ children }) => {
   const [goals, setGoals] = useState([]);
-  const token = JSON.parse(localStorage.getItem("@Discipliny:accessToken"));
 
   useEffect(() => {
     api
@@ -20,6 +19,7 @@ export const GoalsProvider = ({ children }) => {
   }, []);
 
   const addGoal = (newGoal, setIsToast) => {
+    const token = JSON.parse(localStorage.getItem("@Discipliny:accessToken"));
     api
       .post(`/goals/`, newGoal, {
         headers: { Authorization: `Bearer ${token}` },
@@ -32,6 +32,7 @@ export const GoalsProvider = ({ children }) => {
   };
 
   const updateGoal = (dados, goalId, setIsToast = "N") => {
+    const token = JSON.parse(localStorage.getItem("@Discipliny:accessToken"));
     api
       .patch(`/goals/${goalId}/`, dados, {
         headers: { Authorization: `Bearer ${token}` },
@@ -50,6 +51,7 @@ export const GoalsProvider = ({ children }) => {
   };
 
   const getGoals = () => {
+    const token = JSON.parse(localStorage.getItem("@Discipliny:accessToken"));
     api
       .get("/goals/", {
         headers: { Authorization: `Bearer ${token}` },
@@ -63,6 +65,7 @@ export const GoalsProvider = ({ children }) => {
   };
 
   const deleteGoal = (goalId, setIsToast) => {
+    const token = JSON.parse(localStorage.getItem("@Discipliny:accessToken"));
     api
       .delete(`/goals/${goalId}/`, {
         headers: { Authorization: `Bearer ${token}` },
