@@ -1,29 +1,19 @@
 # Discipliny
 
-Projeto construído em grupo durante curso de Full Stack Developer da Kenzie Academy Brasil.
+Team project made for studying purposes. Discipliny helps you acquire and maintain habits, and also keeps you motivated by providing groups where the user participates with other people.
 
-## Objetivo da aplicação
+## Main Tools
 
-Um gerenciado de hábitos pessoais e para grupos, com foco na disciplina.
+* **ReactJs**
+* **Yup, reac-hook-form**: forms structure and validation;
+* **Axios**: requests;
+* **Context**: state management react;
+* **Chakra, styled components**: styling.
 
 ## Features
 
-- possível cadastrar um novo hábito
-- você pode ir marcando os dias que colocou em prática
-- você pode registrar hábitos pos categoria
-- é possível se cadastrar em grupos que tenham metas e atividades que você se identifique
-- Você pode criar seu próprio grupo também, e cadastrar metas, atividades de acordo com o assunto do grupo
-- Busque novos grupos e faça buscas na página para localizar mais rápido
+The user can create, update, complete and delete their habits;
+Create, leave and join groups, and create, update and delete tasks and goals;
+Upon completing a task, the user receives a 'medal' and feedback to track their progress; 
 
-## Stack utilizada
-
-- React JS
-- Chakra Ui
-- Styled Components
-- React Router Dom
-- Hook Form/Yup
-
-Caso queria testar, em sua máquina:
-
-- yarn
-- yarn start
+Check it out! [Discipliny](https://habits-discipliny.vercel.app/)
